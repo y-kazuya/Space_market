@@ -86,7 +86,7 @@ Things you may want to cover:
 ## spacesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|space|string|primary_key:true|
+|space|string|null:false,unique:true|
 |postal_code|integer|null:false|
 |prefecture|integer|null:false|
 |municipal_district|string|null:false|
@@ -111,7 +111,7 @@ Things you may want to cover:
 ## available_datesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|space_id|integer|foreign_key:true|
+|space_id|integer|reference:true|
 |date|date|null:false|
 |time|time|null:false|
 
@@ -121,8 +121,8 @@ Things you may want to cover:
 ## space_plansテーブル
 |Column|Type|Options|
 |------|----|-------|
-|space_id|integer||
-|plan_id|integer||
+|space_id|integer|reference:true|
+|plan_id|integer|reference:true|
 
 ### Asosiation
 - belongs_to space
@@ -140,8 +140,8 @@ Things you may want to cover:
 ## space_tagsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|space_id|integer||
-|tag_id|integer||
+|space_id|integer|reference:true|
+|tag_id|integer|reference:true|
 
 ### Asosiation
 - belongs_to space
@@ -158,8 +158,8 @@ Things you may want to cover:
 ## space_usagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|space_id|integer||
-|usage_id|integer||
+|space_id|integer|reference:true|
+|usage_id|integer|reference:true|
 
 ### Asosiation
 - belongs_to space
@@ -176,8 +176,8 @@ Things you may want to cover:
 ## space_amenitiesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|space_id|integer||
-|tag_id|integer||
+|space_id|integer|reference:true|
+|tag_id|integer|reference:true|
 
 ### Asosiation
 - belongs_to space
@@ -194,8 +194,8 @@ Things you may want to cover:
 ## reviewsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|space_id|integer|foregin_key:true|
-|user_id|integer|foregin_key:true|
+|space_id|integer|reference:true|
+|user_id|integer|reference:true|
 |content|text|null:false|
 |sccore|integer|null:false|
 
