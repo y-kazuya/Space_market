@@ -122,5 +122,10 @@ select {
 legend {
   color:#000;
 }
+a:hover img{
+opacity:0.6;
+filter:alpha(opacity=80);
+-ms-filter: “alpha( opacity=80 )”;
+}
 /* YUI CSS Detection Stamp */
 #yui3-css-stamp.cssreset { display: none; }

@@ -7,4 +7,49 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+  .site-header
+    .site-header__sponser
+      .site-header__sponser-container
+        .site-header__sponser-catch
+          %span.site-header__sponser-catch-text
+            期間限定
+        .site-header__sponser-date
+          .site-header__sponser-datebox
+            .site-header__sponser-date1-inner
+              %p.site-header__sponser-date1_element
+                2018年10月15日
+            .site-header__sponser-date2-inner
+              %p.site-header__sponser-date2_element
+                まで
+        .site-header-description-box
+          .site-header__sponser-title-box
+            %h2.site-header__sponser-title
+              花火鑑賞スペースが0円で使えるチャンス!
+            .site-header__sponser-sentence
+              ふじさわ江の島花火を楽しめるスペース貸切権をプレゼント
+          .site-header__sponser-button-box
+            =link_to "#" ,class: "site-header__sponser-button-text link-white hover-white" do
+              詳細へ
+    %p.float
+      = link_to "#" do
+        = image_tag 'https://beyond.spacemarket.com/wp-content/uploads/2017/08/25191709/spmkt_profile-300x300.png' ,class: 'site-header__logo'
+    .navs
+      %ul
+        %li.navs-right
+          = link_to "#" ,class: 'navs-right__link' do
+            %p.navs-right__text.link-black.hover-white
+              新規登録
+        %li.navs-right
+          = link_to "#" ,class: 'navs-right__link' do
+            %p.navs-right__text.link-black.hover-white
+              ログイン
+        %li.navs-right
+          = link_to "#",class: 'navs-right__link'  do
+            %p.navs-right__text.link-black.hover-white
+              ヘルプ
+        %li.navs-right
+          = link_to "#",class: 'navs-right__link' do
+            %p.navs-right__text.link-black.hover-white
+              空きスペースを掲載する
+
     = yield

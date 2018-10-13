@@ -1,0 +1,118 @@
+.site-header{
+  &__sponser{
+    height: 60px;
+    width: 100%;
+    background:linear-gradient(90deg,#f9c13d 0,#f56e80 30%,#f46275);
+  }
+  &__sponser-container{
+    color: white;
+    display: table;
+    margin:0 auto;
+    height: 100%;
+  }
+
+
+  &__sponser-catch{
+    display: table-cell;
+    vertical-align: middle;
+  }
+  &__sponser-catch-text{
+    color: #f46275;
+    background: #fff;
+    font-size: 12px;
+    padding: 5px 5px 4px;
+    text-align: center;
+  }
+
+  &__sponser-date{
+    display: table-cell;
+    vertical-align: middle;
+  }
+  &__sponser-datebox{
+    display: table;
+  }
+  &__sponser-date1-inner{
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-weight: 700;
+    display: inline-block;
+  }
+  &__sponser-date2-inner{
+    display: inline-block;
+    line-height: 10px;
+  }
+  &__sponser-date2_element{
+    font-size: 11px;
+    width: 16px;
+  }
+
+
+
+
+
+  &__sponser-description-box{
+    display: table-cell;
+  }
+  &__sponser-title-box{
+    display: table-cell;
+    padding-top: 10px;
+    line-height: 0px;
+    vertical-align: middle;
+  }
+  &__sponser-title{
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0 0 4px 5px;
+    padding-top: 15px;
+  }
+  &__sponser-sentence{
+    font-size: 13px;
+    margin: 0 0 0 5px;
+    padding-top: 15px;
+  }
+  &__sponser-button-box{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 5px;
+    padding-top: 14px;
+
+  }
+  &__sponser-button-text{
+    display: block;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    font-weight: 700;
+    height: 30px;
+    width: 80px;
+    line-height: 30px;
+    text-align:center;
+    text-decoration: none;
+    margin: 0 auto;
+  }
+
+
+
+  .float{
+    float: left;
+    width: 46px;
+    height: 46px;
+  }
+  &__logo{
+    width: 34px;
+    height: 34px;
+    margin-top: 8px;
+    margin-left:8px;
+  }
+  .navs{
+    margin-right: 12px;
+    .navs-right{
+      font-size: 14px;
+      float: right;
+      margin:14px 10px;
+      &__link{
+        text-decoration: none;
+      }
+    }
+  }
+}
