@@ -1,9 +1,21 @@
 .link-black{
   color: black;
+  text-decoration: none;
 }
 .link-white{
   color:white;
+  text-decoration: none;
+}
+.link-gray{
+  color:#DDD;
+  text-decoration: none;
 }
 .hover-white:hover{
   color:#999999;
+}
+.hover-green:hover{
+  background:#5ED4AD;
+}
+.hover-border:hover{
+  text-decoration: underline;
 }

@@ -304,7 +304,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   mini_magick
-  mysql2 (>= 0.3.18, < 0.6.0)
+  mysql2 (= 0.3.18, < 0.6.0)
   pry-byebug
   pry-doc
   pry-rails
