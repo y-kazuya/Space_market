@@ -1,0 +1,2 @@
+class Usage < ApplicationRecord
+end

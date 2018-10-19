@@ -1,0 +1,2 @@
+class Intro < ApplicationRecord
+end

@@ -10,7 +10,86 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180929092818) do
+ActiveRecord::Schema.define(version: 20181019024129) do
+
+  create_table "basic_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "capacity",       null: false
+    t.integer  "floor_space",    null: false
+    t.integer  "key_type",       null: false
+    t.integer  "reserve_limit",  null: false
+    t.integer  "reserve_period", null: false
+    t.integer  "room_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["room_id"], name: "index_basic_infos_on_room_id", using: :btree
+  end
+
+  create_table "intros", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title",                    null: false
+    t.text     "content",    limit: 65535, null: false
+    t.text     "service",    limit: 65535, null: false
+    t.integer  "room_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["room_id"], name: "index_intros_on_room_id", using: :btree
+  end
+
+  create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content",                  null: false
+    t.text     "about",      limit: 65535
+    t.integer  "cover",                    null: false
+    t.integer  "room_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["room_id"], name: "index_pictures_on_room_id", using: :btree
+  end
+
+  create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                        null: false
+    t.text     "about",         limit: 65535
+    t.boolean  "day_pay",                     null: false
+    t.integer  "day_price"
+    t.boolean  "time_pay",                    null: false
+    t.integer  "time_price"
+    t.boolean  "about_reserve",               null: false
+    t.integer  "room_id",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["room_id"], name: "index_plans_on_room_id", using: :btree
+  end
+
+  create_table "room_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "room_id",    null: false
+    t.integer  "usage_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id", "usage_id"], name: "index_room_usages_on_room_id_and_usage_id", unique: true, using: :btree
+    t.index ["room_id"], name: "index_room_usages_on_room_id", using: :btree
+    t.index ["usage_id"], name: "index_room_usages_on_usage_id", using: :btree
+  end
+
+  create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean  "activated",  default: false
+    t.integer  "space_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["space_id"], name: "index_rooms_on_space_id", using: :btree
+  end
+
+  create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "post_code",                  null: false
+    t.integer  "state",                      null: false
+    t.string   "city",                       null: false
+    t.string   "address",                    null: false
+    t.string   "last_address"
+    t.string   "map_address",                null: false
+    t.text     "access",       limit: 65535, null: false
+    t.integer  "phone_number",               null: false
+    t.integer  "type",                       null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["state"], name: "index_spaces_on_state", using: :btree
+  end
 
   create_table "tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -18,4 +97,29 @@ ActiveRecord::Schema.define(version: 20180929092818) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weeks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.integer  "start",      null: false
+    t.integer  "end",        null: false
+    t.integer  "plan_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "plan_id"], name: "index_weeks_on_name_and_plan_id", unique: true, using: :btree
+    t.index ["plan_id"], name: "index_weeks_on_plan_id", using: :btree
+  end
+
+  add_foreign_key "basic_infos", "rooms"
+  add_foreign_key "intros", "rooms"
+  add_foreign_key "pictures", "rooms"
+  add_foreign_key "plans", "rooms"
+  add_foreign_key "room_usages", "rooms"
+  add_foreign_key "room_usages", "usages"
+  add_foreign_key "rooms", "spaces"
+  add_foreign_key "weeks", "plans"
 end
