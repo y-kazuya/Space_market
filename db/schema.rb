@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181019024129) do
+ActiveRecord::Schema.define(version: 20181019034121) do
 
   create_table "basic_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "capacity",       null: false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20181019024129) do
     t.string   "map_address",                null: false
     t.text     "access",       limit: 65535, null: false
     t.integer  "phone_number",               null: false
-    t.integer  "type",                       null: false
+    t.integer  "event_type",                 null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["state"], name: "index_spaces_on_state", using: :btree
