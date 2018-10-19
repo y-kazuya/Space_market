@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181019034121) do
+ActiveRecord::Schema.define(version: 20181019054338) do
+
+  create_table "basic_info_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "basic_info_id", null: false
+    t.integer  "usage_id",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["basic_info_id", "usage_id"], name: "index_basic_info_usages_on_basic_info_id_and_usage_id", using: :btree
+    t.index ["basic_info_id"], name: "index_basic_info_usages_on_basic_info_id", using: :btree
+    t.index ["usage_id"], name: "index_basic_info_usages_on_usage_id", using: :btree
+  end
 
   create_table "basic_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "capacity",       null: false
@@ -56,16 +66,6 @@ ActiveRecord::Schema.define(version: 20181019034121) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["room_id"], name: "index_plans_on_room_id", using: :btree
-  end
-
-  create_table "room_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "room_id",    null: false
-    t.integer  "usage_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id", "usage_id"], name: "index_room_usages_on_room_id_and_usage_id", unique: true, using: :btree
-    t.index ["room_id"], name: "index_room_usages_on_room_id", using: :btree
-    t.index ["usage_id"], name: "index_room_usages_on_usage_id", using: :btree
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -114,12 +114,12 @@ ActiveRecord::Schema.define(version: 20181019034121) do
     t.index ["plan_id"], name: "index_weeks_on_plan_id", using: :btree
   end
 
+  add_foreign_key "basic_info_usages", "basic_infos"
+  add_foreign_key "basic_info_usages", "usages"
   add_foreign_key "basic_infos", "rooms"
   add_foreign_key "intros", "rooms"
   add_foreign_key "pictures", "rooms"
   add_foreign_key "plans", "rooms"
-  add_foreign_key "room_usages", "rooms"
-  add_foreign_key "room_usages", "usages"
   add_foreign_key "rooms", "spaces"
   add_foreign_key "weeks", "plans"
 end

@@ -1,5 +1,5 @@
 class Space < ApplicationRecord
-  has_many :rooms
+  has_many :rooms, dependent: :destroy
 
   VALID_POST_CODE_REGEX = /\A\d{7}\z/
   validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }
@@ -9,7 +9,7 @@ class Space < ApplicationRecord
   validates :last_address, length: { maximum: 128}
   validates :map_address, presence: true, length: { maximum: 128}
   validates :access, presence: true, length: { maximum: 500}
-  validates :phone_number, presence: true, numericality: { only_integer: true }, length: { maximum: 64 }
+  validates :phone_number, presence: true, numericality: { only_integer: true }, length: { maximum: 15 }
   validates :event_type, presence: true, numericality: { only_integer: true }
 
   enum state: {

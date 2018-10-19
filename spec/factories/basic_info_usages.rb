@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :room_usage do
+  factory :basic_info_usage do
     
   end
 end
