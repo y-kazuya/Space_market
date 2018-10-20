@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
   root "pages#top"
   devise_for :users
+
 
   resource :pages do
     collection do
