@@ -2,3 +2,22 @@
   color: blue;
   font-size: 50px;
 }
+.user-image{
+  width: 200px;
+  height: 200px;
+  .form__mask__image{
+    width: 200px;
+    height: 200px;
+    float:left;
+    .icon{
+      color: gray;
+      width: 40px;
+      height: 40px;
+      font-size: 40px;
+      float:left;
+    }
+    .hidden{
+      display:none;
+    }
+  }
+}
