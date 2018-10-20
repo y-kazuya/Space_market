@@ -1,12 +1,16 @@
 class BasicInfo < ApplicationRecord
   belongs_to :room
-  has_and_belongs_to_many :usages, dependent: :destroy
+  # has_and_belongs_to_many :usages, dependent: :destroy
+  has_many :basic_info_usages, dependent: :destroy
+  has_many :usages, through: :basic_info_usages
+
+  # accepts_nested_attributes_for :basic_info_usages, allow_destroy: true
 
   validates :capacity, presence: true, numericality: { only_integer: true }, length: { maximum: 7 }
   validates :floor_space, presence: true, numericality: { only_integer: true }, length: { maximum: 15 }
-  validates :key_type, presence: true, numericality: { only_integer: true }
-  validates :reserve_limit, presence: true, numericality: { only_integer: true }
-  validates :reserve_period, presence: true, numericality: { only_integer: true }
+  validates :key_type, presence: true
+  validates :reserve_limit, presence: true
+  validates :reserve_period, presence: true
 
   enum key_type: {
     対面:1, キーボックス:2, スマートロック:3, 予約成立後にメッセージで伝える:4

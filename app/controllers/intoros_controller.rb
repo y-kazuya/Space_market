@@ -1,2 +1,0 @@
-class IntorosController < ApplicationController
-end

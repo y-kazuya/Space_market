@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :rooms do
       resources :space_infos, only: [:new, :edit, :create, :update]
       resources :basic_infos, only: [:new, :edit, :create, :update]
-      resources :photos, only: [:new, :edit, :create, :update]
+      resources :pictures, only: [:new, :edit, :create, :update]
       resources :plans, only: [:new, :edit, :create, :update]
       resources :intros, only: [:new, :edit, :create, :update]
       collection do

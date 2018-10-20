@@ -3,14 +3,14 @@ class SpaceInfo < ApplicationRecord
 
   VALID_POST_CODE_REGEX = /\A\d{7}\z/
   validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }
-  validates :state, presence: true, numericality: { only_integer: true }
+  validates :state, presence: true
   validates :city, presence: true, length: { maximum: 64 }
   validates :address, presence: true, length: { maximum: 128}
   validates :last_address, length: { maximum: 128}
   validates :map_address, presence: true, length: { maximum: 128}
   validates :access, presence: true, length: { maximum: 500}
   validates :phone_number, presence: true, numericality: { only_integer: true }, length: { maximum: 15 }
-  validates :event_type, presence: true, numericality: { only_integer: true }
+  validates :event_type, presence: true
 
   enum state: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

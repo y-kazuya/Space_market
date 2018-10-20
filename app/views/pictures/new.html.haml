@@ -1,0 +1,22 @@
+%h1
+  ステップフォーム4
+  Photo
+
+=@picture
+
+= form_for [@space, @room, @picture] do |f|
+
+
+  %h2
+    写真
+  = f.file_field :content
+
+  %h2
+    写真について
+  = f.text_area :about
+
+  %h2
+    カバー1
+  = f.hidden_field :cover, value: true
+
+  =f.submit "保存して進む"
