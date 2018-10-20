@@ -1,0 +1,2 @@
+class BasicInfosController < ApplicationController
+end

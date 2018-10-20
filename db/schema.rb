@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181019054338) do
+ActiveRecord::Schema.define(version: 20181020041333) do
 
   create_table "basic_info_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "basic_info_id", null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20181019054338) do
     t.index ["space_id"], name: "index_rooms_on_space_id", using: :btree
   end
 
-  create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "space_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "post_code",                  null: false
     t.integer  "state",                      null: false
     t.string   "city",                       null: false
@@ -86,9 +86,16 @@ ActiveRecord::Schema.define(version: 20181019054338) do
     t.text     "access",       limit: 65535, null: false
     t.integer  "phone_number",               null: false
     t.integer  "event_type",                 null: false
+    t.integer  "space_id",                   null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.index ["state"], name: "index_spaces_on_state", using: :btree
+    t.index ["space_id"], name: "index_space_infos_on_space_id", using: :btree
+    t.index ["state"], name: "index_space_infos_on_state", using: :btree
+  end
+
+  create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -121,5 +128,6 @@ ActiveRecord::Schema.define(version: 20181019054338) do
   add_foreign_key "pictures", "rooms"
   add_foreign_key "plans", "rooms"
   add_foreign_key "rooms", "spaces"
+  add_foreign_key "space_infos", "spaces"
   add_foreign_key "weeks", "plans"
 end

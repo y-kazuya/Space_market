@@ -17,7 +17,9 @@
   access = Faker::Name.name
   phone_number = rand(1..1000000)
   event_type = rand(1..17)
-  Space.create!(post_code:  post_code,
+  s = Space.create!()
+
+  s_i = SpaceInfo.create!(post_code:  post_code,
       state: state,
       city: city,
       address: address,
@@ -26,7 +28,7 @@
       access: access,
       phone_number: phone_number,
       event_type: event_type,
-      )
+      space_id: s.id)
   end
 
   #usages作成
