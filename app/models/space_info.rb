@@ -1,5 +1,6 @@
 class SpaceInfo < ApplicationRecord
-
+  belongs_to :user
+  has_one :space
 
   VALID_POST_CODE_REGEX = /\A\d{7}\z/
   validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }

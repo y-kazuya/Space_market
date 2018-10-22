@@ -94,21 +94,11 @@ ActiveRecord::Schema.define(version: 20181022093859) do
   end
 
   create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "post_code",                   null: false
-    t.integer  "state",                       null: false
-    t.string   "city",                        null: false
-    t.string   "address",                     null: false
-    t.string   "last_address"
-    t.string   "map_address",                 null: false
-    t.text     "access",        limit: 65535, null: false
-    t.integer  "phone_number",                null: false
-    t.integer  "type",                        null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.integer  "space_info_id"
     t.index ["space_info_id"], name: "index_spaces_on_space_info_id", using: :btree
-    t.index ["state"], name: "index_spaces_on_state", using: :btree
     t.index ["user_id"], name: "index_spaces_on_user_id", using: :btree
   end
 

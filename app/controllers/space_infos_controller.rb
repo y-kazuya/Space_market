@@ -2,13 +2,15 @@ class SpaceInfosController < ApplicationController
   def new
     @space = Space.find(params[:space_id])
     @room = Room.find(params[:room_id])
-    @space_info = SpaceInfo.find_by(space_id: @space.id) || SpaceInfo.new(space_id: @space.id)
+    @space_info = @space.space_info || SpaceInfo.new
   end
 
   def create
     @space_info = SpaceInfo.new(space_info_params)
-    if @space_info.space.user.id == current_user.id
+    @space = Space.find(params[:space_id])
+    if @space_info.user.id == current_user.id
       if @space_info.save
+        @space.update(space_info_id: @space_info.id)
         redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])
       end
     else
@@ -18,7 +20,7 @@ class SpaceInfosController < ApplicationController
 
   def update
     @space_info = SpaceInfo.find(params[:id])
-    if @space_info.space.user.id == current_user.id
+    if @space_info.user.id == current_user.id
       if @space_info.update(space_info_params)
         redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])
       end
@@ -39,6 +41,6 @@ class SpaceInfosController < ApplicationController
         :access,
         :phone_number,
         :event_type,
-      ).merge(space_id: params[:space_id].to_i)
+      ).merge(user_id: current_user.id)
     end
 end
