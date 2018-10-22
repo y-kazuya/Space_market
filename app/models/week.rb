@@ -1,7 +1,6 @@
 class Week < ApplicationRecord
-  belongs_to :plan
+  belongs_to :plan, optional: true
 
-  validates :name, presence: true #各曜日が入る
   validates :start, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 36 }
   validates :end, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 36 }
 end

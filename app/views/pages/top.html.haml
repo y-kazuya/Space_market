@@ -1,4 +1,7 @@
 %h1
   トップページ
 
-= link_to "ホストエントリーへ", host_entry_pages_path
+- if current_user.spaces.empty?
+  = link_to "ホストエントリーへ", host_entry_pages_path
+- else
+  = link_to "ホスト", host_entry_pages_path

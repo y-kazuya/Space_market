@@ -12,6 +12,14 @@ class SpaceInfosController < ApplicationController
     end
   end
 
+  def update
+
+    @space_info = SpaceInfo.find(params[:id])
+    if @space_info.update(space_info_params)
+      redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])
+    end
+  end
+
   private
     def space_info_params
       params.require(:space_info).permit(

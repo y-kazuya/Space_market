@@ -7,11 +7,10 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
-    binding.pry
-    #ok!
-    # if @intro.save
-    #   redirect_to (params[:space_id], params[:room_id])
-    # end
+
+    if @picture.save
+      redirect_to new_space_room_plan_path(params[:space_id], params[:room_id])
+    end
   end
 
   private

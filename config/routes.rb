@@ -21,6 +21,10 @@ Rails.application.routes.draw do
         get :new_first
       end
     end
+    get    '/dashboard', to: 'dashboard#first_space'
+    collection do
+      get :new_first
+    end
   end
 
 

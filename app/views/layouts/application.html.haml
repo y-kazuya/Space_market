@@ -7,4 +7,12 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+
+  - if user_signed_in?
+    = current_user.last_name
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
+  - else
+    未ログイン
+    = link_to "ログイン", new_user_session_path
+  = link_to "トップへ", root_path
+  = yield

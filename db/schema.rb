@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181020041333) do
+ActiveRecord::Schema.define(version: 20181022033416) do
 
   create_table "basic_info_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "basic_info_id", null: false
@@ -96,8 +96,9 @@ ActiveRecord::Schema.define(version: 20181020041333) do
   create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_spaces_on_user_id", using: :btree
   end
-ActiveRecord::Schema.define(version: 20181020083148) do
 
   create_table "tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -111,11 +112,31 @@ ActiveRecord::Schema.define(version: 20181020083148) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "last_name",                                            null: false
+    t.string   "first_name",                                           null: false
+    t.string   "email",                                                null: false
+    t.string   "encrypted_password",                                   null: false
+    t.string   "company"
+    t.string   "avatar"
+    t.text     "profile",                limit: 65535
+    t.string   "URL"
+    t.integer  "timezone"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.boolean  "admin",                                default: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
   create_table "weeks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
     t.integer  "start",      null: false
     t.integer  "end",        null: false
-    t.integer  "plan_id",    null: false
+    t.integer  "plan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "plan_id"], name: "index_weeks_on_name_and_plan_id", unique: true, using: :btree
