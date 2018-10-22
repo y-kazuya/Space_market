@@ -2,7 +2,7 @@ class Plan < ApplicationRecord
   belongs_to :room
   has_many :weeks ,dependent: :destroy
 
-  accepts_nested_attributes_for :weeks, reject_if: :reject_weeks
+  accepts_nested_attributes_for :weeks
 
   validates :name, presence: true, length: { maximum: 64 }
   validates :about, length: { maximum: 500 }
@@ -15,7 +15,5 @@ class Plan < ApplicationRecord
 
   validates :about_reserve, inclusion: { in: [true, false] }
 
-  def reject_weeks(attributed)
-    attributed['name'].blank?
-  end
+
 end

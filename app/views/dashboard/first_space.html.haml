@@ -53,4 +53,4 @@
     -else
       未完了
     - if @room.plans.first || @room.pictures.first
-      = link_to "編集", new_space_room_basic_info_path(@space, @room)
+      = link_to "編集", new_space_room_plan_path(@space, @room)

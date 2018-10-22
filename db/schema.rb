@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181022093859) do
+ActiveRecord::Schema.define(version: 20181022112345) do
 
   create_table "basic_info_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "basic_info_id", null: false
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20181022093859) do
     t.integer  "plan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "can"
     t.index ["name", "plan_id"], name: "index_weeks_on_name_and_plan_id", unique: true, using: :btree
     t.index ["plan_id"], name: "index_weeks_on_plan_id", using: :btree
   end
