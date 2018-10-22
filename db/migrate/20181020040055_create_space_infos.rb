@@ -9,9 +9,9 @@ class CreateSpaceInfos < ActiveRecord::Migration[5.0]
       t.string :map_address, null: false
       t.text :access, null: false
       t.integer :phone_number, null: false
-      t.integer :type, null: false
+      t.integer :event_type, null: false
 
-      t.references :space, foreign_key: true, null: false, unique: true
+      t.references :user, foreign_key: true, null: false, unique: true
       t.timestamps
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181022033416) do
+ActiveRecord::Schema.define(version: 20181022093859) do
 
   create_table "basic_info_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "basic_info_id", null: false
@@ -86,17 +86,29 @@ ActiveRecord::Schema.define(version: 20181022033416) do
     t.text     "access",       limit: 65535, null: false
     t.integer  "phone_number",               null: false
     t.integer  "event_type",                 null: false
-    t.integer  "space_id",                   null: false
+    t.integer  "user_id",                    null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.index ["space_id"], name: "index_space_infos_on_space_id", using: :btree
     t.index ["state"], name: "index_space_infos_on_state", using: :btree
+    t.index ["user_id"], name: "index_space_infos_on_user_id", using: :btree
   end
 
   create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "post_code",                   null: false
+    t.integer  "state",                       null: false
+    t.string   "city",                        null: false
+    t.string   "address",                     null: false
+    t.string   "last_address"
+    t.string   "map_address",                 null: false
+    t.text     "access",        limit: 65535, null: false
+    t.integer  "phone_number",                null: false
+    t.integer  "type",                        null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
+    t.integer  "space_info_id"
+    t.index ["space_info_id"], name: "index_spaces_on_space_info_id", using: :btree
+    t.index ["state"], name: "index_spaces_on_state", using: :btree
     t.index ["user_id"], name: "index_spaces_on_user_id", using: :btree
   end
 
@@ -150,6 +162,6 @@ ActiveRecord::Schema.define(version: 20181022033416) do
   add_foreign_key "pictures", "rooms"
   add_foreign_key "plans", "rooms"
   add_foreign_key "rooms", "spaces"
-  add_foreign_key "space_infos", "spaces"
+  add_foreign_key "space_infos", "users"
   add_foreign_key "weeks", "plans"
 end

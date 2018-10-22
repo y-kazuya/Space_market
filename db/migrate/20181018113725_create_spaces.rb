@@ -11,7 +11,7 @@ class CreateSpaces < ActiveRecord::Migration[5.0]
       t.integer :phone_number, null: false
       t.integer :type, null: false
 
-      # t.references :user, index: true, foreign_key: true
+
       t.timestamps
     end
   end

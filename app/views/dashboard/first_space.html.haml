@@ -28,24 +28,29 @@
       完了
     -else
       未完了
-
+    - if @room.basic_info || @space.space_info
+      = link_to "編集", new_space_room_basic_info_path(@space, @room)
   %h2
     3.説明文
     -if @room.intro
       完了
     -else
       未完了
-
+    - if @room.intro || @room.basic_info
+      = link_to "編集", new_space_room_intro_path(@space, @room)
   %h2
     4.写真
-    -unless @room.pictures.empty?
+    -if @room.pictures.first
       完了
     -else
       未完了
-
+    - if @room.pictures.first || @room.intro
+      = link_to "編集", new_space_room_picture_path(@space, @room)
   %h2
     5.プラン
-    -unless @room.plans.empty?
+    -if @room.plans.first
       完了
     -else
       未完了
+    - if @room.plans.first || @room.pictures.first
+      = link_to "編集", new_space_room_basic_info_path(@space, @room)

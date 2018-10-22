@@ -7,11 +7,25 @@ class BasicInfosController < ApplicationController
 
   def create
     @basic_info = BasicInfo.new(basic_info_params)
-    if @basic_info.save
-      redirect_to new_space_room_intro_path(params[:space_id], params[:room_id])
+    if @basic_info.room.space.user.id == current_user.id
+      if @basic_info.save
+        redirect_to new_space_room_intro_path(params[:space_id], params[:room_id])
+      end
+    else
+      redirect_to root_path
     end
   end
 
+  def update
+    @basic_info = BasicInfo.find(params[:id])
+    if @basic_info.room.space.user.id == current_user.id
+      if @basic_info.update(basic_info_params)
+        redirect_to new_space_room_intro_path(params[:space_id], params[:room_id])
+      end
+    else
+      redirect_to root_path
+    end
+  end
   private
     def basic_info_params
       params.require(:basic_info).permit(

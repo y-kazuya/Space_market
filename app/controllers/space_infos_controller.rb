@@ -7,16 +7,23 @@ class SpaceInfosController < ApplicationController
 
   def create
     @space_info = SpaceInfo.new(space_info_params)
-    if @space_info.save
-      redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])
+    if @space_info.space.user.id == current_user.id
+      if @space_info.save
+        redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])
+      end
+    else
+      redirect_to root_path
     end
   end
 
   def update
-
     @space_info = SpaceInfo.find(params[:id])
-    if @space_info.update(space_info_params)
-      redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])
+    if @space_info.space.user.id == current_user.id
+      if @space_info.update(space_info_params)
+        redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])
+      end
+    else
+      redirect_to root_path
     end
   end
 
