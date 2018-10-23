@@ -1,8 +1,8 @@
 %h1
   ステップフォーム4
   Photo
-
-= @picture
+- unless @picture.content_url == nil
+  = image_tag(@picture.content_url(:preview))
 
 = form_for [@space, @room, @picture] do |f|
 

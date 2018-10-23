@@ -23,7 +23,7 @@
 
   %h2
     時間価格
-  = f.number_field :time_price
+  = f.text_field :time_price
 
   %h2
     一日価格にする？
@@ -31,7 +31,7 @@
 
   %h2
     1日価格
-  = f.number_field :day_price
+  = f.text_field :day_price
 
   %h2
     予約の承認方法
@@ -42,23 +42,28 @@
   %h3
     承認あり
   = f.radio_button :about_reserve, :false, checked: "checked"
-  - if @plan.id.nil?
+  - if @plan.name == nil
 
     = f.fields_for :weeks do |w|
       %h2
         日曜日
       = w.hidden_field :name ,value: "日曜日"
       = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.number_field :start
-      = w.number_field :end
+      = w.select :start_time, 0..36, selected: 9
+      ：００〜
+      = w.select :end_time, 0..36, selected: 22
+      ：００
+
 
     = f.fields_for :weeks do |w|
       %h2
         月曜日
       = w.hidden_field :name ,value: "月曜日"
       = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.number_field :start
-      = w.number_field :end
+      = w.select :start_time, 0..36, selected: 9
+      ：００〜
+      = w.select :end_time, 0..36, selected: 22
+      ：００
 
 
     = f.fields_for :weeks do |w|
@@ -66,56 +71,70 @@
         火曜日
       = w.hidden_field :name ,value: "火曜日"
       = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.number_field :start
-      = w.number_field :end
+      = w.select :start_time, 0..36, selected: 9
+      ：００〜
+      = w.select :end_time, 0..36, selected: 22
+      ：００
 
     = f.fields_for :weeks do |w|
       %h2
         水曜日
       = w.hidden_field :name ,value: "水曜日"
       = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.number_field :start
-      = w.number_field :end
+      = w.select :start_time, 0..36, selected: 9
+      ：００〜
+      = w.select :end_time, 0..36, selected: 22
+      ：００
 
     = f.fields_for :weeks do |w|
       %h2
         木曜日
       = w.hidden_field :name ,value: "木曜日"
       = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.number_field :start
-      = w.number_field :end
+      = w.select :start_time, 0..36, selected: 9
+      ：００〜
+      = w.select :end_time, 0..36, selected: 22
+      ：００
 
     = f.fields_for :weeks do |w|
       %h2
         金曜日
       = w.hidden_field :name ,value: "金曜日"
       = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.number_field :start
-      = w.number_field :end
+      = w.select :start_time, 0..36, selected: 9
+      ：００〜
+      = w.select :end_time, 0..36, selected: 22
+      ：００
 
     = f.fields_for :weeks do |w|
       %h2
         土曜日
       = w.hidden_field :name ,value: "土曜日"
       = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.number_field :start
-      = w.number_field :end
+      = w.select :start_time, 0..36, selected: 9
+      ：００〜
+      = w.select :end_time, 0..36, selected: 22
+      ：００
 
     = f.fields_for :weeks do |w|
       %h2
         祝日
       = w.hidden_field :name ,value: "祝曜日"
       = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.number_field :start
-      = w.number_field :end
+      = w.select :start_time, 0..36, selected: 9
+      ：００〜
+      = w.select :end_time, 0..36, selected: 22
+      ：００
   - else
     = f.fields_for :weeks do |w|
       %h2
         = w.object.name
       = w.hidden_field :name
       = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.number_field :start
-      = w.number_field :end
+      = w.select :start_time, 0..36
+      ：００〜
+      = w.select :end_time, 0..36
+      ：００
 
 
 

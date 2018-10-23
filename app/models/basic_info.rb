@@ -11,6 +11,7 @@ class BasicInfo < ApplicationRecord
   validates :key_type, presence: true
   validates :reserve_limit, presence: true
   validates :reserve_period, presence: true
+  validates :basic_info_usages, length: {minimum: 1, message: "を一つ以上選んで"}
 
   enum key_type: {
     対面:1, キーボックス:2, スマートロック:3, 予約成立後にメッセージで伝える:4

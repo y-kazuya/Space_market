@@ -8,12 +8,39 @@ class Plan < ApplicationRecord
   validates :about, length: { maximum: 500 }
 
   validates :day_pay, inclusion: { in: [true, false] }
-  validates :day_price, presence: true, numericality: { only_integer: true }, length: { maximum: 10 } #day_pay がtrueの時のみ presenceをtrueに
+
+  validates :day_price, numericality: true, length: { maximum: 10 }, allow_nil: true
+  validates :day_price, presence: true, if: :need_day?
 
   validates :time_pay, inclusion: { in: [true, false] }
-  validates :time_price, presence: true, numericality: { only_integer: true }, length: { maximum: 10 } #time_pay がtrueの時のみ presenceをtrueに
+
+  validates :time_price, numericality: true, length: { maximum: 10 }, allow_nil: true
+  validates :time_price, presence: true, if: :need_time?
 
   validates :about_reserve, inclusion: { in: [true, false] }
+  validate :need_pay
 
+  validate :need_week
 
+  private
+    def need_pay
+      if day_pay == false && time_pay == false
+        errors.add(:time_pay, "どちらかは選択してください")
+      end
+    end
+
+    def need_day?
+      day_pay == true
+    end
+
+    def need_time?
+      time_pay == true
+    end
+
+    def need_week
+      weeks.each do |week|
+        return if week.can == true
+      end
+      errors.add(:weeks, "どれかは選択してください")
+    end
 end

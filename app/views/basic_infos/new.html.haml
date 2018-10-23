@@ -12,11 +12,11 @@
 
   %h2
     収容人数
-  = f.number_field :capacity
+  = f.number_field :capacity, in: 1...100000
 
   %h2
     床面積
-  = f.number_field :floor_space
+  = f.number_field :floor_space, in: 1...100000
 
 
   %h2

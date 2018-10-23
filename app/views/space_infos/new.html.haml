@@ -6,7 +6,7 @@
 = form_for [@space, @room, @space_info] do |f|
   %h2
     郵便番号
-  = f.text_field :post_code, placeholder: "郵便番号だよ"
+  = f.text_field :post_code, placeholder: "郵便番号だよ",maxlength: 7
 
   %h2
     トドふけん
@@ -39,8 +39,10 @@
 
   %h2
     イベントタイプ
-  = f.select :event_type, SpaceInfo.event_types.keys, {prompt: "イベントタイプ"}
-
+  - SpaceInfo.event_types.keys.each do |key|
+    %h1
+      = f.radio_button :event_type,key
+      = key
 
 
   =f.submit "保存して進む"

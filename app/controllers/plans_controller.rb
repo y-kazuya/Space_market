@@ -14,9 +14,12 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     if @plan.room.space.user.id == current_user.id
-      binding.pry
       if @plan.save
         redirect_to root_path
+      else
+        @room = @plan.room
+        @space = @room.space
+        render :new
       end
     else
       redirect_to root_path
@@ -28,6 +31,10 @@ class PlansController < ApplicationController
     if @plan.room.space.user.id == current_user.id
       if @plan.update(plan_update_params)
         redirect_to root_path
+      else
+        @room = @plan.room
+        @space = @room.space
+        render :new
       end
     else
       redirect_to root_path
@@ -44,7 +51,7 @@ class PlansController < ApplicationController
         :day_pay,
         :day_price,
         :about_reserve,
-        weeks_attributes: [:name, :start, :end, :can]
+        weeks_attributes: [:name, :start_time, :end_time, :can]
       ).merge(room_id: params[:room_id].to_i)
     end
 
@@ -57,7 +64,7 @@ class PlansController < ApplicationController
         :day_pay,
         :day_price,
         :about_reserve,
-        weeks_attributes: [:name, :start, :end, :can, :id]
+        weeks_attributes: [:name, :start_time, :end_time, :can, :id]
       ).merge(room_id: params[:room_id].to_i)
     end
     # params.permit(items: [:name, :price])[:items]

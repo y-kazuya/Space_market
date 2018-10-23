@@ -11,19 +11,27 @@ Rails.application.routes.draw do
   end
 
   resources :spaces do
+    get    '/dashboard', to: 'dashboard#first_space'
+
+    collection do
+      get :new_first
+
+    end
+
     resources :rooms do
-      resources :space_infos, only: [:new, :edit, :create, :update]
-      resources :basic_infos, only: [:new, :edit, :create, :update]
-      resources :pictures, only: [:new, :edit, :create, :update]
-      resources :plans, only: [:new, :edit, :create, :update]
-      resources :intros, only: [:new, :edit, :create, :update]
       collection do
         get :new_first
       end
-    end
-    get    '/dashboard', to: 'dashboard#first_space'
-    collection do
-      get :new_first
+      resources :space_infos, only: [:new, :create, :update] do
+        collection do
+          get :info_select
+          patch  :choise_info
+        end
+      end
+      resources :basic_infos, only: [:new,:create, :update]
+      resources :pictures, only: [:new, :create, :update]
+      resources :plans, only: [:new, :create, :update]
+      resources :intros, only: [:new,:create, :update]
     end
   end
 

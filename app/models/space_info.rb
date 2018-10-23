@@ -28,4 +28,10 @@ class SpaceInfo < ApplicationRecord
     イベントスペース:1 ,結婚式場:2, オフィススペース:3, ホール:4, 貸し会議室:5, スタジオ:6, カフェ:7,
     レストラン:8, 映画館:9, ギャラリー:10, バー:11, スポーツ施設:12, ホテル:13, 住宅:14,
     倉庫:15, ワイナリー・蔵:16, その他:17}
+
+
+  #フル住所を返す
+  def full_address
+    "#{state}#{city}#{address}#{last_address}"
+  end
 end
