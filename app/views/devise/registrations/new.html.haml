@@ -1,0 +1,39 @@
+%h1 アカウント新規登録
+%h2 メールアドレスで新規登録
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  .field
+    = f.label :姓
+    %br/
+    = f.text_field :first_name, autofocus: true
+  .field
+    = f.label :名
+    %br/
+    = f.text_field :last_name, autofocus: true
+  .field
+    = f.label :メールアドレス
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+  .field
+    = f.label :パスワード
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "off"
+  .field
+    = f.label :"パスワード（確認）"
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "off"
+  .user-image
+    = f.label :プロフィール画像 ,for: "files"
+    = f.label :プロフィール画像 ,class: 'form__mask__image', for: "files" do
+      = fa_icon 'camera', class: 'icon'
+      = f.file_field :avatar, class: 'hidden' ,id: "files"
+  %br/
+  %p ご登録前にスペースマーケット利用規約をお読みください。
+  .field
+    = f.label :スペースマーケット利用規約に同意する
+  .actions
+    = f.submit "登録する"
+= render "devise/shared/links"

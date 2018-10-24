@@ -1,0 +1,2 @@
+module SpaceInfosHelper
+end

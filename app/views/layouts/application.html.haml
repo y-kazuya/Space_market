@@ -8,6 +8,20 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+
     = render partial: 'shared/header'
     = yield
     = render partial: 'shared/footer'
+
+
+  - if user_signed_in?
+    = current_user.last_name
+    -unless current_user.avatar_url == nil
+      = image_tag(current_user.avatar_url(:thumb))
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
+  - else
+    未ログイン
+    = link_to "ログイン", new_user_session_path
+  = link_to "トップへ", root_path
+ 
+
