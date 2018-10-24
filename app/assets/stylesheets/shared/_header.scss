@@ -111,9 +111,6 @@
       float: right;
       margin:14px 10px;
       position: relative;
-      .my-size{
-        font-size:1.5em;
-      }
       .top-nav-parent{
         box-shadow: 0 0 8px #EBEBEB;
         border-radius: 3px;
@@ -153,36 +150,3 @@
     }
   }
 }
-
-.site-main{
-  margin-top: 240px;
-  &__title-logo{
-    position: absolute;
-    top: 90px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    margin: auto;
-    height: 80px;
-    width: 360px;
-  }
-  .top-information{
-    text-align: center;
-  }
-  .top-menu-list{
-    width: 33%;
-    &__button{
-
-    }
-    &__button-img{
-
-    }
-    &__button-text{
-
-    }
-  }
-  .container{
-    width: 100%;
-  }
-}
-

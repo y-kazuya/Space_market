@@ -6,10 +6,15 @@
   color:white;
   text-decoration: none;
 }
+.link-light-blue{
+  color:#52BEE0;
+  text-decoration: none;
+}
 .link-gray{
   color:#DDD;
   text-decoration: none;
 }
+//------------------------------------------------------------
 .hover-white:hover{
   color:#999999;
 }
@@ -18,4 +23,15 @@
 }
 .hover-border:hover{
   text-decoration: underline;
+}
+//------------------------------------------------------------
+.back-light-gray{
+  background-color: #f6f6f6;
+}
+.back-white{
+  background-color: #FFF;
+}
+//------------------------------------------------------------
+.weight700{
+  font-weight: 700;
 }

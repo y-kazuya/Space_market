@@ -1,105 +1,90 @@
-.site-header
-  .site-header__sponser
-    .site-header__sponser-container
-      .site-header__sponser-catch
-        %span.site-header__sponser-catch-text
-          期間限定
-      .site-header__sponser-date
-        .site-header__sponser-datebox
-          .site-header__sponser-date1-inner
-            %p.site-header__sponser-date1_element
-              2018年10月15日
-          .site-header__sponser-date2-inner
-            %p.site-header__sponser-date2_element
-              まで
-      .site-header-description-box
-        .site-header__sponser-title-box
-          %h2.site-header__sponser-title
-            花火鑑賞スペースが0円で使えるチャンス!
-          .site-header__sponser-sentence
-            ふじさわ江の島花火を楽しめるスペース貸切権をプレゼント
-        .site-header__sponser-button-box
-          =link_to "#" ,class: "site-header__sponser-button-text link-white hover-white" do
-            詳細へ
-  %p.float
-    = link_to "#" do
-      = image_tag 'https://beyond.spacemarket.com/wp-content/uploads/2017/08/25191709/spmkt_profile-300x300.png' ,class: 'site-header__logo'
-  .navs
-    %ul
-      /- if user_sign_in == true
-      / %li.navs-right
-      /  = link_to "#" ,class: 'navs-right__link' do
-      /     %p.navs-right__text.link-black.hover-white
-      /       ヘルプ
-      / %li.navs-right
-      /  = link_to "#" ,class: 'navs-right__link' do
-      /     %p.navs-right__text.link-black.hover-white
-      /       予約
-      / %li.navs-right
-      /  = link_to "#" ,class: 'navs-right__link' do
-      /     %p.navs-right__text.link-black.hover-white
-      /       お気に入り
-      / %li.navs-right
-      /  = link_to "#" ,class: 'navs-right__link' do
-      /     %p.navs-right__text.link-black.hover-white
-      /       ホスト
-      %li.navs-right
-        = fa_icon 'caret-down', class: 'top-nav-down hover-white link-black'
-        %ul.top-nav-parent
-          %li.child-user
-            %p.name
-              ユーザー名
-            = link_to "#",class: 'navs-right__link child-link ' do
-              %p.point.link-black.hover-border
-                (ポイント)ポイント
-          %li.child
-            = link_to "#" ,class: 'navs-right__link child-link hover-green' do
-              %p.link-black
-                ポイント　　　　　　　　　　　　>
-          %li.child
-            = link_to "#" ,class: 'navs-right__link child-link hover-green' do
-              %p.link-black
-                友達を招待　　　　　　　　　　　>
-          %li.child
-            = link_to "#" ,class: 'navs-right__link child-link hover-green' do
-              %p.link-black
-                設定　　　　　　　　　　　　　　>
-          %li.child
-            = link_to "#" ,class: 'navs-right__link child-link hover-green' do
-              %p.link-black
-                ログアウト　　　　　　　　　　　>
-      %li.navs-right
-        = link_to "#" ,class: 'navs-right__link child-link' do
-          = fa_icon 'envelope', class: 'my-size hover-white link-gray'
-      %li.navs-right
-        = link_to "#" ,class: 'navs-right__link' do
-          %p.navs-right__text.link-black.hover-white
-            新規登録
-      %li.navs-right
-        = link_to "#" ,class: 'navs-right__link' do
-          %p.navs-right__text.link-black.hover-white
-            ログイン
-      %li.navs-right
-        = link_to "#",class: 'navs-right__link'  do
-          %p.navs-right__text.link-black.hover-white
-            ヘルプ
-      %li.navs-right
-        = link_to "#",class: 'navs-right__link' do
-          %p.navs-right__text.link-black.hover-white
-            空きスペースを掲載する
-
 .site-main
-  = image_tag 'http://www.dreamnews.jp/?action_Image=1&p=0000092185&id=headimage',class: 'site-main__title-logo'
+  .site-main__title-logo
+    = image_tag 'http://www.dreamnews.jp/?action_Image=1&p=0000092185&id=headimage'
   .h1.top-information
-    10109件のレンタルスペースから 目的に合ったスペースをかんたん予約
+    0件のレンタルスペースから 目的に合ったスペースをかんたん予約
   .top-menu-container
     .container
       %ul.row
-        %li.top-menu__list
+        %li.top-menu-list
           = link_to "#" ,class: 'top-menu-list__button' do
             = image_tag 'party.png',class: 'top-menu-list__button-img'
-            %p.top-menu-list__button-text.link-black
+            %span.top-menu-list__button-text
               パーティ
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'meeting.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              会議
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'bed.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              民泊
+              %span.top-menu-list__button-num
+                "0"
+                件
     .container
       %ul.row
-        %li.top-menu__list
+        %li.top-menu-list.row-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'camera.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              写真撮影
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list.row-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'moovie.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              ロケ撮影
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list.row-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'run.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              スポーツ
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list.row-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag '3dot.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              その他
+              %span.top-menu-list__button-num
+                %br
+
+    .top-menu__other-search
+      %h3.top-menu__other-title
+        カテゴリーから探す
+      %ul.top-flow__list
+        %li
+          = link_to "#" ,class: 'link-light-blue hover-border' do
+            エリア
+        %li
+          = link_to "#" ,class: 'link-light-blue hover-border' do
+            人数
+        %li
+          = link_to "#" ,class: 'link-light-blue hover-border' do
+            会場タイプ
+        %li
+          = link_to "#" ,class: 'link-light-blue hover-border' do
+            アメニティ
+
+  /下のrenderで渡す引数は画像のurlとテキストと合わせて渡したい
+  .top-page-topics.back-white
+    = render partial: '4topic'
+  .top-page-topics.back-light-gray
+    = render partial: '3topic'
+
+
