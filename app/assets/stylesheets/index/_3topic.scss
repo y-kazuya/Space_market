@@ -1,0 +1,33 @@
+.top-units{
+  width: 100%;
+  white-space: nowrap;
+  box-sizing:border-box;
+  padding-top: 24px;
+  padding-right: 128px;
+  padding-left: 128px;
+  &__box-3x{
+    display:inline-block;
+    box-shadow: 0px 1px 1px gray;
+    height: 300px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  &__img-box-3x{
+    display: inline-block;
+    margin: -30% 0%;
+    text-align: center;
+
+    .unit-img{
+      height: 350px;
+    }
+  }
+  &__text-3x{
+    font-size: 14px;
+    padding-left: 8px;
+    padding-right: 6px;
+    .mini_text{
+      font-size: 10px;
+      font-color:gray;
+    }
+  }
+}
