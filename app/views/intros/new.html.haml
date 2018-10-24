@@ -1,0 +1,22 @@
+%h1
+  ステップフォーム3
+  intro
+
+=@intro
+
+= form_for [@space, @room, @intro] do |f|
+
+
+  %h2
+    スペース見出し
+  = f.text_field :title
+
+  %h2
+    スペースについて
+  = f.text_area :content
+
+  %h2
+    施設サービス
+  = f.text_area :service
+
+  =f.submit "保存して進む"

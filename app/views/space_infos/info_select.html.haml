@@ -1,0 +1,17 @@
+%h1
+  施設の選択
+
+= link_to "新規に施設情報を入力", new_space_room_space_info_path(@space.id, @room.id)
+
+
+= form_tag choise_info_space_room_space_infos_path(@space, @room), method: :patch do
+  - @space_infos.each do |space_info|
+    %h2
+      = space_info.event_type
+      = space_info.post_code
+      = space_info.full_address
+      = space_info.access
+      = space_info.phone_number
+      = radio_button_tag :space_info_id, space_info.id
+
+  = submit_tag "保存して進む"
