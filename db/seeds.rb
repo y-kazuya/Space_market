@@ -3,13 +3,13 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create([{ name: ‘Star Wars’ }, { name: ‘Lord of the Rings’ }])
+#   Character.create(name: ‘Luke’, movie: movies.first)
 
 #テストuser作成
 # 10.times do |a|
-#   last_name = "test-#{a}"
-#   first_name = "morita"
+#   last_name = “test-#{a}”
+#   first_name = “morita”
 #   email = Faker::Internet.email
 #   password = 12345678
 
@@ -106,8 +106,8 @@
 #   )
 #   end
 
-  #usages作成
-  usages = %W[パーティー 会議・研修 写真撮影 ロケ撮影 イベント 演奏・パフォーマンス 個展・展覧会 演奏・パフォーマンス スポーツ・フィットネス オフィス
-              結婚式 その他]
+ #usages作成
+ usages = %W[パーティー 会議・研修 写真撮影 ロケ撮影 イベント 演奏・パフォーマンス 個展・展覧会 演奏・パフォーマンス スポーツ・フィットネス オフィス
+             結婚式 その他]
 
-  usages.each { |a| Usage.create(name: a) }
+ usages.each { |a| Usage.create(name: a) }
