@@ -1,22 +1,16 @@
-class BasicInfosController < ApplicationController
+class BasicInfosController < RoomInfosController
   def new
-    @space = Space.find(params[:space_id])
-    @room = Room.find(params[:room_id])
     @basic_info = BasicInfo.find_by(room_id: @room.id) || BasicInfo.new(room_id: @room.id)
   end
 
   def create
     @basic_info = BasicInfo.new(basic_info_params)
-    if @basic_info.room.space.user.id == current_user.id
-      if @basic_info.save
-        redirect_to new_space_room_intro_path(params[:space_id], params[:room_id])
-      else
-        @room = @basic_info.room
-        @space = @room.space
-        render :new
-      end
+    if @basic_info.save
+      redirect_to new_space_room_intro_path(params[:space_id], params[:room_id])
     else
-      redirect_to root_path
+      @room = @basic_info.room
+      @space = @room.space
+      render :new
     end
   end
 

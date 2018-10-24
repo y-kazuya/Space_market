@@ -22,6 +22,12 @@ class Plan < ApplicationRecord
 
   validate :need_week
 
+
+  def can_days
+    weeks.map{|day| day if day.can == true}.compact!
+  end
+
+
   private
     def need_pay
       if day_pay == false && time_pay == false

@@ -1,10 +1,8 @@
-class PlansController < ApplicationController
+class PlansController < RoomInfosController
   def new
-    @space = Space.find(params[:space_id])
-    @room = Room.find(params[:room_id])
+    @week = %W[日曜日 月曜日 火曜日 水曜日 木曜日 金曜日 土曜日 祝日]
     if Plan.find_by(room_id: @room.id)
       @plan = Plan.find_by(room_id: @room.id)
-
     else
       @plan = Plan.new(room_id: @room.id)
       @plan.weeks.build
@@ -13,16 +11,12 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-    if @plan.room.space.user.id == current_user.id
-      if @plan.save
-        redirect_to root_path
-      else
-        @room = @plan.room
-        @space = @room.space
-        render :new
-      end
-    else
+    if @plan.save
       redirect_to root_path
+    else
+      @room = @plan.room
+      @space = @room.space
+      render :new
     end
   end
 

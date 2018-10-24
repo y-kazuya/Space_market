@@ -43,88 +43,17 @@
     承認あり
   = f.radio_button :about_reserve, :false, checked: "checked"
   - if @plan.name == nil
+    - @week.each do |day|
+      = f.fields_for :weeks do |w|
+        %h2
+          = day
+        = w.hidden_field :name ,value: "#{day}"
+        = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
+        = w.select :start_time, 0..36, selected: 9
+        ：００〜
+        = w.select :end_time, 0..36, selected: 22
+        ：００
 
-    = f.fields_for :weeks do |w|
-      %h2
-        日曜日
-      = w.hidden_field :name ,value: "日曜日"
-      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.select :start_time, 0..36, selected: 9
-      ：００〜
-      = w.select :end_time, 0..36, selected: 22
-      ：００
-
-
-    = f.fields_for :weeks do |w|
-      %h2
-        月曜日
-      = w.hidden_field :name ,value: "月曜日"
-      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.select :start_time, 0..36, selected: 9
-      ：００〜
-      = w.select :end_time, 0..36, selected: 22
-      ：００
-
-
-    = f.fields_for :weeks do |w|
-      %h2
-        火曜日
-      = w.hidden_field :name ,value: "火曜日"
-      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.select :start_time, 0..36, selected: 9
-      ：００〜
-      = w.select :end_time, 0..36, selected: 22
-      ：００
-
-    = f.fields_for :weeks do |w|
-      %h2
-        水曜日
-      = w.hidden_field :name ,value: "水曜日"
-      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.select :start_time, 0..36, selected: 9
-      ：００〜
-      = w.select :end_time, 0..36, selected: 22
-      ：００
-
-    = f.fields_for :weeks do |w|
-      %h2
-        木曜日
-      = w.hidden_field :name ,value: "木曜日"
-      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.select :start_time, 0..36, selected: 9
-      ：００〜
-      = w.select :end_time, 0..36, selected: 22
-      ：００
-
-    = f.fields_for :weeks do |w|
-      %h2
-        金曜日
-      = w.hidden_field :name ,value: "金曜日"
-      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.select :start_time, 0..36, selected: 9
-      ：００〜
-      = w.select :end_time, 0..36, selected: 22
-      ：００
-
-    = f.fields_for :weeks do |w|
-      %h2
-        土曜日
-      = w.hidden_field :name ,value: "土曜日"
-      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.select :start_time, 0..36, selected: 9
-      ：００〜
-      = w.select :end_time, 0..36, selected: 22
-      ：００
-
-    = f.fields_for :weeks do |w|
-      %h2
-        祝日
-      = w.hidden_field :name ,value: "祝曜日"
-      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.select :start_time, 0..36, selected: 9
-      ：００〜
-      = w.select :end_time, 0..36, selected: 22
-      ：００
   - else
     = f.fields_for :weeks do |w|
       %h2
@@ -135,9 +64,5 @@
       ：００〜
       = w.select :end_time, 0..36
       ：００
-
-
-
-
 
   =f.submit "保存して進む"

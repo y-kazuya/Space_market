@@ -7,4 +7,5 @@ class Room < ApplicationRecord
 
   validates :activated, inclusion: { in: [true, false] }
 
+
 end

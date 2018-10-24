@@ -1,23 +1,17 @@
-class SpaceInfosController < ApplicationController
+class SpaceInfosController < RoomInfosController
   def new
-    @space = Space.find(params[:space_id])
-    @room = Room.find(params[:room_id])
     @space_info = SpaceInfo.new
   end
 
   def create
     @space_info = SpaceInfo.new(space_info_params)
     @space = Space.find(params[:space_id])
-    if @space_info.user.id == current_user.id
-      if @space_info.save
-        @space.update(space_info_id: @space_info.id)
-        redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])
-      else
-        @room = Room.find(params[:room_id])
-        render :new
-      end
+    if @space_info.save
+      @space.update(space_info_id: @space_info.id)
+      redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])
     else
-      redirect_to root_path
+      @room = Room.find(params[:room_id])
+      render :new
     end
   end
 
@@ -38,8 +32,6 @@ class SpaceInfosController < ApplicationController
 
 
   def info_select
-    @space = Space.find(params[:space_id])
-    @room = Room.find(params[:room_id])
     @space_infos = current_user.space_infos
   end
 

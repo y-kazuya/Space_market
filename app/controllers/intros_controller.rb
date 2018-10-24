@@ -1,22 +1,16 @@
-class IntrosController < ApplicationController
+class IntrosController < RoomInfosController
   def new
-    @space = Space.find(params[:space_id])
-    @room = Room.find(params[:room_id])
     @intro = Intro.find_by(room_id: @room.id) || Intro.new(room_id: @room.id)
   end
 
   def create
     @intro = Intro.new(intro_params)
-    if @intro.room.space.user.id == current_user.id
-      if @intro.save
-        redirect_to new_space_room_picture_path(params[:space_id], params[:room_id])
-      else
-        @room = @intro.room
-        @space = @room.space
-        render :new
-      end
+    if @intro.save
+      redirect_to new_space_room_picture_path(params[:space_id], params[:room_id])
     else
-      redirect_to root_path
+      @room = @intro.room
+      @space = @room.space
+      render :new
     end
   end
 
