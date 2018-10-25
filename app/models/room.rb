@@ -4,6 +4,8 @@ class Room < ApplicationRecord
   has_one :intro, dependent: :destroy
   has_many :pictures, dependent: :destroy
   has_many :plans, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_lists, through: :favorites
 
   validates :activated, inclusion: { in: [true, false] }
 

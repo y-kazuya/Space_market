@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       resources :pictures, only: [:new, :create, :update]
       resources :plans, only: [:new, :create, :update]
       resources :intros, only: [:new,:create, :update]
+      resources :favorite, only: [:create, :destory]
     end
   end
 
