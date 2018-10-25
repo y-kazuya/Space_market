@@ -1,0 +1,48 @@
+%h1
+  space info 入力画面
+
+= @space_info
+
+= form_for [@space, @room, @space_info] do |f|
+  %h2
+    郵便番号
+  = f.text_field :post_code, placeholder: "郵便番号だよ",maxlength: 7
+
+  %h2
+    トドふけん
+  = f.select :state, SpaceInfo.states.keys, {prompt: '選択してください'}
+
+
+  %h2
+    市町村区
+  = f.text_field :city
+
+  %h2
+    番地・ビル名
+  = f.text_field :address
+
+  %h2
+    部屋番号
+  = f.text_field :last_address
+
+  %h2
+    地図のやつ
+  = f.text_field :map_address
+
+  %h2
+    アクセス
+  = f.text_area :access
+
+  %h2
+    電話番号
+  = f.text_field :phone_number
+
+  %h2
+    イベントタイプ
+  - SpaceInfo.event_types.keys.each do |key|
+    %h1
+      = f.radio_button :event_type,key
+      = key
+
+
+  =f.submit "保存して進む"

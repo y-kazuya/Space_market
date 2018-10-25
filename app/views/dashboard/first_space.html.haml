@@ -1,0 +1,56 @@
+%h1
+  一つ目のroomの作成状況
+
+= @space
+= @room
+
+=link_to "貸出方法の変更", new_space_room_path(@space)
+
+-unless @space.space_info
+  = link_to new_space_room_space_info_path(@space.id, @room.id) do
+    %h1
+    スペースの作成
+- else
+  %h1
+    スペースの作成
+
+  %h2
+    1.施設情報
+    -if @space.space_info
+      完了
+      = link_to "編集", info_select_space_room_space_infos_path(@space, @room)
+    -else
+      未完了
+
+  %h2
+    2.基本情報
+    -if @room.basic_info
+      完了
+    -else
+      未完了
+    - if @room.basic_info || @space.space_info
+      = link_to "編集", new_space_room_basic_info_path(@space, @room)
+  %h2
+    3.説明文
+    -if @room.intro
+      完了
+    -else
+      未完了
+    - if @room.intro || @room.basic_info
+      = link_to "編集", new_space_room_intro_path(@space, @room)
+  %h2
+    4.写真
+    -if @room.pictures.first
+      完了
+    -else
+      未完了
+    - if @room.pictures.first || @room.intro
+      = link_to "編集", new_space_room_picture_path(@space, @room)
+  %h2
+    5.プラン
+    -if @room.plans.first
+      完了
+    -else
+      未完了
+    - if @room.plans.first || @room.pictures.first
+      = link_to "編集", new_space_room_plan_path(@space, @room)

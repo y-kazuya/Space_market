@@ -1,0 +1,148 @@
+.footer{
+  .top-footer{
+    background-color: rgb(55, 55, 55);
+    color: rgb(201, 201, 201);
+    font-size: 13px;
+    padding: 32px 0px;
+    &__container{
+      margin-left: 8%;
+    }
+    &__text-container{
+      box-sizing:border-box;
+      width: 28%;
+      margin-left: 20px;
+    }
+    &__site-link{
+      display: flex;
+    }
+    &__caption-box{
+      width: 100%;
+      border-bottom: 1px solid gray;
+      display: table;
+       text-align: right;
+    }
+    &__caption{
+      padding-bottom: 0;
+      width: 70%;
+      display: table-cell;
+      text-align: left;
+      font-size: 18px;
+    }
+    &__mini-caption{
+      width: 30%;
+      display: table-cell;
+      font-size: 12px;
+    }
+  }
+  .bottom-footer{
+    background-color: rgb(42, 42, 42);
+    color: rgb(255, 255, 255);
+    line-height: 1.5;
+    &__container{
+      border-bottom: 1px solid gray;
+      width: 80%;
+      margin: 0 auto;
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+    &__container-first{
+      display: table;
+      .bf-first-logo {
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .bf-first-logo img{
+        display: block;
+        width: 150px;
+      }
+      .bf-first-link{
+        margin-left: 20px;
+      }
+      .bf-first-button{
+        vertical-align: middle;
+        display: table-cell;
+        width: 150px;
+        height: 40px;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 4px;
+      }
+      .bf-first-user{
+        background-color: blue;
+      }
+      .bf-first-host{
+        background-color: green;
+      }
+    }
+    &__container-seccond{
+      display: table;
+      width: 100%;
+      .bf-seccond-box{
+        width: 25%;
+        display: table-cell;
+        line-height: 22px;
+        &__caption{
+          font-size: 16px;
+          margin-bottom: 16px;
+        }
+        &__mini-caption{
+          margin-bottom: 5px;
+        }
+        &__padding{
+          padding-top: 5px;
+        }
+      }
+      .bf-seccond-box li{
+        font-size: 12px;
+      }
+    }
+    &__container-third{
+      display: table;
+      width: 100%;
+      line-height: 40px;
+      .bf-third-box1{
+        width: 30%;
+        display: table-cell;
+      }
+      .bf-third-box2{
+        width: 70%;
+        display: table-cell;
+        font-size: 12px;
+        &__text li{
+          display: inline-block;
+          margin-right: 8px;
+        }
+      }
+    }
+    &__container-fourth{
+      .bf-fourth-img{
+        width: 180px;
+        margin-right: 10px;
+      }
+    }
+    &__container-fifth{
+      display: table;
+      .bf-fifth-left-box{
+        display: table-cell;
+        &__top li{
+          font-size: 12px;
+        }
+        &__middle li{
+          margin-bottom: 10px;
+          margin-top: 10px;
+          font-size: 25px;
+        }
+        &__bottom{
+          font-size: 14px;
+        }
+      }
+      .bf-fifth-left-box li{
+        margin-right: 10px;
+        display: inline-block;
+      }
+      .bf-fifth-right-box{
+        display: table-cell;
+      }
+    }
+  }
+}
