@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181024045359) do
+ActiveRecord::Schema.define(version: 20181026034409) do
 
   create_table "basic_info_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "basic_info_id", null: false
@@ -69,14 +69,16 @@ ActiveRecord::Schema.define(version: 20181024045359) do
   end
 
   create_table "host_banks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "bank_name",      null: false
-    t.integer  "bank_code",      null: false
-    t.string   "branch_name",    null: false
-    t.integer  "branch_code",    null: false
-    t.integer  "account_number", null: false
-    t.string   "account_name",   null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "bank_name",       null: false
+    t.integer  "bank_code",       null: false
+    t.string   "branch_name",     null: false
+    t.integer  "branch_code",     null: false
+    t.integer  "account_number",  null: false
+    t.string   "account_name",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "host_profile_id"
+    t.index ["host_profile_id"], name: "index_host_banks_on_host_profile_id", using: :btree
   end
 
   create_table "host_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -138,10 +140,10 @@ ActiveRecord::Schema.define(version: 20181024045359) do
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.boolean  "activated",  default: false
+    t.integer  "activated",  default: 0, null: false
     t.integer  "space_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["space_id"], name: "index_rooms_on_space_id", using: :btree
   end
 
@@ -220,6 +222,7 @@ ActiveRecord::Schema.define(version: 20181024045359) do
   add_foreign_key "basic_infos", "rooms"
   add_foreign_key "company_addresses", "host_profiles"
   add_foreign_key "host_addresses", "host_profiles"
+  add_foreign_key "host_banks", "host_profiles"
   add_foreign_key "host_profiles", "users"
   add_foreign_key "intros", "rooms"
   add_foreign_key "pictures", "rooms"
