@@ -111,3 +111,8 @@
              結婚式 その他]
 
  usages.each { |a| Usage.create(name: a) }
+
+ #amenities作成
+ amenitise = %W[テーブル 椅子 プロジェクター 駐車場 WIFI ホワイトボード プリンター キッチン設備 調理機材 テレビ ロッカー ケータリング バー 音響設備 ミラー シャワー 更衣室 照明設備 写真撮影機材 動画撮影機材 公共交通機関 トイレ 冷蔵庫 電源 冷暖房 周辺に飲食店 スーパー/コンビニ バリアフリー 飲酒可 ペット可 子連れ可 喫煙可]
+
+ amenitise.each { |a| Amenity.create(name: a) }

@@ -1,0 +1,8 @@
+.space-amenities
+  = form_for [@space, @room], url: space_room_amenities_path(@room), method: :post do |f|
+    %h2
+      アメニティを選択
+    = f.collection_check_boxes :amenity_ids, Amenity.all, :id, :name do |b|
+      = b.check_box
+      = b.label { b.text }
+    =f.submit "保存して進む"
