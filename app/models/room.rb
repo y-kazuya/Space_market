@@ -5,6 +5,7 @@ class Room < ApplicationRecord
   has_many :pictures, dependent: :destroy
   has_many :plans, dependent: :destroy
 
-  validates :activated, inclusion: { in: [true, false] }
+  validates :activated, presence: true
 
+  enum activated: %i(making waiting certification)
 end

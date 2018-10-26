@@ -1,0 +1,2 @@
+module HostBanksHelper
+end
