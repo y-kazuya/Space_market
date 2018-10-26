@@ -1,5 +1,18 @@
 @import "./reset";
+//@import "./config/color";
+@import "./config/valiable";
+@import "./test";
+//上は最初からあったやつです
+@import "./index/top_page";
+@import "./index/3topic";
+@import "./parts/colors";
+@import "./parts/size";
+@import "./shared/header";
+@import "./shared/footer";
+@import "font-awesome";
 @import "font-awesome";
 @import "./config/color";
 @import "./config/valiable";
 @import "./test";
+@import "./register/_register.css";
+@import "./register/_translateelement.css";

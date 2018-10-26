@@ -35,7 +35,7 @@
 
   %h2
     電話番号
-  = f.text_field :phone_number
+  = f.number_field :phone_number, in: 1...10000000000000
 
   %h2
     イベントタイプ

@@ -7,6 +7,7 @@ class Room < ApplicationRecord
   has_many :room_amenities, dependent: :destroy
   has_many :amenities, through: :room_amenities
 
-  validates :activated, inclusion: { in: [true, false] }
+  validates :activated, presence: true
 
+  enum activated: %i(making waiting certification)
 end
