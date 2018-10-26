@@ -1,5 +1,92 @@
-.test
-  デプロイできました！
-  よろしくお願いします
+
+.site-main
+  .site-main__title-logo
+    = image_tag 'http://www.dreamnews.jp/?action_Image=1&p=0000092185&id=headimage'
+  .h1.top-information
+    0件のレンタルスペースから 目的に合ったスペースをかんたん予約
+  .top-menu-container
+    .container
+      %ul.row
+        %li.top-menu-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'party.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              パーティ
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'meeting.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              会議
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'bed.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              民泊
+              %span.top-menu-list__button-num
+                "0"
+                件
+    .container
+      %ul.row
+        %li.top-menu-list.row-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'camera.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              写真撮影
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list.row-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'moovie.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              ロケ撮影
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list.row-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag 'run.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              スポーツ
+              %span.top-menu-list__button-num
+                "0"
+                件
+        %li.top-menu-list.row-list
+          = link_to "#" ,class: 'top-menu-list__button' do
+            = image_tag '3dot.png',class: 'top-menu-list__button-img'
+            %span.top-menu-list__button-text
+              その他
+              %span.top-menu-list__button-num
+                %br
+
+    .top-menu__other-search
+      %h3.top-menu__other-title
+        カテゴリーから探す
+      %ul.top-flow__list
+        %li
+          = link_to "#" ,class: 'link-light-blue hover-border' do
+            エリア
+        %li
+          = link_to "#" ,class: 'link-light-blue hover-border' do
+            人数
+        %li
+          = link_to "#" ,class: 'link-light-blue hover-border' do
+            会場タイプ
+        %li
+          = link_to "#" ,class: 'link-light-blue hover-border' do
+            アメニティ
+
+  /下のrenderで渡す引数は画像のurlとテキストと合わせて渡したい
+  .top-page-topics.back-white
+    = render partial: '4topic'
+  .top-page-topics.back-light-gray
+    = render partial: '3topic'
+
 .sign_out
   %a.btn{"data-method" => "delete", :href => "/users/sign_out", :rel => "nofollow"} Sign Out

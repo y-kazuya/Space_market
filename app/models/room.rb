@@ -7,6 +7,7 @@ class Room < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_lists, through: :favorites
 
-  validates :activated, inclusion: { in: [true, false] }
+  validates :activated, presence: true
 
+  enum activated: %i(making waiting certification)
 end

@@ -1,39 +1,138 @@
-%h1 アカウント新規登録
-%h2 メールアドレスで新規登録
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :姓
-    %br/
-    = f.text_field :first_name, autofocus: true
-  .field
-    = f.label :名
-    %br/
-    = f.text_field :last_name, autofocus: true
-  .field
-    = f.label :メールアドレス
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :パスワード
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :"パスワード（確認）"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .user-image
-    = f.label :プロフィール画像 ,for: "files"
-    = f.label :プロフィール画像 ,class: 'form__mask__image', for: "files" do
-      = fa_icon 'camera', class: 'icon'
-      = f.file_field :avatar, class: 'hidden' ,id: "files"
-  %br/
-  %p ご登録前にスペースマーケット利用規約をお読みください。
-  .field
-    = f.label :スペースマーケット利用規約に同意する
-  .actions
-    = f.submit "登録する"
+.breadcrumbs.link__subcolor.sm-hide
+  %ol{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+    %li
+      %a{:href => "/", :itemprop => "url"}
+        %i.ic_home ホーム
+    %li
+      %span.breadcrumbs-title{:itemprop => "title"} 新規登録
+%section#contents.page_signin
+  %section#main_contents
+    %div{"data-react-class" => "SMSignUpView", "data-react-props" => "{\"resource\":{\"id\":null,\"email\":\"\",\"auth_uid\":null,\"name\":null,\"provider\":null,\"username\":null,\"owner_sign_in_at\":null,\"default_owner_id\":0,\"card_customer_id\":null,\"profile_image\":{\"url\":null,\"square\":{\"url\":null},\"thumb\":{\"url\":null},\"small\":{\"url\":null}},\"cancel_count\":0,\"refresh_token\":null,\"notified_at\":null,\"deleted_at\":null,\"created_at\":null,\"updated_at\":null,\"time_zone\":\"Asia/Tokyo\",\"reputation_count\":0.0,\"reputation_score\":0.0,\"registration_type\":0,\"profile\":null,\"certificate\":null,\"is_certificated\":false,\"certificate_status\":0,\"notification_checked_at\":null,\"registration_origin\":0,\"referred_by_user_id\":null,\"referral_token\":null},\"resource_name\":\"user\",\"errors\":{},\"authenticity_token\":\"zv5BjwEZXT3EIFoOqcwOr5p8MFqxVCZ1GAzpS8iPsdESYHn9mMgXjXa5A8ejaw+eQdh87s2/h7y3zQVXvC8pNA==\",\"last_name\":null,\"first_name\":null,\"email\":\"\",\"accept_term_of_service\":null,\"referrer_name\":null,\"referrer_image\":null,\"referrer_corpname\":null,\"coupon_amount\":null}"}
+      .site-main{"data-react-checksum" => "819139192", "data-reactid" => "1", "data-reactroot" => ""}
+        .page__even.lp-page__padding{"data-reactid" => "2"}
+          .page__col1{"data-reactid" => "3"}
+            .signup-head{"data-reactid" => "4"}
+              %h1.page-title{"data-reactid" => "5"} アカウント新規登録
+              %ul.signup-step.mb20{"data-reactid" => "6"}
+                %li.signup-step__status1.is-current{"data-reactid" => "7"} 新規登録
+                %li.signup-step__status3{"data-reactid" => "8"} 登録完了
+                %li.signup-step__status2{"data-reactid" => "9"}
+                  %span.sm-hide{"data-reactid" => "10"} メールアドレスの
+                  / react-text: 11
+                  確認
+                  / /react-text
+            .signup-box{"data-reactid" => "12"}
+              .row{"data-reactid" => "13"}
+                .col-xs-12{"data-reactid" => "14"}
+                  %h2.signup-box__title{"data-reactid" => "15"} 外部サービスで新規登録
+                  .signup-box__wrapper{"data-reactid" => "16"}
+                    .signup-box__wrapper-fb{"data-reactid" => "17"}
+                      %a.button-facebook.pt15.pb15.w100pa{"data-reactid" => "18", :href => "/i/auth/facebook"}
+                        %span.signup-box__sns-button{"data-reactid" => "19"} Facebookで登録
+                    %p.signup-box__notes.ta-c{"data-reactid" => "20"}
+                      / react-text: 21
+                      Facebookを使ってスペースマーケットにログインできます。
+                      / /react-text
+                      %br.sm-hide{"data-reactid" => "22"}/
+                      / react-text: 23
+                      ログイン以外の目的に使われることはありません。
+                      / /react-text
+                      %br.sm-hide{"data-reactid" => "24"}/
+                      %a.a__underline{"data-reactid" => "25", :href => "/about/terms"} スペースマーケット利用規約
+                      / react-text: 26
+                      をお読みになり同意の上、登録へお進みください。
+                      / /react-text
+            .signup-box{"data-reactid" => "27"}
+              .row{"data-reactid" => "28"}
+                .col-xs-12{"data-reactid" => "29"}
+                  %h2.signup-box__title{"data-reactid" => "30"} メールアドレスで新規登録
+                  .signup-box__wrapper-form{"data-reactid" => "31"}
+                    .row.signup-box__md-top{"data-reactid" => "32"}
+                      %form{"accept-charset" => "UTF-8", :action => "/users", "data-reactid" => "33", :enctype => "multipart/form-data", :method => "post"}
+                        %input{"data-reactid" => "34", :name => "utf8", :type => "hidden", :value => "?"}/
+                        %input{"data-reactid" => "35", :name => "authenticity_token", :type => "hidden", :value => "zv5BjwEZXT3EIFoOqcwOr5p8MFqxVCZ1GAzpS8iPsdESYHn9mMgXjXa5A8ejaw+eQdh87s2/h7y3zQVXvC8pNA=="}/
+                        %input#user_registration_type{"data-reactid" => "36", :name => "user[registration_type]", :type => "hidden", :value => "0"}/
+                        .col-sm-12.col-md-6{"data-reactid" => "37"}
+                          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.w100pa{"data-reactid" => "38"}
+                            %input#last_name.mdl-textfield__input{"data-reactid" => "39", :name => "user[last_name]"}/
+                            %label.mdl-textfield__label{"data-reactid" => "40", :for => "last_name"} 姓
+                        .col-sm-12.col-md-6{"data-reactid" => "41"}
+                          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.w100pa{"data-reactid" => "42"}
+                            %input#first_name.mdl-textfield__input{"data-reactid" => "43", :name => "user[first_name]"}/
+                            %label.mdl-textfield__label{"data-reactid" => "44", :for => "first_name"} 名
+                        .col-sm-12{"data-reactid" => "45"}
+                          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.w100pa{"data-reactid" => "46"}
+                            %input#email.mdl-textfield__input{"data-reactid" => "47", :name => "user[email]", :value => ""}/
+                            %label.mdl-textfield__label{"data-reactid" => "48", :for => "email"} メールアドレス
+                        .col-sm-12{"data-reactid" => "49"}
+                          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.w100pa{"data-reactid" => "50"}
+                            %input#password.mdl-textfield__input{"data-reactid" => "51", :name => "user[password]", :type => "password"}/
+                            %label.mdl-textfield__label{"data-reactid" => "52", :for => "password"}
+                              パスワード
+                        .col-sm-12{"data-reactid" => "53"}
+                          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.w100pa{"data-reactid" => "54"}
+                            %input#password_confirmation.mdl-textfield__input{"data-reactid" => "55", :name => "user[password_confirmation]", :type => "password"}/
+                            %label.mdl-textfield__label{"data-reactid" => "56", :for => "password_confirmation"}
+                              パスワード（確認）
+                        .col-xs-12{"data-reactid" => "57"}
+                          .signup-box__wrapper-form-profile.clearfix{"data-reactid" => "58"}
+                            %label.signup-box__wrapper-form-title.fl{"data-reactid" => "59", :for => "files"}
+                              プロフィール画像
+                            %input#files{"data-reactid" => "60", :hidden => "", :name => "user[profile_image]", :type => "file"}/
+                            .signup-box__wrapper-form-profile__img{"data-reactid" => "61"}
+                              .settings-img__change-img{"data-reactid" => "62"}
+                                %label.button-gray.settings-img{"data-reactid" => "63", :for => "files"}
+                                  %span.icon-ll{"data-reactid" => "64"}
+                                    %i.fa.fa-camera{"data-reactid" => "65"}
+                                  %br{"data-reactid" => "66"}/
+                                  / react-text: 67
+                                  ファイルを変更
+                                  / /react-text
+                        .col-sm-12.ta-c.clear{"data-reactid" => "68"}
+                          %p.signup-box__wrapper-form-notes{"data-reactid" => "69"}
+                            / react-text: 70
+                            ご登録前に
+                            / /react-text
+                            %a.a__underline{"data-reactid" => "71", :href => "/about/terms"}
+                              スペースマーケット利用規約
+                            / react-text: 72
+                            をお読みください。
+                            / /react-text
+                          %input{"data-reactid" => "73", :name => "user[accept_term_of_service]", :type => "hidden", :value => "0"}/
+                          %label.mdl-checkbox.mdl-js-checkbox{"data-reactid" => "74"}
+                            %input#checkbox-1.mdl-checkbox__input{"data-reactid" => "75", :name => "user[accept_term_of_service]", :type => "checkbox", :value => "1"}/
+                            %span.mdl-checkbox__label{"data-reactid" => "76"}
+                              スペースマーケット利用規約に同意する
+                        .col-sm-12{"data-reactid" => "77"}
+                          #google-recaptcha{"data-reactid" => "78", :style => "margin:0 auto;margin-top:15px;width:304px;height:78px;"}
+                        .col-sm-12.ta-c{"data-reactid" => "79"}
+                          %input.button-blue.mt20.pt15.pb15.w300.sm-w100{"data-reactid" => "80", :name => "commit", :type => "submit", :value => "登録する"}/
+            .signup-box.signup-box__new-account{"data-reactid" => "81"}
+              .row{"data-reactid" => "82"}
+                .signup-box__new-account-txt.col-sm-12{"data-reactid" => "83"}
+                  %a.signup-box__new-account-title{"data-reactid" => "84", :href => "/i/login"}
+                    / react-text: 85
+                    すでにアカウントのお持ちの方は
+                    / /react-text
+                    %span.signup-box__new-account-linktxt{"data-reactid" => "86"} こちら
+                    %i.fa.fa-angle-right{"data-reactid" => "87"}
+            .signup-box.signup-box__biz-account{"data-reactid" => "88"}
+              .row{"data-reactid" => "89"}
+                .col-md-5.col-sm-12{"data-reactid" => "90"}
+                  %span.signup-box__biz-newlabel{"data-reactid" => "91"} NEW
+                  %h2.signup-box__title{"data-reactid" => "92"}
+                    / react-text: 93
+                    ご利用料金を請求書で一括精算できる
+                    / /react-text
+                    %br{"data-reactid" => "94"}/
+                    / react-text: 95
+                    法人会員のご登録はこちら
+                    / /react-text
+                    %span.signup-box__biz-account-free{"data-reactid" => "96"}
+                      (無料)
+                .col-md-1.col-sm-12.signup-box__biz-arrw.sm-hide{"data-reactid" => "97"}
+                  %i.fa.fa-angle-right{"data-reactid" => "98"}
+                .col-md-6.col-sm-12.signup-box__biz-btn{"data-reactid" => "99"}
+                  %a.button-blue.pt15.pb15.w100pa.sm-w100{"data-reactid" => "100", :href => "<%= Rails.application.secrets.spacemarket_business_url %>/signup"} 法人アカウント登録
+
 = render "devise/shared/links"

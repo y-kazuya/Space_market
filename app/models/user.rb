@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :spaces
   has_many :space_infos
   has_many :favorite_lists, dependent: :destroy
+  has_one :host_profile
+
 end
