@@ -1,3 +1,21 @@
+Skip to content
+
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @y-kazuya Sign out
+0
+2 0 y-kazuya/Space_market
+ Code  Issues 0  Pull requests 1  Projects 0  Wiki  Insights  Settings
+Space_market/db/schema.rb
+817c7c8  19 hours ago
+@ayaa-machida ayaa-machida 【機能】add favorite
+@y-kazuya @ayaa-machida
+
+181 lines (164 sloc)  8.67 KB
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +28,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026034409) do
+ActiveRecord::Schema.define(version: 20181025061124) do
 
   create_table "basic_info_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "basic_info_id", null: false
@@ -34,75 +52,23 @@ ActiveRecord::Schema.define(version: 20181026034409) do
     t.index ["room_id"], name: "index_basic_infos_on_room_id", using: :btree
   end
 
-  create_table "company_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "post_code",         null: false
-    t.integer  "state",             null: false
-    t.string   "city",              null: false
-    t.string   "city_kata",         null: false
-    t.string   "address",           null: false
-    t.string   "address_kata",      null: false
-    t.string   "last_address",      null: false
-    t.string   "last_address_kata", null: false
-    t.string   "building"
-    t.string   "building_kata"
-    t.integer  "host_profile_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["host_profile_id"], name: "index_company_addresses_on_host_profile_id", using: :btree
+  create_table "favorite_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "user_id"], name: "index_favorite_lists_on_name_and_user_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_favorite_lists_on_user_id", using: :btree
   end
 
-  create_table "host_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "post_code",         null: false
-    t.integer  "state",             null: false
-    t.string   "city",              null: false
-    t.string   "city_kata",         null: false
-    t.string   "address",           null: false
-    t.string   "address_kata",      null: false
-    t.string   "last_address",      null: false
-    t.string   "last_address_kata", null: false
-    t.string   "building"
-    t.string   "building_kata"
-    t.integer  "host_profile_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["host_profile_id"], name: "index_host_addresses_on_host_profile_id", using: :btree
-  end
-
-  create_table "host_banks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "bank_name",       null: false
-    t.integer  "bank_code",       null: false
-    t.string   "branch_name",     null: false
-    t.integer  "branch_code",     null: false
-    t.integer  "account_number",  null: false
-    t.string   "account_name",    null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "host_profile_id"
-    t.index ["host_profile_id"], name: "index_host_banks_on_host_profile_id", using: :btree
-  end
-
-  create_table "host_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "last_name",         null: false
-    t.string   "first_name",        null: false
-    t.string   "last_name_kata",    null: false
-    t.string   "first_name_kata",   null: false
-    t.integer  "sex",               null: false
-    t.integer  "born_year",         null: false
-    t.integer  "born_manth",        null: false
-    t.integer  "born_day",          null: false
-    t.string   "avatar",            null: false
-    t.integer  "phone_number",      null: false
-    t.string   "identification",    null: false
-    t.boolean  "company",           null: false
-    t.string   "company_name"
-    t.string   "company_name_kata"
-    t.string   "company_name_en"
-    t.integer  "company_number"
-    t.integer  "user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["user_id", "id"], name: "index_host_profiles_on_user_id_and_id", using: :btree
-    t.index ["user_id"], name: "index_host_profiles_on_user_id", using: :btree
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "room_id",          null: false
+    t.integer  "favorite_list_id", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["favorite_list_id", "room_id"], name: "index_favorites_on_favorite_list_id_and_room_id", unique: true, using: :btree
+    t.index ["favorite_list_id"], name: "index_favorites_on_favorite_list_id", using: :btree
+    t.index ["room_id"], name: "index_favorites_on_room_id", using: :btree
   end
 
   create_table "intros", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -140,10 +106,10 @@ ActiveRecord::Schema.define(version: 20181026034409) do
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "activated",  default: 0, null: false
+    t.boolean  "activated",  default: false
     t.integer  "space_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["space_id"], name: "index_rooms_on_space_id", using: :btree
   end
 
@@ -220,10 +186,9 @@ ActiveRecord::Schema.define(version: 20181026034409) do
   add_foreign_key "basic_info_usages", "basic_infos"
   add_foreign_key "basic_info_usages", "usages"
   add_foreign_key "basic_infos", "rooms"
-  add_foreign_key "company_addresses", "host_profiles"
-  add_foreign_key "host_addresses", "host_profiles"
-  add_foreign_key "host_banks", "host_profiles"
-  add_foreign_key "host_profiles", "users"
+  add_foreign_key "favorite_lists", "users"
+  add_foreign_key "favorites", "favorite_lists"
+  add_foreign_key "favorites", "rooms"
   add_foreign_key "intros", "rooms"
   add_foreign_key "pictures", "rooms"
   add_foreign_key "plans", "rooms"
@@ -231,3 +196,16 @@ ActiveRecord::Schema.define(version: 20181026034409) do
   add_foreign_key "space_infos", "users"
   add_foreign_key "weeks", "plans"
 end
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Press h to open a hovercard with more details.
