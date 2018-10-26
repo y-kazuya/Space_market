@@ -231,3 +231,4 @@ ActiveRecord::Schema.define(version: 20181026034409) do
   add_foreign_key "space_infos", "users"
   add_foreign_key "weeks", "plans"
 end
+
