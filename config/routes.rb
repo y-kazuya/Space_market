@@ -31,8 +31,6 @@ Rails.application.routes.draw do
       resources :plans, only: [:new, :create, :update]
       resources :intros, only: [:new,:create, :update]
 
-      resources :favorite, only: [:create, :destory]
-
     end
     resource :settings do
       resources :host_profiles, only: [:index, :create,:update]

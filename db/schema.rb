@@ -196,6 +196,7 @@ ActiveRecord::Schema.define(version: 20181025061124) do
   add_foreign_key "space_infos", "users"
   add_foreign_key "weeks", "plans"
 end
+<<<<<<< HEAD
 © 2018 GitHub, Inc.
 Terms
 Privacy
@@ -209,3 +210,6 @@ Training
 Blog
 About
 Press h to open a hovercard with more details.
+=======
+
+>>>>>>> parent of d048a88... Merge pull request #8 from y-kazuya/add-favorite
