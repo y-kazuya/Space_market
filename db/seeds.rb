@@ -47,9 +47,139 @@ end
     password_confirmation: password
   )
 
-  user.update!(first_name: "machida", admin: 1) if a == 1 || a == 2
+  user.update!(first_name: "machida", admin: 1) if a == 0 || a == 1
 
-  if a > 10
+
+  if a < 9 && a >= 6
+    post_code = 1234567
+    state = rand(1..47)
+    city = citys.sample
+    address = Faker::Address.street_address
+    last_address = Faker::Address.secondary_address
+    map_address = Faker::Address.country
+    access = Faker::Address.full_address
+    phone_number = rand(000..00000)
+    event_type = rand(1..17)
+    user_id = user.id
+    space_info = SpaceInfo.create!(
+      post_code: post_code,
+      state: state,
+      city: city,
+      address: address,
+      last_address: last_address,
+      map_address: map_address,
+      access: access,
+      phone_number: phone_number,
+      event_type: event_type,
+      user_id: user_id)
+
+
+    space = Space.create!(
+      user_id: user.id,
+      space_info_id: user.space_infos.sample.id
+    )
+
+    room = space.rooms.create!()
+
+
+    capacity = rand(30..999)
+    floor_space = rand(50..10000)
+    key_type = rand(1..4)
+    reserve_limit = rand(1..6)
+    reserve_period = rand(1..4)
+
+    basic_info = BasicInfo.new(
+      capacity: capacity,
+      floor_space: floor_space,
+      key_type: key_type,
+      reserve_limit: reserve_limit,
+      reserve_period: reserve_period,
+      room_id: room.id
+    )
+
+    rand(1..7).times do |e|
+      basic_info.usages << Usage.find(rand(1..11))
+    end
+    basic_info.save!
+
+    #intro作成
+    title = "ルームむの見出しです#{Faker::DragonBall.character}#{rand(1..1000000000000)}"
+    content = Faker::NewGirl.quote
+    service = Faker::Lorem.paragraph(2, false, 4)
+
+    intro = Intro.create!(
+      title: title,
+      content: content,
+      service: service,
+      room_id: room.id
+    )
+
+    #ピクチャー作成
+    image =  Rails.root.join("app/assets/images/funa.jpg").open
+    content = image
+    about = Faker::Food.dish
+    cover = 0
+
+    picture = Picture.create!(
+      content: image,
+      about: about,
+      cover: cover,
+      room_id: room.id
+    )
+
+    if rand(1..2) == 2
+      image =  Rails.root.join("app/assets/images/sin.jpg").open
+      content = image
+      about = Faker::Food.dish
+      cover = 1
+
+      picture = Picture.create!(
+        content: content,
+        about: about,
+        cover: cover,
+        room_id: room.id
+      )
+    end
+
+
+    name = Faker::Food.fruits
+    about =  Faker::Lorem.sentence(3, false, 4)
+    day_pay = 1
+    day_price = rand(500..11000)
+    time_pay = rand(0..1)
+    time_price = rand(200..1000)
+    about_reserve = rand(0..1)
+
+    plan = Plan.new(
+      name: name,
+      about: about,
+      day_pay: day_pay,
+      day_price: day_price,
+      time_pay: time_pay,
+      time_price: time_price,
+      about_reserve: about_reserve,
+      room_id: room.id
+    )
+
+    weeks_day.each do |day|
+      name = day
+      start_time = rand(1..5)
+      end_time = rand(6..24)
+      can = 1
+
+      week = Week.new(
+        name: name,
+        start_time: start_time,
+        end_time: end_time,
+        can: can
+      )
+      plan.weeks << week
+    end
+    plan.save!
+  end
+
+
+  if a >= 9
     #space_info作成
     rand(1..5).times do |b|
       post_code = 1234567
@@ -90,7 +220,7 @@ end
 
         room = space.rooms.create!()
 
-        if  rand(1..3) == 2
+        if  rand(1..3) == 2 || d == 1
           room.update!(activated: 2)
         elsif rand(1..3) == 3
           room.update!(activated: 1)
@@ -195,7 +325,8 @@ end
         end
       end
     end
-
+  end
+  if a >= 6
     #ホストプロフィール作成
     last_name = Faker::Name.last_name
     first_name = Faker::Name.first_name
