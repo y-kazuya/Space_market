@@ -31,7 +31,7 @@ class Plan < ApplicationRecord
  private
    def need_pay
      if day_pay == false && time_pay == false
-       errors.add(:time_pay, “どちらかは選択してください“)
+       errors.add(:time_pay, "どちらかは選択してください")
      end
    end
 
@@ -47,6 +47,6 @@ class Plan < ApplicationRecord
      weeks.each do |week|
        return if week.can == true
      end
-     errors.add(:weeks, “どれかは選択してください“)
+     errors.add(:weeks, "どれかは選択してください")
    end
 end

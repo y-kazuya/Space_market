@@ -2,6 +2,8 @@
   ステップフォーム3
   intro
 
+= render 'shared/errors', object: @intro
+
 =@intro
 
 = form_for [@space, @room, @intro] do |f|
