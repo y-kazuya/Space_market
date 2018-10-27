@@ -92,10 +92,10 @@
             ヘルプ
       - if current_user
         -if current_user.spaces.empty?
-        %li.navs-right
-          = link_to host_entry_pages_path ,class: 'navs-right__link' do
-            %p.navs-right__text.link-black.hover-white
-              空きスペースを掲載する
+          %li.navs-right
+            = link_to host_entry_pages_path ,class: 'navs-right__link' do
+              %p.navs-right__text.link-black.hover-white
+                空きスペースを掲載する
         -else
           %li.navs-right
             = link_to space_dashboard_path(current_user.spaces.first.id) ,class: 'navs-right__link' do
