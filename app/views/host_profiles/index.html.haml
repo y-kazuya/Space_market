@@ -1,7 +1,7 @@
 %h1
   ホスト情報登録１ アカウント
 
-
+= render 'shared/errors', object: @host_profile
 = form_for [@space ,"settings",@host_profile] do |f|
 
   %h2

@@ -2,6 +2,7 @@
   2 住所
   %h2
     担当者の住所
+= render 'shared/errors', object: @host_address
 
 = form_for [@space ,"settings",@host_address] do |f|
 

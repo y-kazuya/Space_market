@@ -57,25 +57,6 @@ ActiveRecord::Schema.define(version: 20181026034409) do
     t.index ["host_profile_id"], name: "index_company_addresses_on_host_profile_id", using: :btree
   end
 
-  create_table "favorite_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name", "user_id"], name: "index_favorite_lists_on_name_and_user_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_favorite_lists_on_user_id", using: :btree
-  end
-
-  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "room_id",          null: false
-    t.integer  "favorite_list_id", null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["favorite_list_id", "room_id"], name: "index_favorites_on_favorite_list_id_and_room_id", unique: true, using: :btree
-    t.index ["favorite_list_id"], name: "index_favorites_on_favorite_list_id", using: :btree
-    t.index ["room_id"], name: "index_favorites_on_room_id", using: :btree
-  end
-
   create_table "host_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "post_code",         null: false
     t.integer  "state",             null: false
@@ -255,9 +236,6 @@ ActiveRecord::Schema.define(version: 20181026034409) do
   add_foreign_key "basic_info_usages", "usages"
   add_foreign_key "basic_infos", "rooms"
   add_foreign_key "company_addresses", "host_profiles"
-  add_foreign_key "favorite_lists", "users"
-  add_foreign_key "favorites", "favorite_lists"
-  add_foreign_key "favorites", "rooms"
   add_foreign_key "host_addresses", "host_profiles"
   add_foreign_key "host_banks", "host_profiles"
   add_foreign_key "host_profiles", "users"

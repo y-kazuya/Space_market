@@ -1,5 +1,6 @@
 %h1
   3. 振込口座
+= render 'shared/errors', object: @host_bank
 
 = form_for [@space ,"settings",@host_bank] do |f|
 
