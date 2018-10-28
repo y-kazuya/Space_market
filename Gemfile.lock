@@ -46,6 +46,9 @@ GEM
     bcrypt (3.1.12)
     bindex (0.5.0)
     builder (3.2.3)
+    bullet (5.7.6)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11.0)
     byebug (10.0.2)
     capistrano (3.11.0)
       airbrussh (>= 1.0.0)
@@ -267,6 +270,7 @@ GEM
     unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
+    uniform_notifier (1.11.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.7.0)
@@ -285,6 +289,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bullet
   byebug
   capistrano
   capistrano-bundler
