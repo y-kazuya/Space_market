@@ -41,7 +41,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails', '~> 4.0'
-  gem 'faker'
    gem 'capybara'
   gem 'capistrano'
   gem 'capistrano-rbenv'
@@ -57,6 +56,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet'
 end
 
 group :production do
@@ -75,3 +75,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'faker'
