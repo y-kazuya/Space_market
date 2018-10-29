@@ -12,6 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20181025061124) do
 
+  create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "basic_info_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "basic_info_id", null: false
     t.integer  "usage_id",      null: false
@@ -85,6 +91,15 @@ ActiveRecord::Schema.define(version: 20181025061124) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["room_id"], name: "index_plans_on_room_id", using: :btree
+  end
+
+  create_table "room_amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "amenity_id"
+    t.integer  "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["amenity_id"], name: "index_room_amenities_on_amenity_id", using: :btree
+    t.index ["room_id"], name: "index_room_amenities_on_room_id", using: :btree
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -174,6 +189,8 @@ ActiveRecord::Schema.define(version: 20181025061124) do
   add_foreign_key "intros", "rooms"
   add_foreign_key "pictures", "rooms"
   add_foreign_key "plans", "rooms"
+  add_foreign_key "room_amenities", "amenities"
+  add_foreign_key "room_amenities", "rooms"
   add_foreign_key "rooms", "spaces"
   add_foreign_key "space_infos", "users"
   add_foreign_key "weeks", "plans"

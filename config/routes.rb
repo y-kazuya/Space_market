@@ -30,10 +30,12 @@ Rails.application.routes.draw do
       resources :pictures, only: [:new, :create, :update]
       resources :plans, only: [:new, :create, :update]
       resources :intros, only: [:new,:create, :update]
-      resources :favorite, only: [:create, :destory]
     end
   end
 
+  scope  '/dashboard' do
+    resources :favorite_lists
+  end
 
   #room作成からのそれの親スペース作成？
   #一つ目のroomは完成するまで同一レコードを使う（最初new→その後edit

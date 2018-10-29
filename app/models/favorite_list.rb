@@ -3,5 +3,5 @@ class FavoriteList < ApplicationRecord
   has_many :favorites
   has_many :rooms, through: :favorites
 
-  validates :name, uniquness: { scope: [:user_id]  }
+  validates :name, presence: true, uniqueness: { scope: [:user_id]  }
 end
