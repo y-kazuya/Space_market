@@ -18,9 +18,20 @@ class Plan < ApplicationRecord
  validates :time_price, presence: true, if: :need_time?
 
  validates :about_reserve, inclusion: { in: [true, false] }
+ validates :min_time, numericality: { only_integer: true, less_than_or_equal_to: 48 }, allow_nil: true
+ validates :clean_time, numericality: { only_integer: true, less_than_or_equal_to: 100 }, allow_nil: true
+ validates :cost, numericality: { only_integer: true }, length: { maximum: 10 }, allow_nil: true
+ validates :start_day, numericality: { only_integer: true }, length: { is: 8 }, allow_nil: true
+ validates :end_day, numericality: { only_integer: true }, length: { is: 8 }, allow_nil: true
+
+ validate :correct_day
+
  validate :need_pay
 
  validate :need_week
+
+ enum discount: %i(設定しない 10% 15% 20% 25% 30% 40% 50%)
+
 
 
  def can_days
@@ -48,5 +59,11 @@ class Plan < ApplicationRecord
        return if week.can == true
      end
      errors.add(:weeks, "どれかは選択してください")
+   end
+
+   def correct_day
+    if start_day && end_day
+      errors.add(:end_day, "終了日は開始日の後に設定してください") if start_day > end_day
+    end
    end
 end

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026034409) do
+ActiveRecord::Schema.define(version: 20181029094718) do
+
+  create_table "agreements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "aggree",     limit: 65535
+    t.text     "policy",     limit: 65535
+    t.integer  "room_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["room_id"], name: "index_agreements_on_room_id", using: :btree
+  end
 
   create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -118,7 +127,33 @@ ActiveRecord::Schema.define(version: 20181026034409) do
     t.integer  "room_id",                  null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.text     "food",       limit: 65535
+    t.text     "clean",      limit: 65535
+    t.string   "pdf"
     t.index ["room_id"], name: "index_intros_on_room_id", using: :btree
+  end
+
+  create_table "option_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content",                  null: false
+    t.text     "about",      limit: 65535
+    t.integer  "cover",                    null: false
+    t.integer  "option_id",                null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["option_id"], name: "index_option_pictures_on_option_id", using: :btree
+  end
+
+  create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                                    null: false
+    t.text     "about",      limit: 65535
+    t.integer  "price",                                   null: false
+    t.integer  "unit",                                    null: false
+    t.integer  "amount"
+    t.boolean  "public",                   default: true
+    t.integer  "room_id",                                 null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.index ["room_id"], name: "index_options_on_room_id", using: :btree
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -128,21 +163,38 @@ ActiveRecord::Schema.define(version: 20181026034409) do
     t.integer  "room_id",                  null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "movie"
     t.index ["room_id"], name: "index_pictures_on_room_id", using: :btree
   end
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                        null: false
+    t.string   "name",                                    null: false
     t.text     "about",         limit: 65535
-    t.boolean  "day_pay",                     null: false
+    t.boolean  "day_pay",                                 null: false
     t.integer  "day_price"
-    t.boolean  "time_pay",                    null: false
+    t.boolean  "time_pay",                                null: false
     t.integer  "time_price"
-    t.boolean  "about_reserve",               null: false
-    t.integer  "room_id",                     null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "about_reserve",                           null: false
+    t.integer  "room_id",                                 null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "min_time"
+    t.integer  "clean_time"
+    t.integer  "discount",                    default: 0
+    t.integer  "cost"
+    t.integer  "start_day"
+    t.integer  "end_day"
     t.index ["room_id"], name: "index_plans_on_room_id", using: :btree
+  end
+
+  create_table "reserve_phrases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "success",    limit: 65535
+    t.text     "fail",       limit: 65535
+    t.text     "remind",     limit: 65535
+    t.integer  "room_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["room_id"], name: "index_reserve_phrases_on_room_id", using: :btree
   end
 
   create_table "room_amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -175,6 +227,8 @@ ActiveRecord::Schema.define(version: 20181026034409) do
     t.integer  "user_id",                    null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "fax"
+    t.string   "url"
     t.index ["state"], name: "index_space_infos_on_state", using: :btree
     t.index ["user_id"], name: "index_space_infos_on_user_id", using: :btree
   end
@@ -232,6 +286,7 @@ ActiveRecord::Schema.define(version: 20181026034409) do
     t.index ["plan_id"], name: "index_weeks_on_plan_id", using: :btree
   end
 
+  add_foreign_key "agreements", "rooms"
   add_foreign_key "basic_info_usages", "basic_infos"
   add_foreign_key "basic_info_usages", "usages"
   add_foreign_key "basic_infos", "rooms"
@@ -240,8 +295,11 @@ ActiveRecord::Schema.define(version: 20181026034409) do
   add_foreign_key "host_banks", "host_profiles"
   add_foreign_key "host_profiles", "users"
   add_foreign_key "intros", "rooms"
+  add_foreign_key "option_pictures", "options"
+  add_foreign_key "options", "rooms"
   add_foreign_key "pictures", "rooms"
   add_foreign_key "plans", "rooms"
+  add_foreign_key "reserve_phrases", "rooms"
   add_foreign_key "room_amenities", "amenities"
   add_foreign_key "room_amenities", "rooms"
   add_foreign_key "rooms", "spaces"

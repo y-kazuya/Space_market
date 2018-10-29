@@ -1,0 +1,13 @@
+= render partial: 'shared/host_hedder'
+
+%h1
+  ルーム設定のページ
+%h1
+  = link_to "新規スペース作成", "#"
+-@spaces.each do |space|
+  - space.rooms.each do |room|
+    %h1
+      = room.intro.title
+      = link_to edit_user_room_basic_info_path(current_user.id, room.id, room.basic_info.id) do
+        = image_tag(room.pictures.first.content_url(:preview))
+      =link_to "編集", edit_user_room_basic_info_path(current_user.id, room.id, room.basic_info.id)

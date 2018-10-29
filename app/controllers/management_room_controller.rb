@@ -1,0 +1,3 @@
+class ManagementRoomController < ApplicationController
+
+end

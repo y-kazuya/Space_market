@@ -1,7 +1,6 @@
 %h1
   一つ目のroomの作成状況
 
-- p = 0
 = @space
 = @room
 
@@ -21,7 +20,6 @@
     1.施設情報
     -if @space.space_info
       完了
-      - p += 1
       = link_to "編集", info_select_space_room_space_infos_path(@space, @room)
     -else
       未完了
@@ -30,7 +28,6 @@
     2.基本情報
     -if @room.basic_info
       完了
-      - p += 1
     -else
       未完了
     - if @room.basic_info || @space.space_info
@@ -39,7 +36,6 @@
     3.説明文
     -if @room.intro
       完了
-      - p += 1
     -else
       未完了
     - if @room.intro || @room.basic_info
@@ -48,7 +44,6 @@
     4.写真
     -if @room.pictures.first
       完了
-      - p += 1
     -else
       未完了
     - if @room.pictures.first || @room.intro
@@ -57,7 +52,6 @@
     5.プラン
     -if @room.plans.first
       完了
-      - p += 1
     -else
       未完了
     - if @room.plans.first || @room.pictures.first
@@ -75,14 +69,12 @@
   %h2
     1 アカウント
     完了
-    - p += 1
     = link_to "編集", space_settings_host_profiles_path(@space.id)
 
   %h2
     2 住所
     - if current_user.host_profile.host_address
       完了
-      - p += 1
     -else
       未完了
     -if current_user.host_profile.host_address || current_user.host_profile
@@ -92,7 +84,6 @@
     3 振込口座
     - if current_user.host_profile.host_bank
       完了
-      - p += 1
     - else
       未完了
     -if current_user.host_profile.host_bank || current_user.host_profile.host_address
@@ -100,5 +91,5 @@
 
 
 
-- if p == 8
-  = link_to "掲載審査を申請する", root_path
+- if current_user.complete_owner_infos? && @room.complete_infos?
+  = link_to "掲載審査を申請する", for_wating_room_path(@room)

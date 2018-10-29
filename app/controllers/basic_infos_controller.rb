@@ -3,6 +3,11 @@ class BasicInfosController < RoomInfosController
     @basic_info = BasicInfo.find_by(room_id: @room.id) || BasicInfo.new(room_id: @room.id)
   end
 
+  def edit
+    @room = Room.find(params[:room_id])
+    @basic_info = BasicInfo.find(params[:id])
+  end
+
   def create
     @basic_info = BasicInfo.new(basic_info_params)
     if @basic_info.save

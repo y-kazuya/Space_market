@@ -1,4 +1,8 @@
 class RoomsController < ApplicationController
+  def index
+    @spaces = Space.where(user_id: current_user.id).includes(:rooms)
+  end
+
   def new
   end
 
@@ -13,6 +17,17 @@ class RoomsController < ApplicationController
         render :new_first
       end
     end
+  end
+
+  def for_wating
+    room =Room.find(params[:id])
+    if current_user.complete_owner_infos? && room.complete_infos?
+      room.update(activated: 1)
+      redirect_to user_dashboard_path(current_user.id)
+    else
+      redirect_to :back
+    end
+
   end
 
 end

@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root "pages#top"
 
-  resource :pages do
+  resource :pages, only:[] do
     collection do
       get :host_entry, :test
     end
   end
 
   resources :spaces do
-    get    '/dashboard', to: 'dashboard#first_space'
+    get    '/dashboard', to: 'dashboards#first_space'
 
     collection do
       get :new_first
@@ -34,13 +34,49 @@ Rails.application.routes.draw do
       resources :amenities, only: [:new,:create, :update]
 
     end
-    resource :settings do
+    resource :settings, only:[] do
       resources :host_profiles, only: [:index, :create,:update]
       resources :host_addresses, only: [:index, :create, :update]
       resources :host_banks, only: [:index,:create, :update]
     end
   end
-  # space_settings_host_profile GET    /spaces/:space_id/settings/host_profile(.:format)                  host_profile#new
-  # space_settings_host_profiles POST   /spaces/:space_id/settings/host_profiles(.:format)                 host_profile#create
+
+  resources :users do
+    resources :rooms, only: [:index] do
+      resources :space_infos, only: [:edit, :update]
+      resources :basic_infos, only: [:edit, :update]
+      resources :pictures, only: [:edit, :update]
+      resources :plans, only: [:edit, :update]
+      resources :intros, only: [:edit, :update]
+    end
+    resource :dashboard
+    resource :calender
+    resource :inbox
+    resource :achievements, only:[] do
+      collection do
+        get :summary
+        get :ranking
+        get :reputation
+        get :sales
+      end
+    end
+    resource :settings, only:[] do
+      collection do
+        get :host_profile
+        get :host_address
+        get :host_bank
+        get :calender
+        get :admin
+        get :notification
+      end
+    end
+
+  end
+
+  resources :rooms do
+    member do
+      get :for_wating
+    end
+  end
 
 end
