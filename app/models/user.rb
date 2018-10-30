@@ -7,10 +7,12 @@ class User < ApplicationRecord
   has_many :spaces
   has_many :space_infos
   has_many :favorite_lists, dependent: :destroy
+  has_one :host_profile
 
   after_create :create_fav_list
 
   def create_fav_list
     self.favorite_lists.create(name: 'お気に入りリスト')
   end
+
 end
