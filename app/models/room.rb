@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
-  belongs_to :space
+  belongs_to :space, optional: true
   has_one :basic_info, dependent: :destroy
   has_one :intro, dependent: :destroy
   has_many :pictures, dependent: :destroy

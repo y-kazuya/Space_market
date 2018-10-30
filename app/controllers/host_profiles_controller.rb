@@ -14,11 +14,12 @@ class HostProfilesController < OwnerSettingController
 
   def update
     @host_profile = HostProfile.find(params[:id])
+    binding.pry
     if @host_profile.user_id == current_user.id
       if @host_profile.update(host_profile_params)
         redirect_to space_settings_host_addresses_path(params[:space_id])
       else
-      render :new
+      render :index
       end
     else
       redirect_to root_path

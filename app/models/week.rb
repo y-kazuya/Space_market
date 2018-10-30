@@ -17,7 +17,7 @@ class Week < ApplicationRecord
    end
 
    def check_time
-     errors.add(:end, “開始時間より後にしてください“) if start_time >= end_time
+     errors.add(:end, "開始時間より後にしてください") if start_time >= end_time
    end
 
 end
