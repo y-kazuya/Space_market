@@ -1,0 +1,13 @@
+%h1
+  お気に入りリスト
+.new_fav_list_create
+  = link_to '新規リスト作成', new_favorite_list_path
+%br/
+.fav_lists
+  - @favorite_lists.each do |favorite_list|
+    .fav_lists
+      = link_to favorite_list_path(favorite_list) do
+        .fav_lists__name
+          = favorite_list.name
+    #{favorite_list.favorites.length}件のスペース
+

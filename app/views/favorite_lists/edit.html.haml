@@ -1,0 +1,10 @@
+= form_for @favorite_list do |f|
+  .edit_list
+    %h1
+      リスト名の変更
+    %h2
+      リスト名を入力してください。
+    = f.text_field :name
+    = f.submit '作成'
+    .cancel-btn
+      = link_to 'キャンセル', favorite_lists_path
