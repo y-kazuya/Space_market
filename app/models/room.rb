@@ -14,6 +14,7 @@ class Room < ApplicationRecord
 
 
   validates :activated, presence: true
+  validates :public, inclusion: { in: [true, false] }
 
   enum activated: %i(making waiting certification)
 

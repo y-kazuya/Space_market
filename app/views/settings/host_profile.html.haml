@@ -4,4 +4,75 @@
 %h2
   設定・アカウントのページ
 
-= @host_profile
+= render 'shared/errors', object: @host_profile
+= form_for @host_profile, url: host_profile_update_user_settings_path(current_user.id) do |f|
+
+  %h2
+    担当者氏名(漢字)
+  = f.text_field :last_name
+  = f.text_field :first_name
+  %h2
+    担当者氏名(フリガナ)
+  = f.text_field :last_name_kata
+  = f.text_field :first_name_kata
+
+  %h2
+    性別
+  男性
+  =f.radio_button :sex, :male
+  女性
+  =f.radio_button :sex, :female
+
+  %h2
+    プロフィール
+  = f.text_area :profile
+
+  %h2
+    生年月日
+  = f.select :born_year, 1900..2017
+  年
+  = f.select :born_manth, 1..12
+  月
+  = f.select :born_day, 1..31
+  日
+
+  %h2
+    プロフィール画像
+  = f.file_field :avatar
+
+  %h2
+    電話番号
+  = f.number_field :phone_number, in: 1...10000000000000
+
+  %h2
+    身分証明書
+  = f.file_field :identification
+
+  %h2
+    個人か法人か
+  個人
+  = f.radio_button :company, :false
+  法人
+  = f.radio_button :company, :true
+
+  %h2
+    法人選んだ人のみ下記必須（以下のフォームは法人を選んだ場合のみ出して、個人の時は隠しておく)
+
+  %h2
+    法人名漢字
+  = f.text_field :company_name
+  %h2
+    カタカナ
+  = f.text_field :company_name_kata
+  %h3
+    英語
+  = f.text_field :company_name_en
+
+  %h2
+    法人登録番号
+  = f.number_field :company_number, in: 1...100000000000
+
+
+
+
+  = f.submit "保存"

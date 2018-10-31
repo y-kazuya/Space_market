@@ -1,11 +1,14 @@
 class HostProfile < ApplicationRecord
   belongs_to :user
-  has_one :host_bank
-  has_one :host_address
-  has_one :company_address
-
+  has_one :host_bank, dependent: :destroy
+  has_one :host_address, dependent: :destroy
+  has_one :company_address, dependent: :destroy
+  has_one :host_address, dependent: :destroy
+  has_one :hostnotification, dependent: :destroy
   mount_uploader :avatar, AvaterUploader
   mount_uploader :identification, IdentificationUploader
+
+  after_create :make_host_noti
 
   VALID_ALFAVET_REGEX = /\A[a-zA-Z]+\Z/
   VALID_KATAKANA_REGEX = /\A[ァ-ンー－]+\Z/
@@ -28,6 +31,7 @@ class HostProfile < ApplicationRecord
   validates :company_name_kata, length: { maximum: 64 },format: { with: VALID_KATAKANA_REGEX, message: 'はカタカナで入力して下さい。' }, allow_blank: true
   validates :company_name_en,length: { maximum: 64 },format: { with: VALID_ALFAVET_REGEX , message: 'はアルファベットで入力して下さい。' }, allow_blank: true
   validates :company_number,numericality: { only_integer: true }, length: { maximum: 10 }, allow_nil: true
+  validates :profile,length: { maximum: 800 }
 
 
 
@@ -43,5 +47,9 @@ class HostProfile < ApplicationRecord
   private
     def company?
       company == true
+    end
+
+    def make_host_noti
+      HostNotification.create(host_profile_id: self.id)
     end
 end

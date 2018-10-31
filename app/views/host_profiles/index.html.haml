@@ -16,7 +16,7 @@
   %h2
     性別
   男性
-  =f.radio_button :sex, :male, checked: true
+  =f.radio_button :sex, :male
   女性
   =f.radio_button :sex, :female
 
@@ -44,9 +44,9 @@
   %h2
     個人か法人か
   個人
-  = f.radio_button :company, :false, checked: true
+  = f.radio_button :company, :false
   法人
-  = f.radio_button :company, :true, checked: false
+  = f.radio_button :company, :true
 
   %h2
     法人選んだ人のみ下記必須（以下のフォームは法人を選んだ場合のみ出して、個人の時は隠しておく)

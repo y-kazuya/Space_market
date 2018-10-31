@@ -6,7 +6,10 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvaterUploader
   has_many :spaces
   has_many :space_infos
+
   has_one :host_profile
+
+
 
   def self.active_owners #User.active_owners で認証済みのroomをもつuserを全て取得
     User.all.includes(spaces: :rooms).map{|u| u if u.active_owner?}.compact

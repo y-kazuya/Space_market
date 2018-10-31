@@ -12,7 +12,7 @@ class PlansController < RoomInfosController
   def create
     @plan = Plan.new(plan_params)
     if @plan.save
-      redirect_to root_path
+      redirect_to space_dashboard_path(params[:space_id])
     else
       @room = @plan.room
       @space = @room.space
@@ -24,7 +24,7 @@ class PlansController < RoomInfosController
     @plan = Plan.find(params[:id])
     if @plan.room.space.user.id == current_user.id
       if @plan.update(plan_update_params)
-        redirect_to root_path
+        redirect_to space_dashboard_path(params[:space_id])
       else
         @room = @plan.room
         @space = @room.space

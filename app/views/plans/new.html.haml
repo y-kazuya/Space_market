@@ -39,11 +39,11 @@
     予約の承認方法
   %h3
     承認なし
-  = f.radio_button :about_reserve, :true, checked: "checked"
+  = f.radio_button :about_reserve, :true
 
   %h3
     承認あり
-  = f.radio_button :about_reserve, :false, checked: "checked"
+  = f.radio_button :about_reserve, :false
   - if @plan.name == nil
     - @week.each do |day|
       = f.fields_for :weeks do |w|

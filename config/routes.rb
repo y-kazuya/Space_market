@@ -63,11 +63,20 @@ Rails.application.routes.draw do
     resource :settings, only:[] do
       collection do
         get :host_profile
+        patch :host_profile_update
+        get :host_profile_update
+
         get :host_address
+        patch :host_address_update
+        get :host_address_update
+
         get :host_bank
+        patch :host_bank_update
+        get :host_bank_update
+
         get :calender
-        get :admin
-        get :notification
+        resource :admin, only: [:show, :create, :destroy]
+        resource :host_notification, only: [:show, :update]
       end
     end
 

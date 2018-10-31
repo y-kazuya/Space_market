@@ -3,6 +3,7 @@ class Space < ApplicationRecord
  belongs_to :user
  belongs_to :space_info, optional: true
 
+ has_many :admins, dependent: :destroy
 
  def self.active_spaces #認証済みのroomをもつspace を全部取ってくる
   Space.all.includes(:rooms).map{|s| s unless s.active_rooms == []}.compact

@@ -3,6 +3,6 @@
   = link_to "アカウント", host_profile_user_settings_path(current_user.id)
   = link_to "住所", host_address_user_settings_path(current_user.id)
   = link_to "振込口座", host_bank_user_settings_path(current_user.id)
-  = link_to "メール・通知", notification_user_settings_path(current_user.id)
-  = link_to "共同管理", admin_user_settings_path(current_user.id)
+  = link_to "メール・通知", user_host_notification_path(current_user.id)
+  = link_to "共同管理", user_admin_path(current_user.id)
   = link_to "カレンダー連携", calender_user_settings_path(current_user.id)

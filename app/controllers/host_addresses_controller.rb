@@ -26,7 +26,7 @@ class HostAddressesController < OwnerSettingController
   def update
     @host_address = HostAddress.find(params[:id])
     if @host_profile.company == true
-      @company_address = CompanyAddress.find_by(host_profile_id: @host_profile.id)
+      @company_address = CompanyAddress.find_by(host_profile_id: @host_profile.id) || CompanyAddress.new(company_address_params)
       if @company_address.host_profile.user_id == current_user.id
         unless @company_address.update(company_address_params)
           return render :index
