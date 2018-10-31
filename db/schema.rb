@@ -130,7 +130,6 @@ ActiveRecord::Schema.define(version: 20181026034409) do
     t.index ["user_id"], name: "index_host_profiles_on_user_id", using: :btree
   end
 
-
   create_table "intros", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title",                    null: false
     t.text     "content",    limit: 65535, null: false
