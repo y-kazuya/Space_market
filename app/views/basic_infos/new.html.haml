@@ -3,6 +3,9 @@
 
 =@basic_info
 
+
+= render 'shared/errors', object: @basic_info
+
 = form_for [@space, @room, @basic_info] do |f|
   %h2
     許容イベン

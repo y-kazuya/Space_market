@@ -1,0 +1,82 @@
+%h1
+  2 住所
+  %h2
+    担当者の住所
+= render 'shared/errors', object: @host_address
+
+= form_for [@space ,"settings",@host_address] do |f|
+
+  %h2
+    郵便番号
+  = f.text_field :post_code, placeholder: "郵便番号だよ",maxlength: 7
+
+  %h2
+    都道府県
+  = f.select :state, SpaceInfo.states.keys, {prompt: '選択してください'}
+
+  %h2
+    市町村区
+  = f.text_field :city
+
+  %h2
+    フリガナ
+  = f.text_field :city_kata
+
+  %h2
+    町名・番地漢字
+  = f.text_field :address
+  = f.text_field :last_address
+  %h2
+    フリガナ
+  = f.text_field :address_kata
+  = f.text_field :last_address_kata
+
+  %h2
+    ビル名部屋番号 任意
+  = f.text_field :building
+
+  %h2
+    フリガナ
+  = f.text_field :building_kata
+
+  -if @company_address
+    = fields_for(@company_address) do |c|
+      %h2
+      法人の住所
+
+      %h2
+        郵便番号
+      = c.text_field :post_code, placeholder: "郵便番号だよ",maxlength: 7
+
+      %h2
+        都道府県
+      = c.select :state, SpaceInfo.states.keys, {prompt: '選択してください'}
+
+      %h2
+        市町村区
+      = c.text_field :city
+
+      %h2
+        フリガナ
+      = c.text_field :city_kata
+
+      %h2
+        町名・番地漢字
+      = c.text_field :address
+      = c.text_field :last_address
+      %h2
+        フリガナ
+      = c.text_field :address_kata
+      = c.text_field :last_address_kata
+
+      %h2
+        ビル名部屋番号 任意
+      = c.text_field :building
+
+      %h2
+        フリガナ
+      = c.text_field :building_kata
+
+
+
+  =f.submit "保存して進む"

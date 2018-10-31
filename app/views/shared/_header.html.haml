@@ -23,7 +23,7 @@
   /        =link_to "#" ,class: "site-header__sponser-button-text link-white hover-white" do
   /          詳細へ
   %p.float
-    = link_to "#" do
+    = link_to root_path do
       = image_tag 'https://beyond.spacemarket.com/wp-content/uploads/2017/08/25191709/spmkt_profile-300x300.png' ,class: 'site-header__logo'
   .navs
     %ul
@@ -73,18 +73,31 @@
       /  = link_to "#" ,class: 'navs-right__link child-link' do
       /    = fa_icon 'envelope', class: 'hover-white link-gray ', id: 'envelope-size'
       %li.navs-right
-        = link_to "#" ,class: 'navs-right__link' do
+        = link_to new_user_registration_path ,class: 'navs-right__link' do
           %p.navs-right__text.link-black.hover-white
             新規登録
       %li.navs-right
-        = link_to "#" ,class: 'navs-right__link' do
-          %p.navs-right__text.link-black.hover-white
-            ログイン
+        -if !current_user
+          = link_to new_user_session_path  ,class: 'navs-right__link' do
+            %p.navs-right__text.link-black.hover-white
+              ログイン
+        - else
+          = link_to destroy_user_session_path, method: :delete  ,class: 'navs-right__link' do
+            %p.navs-right__text.link-black.hover-white
+              ログアウト
+
       %li.navs-right
         = link_to "#",class: 'navs-right__link'  do
           %p.navs-right__text.link-black.hover-white
             ヘルプ
-      %li.navs-right
-        = link_to "#",class: 'navs-right__link' do
-          %p.navs-right__text.link-black.hover-white
-            空きスペースを掲載する
+      - if current_user
+        -if current_user.spaces.empty?
+          %li.navs-right
+            = link_to host_entry_pages_path ,class: 'navs-right__link' do
+              %p.navs-right__text.link-black.hover-white
+                空きスペースを掲載する
+        -else
+          %li.navs-right
+            = link_to space_dashboard_path(current_user.spaces.first.id) ,class: 'navs-right__link' do
+              %p.navs-right__text.link-black.hover-white
+                ホスト

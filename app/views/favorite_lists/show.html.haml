@@ -1,0 +1,17 @@
+.MainContents
+  .Links
+    .back_btn
+      = link_to '戻る', favorite_lists_path
+      = link_to 'リストの編集', edit_favorite_list_path
+      = link_to '削除', favorite_list_path, method: :delete
+  %br/
+  .listTitle
+    = @favorite_list.name
+  .listCount
+    #{@favorites.length}件のスペース
+  .fav_list_allRooms
+    - @favoritesRooms.each do |favoritesRoom|
+      .fav_lists_eachRoom
+        = link_to root_path(favoritesRoom) do
+          .fav_lists_oneRoom
+            / = favoritesRoom.name

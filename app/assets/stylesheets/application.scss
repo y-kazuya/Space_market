@@ -1,4 +1,8 @@
+@import "./register/_register";
+@import "./register/_translateelement";
 @import "./reset";
+@import "./last";
+//@import "./config/color";
 @import "./config/valiable";
 @import "./test";
 @import "./index/top_page";
@@ -12,3 +16,7 @@
 @import "./config/valiable";
 @import "./test";
 @import "./devise/sign_in";
+@import "./register/_register.css";
+@import "./register/_translateelement.css";
+@import "./register/_password_reissue.css";
+

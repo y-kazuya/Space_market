@@ -1,7 +1,7 @@
 %h1
   space info 入力画面
 
-= @space_info
+= render 'shared/errors', object: @space_info
 
 = form_for [@space, @room, @space_info] do |f|
   %h2
@@ -35,7 +35,7 @@
 
   %h2
     電話番号
-  = f.text_field :phone_number
+  = f.number_field :phone_number, in: 1...10000000000000
 
   %h2
     イベントタイプ

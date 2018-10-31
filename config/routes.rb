@@ -26,15 +26,24 @@ Rails.application.routes.draw do
           patch  :choise_info
         end
       end
-      resources :basic_infos, only: [:new,:create, :update]
+      resources :basic_infos, only: [:new, :edit ,:create, :update]
       resources :pictures, only: [:new, :create, :update]
       resources :plans, only: [:new, :create, :update]
       resources :intros, only: [:new,:create, :update]
+      resources :amenities, only: [:new,:create, :update]
+    end
+
+    resource :settings do
+      resources :host_profiles, only: [:index, :create,:update]
+      resources :host_addresses, only: [:index, :create, :update]
+      resources :host_banks, only: [:index,:create, :update]
     end
   end
 
-
-  #room作成からのそれの親スペース作成？
-  #一つ目のroomは完成するまで同一レコードを使う（最初new→その後edit
+  scope  '/dashboard' do
+    resources :favorite_lists
+  end
+  # space_settings_host_profile GET    /spaces/:space_id/settings/host_profile(.:format)                  host_profile#new
+  # space_settings_host_profiles POST   /spaces/:space_id/settings/host_profiles(.:format)                 host_profile#create
 
 end
