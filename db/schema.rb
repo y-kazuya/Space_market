@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20181101065105) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -31,7 +30,6 @@ ActiveRecord::Schema.define(version: 20181101065105) do
     t.datetime "updated_at",               null: false
     t.index ["room_id"], name: "index_agreements_on_room_id", using: :btree
   end
-
 
   create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false

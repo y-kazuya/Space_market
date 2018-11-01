@@ -1,7 +1,7 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-@import "./register/_register";
-@import "./register/_translateelement";
+
+@import "./register/_password_reissue.css";
 @import "./reset";
 @import "./last";
 //@import "./config/color";
@@ -21,7 +21,5 @@
 @import "./config/color";
 @import "./config/valiable";
 @import "./test";
-@import "./register/_register.css";
-@import "./register/_translateelement.css";
-@import "./register/_password_reissue.css";
+
 
