@@ -31,8 +31,6 @@ Rails.application.routes.draw do
       resources :plans, only: [:new, :create, :update]
       resources :intros, only: [:new,:create, :update]
 
-      resources :amenities, only: [:new,:create, :update]
-
     end
     resource :settings, only:[] do
       resources :host_profiles, only: [:index, :create,:update]
@@ -42,12 +40,35 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :rooms, only: [:index] do
-      resources :space_infos, only: [:edit, :update]
-      resources :basic_infos, only: [:edit, :update]
-      resources :pictures, only: [:edit, :update]
-      resources :plans, only: [:edit, :update]
-      resources :intros, only: [:edit, :update]
+    resources :rooms, only: [:index, :new, :create, :destroy] do
+      member do
+        get :stats
+      end
+
+      collection do
+        get :newww
+      end
+
+      resources :space_infos, controller: "edit_space_infos",only: [:index, :new, :show, :create, :update, :destroy] do
+        member do
+          patch :chose
+        end
+      end
+      resource :basic_infos,controller: "edit_basic_infos", only: [:show, :update]
+      resource :pictures,controller: "edit_pictures" ,only: [:show,:create,:destroy, :update]
+      resources :plans, controller: "edit_plans",only: [:index, :new, :show, :create, :update, :destroy] do
+        member do
+          patch :public
+        end
+      end
+      resources :options, only: [:index, :new, :show, :create, :update, :destroy] do
+        member do
+          patch :public
+        end
+      end
+      resource :intros, controller: "edit_intros",only: [:show, :update]
+      resource :reserve_phrases, only: [:show, :create, :update]
+      resource :agreements, only: [:show, :create, :update]
     end
     resource :dashboard
     resource :calender

@@ -54,6 +54,7 @@ class SpaceInfosController < RoomInfosController
   private
     def space_info_params
       params.require(:space_info).permit(
+        :title,
         :post_code,
         :state,
         :city,

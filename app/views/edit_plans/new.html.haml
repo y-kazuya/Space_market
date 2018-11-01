@@ -1,0 +1,114 @@
+= render partial: 'shared/room_setiing_topside'
+
+= render 'shared/errors', object: @plan
+
+= link_to "戻る", user_room_plans_path(current_user.id, @room.id)
+
+
+%h1
+  新規プランの追加
+
+= form_for [current_user, @room, @plan] do |f|
+  %h2
+    プランの名称
+  = f.text_field :name
+
+  %h2
+    プランの説明
+  = f.text_area :about
+
+  %h2
+    時間価格にする？
+  = f.check_box :time_pay
+
+  %h2
+    時間価格
+  = f.text_field :time_price
+
+  %h2
+    一日価格にする？
+  = f.check_box :day_pay
+
+  %h2
+    1日価格
+  = f.text_field :day_price
+
+  %h2
+    貸出可能な期間
+
+
+  .input-group.date.datepicker
+    = f.text_field :start_day, class: 'form-control'
+    %span.input-group-addon
+      %span.fa.fa-calendar
+  %h2
+    から
+  .input-group.date.datepicker
+    = f.text_field :end_day, class: 'form-control'
+    %span.input-group-addon
+      %span.fa.fa-calendar
+
+
+  %h2
+    予約の承認方法
+  %h3
+    承認なし
+  = f.radio_button :about_reserve, :true
+
+  %h3
+    承認あり
+  = f.radio_button :about_reserve, :false
+
+
+  - if @plan.name == nil
+    - @week.each do |day|
+      = f.fields_for :weeks do |w|
+        %h2
+          = day
+        = w.hidden_field :name ,value: "#{day}"
+        = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
+        = w.select :start_time, 0..36, selected: 9
+        ：００〜
+        = w.select :end_time, 0..36, selected: 22
+        ：００
+
+  - else
+    = f.fields_for :weeks do |w|
+      %h2
+        = w.object.name
+      = w.hidden_field :name
+      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
+      = w.select :start_time, 0..36
+      ：００〜
+      = w.select :end_time, 0..36
+      ：００
+
+
+
+  %h2
+    その他の設定
+  %h2
+    最低利用時間
+    = f.number_field :min_time
+    = select :day_time, :in, [["時間", 1], ["日", 24]]
+
+  %h2
+    片付け時間/
+    利用終了後
+    = f.number_field :clean_time
+    時間
+
+  %h2
+    直前割/
+    割引りつ
+    = f.select :discount, Plan.discounts.keys
+
+  %h2
+    管理維持費
+    = f.number_field :cost
+
+
+
+
+
+  = f.submit "保存"

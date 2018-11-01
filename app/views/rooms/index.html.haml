@@ -3,11 +3,21 @@
 %h1
   ルーム設定のページ
 %h1
-  = link_to "新規スペース作成", "#"
+  = link_to "新規スペース作成", newww_user_rooms_path(current_user.id)
 -@spaces.each do |space|
   - space.rooms.each do |room|
     %h1
-      = room.intro.title
-      = link_to edit_user_room_basic_info_path(current_user.id, room.id, room.basic_info.id) do
-        = image_tag(room.pictures.first.content_url(:preview))
-      =link_to "編集", edit_user_room_basic_info_path(current_user.id, room.id, room.basic_info.id)
+      = room.intro ? room.intro.title : "未入力"
+      - if room.activated == "waiting"
+        審査中！
+      - elsif room.activated == "making"
+        作成中
+      - if room.activated == "making"
+        = link_to stats_user_room_path(current_user.id, room.id) do
+          = image_tag(room.pictures.first.content_url(:preview)) if room.pictures.first
+        = link_to "編集", stats_user_room_path(current_user.id, room.id)
+      - else
+        = link_to user_room_basic_infos_path(current_user.id, room.id, room.basic_info.id) do
+          = image_tag(room.pictures.first.content_url(:preview)) if room.pictures.first
+        = link_to "編集", user_room_basic_infos_path(current_user.id, room.id, room.basic_info.id)
+      = link_to "削除", user_room_path(current_user.id, room.id), method: :delete

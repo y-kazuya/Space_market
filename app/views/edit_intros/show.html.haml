@@ -1,0 +1,37 @@
+= render partial: 'shared/room_setiing_topside'
+
+
+= render 'shared/errors', object: @intro
+
+%h2
+  スペースの紹介 注意事項
+
+= form_for @intro, url: user_room_intros_path(current_user.id, @room.id) do |f|
+
+  %h2
+    スペース見出し
+  = f.text_field :title
+
+  %h2
+    スペースについて
+  = f.text_area :content
+
+  %h2
+    施設サービス
+  = f.text_area :service
+
+  %h2
+    飲食について
+  = f.text_area :food
+
+  %h2
+    後片付け・ごみについて
+  = f.text_area :clean
+
+  %h2
+    PDFファイル
+  = f.file_field :pdf
+
+
+  = hidden_field_tag :id , @intro.id
+  =f.submit "保存"

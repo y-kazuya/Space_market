@@ -5,6 +5,7 @@ class Room < ApplicationRecord
   has_one :intro, dependent: :destroy
   has_one :agreement, dependent: :destroy
   has_one :reserve_phrase, dependent: :destroy
+  has_one :movie, dependent: :destroy
 
   has_many :options, dependent: :destroy
   has_many :pictures, dependent: :destroy

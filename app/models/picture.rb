@@ -4,7 +4,6 @@ class Picture < ApplicationRecord
   validates :content, presence: true
   validates :about, length: { maximum: 128 }
   validates :cover, presence: true
-  validates :movie, length: { maximum: 40 }
 
   mount_uploader :content, SpacePictureUploader
   enum cover: %i(true false)

@@ -1,0 +1,43 @@
+= render partial: 'shared/room_setiing_topside'
+
+
+= render 'shared/errors', object: @basic_info
+
+= form_for @basic_info, url: user_room_basic_infos_path(current_user.id, @room.id) do |f|
+  %h2
+    許容イベン
+  = f.collection_check_boxes :usage_ids, Usage.all, :id, :name, include_hidden: false do |b|
+    = b.check_box
+    = b.label { b.text }
+
+  %h2
+    収容人数
+  = f.number_field :capacity, in: 1...100000
+
+  %h2
+    床面積
+  = f.number_field :floor_space, in: 1...100000
+
+
+  %h2
+    カギの受け渡し
+  = f.select :key_type, BasicInfo.key_types.keys, {prompt: "カギの受け私"}
+
+  %h2
+    予約締め切り
+  = f.select :reserve_limit, BasicInfo.reserve_limits.keys, {prompt: "締め切り"}
+
+  %h2
+    予約の受付期間
+  = f.select :reserve_period, BasicInfo.reserve_periods.keys, {prompt: "受付期間"}
+
+  = f.fields_for @room do |r|
+    %h2
+      アメニティを選択
+      = r.collection_check_boxes :amenity_ids, Amenity.all, :id, :name, include_hidden: false do |b|
+        = b.check_box
+        = b.label { b.text }
+
+
+  = hidden_field_tag :id , @basic_info.id
+  =f.submit "保存"

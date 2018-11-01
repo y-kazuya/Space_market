@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181031015719) do
+ActiveRecord::Schema.define(version: 20181101065105) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
@@ -160,6 +160,14 @@ ActiveRecord::Schema.define(version: 20181031015719) do
     t.index ["room_id"], name: "index_intros_on_room_id", using: :btree
   end
 
+  create_table "movies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content",    null: false
+    t.integer  "room_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_movies_on_room_id", using: :btree
+  end
+
   create_table "option_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content",                  null: false
     t.text     "about",      limit: 65535
@@ -190,7 +198,6 @@ ActiveRecord::Schema.define(version: 20181031015719) do
     t.integer  "room_id",                  null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.string   "movie"
     t.index ["room_id"], name: "index_pictures_on_room_id", using: :btree
   end
 
@@ -258,6 +265,7 @@ ActiveRecord::Schema.define(version: 20181031015719) do
     t.datetime "updated_at",                 null: false
     t.integer  "fax"
     t.string   "url"
+    t.string   "title"
     t.index ["state"], name: "index_space_infos_on_state", using: :btree
     t.index ["user_id"], name: "index_space_infos_on_user_id", using: :btree
   end
@@ -299,6 +307,7 @@ ActiveRecord::Schema.define(version: 20181031015719) do
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
     t.boolean  "admin",                                default: false
+    t.boolean  "owner",                                default: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -327,6 +336,7 @@ ActiveRecord::Schema.define(version: 20181031015719) do
   add_foreign_key "host_notifications", "host_profiles"
   add_foreign_key "host_profiles", "users"
   add_foreign_key "intros", "rooms"
+  add_foreign_key "movies", "rooms"
   add_foreign_key "option_pictures", "options"
   add_foreign_key "options", "rooms"
   add_foreign_key "pictures", "rooms"

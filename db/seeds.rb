@@ -51,6 +51,7 @@ end
 
 
   if a < 9 && a >= 6
+    title = Faker::Pokemon.name
     post_code = 1234567
     state = rand(1..47)
     city = citys.sample
@@ -62,6 +63,7 @@ end
     event_type = rand(1..17)
     user_id = user.id
     space_info = SpaceInfo.create!(
+      title: title,
       post_code: post_code,
       state: state,
       city: city,
@@ -182,6 +184,7 @@ end
   if a >= 9
     #space_info作成
     rand(1..5).times do |b|
+      title = Faker::Pokemon.name
       post_code = 1234567
       state = rand(1..47)
       city = citys.sample
@@ -194,6 +197,7 @@ end
       user_id = user.id
 
       space_info = SpaceInfo.create!(
+        title: title,
         post_code: post_code,
         state: state,
         city: city,

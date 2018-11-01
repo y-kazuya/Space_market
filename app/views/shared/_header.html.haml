@@ -96,7 +96,7 @@
             = link_to host_entry_pages_path ,class: 'navs-right__link' do
               %p.navs-right__text.link-black.hover-white
                 空きスペースを掲載する
-        -elsif current_user.active_owner? || current_user.waiting_owner?
+        -elsif current_user.owner == true
           %li.navs-right
             = link_to user_dashboard_path(current_user.id) ,class: 'navs-right__link' do
               %p.navs-right__text.link-black.hover-white

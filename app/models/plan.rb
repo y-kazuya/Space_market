@@ -62,7 +62,10 @@ class Plan < ApplicationRecord
    end
 
    def correct_day
-    if start_day && end_day
+    if self.start_day && self.end_day
+      start_day = self.start_day.to_i
+      end_day = self.end_day.to_i
+
       errors.add(:end_day, "終了日は開始日の後に設定してください") if start_day > end_day
     end
    end

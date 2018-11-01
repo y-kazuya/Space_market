@@ -1,0 +1,31 @@
+= render partial: 'shared/room_setiing_topside'
+
+- @pictures.each do |picture|
+  = render 'shared/errors', object: picture
+
+= render 'shared/errors', object: @movie
+
+= @pictures.count
+
+
+-@pictures.each do |p|
+  %h2
+    = image_tag(p.content_url(:preview))
+    = p.about
+
+
+
+= form_for @movie ,url: user_room_pictures_path(current_user.id, @room.id) do |f|
+  %h2
+    youtubeのURL
+  = f.text_field :content
+
+  =f.submit "保存"
+
+
+
+
+
+
+
+

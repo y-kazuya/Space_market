@@ -1,0 +1,21 @@
+= render partial: 'shared/room_setiing_topside'
+
+
+= render 'shared/errors', object: @agree
+
+
+%h1
+  キャンセルポリシー・利用規約
+
+
+= form_for @agree, url: user_room_agreements_path(current_user.id, @room.id) do |f|
+
+  %h2
+    キャンセルポリシー
+  = f.text_area :aggree
+
+  %h2
+    利用規約
+  = f.text_area :policy
+
+  =f.submit "保存"
