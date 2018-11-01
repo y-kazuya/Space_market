@@ -12,6 +12,6 @@ class DashboardsController < ApplicationController
 
   private
     def owner? #ユーザーが認証済みの部屋を持ってないかつ 認証待ちの部屋を持っていない場合
-      redirect_to root_path unless current_user.active_owner? || current_user.waiting_owner?
+      redirect_to root_path unless current_user.owner == true
     end
 end
