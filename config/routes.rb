@@ -31,8 +31,10 @@ Rails.application.routes.draw do
       resources :plans, only: [:new, :create, :update]
       resources :intros, only: [:new,:create, :update]
 
+
     end
     resource :settings, only:[] do
+
       resources :host_profiles, only: [:index, :create,:update]
       resources :host_addresses, only: [:index, :create, :update]
       resources :host_banks, only: [:index,:create, :update]
@@ -108,5 +110,10 @@ Rails.application.routes.draw do
       get :for_wating
     end
   end
+  scope  '/dashboard' do
+    resources :favorite_lists
+  end
+  # space_settings_host_profile GET    /spaces/:space_id/settings/host_profile(.:format)                  host_profile#new
+  # space_settings_host_profiles POST   /spaces/:space_id/settings/host_profiles(.:format)                 host_profile#create
 
 end

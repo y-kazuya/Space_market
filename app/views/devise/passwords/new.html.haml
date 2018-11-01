@@ -1,10 +1,38 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Send me reset password instructions"
+.breadcrumbs.link__subcolor.sm-hide
+  %ol{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+    %li
+      %a{:href => "https://www.spacemarket.com/", :itemprop => "url"}
+        %i.ic_home ホーム
+.site-main
+  .page__even.lp-page__padding
+    .page__col1
+      .signup-head
+        %h1.page-title パスワードの再設定
+        %ul.signup-step.mb20
+          %li.signup-step__status1.is-current
+            %span.sm-hide> メールアドレスの
+            確認
+          %li.signup-step__status3
+            %span.sm-hide> パスワード
+            再設定完了
+          %li.signup-step__status2
+            %span.sm-hide> パスワードの
+            再設定
+      .signup-box
+        .row
+          .col-xs-12
+            .signup-box__wrapper-form
+              %p.signup-box__notes.ta-c.mb10
+                登録に利用したメールアドレスを入力してください。
+                %br>/
+                パスワードを再設定するためのメールをお送りします。
+              .row
+                %form#new_user.new_user{"accept-charset" => "UTF-8", :action => "/users/password/new", :method => "post"}
+                  .col-sm-12
+                    .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.w100pa
+                      %p
+                        %input#user_email.mdl-textfield__input{:autofocus => "autofocus", :name => "user[email]", :type => "email", :value => ""}/
+                        %label.mdl-textfield__label{:for => "user_email"} メールアドレス
+                  .col-sm-12.ta-c.mt20
+                    %input.button-blue.pt15.pb15.w200{:name => "commit", :type => "submit", :value => "メールを送信する"}/
 = render "devise/shared/links"
