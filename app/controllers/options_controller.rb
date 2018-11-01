@@ -19,7 +19,6 @@ class OptionsController < ApplicationController
 
   def create
     @option = Option.new(option_params)
-    binding.pry
     unless @option.save
       @room = Room.find(params[:room_id])
       return render :new

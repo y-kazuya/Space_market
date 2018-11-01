@@ -1,6 +1,6 @@
 class Option < ApplicationRecord
   has_many :option_pictures, dependent: :destroy
-  accepts_nested_attributes_for :option_pictures
+  accepts_nested_attributes_for :option_pictures, reject_if: :reject_pictures
 
   belongs_to :room
 
@@ -14,6 +14,11 @@ class Option < ApplicationRecord
             :about,
             :price,
             :unit, presence: true
+
+  private
+    def reject_pictures(attributed)
+      attributed['content'].blank?
+    end
 
 
 end

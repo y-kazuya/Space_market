@@ -75,6 +75,13 @@ class EditPlansController < ApplicationController
       :day_pay,
       :day_price,
       :about_reserve,
+      :end_day,
+      :start_day,
+      :clean_time,
+      :min_time,
+      :public,
+      :cost,
+      :discount,
       weeks_attributes: [:name, :start_time, :end_time, :can]
     ).merge(room_id: params[:room_id].to_i)
   end
