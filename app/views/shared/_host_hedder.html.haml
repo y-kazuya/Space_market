@@ -1,0 +1,8 @@
+%h1
+  ヘッダー
+  = link_to "ダッシュボード", user_dashboard_path(current_user.id)
+  = link_to "カレンダー", user_calender_path(current_user.id)
+  = link_to "受信トレイ", user_inbox_path(current_user.id)
+  = link_to "スペース管理", user_rooms_path(current_user.id)
+  = link_to "実績", summary_user_achievements_path(current_user.id)
+  = link_to "設定", host_profile_user_settings_path(current_user.id)

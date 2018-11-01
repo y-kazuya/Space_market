@@ -1,7 +1,3 @@
 %h1
   トップページ
 
-- if current_user && current_user.spaces.empty?
-  = link_to "ホストエントリーへ", host_entry_pages_path
-- else
-  = link_to "ホスト", host_entry_pages_path

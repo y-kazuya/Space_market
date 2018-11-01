@@ -1,0 +1,23 @@
+= render partial: 'shared/room_setiing_topside'
+
+
+= render 'shared/errors', object: @res
+
+%h1
+  定型文
+
+= form_for @res, url: user_room_reserve_phrases_path(current_user.id, @room.id) do |f|
+
+  %h2
+    予約確定じ
+  = f.text_area :success
+
+  %h2
+    予約日にんじ
+  = f.text_area :fail
+
+  %h2
+    利用日前日のリマインド
+  = f.text_area :remind
+
+  =f.submit "保存"

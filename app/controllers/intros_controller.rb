@@ -22,11 +22,12 @@ class IntrosController < RoomInfosController
       else
         @room = @intro.room
         @space = @room.space
-        render :new
+        return render :new
       end
     else
-      redirect_to root_path
+      return redirect_to root_path
     end
+    redirect_to user_room_intros_path(current_user.id, @room.id)
   end
 
   private
