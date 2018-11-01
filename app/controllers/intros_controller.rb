@@ -16,11 +16,11 @@ class IntrosController < RoomInfosController
 
   def update
     @intro = Intro.find(params[:id])
+    @room = @intro.room
     if @intro.room.space.user.id == current_user.id
       if @intro.update(intro_params)
-        redirect_to new_space_room_picture_path(params[:space_id], params[:room_id])
+        return redirect_to new_space_room_picture_path(params[:space_id], params[:room_id])
       else
-        @room = @intro.room
         @space = @room.space
         return render :new
       end
