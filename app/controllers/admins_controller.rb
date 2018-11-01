@@ -13,8 +13,6 @@ class AdminsController < ApplicationController
   def create
     if admin = User.find_by(email: params[:email])
       Admin.create!(user_id: admin.id, space_id: current_user.spaces.first.id)
-    else
-      return render :show
     end
     redirect_to user_admin_path(current_user.id)
   end
