@@ -5,7 +5,6 @@ class ReservePhrasesController < ApplicationController
   end
 
   def create
-    binding.pry
     @res = ReservePhrase.new(res_params)
     unless @res.save
       @room = ReservePhrase.find(params[:room_id])
