@@ -9,4 +9,10 @@ class SearchController < ApplicationController
       @searchRooms << rooms.room
     end
   end
+
+  def search
+  #   @summary = []
+  #   if params[:area]
+  #     @summary << SpaceInfo.where[state:area]
+  # end
 end

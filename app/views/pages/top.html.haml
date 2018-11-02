@@ -1,12 +1,6 @@
 %h1
   トップページ
 
-<<<<<<< HEAD
-- if current_user && current_user.spaces.empty?
-  = link_to "ホストエントリーへ", host_entry_pages_path
-- else
-  = link_to "ホスト", host_entry_pages_path
-
 %h2
   目的から探す
   = link_to "パーティー", event_type_search_path(id: "1")
@@ -22,5 +16,4 @@
   = link_to "人数",root_path("capacities")
   = link_to "会場タイプ",root_path("space_types")
   = link_to "アメニティ",root_path("amenities")
-=======
->>>>>>> master
+
