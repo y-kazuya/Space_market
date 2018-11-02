@@ -1,0 +1,23 @@
+= form_tag('/search', method: "get") do
+  .search_form
+    = text_field :search_usage, :area, placeholder: 'エリア'
+    = select_tag :search_usage, options_for_select(["指定なし","時間単位で予約","1日単位で予約"])
+    = text_field :search_usage, :money, placeholder: '価格帯'
+    = text_field :search_usage, :day, placeholder: '利用日'
+    = select_tag :search_usage, options_for_select(["0:00","6:00","12:00"])
+    = select_tag :search_usage, options_for_select(["0:00","6:00","12:00"])
+    = text_field :search_usage, :capacity, placeholder: '人数'
+    = check_box_tag 'search_usage', 'place_dwon', "aa"
+    = submit_tag '詳細検索'
+
+
+%h1
+  スペース検索結果
+  #{@searchRooms.length}件
+
+.searchRoom_contents
+  - @searchRooms.each do |searchRoom|
+    .searchRoom_lists
+      = link_to root_path(searchRoom) do
+        .searchRoom_list
+          = searchRoom.id

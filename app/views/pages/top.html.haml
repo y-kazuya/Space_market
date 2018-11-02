@@ -5,3 +5,19 @@
   = link_to "ホストエントリーへ", host_entry_pages_path
 - else
   = link_to "ホスト", host_entry_pages_path
+
+%h2
+  目的から探す
+  = link_to "パーティー", event_type_search_path(id: "1")
+  = link_to "会議", event_type_search_path(id: "2")
+  = link_to "民泊",root_path
+  = link_to "写真撮影", event_type_search_path(id: "3")
+  = link_to "ロケ撮影", event_type_search_path(id: "4")
+  = link_to "スポーツ", event_type_search_path(id: "8")
+
+%h2
+  カテゴリーから探す
+  = link_to "エリア",root_path("areas")
+  = link_to "人数",root_path("capacities")
+  = link_to "会場タイプ",root_path("space_types")
+  = link_to "アメニティ",root_path("amenities")
