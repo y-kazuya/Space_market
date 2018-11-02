@@ -317,6 +317,7 @@ end
           time_pay = rand(0..1)
           time_price = rand(200..1000)
           about_reserve = rand(0..1)
+          discount = rand(0..7)
 
           plan = Plan.new(
             name: name,
@@ -326,6 +327,7 @@ end
             time_pay: time_pay,
             time_price: time_price,
             about_reserve: about_reserve,
+            discount: discount,
             room_id: room.id
           )
 

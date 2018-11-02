@@ -16,4 +16,17 @@
   = link_to "人数",root_path("capacities")
   = link_to "会場タイプ",root_path("space_types")
   = link_to "アメニティ",root_path("amenities")
+  
+
+%h1
+  仮置き全てのルーム
+  審査通ったroomかつpublicがtrueのroomをもつスペースを全表示
+  本番はroomをインデックスで表示してroomのページにとぶ
+
+- @spaces.each do |space|
+  %h2
+    = "スペースのタイトル： #{space.space_info.title}|"
+    = "スペースの住所： #{space.space_info.state + space.space_info.city}"
+    = link_to space_path(space.id) do
+      = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))
 

@@ -6,6 +6,13 @@ class SpacesController < ApplicationController
 
   end
 
+  def show
+    @space = Space.find(params[:id])
+    @space_info = @space.space_info
+    @host = @space.user.host_profile
+
+  end
+
   def new_first
     unless space = Space.find_by(user_id: current_user.id)
       space = Space.new(user_id: current_user.id)
