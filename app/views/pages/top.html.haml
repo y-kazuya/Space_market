@@ -16,7 +16,7 @@
   = link_to "人数",root_path("capacities")
   = link_to "会場タイプ",root_path("space_types")
   = link_to "アメニティ",root_path("amenities")
-  
+
 
 %h1
   仮置き全てのルーム
@@ -27,6 +27,11 @@
   %h2
     = "スペースのタイトル： #{space.space_info.title}|"
     = "スペースの住所： #{space.space_info.state + space.space_info.city}"
-    = link_to space_path(space.id) do
-      = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))
+    - if space.public_rooms.count == 1
+      = link_to space_room_path(space.id, space.public_rooms.first.id) do
+        = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))
+    -else
+      = link_to space_path(space.id) do
+        = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))
+
 

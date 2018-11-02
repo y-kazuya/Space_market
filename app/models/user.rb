@@ -30,8 +30,8 @@ class User < ApplicationRecord
     return false
   end
 
-  def active_spaces #そのユーザーがもつ認証ずみspaceを全て取得
-    spaces.map{|s| s unless s.active_rooms == [] }.compact
+  def public_spaces #そのユーザーがもつ認証ずみspaceかつ公開済みsのルームを持つspaceを全て取得
+    spaces.map{|s| s unless s.public_rooms== [] }.compact
   end
 
   def complete_owner_infos? #そのユーザーがスペース登録に必要なオーナー情報を全て持っているか？

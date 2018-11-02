@@ -10,7 +10,7 @@ class Space < ApplicationRecord
   end
 
   def self.public_spaces #認証済みかつ公開許可roomをもつスペース
-    Space.all.includes(:rooms,:space_info).map{|s| s unless s.public_rooms == []}.compact
+    Space.all.includes(:rooms, :space_info).map{|s| s unless s.public_rooms == []}.compact
   end
 
   def self.waiting_spaces #認証待ちのroomをもつspaceを全部取ってくる

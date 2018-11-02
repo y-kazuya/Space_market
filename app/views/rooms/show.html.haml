@@ -82,6 +82,7 @@
   %h1
     プランタイトル：
     = plan.name
+    = plan.id
     = link_to "このプランで予約する", "#"
     -if plan.about_reserve == false
       %h2
@@ -89,7 +90,7 @@
 
     - unless plan.discount == "設定しない"
       %h2
-        = "直前割利用日5日前の予約から#{pan.discount}割引！"
+        = "直前割利用日5日前の予約から#{plan.discount}割引！"
 
     - if plan.min_time
       %h2

@@ -14,11 +14,11 @@
   スペース一覧
 
 - @spaces.each do |space|
-  - if space.rooms.count == 1
-    = link_to space_room_path(space.id, space.rooms.first.id) do
-      = image_tag(space.rooms.first.pictures.first.content_url(:thumb))
+  - if space.public_rooms.count == 1
+    = link_to space_room_path(space.id, space.public_rooms.first.id) do
+      = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))
       = space.space_info.title
   - else
     = link_to  space_path(space.id) do
-      = image_tag(space.rooms.first.pictures.first.content_url(:thumb))
+      = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))
       = space.space_info.title
