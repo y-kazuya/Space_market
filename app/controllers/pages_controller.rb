@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :login?, only: [:host_entry]
 
   def top
+    @spaces = Space.public_spaces
   end
 
   def host_entry

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :owners
+
   resources :spaces do
     get    '/dashboard', to: 'dashboards#first_space'
 
@@ -19,6 +21,11 @@ Rails.application.routes.draw do
     resources :rooms do
       collection do
         get :new_first
+      end
+
+      member do
+        get :cancel_policy
+        get :terms
       end
       resources :space_infos, only: [:new, :create, :update] do
         collection do

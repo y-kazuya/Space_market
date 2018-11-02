@@ -9,6 +9,11 @@ class RoomsController < ApplicationController
   def newww
   end
 
+  def show
+    @room = Room.find(params[:id])
+    @space = @room.space
+  end
+
   def stats
     @room = Room.find(params[:id])
     @space = @room.space
@@ -51,7 +56,14 @@ class RoomsController < ApplicationController
     else
       redirect_to :back
     end
+  end
 
+  def cancel_policy
+    @room = Room.find(params[:id])
+  end
+
+  def terms
+    @room = Room.find(params[:id])
   end
 
 end

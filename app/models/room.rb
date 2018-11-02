@@ -27,4 +27,57 @@ class Room < ApplicationRecord
     end
   end
 
+  def public_plans #公開中のプランを取得
+    a =[]
+    if plans.count > 1
+     b = plans.map{|plan| plan if plan.public == true}
+     return b.compact
+    elsif plans.count == 1
+      a << plans.first if plans.first.public == true
+
+      return a
+    end
+    return []
+  end
+
+  def time_low_price #roomがもつプランの中で時間がしで一番安いプランの価格を返す
+    p = 1000000000000000
+    plans.each do |plan|
+      if plan.time_price
+        p = plan.time_price if p > plan.time_price
+      end
+    end
+    return p
+  end
+
+  def time_high_price #roomがもつプランの中で時間がしで一番高いプランの価格を返す
+    p = 0
+    plans.each do |plan|
+      if plan.time_price
+        p = plan.time_price if p < plan.time_price
+      end
+    end
+    return p
+  end
+
+  def day_low_price #roomがもつプランの中で日がしで一番安いプランの価格を返す
+    p = 1000000000000000
+    plans.each do |plan|
+      if plan.day_price
+        p = plan.day_price if p > plan.day_price
+      end
+    end
+    return p
+  end
+
+  def day_high_price #roomがもつプランの中で日がしで一番高いプランの価格を返す
+    p = 0
+    plans.each do |plan|
+      if plan.day_price
+        p = plan.day_price if p < plan.day_price
+      end
+    end
+    return p
+  end
+
 end
