@@ -14,5 +14,5 @@ class SearchController < ApplicationController
   #   @summary = []
   #   if params[:area]
   #     @summary << SpaceInfo.where[state:area]
-  # end
+  end
 end
