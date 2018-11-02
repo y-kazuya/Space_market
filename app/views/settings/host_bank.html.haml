@@ -1,0 +1,39 @@
+= render partial: 'shared/host_hedder'
+= render partial: 'shared/host_sidevar'
+
+%h2
+  設定・振込口座
+
+= @host_profile
+
+= render 'shared/errors', object: @host_bank
+
+= form_for @host_bank, url: host_bank_update_user_settings_path(current_user.id) do |f|
+
+  %h2
+    銀行名
+  = f.text_field :bank_name
+
+  %h2
+    銀行コード
+  = f.number_field :bank_code, in: 1...10000000000000
+
+  %h2
+    支店めい
+  = f.text_field :branch_name
+
+  %h2
+    支店こーど
+  = f.number_field :branch_code, in: 1...10000000000000
+
+  %h2
+    口座番号
+  = f.number_field :account_number, in: 1...10000000000000
+
+  %h2
+    口座名義オンリーカタカナ！
+  = f.text_field :account_name
+
+
+
+  = f.submit "保存"

@@ -1,9 +1,16 @@
 %h1
   space info 入力画面
 
+-if current_user.owner == true
+  = link_to "選ぶ", info_select_space_room_space_infos_path(@space, @room)
+
 = render 'shared/errors', object: @space_info
 
 = form_for [@space, @room, @space_info] do |f|
+  %h2
+    施設の眼症
+  = f.text_field :title
+
   %h2
     郵便番号
   = f.text_field :post_code, placeholder: "郵便番号だよ",maxlength: 7
