@@ -120,6 +120,13 @@ Rails.application.routes.draw do
   scope  '/dashboard' do
     resources :favorite_lists
   end
+
+  resource :search do
+    collection do
+      get :event_type, to: 'search#event_type'
+    end
+  end
+
   # space_settings_host_profile GET    /spaces/:space_id/settings/host_profile(.:format)                  host_profile#new
   # space_settings_host_profiles POST   /spaces/:space_id/settings/host_profiles(.:format)                 host_profile#create
 
