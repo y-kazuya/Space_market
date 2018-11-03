@@ -11,7 +11,7 @@ class PicturesController < RoomInfosController
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
-      redirect_to new_space_room_plan_path(params[:space_id], params[:room_id])
+      return redirect_to new_space_room_plan_path(params[:space_id], params[:room_id])
     else
       @room = @picture.room
       @space = @room.space
@@ -23,11 +23,11 @@ class PicturesController < RoomInfosController
     @picture = Picture.find(params[:id])
     if @picture.room.space.user.id == current_user.id
       if @picture.update(picture_params)
-        redirect_to new_space_room_plan_path(params[:space_id], params[:room_id])
+        return redirect_to new_space_room_plan_path(params[:space_id], params[:room_id])
       else
         @room = @picture.room
         @space = @room.space
-        render :new
+        return render :new
       end
     else
       redirect_to root_path

@@ -1,0 +1,13 @@
+%h1
+  キャンセルポリシー
+
+%h1
+  = "#{@room.space.user.host_profile.first_name}のキャンセルぽrシーです"
+%h1
+  -if @room.agreement.policy
+    = @room.agreement.policy
+  - else
+    デフォルトのスペースマーケットが用意してるキャンセルポリシー
+
+%h2
+  = link_to "スペース詳細に戻る", space_room_path(@room.space.id, @room.id)

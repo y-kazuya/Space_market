@@ -45,6 +45,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.3.1'
+set :pty, true
 
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ["/Users/kazuya/.ssh/last_key.pem"]
@@ -68,4 +69,16 @@ namespace :deploy do
       end
     end
   end
+
+  task :db_reset do
+    on roles(:db) do |host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:migrate:reset'
+        end
+      end
+    end
+  end
+
+
 end

@@ -50,7 +50,8 @@ end
   user.update!(first_name: "machida", admin: 1) if a == 0 || a == 1
 
 
-  if a < 9 && a >= 6
+  if a < 9 && a >= 6 #認証済み0r認証待ちroomを持っていない 作成中のroomは持ってる
+    title = Faker::Pokemon.name
     post_code = 1234567
     state = rand(1..47)
     city = citys.sample
@@ -62,6 +63,7 @@ end
     event_type = rand(1..17)
     user_id = user.id
     space_info = SpaceInfo.create!(
+      title: title,
       post_code: post_code,
       state: state,
       city: city,
@@ -179,9 +181,12 @@ end
   end
 
 
-  if a >= 9
+  if a >= 9 #認証済みor認証待ちroomを持っているユーザー（複数)
     #space_info作成
+    user.update!(owner: 1)
+
     rand(1..5).times do |b|
+      title = Faker::Pokemon.name
       post_code = 1234567
       state = rand(1..47)
       city = citys.sample
@@ -194,6 +199,7 @@ end
       user_id = user.id
 
       space_info = SpaceInfo.create!(
+        title: title,
         post_code: post_code,
         state: state,
         city: city,
@@ -226,6 +232,15 @@ end
           room.update!(activated: 1)
         end
 
+        room.update!(public: 0) if rand(1..3) == 2
+
+
+        #アメニティ作成
+        rand(0..20).times do |e|
+          room.amenities << Amenity.find(rand(1..32))
+        end
+        room.save!
+
         #basic_info作成
         capacity = rand(30..999)
         floor_space = rand(50..10000)
@@ -250,12 +265,18 @@ end
         title = "ルームむの見出しです#{Faker::DragonBall.character}#{rand(1..1000000000000)}"
         content = Faker::NewGirl.quote
         service = Faker::Lorem.paragraph(2, false, 4)
+        food = Faker::Superhero.name
+        clean = Faker::Superhero.power
+        pdf = "pdfだよ^^#{c + d}"
 
         intro = Intro.create!(
           title: title,
           content: content,
           service: service,
-          room_id: room.id
+          room_id: room.id,
+          food: food,
+          clean: clean,
+          pdf: pdf
         )
 
         #ピクチャー作成
@@ -263,6 +284,7 @@ end
         content = image
         about = Faker::Food.dish
         cover = 0
+
 
         picture = Picture.create!(
           content: image,
@@ -295,6 +317,7 @@ end
           time_pay = rand(0..1)
           time_price = rand(200..1000)
           about_reserve = rand(0..1)
+          discount = rand(0..7)
 
           plan = Plan.new(
             name: name,
@@ -304,8 +327,20 @@ end
             time_pay: time_pay,
             time_price: time_price,
             about_reserve: about_reserve,
+            discount: discount,
             room_id: room.id
           )
+
+          if rand(1..3) == 2
+            min_time = rand(1..97)
+            clean_time = rand(1..80)
+            cost = rand(1..100000)
+            start_day = rand(20200101..20200130)
+            end_day = rand(20200201..20200227)
+            rand(1..3) == 2 ? public = 0 : public = 1
+
+          end
+
 
           weeks_day.each do |day|
             name = day
@@ -322,6 +357,93 @@ end
             plan.weeks << week
           end
           plan.save!
+
+          if rand(1..3) == 2
+            min_time = rand(1..48)
+            clean_time = rand(1..80)
+            cost = rand(1..100000)
+            start_day = rand(20200101..20200130)
+            end_day = rand(20200201..20200227)
+            rand(1..3) == 2 ? public = 0 : public = 1
+            plan.update!(
+              min_time: min_time,
+              clean_time: clean_time,
+              cost: cost,
+              start_day: start_day,
+              end_day: end_day,
+              public: public
+              )
+          end
+
+          ## 動画追加
+          if rand(1..3) == 2
+            content = "https://www.youtube.com/watch?v=_fqRjfd8FlY"
+            movie = Movie.create!(content: content, room_id: room.id)
+          end
+
+         ##定型ぶn追加
+          if rand(1..3) == 2
+            success = "成功したぞ予約おおおおおお#{c}"
+            fail = "失敗したぞ予約うううううううう#{c}"
+            remind = "リマインドだよおおお#{c}"
+            reserve_phrase = ReservePhrase.create!(
+              success: success,
+              fail: fail,
+              remind: remind,
+              room_id: room.id
+            )
+          end
+
+          #キャンセルポリシー追加
+          if rand(1..3) == 2
+            aggree = Faker::StarWars.quote
+            policy = Faker::ChuckNorris.fact
+            agreements = Agreement.create!(
+              aggree: aggree,
+              policy: policy,
+              room_id: room.id
+            )
+          end
+
+          #オプション追加
+          rand(0..3).times do |op|
+            name = Faker::Pokemon.name
+            about = "あああああああああああ#{op}"
+            price = rand(1..10000)
+            unit = rand(1..999)
+            amount = rand(1..599)
+            rand(1..3) == 2 ? public = 0 : public = 1
+
+            option = Option.create!(
+              name: name,
+              about: about,
+              price: price,
+              unit: unit,
+              amount: amount,
+              public: public,
+              room_id: room.id
+            )
+
+            content =  Rails.root.join("app/assets/images/neba.jpg").open
+            about = "はああああああああああああああああああああああああああああああああいいいい"
+            cover = 1
+
+            option_pictures = OptionPicture.create!(
+              content: content,
+              about: about,
+              cover: cover,
+              option_id: option.id
+            )
+          end
+          #admin追加
+          rand(0..2).times do |ad|
+            user_id = User.find(rand(1..User.last.id)).id
+            admin = Admin.create!(
+              space_id: space.id,
+              user_id: user_id
+            )
+          end
+
         end
       end
     end

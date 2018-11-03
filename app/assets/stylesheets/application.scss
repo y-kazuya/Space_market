@@ -1,12 +1,15 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+@import "./register/register";
 @import "./reset";
 @import "./last";
-//@import "./config/color";
-@import "./config/valiable";
-@import "./test";
+
 //上は最初からあったやつです
+
+@import 'bootstrap-datetimepicker';
 @import "./index/top_page";
 @import "./index/3topic";
-@import "./parts/colors";
 @import "./parts/size";
 @import "./shared/header";
 @import "./shared/footer";
@@ -16,5 +19,6 @@
 @import "./config/valiable";
 @import "./test";
 @import "./register/_host_entry2";
-// @import "./register/_register";
-// @import "./register/_translateelement";
+@import "./register/_register";
+@import "./register/_translateelement";
+@import "./devise/sign_in";
