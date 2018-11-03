@@ -1,8 +1,10 @@
 class SpaceInfo < ApplicationRecord
   belongs_to :user
   has_one :space
+  before_create :make_url
 
   VALID_POST_CODE_REGEX = /\A\d{7}\z/
+  validates :title, presence: true, length: { maximum: 64 }
   validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }
   validates :state, presence: true
   validates :city, presence: true, length: { maximum: 64 }
@@ -12,6 +14,8 @@ class SpaceInfo < ApplicationRecord
   validates :access, presence: true, length: { maximum: 500}
   validates :phone_number, presence: true, numericality: { only_integer: true }, length: { maximum: 15 }
   validates :event_type, presence: true
+  validates :fax ,numericality: { only_integer: true }, length: { maximum: 15 }, allow_nil: true
+  validates :url ,length: { maximum: 30 }, allow_nil: true
 
   enum state: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -34,4 +38,9 @@ class SpaceInfo < ApplicationRecord
   def full_address
     "#{state}#{city}#{address}#{last_address}"
   end
+
+  private
+    def make_url
+      self.url = Faker::Internet.password(10, 20)
+    end
 end

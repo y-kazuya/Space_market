@@ -1,18 +1,56 @@
-%h1 ログイン
-%h2 メールアドレスでログイン
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :メールアドレス
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :パスワード
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :ログインしたままにする。
-  .actions
-    = f.submit "ログイン"
-= render "devise/shared/links"
+.sign-in-center
+  .sign-in-center__container
+    .sign-in-center__title.weight700
+      ログイン
+    .sign-in-white-box
+      .sign-in-top
+        .sign-in-top__box
+          .si-other-service
+            .si-other-service__title
+              %p 外部サービスでログイン
+            .si-other-service__link
+              = link_to "#" do
+                = image_tag 'facebook_link.png' ,class: 'si-other-service__link-img'
+            .si-other-service__link
+              = link_to "#" do
+                = image_tag 'twitter_link.png' ,class: 'si-other-service__link-img'
+            .si-other-service__link
+              = link_to "#" do
+                = image_tag 'google_link.png' ,class: 'si-other-service__link-img'
+            .si-other-service__txt
+              %p
+                ログイン以外の目的に使われることはありません。
+                %br
+                スペースマーケットがゲストの同意なしに投稿することはありません。
+          .si-mail
+            .si-mail__title
+              %p メールアドレスでログイン
+            .si-mail__form
+              = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+                = f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder: "メールアドレス",class:"si-form-field"
+                = f.password_field :password, autocomplete: "current-password",placeholder:"パスワード" ,class:"si-form-field"
+                - if devise_mapping.rememberable?
+                  .remember-signin
+                    = f.check_box :remember_me ,class:"remember-signin__check-box"
+                    = f.label :ログインしたままにする。
+                .si-mail__button
+                  = f.submit "ログイン" ,class:"si-button"
+                .si-forget-password
+                  = render "devise/shared/links"
+        .sign-in-top__register.weight700
+          = link_to new_registration_path(resource_name),class: "link-black hover-border" do
+            %span.si-forget-password__normal まだアカウントをお持ちでない方
+            %span.si-forget-password__blue.link-light-blue.hover-border こちら
+            >
+      .sign-in-bottom.weight700
+        .sign-in-bottom__left
+          ご利用料金を請求書で一括精算できる
+          %br
+          法人会員のご登録はこちら
+          %span (無料)
+        .sign-in-bottom__center
+          >
+        .sign-in-bottom__right
+          %p.si-button
+            %br
+            法人アカウント登録

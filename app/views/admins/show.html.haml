@@ -1,0 +1,20 @@
+= render partial: 'shared/host_hedder'
+= render partial: 'shared/host_sidevar'
+
+%h2
+  設定・共同管理のページ
+- unless @admins == []
+  - @admins.each do |admin|
+    = form_tag(user_admin_path(current_user.id), method: "DELETE") do
+      = admin.user.last_name
+      = hidden_field_tag :admin_id, admin.id
+      = submit_tag "削除"
+
+
+
+
+= form_tag(user_admin_path(current_user.id), method: "POST") do
+  %h2
+    管理ホストの追加（メールアドレスから検索)
+  = text_field_tag :email
+  = submit_tag "追加"

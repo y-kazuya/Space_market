@@ -1,0 +1,24 @@
+%h1
+  オーナー詳細ページ
+
+= @host.id
+= @host.last_name
+
+
+
+%h1
+  レビュ０
+
+
+%h1
+  スペース一覧
+
+- @spaces.each do |space|
+  - if space.public_rooms.count == 1
+    = link_to space_room_path(space.id, space.public_rooms.first.id) do
+      = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))
+      = space.space_info.title
+  - else
+    = link_to  space_path(space.id) do
+      = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))
+      = space.space_info.title

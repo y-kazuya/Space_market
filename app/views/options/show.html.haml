@@ -1,0 +1,43 @@
+= render partial: 'shared/room_setiing_topside'
+
+= render 'shared/errors', object: @option
+%h1
+  オプションの編集
+
+= link_to "戻る", user_room_options_path(current_user.id, @room.id)
+
+= form_for [current_user, @room, @option] do |f|
+  %h2
+    オプションの名称
+  = f.text_field :name
+
+  %h2
+    オプションの説明
+  = f.text_area :about
+
+  %h2
+    価格と単位
+  ¥
+  = f.number_field :price
+  = "/"
+  = f.number_field :unit
+
+  %h2
+    いて今日可能な数量
+  = f.number_field :amount
+
+
+
+  = f.fields_for :option_pictures do |p|
+    %h2
+      写真
+    - if @option.option_pictures.first.cover
+      = image_tag(@option.option_pictures.first.content_url(:preview))
+    = p.file_field :content
+    = p.text_area :about
+    = p.hidden_field :cover, value: 1
+
+
+
+
+  = f.submit "保存"
