@@ -19,6 +19,13 @@ Rails.application.routes.draw do
     end
 
     resources :rooms do
+      resources :favorites do
+        collection do
+          get :show
+          post :first_create
+        end
+      end
+
       collection do
         get :new_first
       end

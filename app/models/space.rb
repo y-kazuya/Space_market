@@ -10,7 +10,7 @@ class Space < ApplicationRecord
   end
 
   def self.public_spaces #認証済みかつ公開許可roomをもつスペース
-    Space.all.includes(:rooms, :space_info,rooms: :pictures).map{|s| s unless s.public_rooms == []}.compact
+    Space.joins(:rooms).where(rooms: {activated: "certification" }).where(rooms: {public: true }).distinct.includes(:space_info)
   end
 
   def self.waiting_spaces #認証待ちのroomをもつspaceを全部取ってくる
@@ -22,16 +22,7 @@ class Space < ApplicationRecord
   end
 
   def public_rooms #そのスペースex)user.spaces.first が持っている認証ずみroomかつ公開許可room
-    a =[]
-    if rooms.count > 1
-     b = rooms.map{|room| room if room.activated == "certification" && room.public == true}
-     return b.compact
-    elsif rooms.count == 1
-      a << rooms.first if rooms.first.activated == "certification" && rooms.first.public == true
-
-      return a
-    end
-    return []
+    Room.where(space_id: self.id).where(activated: "certification" ).where(public: true ).distinct
   end
 
   def waiting_rooms #そのスペースex)user.spaces.first が持っている認証待ちのroom

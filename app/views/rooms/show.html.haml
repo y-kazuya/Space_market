@@ -31,7 +31,11 @@
 %h2
   = link_to "空き情報のかくにん/予約リクエスト", "#"
 %h2
-  = link_to "お気に入り", "#"
+  - if favalite_room?(@room)
+    = link_to "お気に入り", space_room_favorites_path(@space.id, @room.id)
+
+  - else
+    = link_to "お気に入りにする！", first_create_space_room_favorites_path(@space.id, @room.id), method: :post
 
 %h2
   = link_to "シェア"
@@ -39,7 +43,8 @@
 
 %h2
   サイドバーここまで
-
+= current_user.favalite_rooms
+= favalite_room?(@room)
 
 
 

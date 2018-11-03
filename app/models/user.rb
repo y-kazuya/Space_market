@@ -53,4 +53,16 @@ class User < ApplicationRecord
     self.favorite_lists.create(name: 'お気に入りリスト')
   end
 
+  def favalite_rooms
+    a = []
+    favorite_lists.each do |list|
+      list.favorites.each do|f|
+        a << f
+      end
+    end
+    return a
+  end
+
+
+
 end

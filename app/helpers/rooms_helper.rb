@@ -15,4 +15,16 @@ module RoomsHelper
       return "¥#{room.time_low_price} ~ ¥#{room.time_high_price}"
     end
   end
+
+  def favalite_room?(room)
+    if current_user
+      current_user.favorite_lists.each do |list|
+        list.favorites.each do |f|
+          return true if f.room_id == room.id
+        end
+      end
+    end
+
+    return false
+  end
 end
