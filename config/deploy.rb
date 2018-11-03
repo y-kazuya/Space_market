@@ -45,6 +45,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.3.1'
+set :pty, true
 
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ["/Users/kazuya/.ssh/last_key.pem"]
