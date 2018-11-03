@@ -1,5 +1,3 @@
-@import "./register/_register";
-@import "./register/_translateelement";
 @import "./reset";
 @import "./last";
 //@import "./config/color";
@@ -17,5 +15,6 @@
 @import "./config/color";
 @import "./config/valiable";
 @import "./test";
-
-
+@import "./register/_host_entry2";
+// @import "./register/_register";
+// @import "./register/_translateelement";
