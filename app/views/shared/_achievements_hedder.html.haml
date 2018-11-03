@@ -1,0 +1,6 @@
+%h1
+  実績画面ヘッダー
+  = link_to "サマリー",  summary_user_achievements_path(current_user.id)
+  = link_to "ランキング", ranking_user_achievements_path(current_user.id)
+  = link_to "レビュー", reputation_user_achievements_path(current_user.id)
+  = link_to "売り上げ明細", sales_user_achievements_path(current_user.id)

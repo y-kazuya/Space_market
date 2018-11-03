@@ -1,0 +1,176 @@
+%h1
+  ルーム詳細ページです
+  ルームID
+  = @room.id
+%h1
+  ルームタイトル：
+  =@room.intro.title
+%h1
+  - @room.pictures.each do |pic|
+    = image_tag(pic.content_url(:preview))
+
+%h1
+  サイドバー！！
+%h2
+  -@room.public_plans.each do |plan|
+    - if plan.about_reserve == false
+      今すぐ予約可能
+      - break
+
+%h2
+  = time_low_high(@room) #room_helper
+  = "/時間"
+%h2
+  = day_low_high(@room) #room_helper
+  = "/日"
+
+%h2
+  ポイントが利用可能(point実装後にちゃんとする)
+
+
+%h2
+  = link_to "空き情報のかくにん/予約リクエスト", "#"
+%h2
+  = link_to "お気に入り", "#"
+
+%h2
+  = link_to "シェア"
+
+
+%h2
+  サイドバーここまで
+
+
+
+
+
+
+
+
+%h1
+  広さ:
+  = @room.basic_info.floor_space
+  収容人数: ~
+  = @room.basic_info.capacity
+
+
+%h1
+  スペースについて!!!
+  =@room.intro.content
+
+%h1
+  施設・サービスについて
+  =@room.intro.service
+
+
+%h1
+  アクセうす
+  地図表示
+  = @room.space.space_info.map_address
+
+%h2
+  住所
+  = @room.space.space_info.full_address
+%h2
+  アクセル
+  = @room.space.space_info.access
+
+%h1
+  プラン一覧
+
+-@room.public_plans.each do |plan|
+  %h1
+    プランタイトル：
+    = plan.name
+    = plan.id
+    = link_to "このプランで予約する", "#"
+    -if plan.about_reserve == false
+      %h2
+        今すぐよやくOK
+
+    - unless plan.discount == "設定しない"
+      %h2
+        = "直前割利用日5日前の予約から#{plan.discount}割引！"
+
+    - if plan.min_time
+      %h2
+        = "最低利用時間#{plan.min_time}時間~"
+
+    %h2
+      プランの説明：：：
+      =plan.about
+
+%h1
+  オプション追加料金
+- @room.options.each do |op|
+  %h2
+    オプションネーム::
+    = op.name
+    = op.price
+  %h2
+    オプションについて
+    = op.about
+
+%h1
+  アメニティー
+-@room.amenities.each do |ame|
+  = ame.name
+
+%h1
+  れっびゅー
+
+
+%h1
+  管理社
+
+%h1
+  = @room.space.user.host_profile.last_name
+  = @room.space.user.host_profile.first_name
+
+%h1
+  = link_to "オーナーについてもっと詳しく", owner_path(@room.space.user.host_profile.id)
+
+
+%h1
+  注意事項
+%h1
+  - if @room.intro.clean
+    後片付けごみについて：：：
+    = @room.intro.clean
+
+%h1
+  - if @room.intro.food
+    飲食につてい
+    = @room.intro.food
+
+%h1
+  お支払い方法
+  = link_to "決済方法についての小愛はこちら", "#"
+
+%h1
+  キャンセル料金
+  = link_to "キャンセルポリシー", cancel_policy_space_room_path(@space.id, @room.id), target: "_blank"
+
+%h1
+  注意事項
+  = link_to "ゲスト規約", terms_space_room_path(@space.id, @room.id), target: "_blank"
+
+%h1
+  お問い合わせ：：：
+  = link_to "スペースへのお問い合わせ", "#" #予約と同じくuserの連絡先テーブル必要
+
+%h1
+  利用可能な用途
+
+%h1
+  - @room.basic_info.usages.each do |usa|
+    = link_to "#" do
+      = usa.name
+    /イベントタイプ#イベント名へ飛ばす
+
+%h1
+  このスペース主編の人気スペース
+
+
+
+

@@ -1,0 +1,19 @@
+= render partial: 'shared/room_setiing_topside'
+
+%h2
+  = link_to "新規スペースを追加", new_user_room_space_info_path(current_user.id, @room.id)
+
+%h2
+  施設情報一覧
+- @space_infos.each do |info|
+  - @room.space.space_info.id == info.id ? sele = true : sele = false
+  = info.title
+  = info.id
+  = link_to chose_user_room_space_info_path(current_user.id, @room.id, info.id), method: :patch do
+    = radio_button 'page', 'category', 'rails_base', {:checked => sele}
+
+  = link_to "編集", user_room_space_info_path(current_user.id, @room.id, info.id)
+  = link_to "削除", user_room_space_info_path(current_user.id, @room.id, info.id), method: :delete
+
+
+
