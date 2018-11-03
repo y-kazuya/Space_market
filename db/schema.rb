@@ -349,6 +349,7 @@ ActiveRecord::Schema.define(version: 20181101065105) do
   add_foreign_key "basic_info_usages", "basic_infos"
   add_foreign_key "basic_info_usages", "usages"
   add_foreign_key "basic_infos", "rooms"
+
   add_foreign_key "company_addresses", "host_profiles"
   add_foreign_key "favorite_lists", "users"
   add_foreign_key "favorites", "favorite_lists"
@@ -366,6 +367,7 @@ ActiveRecord::Schema.define(version: 20181101065105) do
   add_foreign_key "reserve_phrases", "rooms"
   add_foreign_key "room_amenities", "amenities"
   add_foreign_key "room_amenities", "rooms"
+
   add_foreign_key "rooms", "spaces"
   add_foreign_key "space_infos", "users"
   add_foreign_key "weeks", "plans"
