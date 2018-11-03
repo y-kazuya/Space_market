@@ -1,5 +1,7 @@
-class SettingsController < ApplicationController
+class SettingsController < ManagementRoomController
   before_action :set_host_profile
+
+  before_action :set_spaces ,only: []
   def host_profile
   end
 
@@ -56,7 +58,7 @@ class SettingsController < ApplicationController
 
   private
     def set_host_profile
-      redirect_to root_path unless @host_profile = current_user.host_profile
+      @host_profile = current_user.host_profile
     end
 
     def host_profile_params

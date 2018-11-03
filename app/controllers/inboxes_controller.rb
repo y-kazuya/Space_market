@@ -1,5 +1,4 @@
-class InboxesController < ApplicationController
+class InboxesController < ManagementRoomController
   def show
-    @spaces = current_user.active_spaces
   end
 end

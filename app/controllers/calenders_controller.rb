@@ -1,5 +1,4 @@
-class CalendersController < ApplicationController
+class CalendersController < ManagementRoomController
   def show
-    @spaces = current_user.active_spaces
   end
 end

@@ -1,4 +1,4 @@
-class EditSpaceInfosController < ApplicationController
+class EditSpaceInfosController < RoomEditsController
 
   def index
     @room = Room.find(params[:room_id])

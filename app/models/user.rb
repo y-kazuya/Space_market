@@ -30,6 +30,10 @@ class User < ApplicationRecord
     return false
   end
 
+  def active_spaces
+    spaces.map{|s| s unless s.active_rooms== [] }.compact
+  end
+
   def public_spaces #そのユーザーがもつ認証ずみspaceかつ公開済みsのルームを持つspaceを全て取得
     spaces.map{|s| s unless s.public_rooms== [] }.compact
   end

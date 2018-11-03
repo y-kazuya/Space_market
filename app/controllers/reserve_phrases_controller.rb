@@ -1,4 +1,4 @@
-class ReservePhrasesController < ApplicationController
+class ReservePhrasesController < RoomEditsController
   def show
     @room = Room.find(params[:room_id])
     @res = ReservePhrase.find_by(room_id: @room.id) || ReservePhrase.new(room_id: @room_id)

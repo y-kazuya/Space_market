@@ -1,5 +1,4 @@
-class HostNotificationsController < ApplicationController
-  before_action :set_host_profile
+class HostNotificationsController < SettingsController
   def show
     @notification = HostNotification.find_by(host_profile_id: @host_profile.id)
   end
@@ -18,9 +17,6 @@ class HostNotificationsController < ApplicationController
   end
 
   private
-    def set_host_profile
-      redirect_to root_path unless @host_profile = current_user.host_profile
-    end
 
     def host_noti_params
       params.require(:host_notification).permit(

@@ -1,4 +1,4 @@
-class AgreementsController < ApplicationController
+class AgreementsController < RoomEditsController
   def show
     @room = Room.find(params[:room_id])
     @agree = Agreement.find_by(room_id: @room.id) || Agreement.new(room_id: @room_id)
