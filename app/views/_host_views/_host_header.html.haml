@@ -1,0 +1,30 @@
+.host-header
+  .host-header__left
+    .host-left-logo
+      = image_tag 'host-icon.png' ,class: 'host-left-img'
+    .host-left-navs
+      %ul
+        %li.host-left-navs__txt
+          ダッシュボード
+        %li.host-left-navs__txt
+          カレンダー
+        %li.host-left-navs__txt
+          受信トレイ
+        %li.host-left-navs__txt
+          スペース管理
+        %li.host-left-navs__txt
+          実績
+        %li.host-left-navs__txt
+          設定
+  .host-header__right
+    .host-right-nav
+      %ul
+        %li.host-right-nav__content-help
+          ヘルプ
+        %li.host-right-nav__content-mail
+          = link_to "#" ,class: 'navs-right__link child-link' do
+            = fa_icon 'envelope', class: 'hover-white link-gray ', id: 'envelope-size'
+        %li.host-right-nav__content-down
+          = fa_icon 'caret-down', class: 'top-nav-down hover-white link-black'
+        %li.host-right-nav__content-profile
+

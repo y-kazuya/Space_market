@@ -9,7 +9,55 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
 
-    = render partial: 'shared/header'
-    .main_wrapper
-      = yield
-    = render partial: 'shared/footer'
+    /= render partial: 'shared/header'
+    /.main_wrapper
+    /= yield
+    .host-header
+      .host-header__left
+        .host-left-logo
+          = image_tag 'host-icon.png' ,class: 'host-left-img'
+        .host-left-navs
+          %ul
+            %li.host-left-navs__txt
+              ダッシュボード
+            %li.host-left-navs__txt
+              カレンダー
+            %li.host-left-navs__txt
+              受信トレイ
+            %li.host-left-navs__txt
+              スペース管理
+            %li.host-left-navs__txt
+              実績
+            %li.host-left-navs__txt
+              設定
+      .host-header__right
+        .host-right-nav
+          %ul
+            %li.host-right-nav__content-profile
+              = image_tag 'sin.jpeg' ,class: 'content-profile-img'
+            %li.host-right-nav__content-down
+              = fa_icon 'check', class: 'content-down-img link-black color-white'
+              .content-down-box
+                .content-down-box__title
+                  = fa_icon 'check', class: ''
+                  やることリスト
+                .content-down-box__message
+                  some message
+            %li.host-right-nav__content-mail
+              = link_to "#" ,class: 'host-right-nav__link' do
+                = fa_icon 'envelope', class: 'content-mail-img hover-white link-gray', id: 'envelope-size'
+                %br
+                %p.content-mail-txt.link-white
+                  お知らせ
+              .content-mail-box
+                .content-mail-box__title
+                  = fa_icon 'envelope', class: ''
+                  お知らせ
+                .content-mail-box__message
+                  some message
+            %li.host-right-nav__content-help
+              ヘルプ
+
+
+
+    /= render partial: 'shared/footer'
