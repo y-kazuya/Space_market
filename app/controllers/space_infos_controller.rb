@@ -3,6 +3,10 @@ class SpaceInfosController < RoomInfosController
     @space_info = SpaceInfo.new
   end
 
+  def edit
+
+  end
+
   def create
     @space_info = SpaceInfo.new(space_info_params)
     @space = Space.find(params[:space_id])
@@ -50,6 +54,7 @@ class SpaceInfosController < RoomInfosController
   private
     def space_info_params
       params.require(:space_info).permit(
+        :title,
         :post_code,
         :state,
         :city,

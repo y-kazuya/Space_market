@@ -1,0 +1,66 @@
+= render partial: 'shared/room_setiing_topside'
+
+= render 'shared/errors', object: @space_info
+
+= link_to "戻る", user_room_space_infos_path(current_user.id, @room.id)
+
+
+%h1
+  新規プランの追加
+
+= form_for [current_user, @room, @space_info] do |f|
+  %h2
+    施設の眼症
+  = f.text_field :title
+
+  %h2
+    郵便番号
+  = f.text_field :post_code, placeholder: "郵便番号だよ",maxlength: 7
+
+  %h2
+    トドふけん
+  = f.select :state, SpaceInfo.states.keys, {prompt: '選択してください'}
+
+
+  %h2
+    市町村区
+  = f.text_field :city
+
+  %h2
+    番地・ビル名
+  = f.text_field :address
+
+  %h2
+    部屋番号
+  = f.text_field :last_address
+
+  %h2
+    地図のやつ
+  = f.text_field :map_address
+
+  %h2
+    アクセス
+  = f.text_area :access
+
+  %h2
+    電話番号
+  = f.number_field :phone_number, in: 1...10000000000000
+
+  %h2
+    fax番号
+  = f.number_field :fax
+
+
+  %h2
+    イベントタイプ
+  - SpaceInfo.event_types.keys.each do |key|
+    %h1
+      = f.radio_button :event_type,key
+      = key
+
+  %h2
+    公開URLの設定
+  = "https://spacemarket.com/spaces/"
+  = f.text_field :url
+
+  =f.submit "保存して進む"

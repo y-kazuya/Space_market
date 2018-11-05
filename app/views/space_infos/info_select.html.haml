@@ -7,6 +7,7 @@
 = form_tag choise_info_space_room_space_infos_path(@space, @room), method: :patch do
   - @space_infos.each do |space_info|
     %h2
+      = space_info.title
       = space_info.event_type
       = space_info.post_code
       = space_info.full_address

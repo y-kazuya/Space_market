@@ -3,6 +3,7 @@
   %h2
     担当者の住所
 = render 'shared/errors', object: @host_address
+= render 'shared/errors', object: @company_address if @company_address
 
 = form_for [@space ,"settings",@host_address] do |f|
 
@@ -12,7 +13,7 @@
 
   %h2
     都道府県
-  = f.select :state, SpaceInfo.states.keys, {prompt: '選択してください'}
+  = f.select :state, HostAddress.states.keys, {prompt: '選択してください'}
 
   %h2
     市町村区
@@ -50,7 +51,7 @@
 
       %h2
         都道府県
-      = c.select :state, SpaceInfo.states.keys, {prompt: '選択してください'}
+      = c.select :state, CompanyAddress.states.keys, {prompt: '選択してください'}
 
       %h2
         市町村区

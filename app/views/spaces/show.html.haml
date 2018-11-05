@@ -1,0 +1,46 @@
+%h1
+  spaceSHOWのページ ID
+  =@space.id
+
+
+%h1
+  スペースタイトル
+  = @space_info.title
+%h1
+  スペースタイプ
+  = @space_info.event_type
+
+
+%h1
+  この施設のルーム一覧
+
+%h1
+  - @space.public_rooms.each do |room|
+    %h1
+      =room.id
+      = link_to space_room_path(@space.id, room.id) do
+        = room.intro.title
+      - room.pictures.each do |pic|
+        = image_tag(pic.content_url(:thumb))
+
+
+%h1
+  会場地図
+  = @space_info.map_address
+
+
+%h1
+  評価とレビュー
+  配下のroomに対するレビューを寄せ集め?
+
+%h1
+  管理社
+
+%h1
+  = @host.last_name
+  = @host.first_name
+
+%h1
+  = link_to "オーナーについてもっと詳しく", owner_path(@host.id)
+
+

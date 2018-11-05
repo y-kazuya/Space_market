@@ -1,27 +1,27 @@
 .site-header
   /下のスポンサーはトップページだけ
-  .site-header__sponser
-    .site-header__sponser-container
-      .site-header__sponser-catch
-        %span.site-header__sponser-catch-text
-          期間限定
-      .site-header__sponser-date
-        .site-header__sponser-datebox
-          .site-header__sponser-date1-inner
-            %p.site-header__sponser-date1_element
-              2018年10月15日
-          .site-header__sponser-date2-inner
-            %p.site-header__sponser-date2_element
-              まで
-      .site-header-description-box
-        .site-header__sponser-title-box
-          %h2.site-header__sponser-title
-            花火鑑賞スペースが0円で使えるチャンス!
-          .site-header__sponser-sentence
-            ふじさわ江の島花火を楽しめるスペース貸切権をプレゼント
-        .site-header__sponser-button-box
-          =link_to "#" ,class: "site-header__sponser-button-text link-white hover-white" do
-            詳細へ
+  /.site-header__sponser
+  /  .site-header__sponser-container
+  /    .site-header__sponser-catch
+  /      %span.site-header__sponser-catch-text
+  /        期間限定
+  /    .site-header__sponser-date
+  /      .site-header__sponser-datebox
+  /        .site-header__sponser-date1-inner
+  /          %p.site-header__sponser-date1_element
+  /            2018年10月15日
+  /        .site-header__sponser-date2-inner
+  /          %p.site-header__sponser-date2_element
+  /            まで
+  /   .site-header-description-box
+  /      .site-header__sponser-title-box
+  /        %h2.site-header__sponser-title
+  /          花火鑑賞スペースが0円で使えるチャンス!
+  /        .site-header__sponser-sentence
+  /          ふじさわ江の島花火を楽しめるスペース貸切権をプレゼント
+  /      .site-header__sponser-button-box
+  /        =link_to "#" ,class: "site-header__sponser-button-text link-white hover-white" do
+  /          詳細へ
   %p.float
     = link_to root_path do
       = image_tag 'https://beyond.spacemarket.com/wp-content/uploads/2017/08/25191709/spmkt_profile-300x300.png' ,class: 'site-header__logo'
@@ -96,6 +96,12 @@
             = link_to host_entry_pages_path ,class: 'navs-right__link' do
               %p.navs-right__text.link-black.hover-white
                 空きスペースを掲載する
+        -elsif current_user.owner == true
+          %li.navs-right
+            = link_to user_dashboard_path(current_user.id) ,class: 'navs-right__link' do
+              %p.navs-right__text.link-black.hover-white
+                ホスト
+
         -else
           %li.navs-right
             = link_to space_dashboard_path(current_user.spaces.first.id) ,class: 'navs-right__link' do

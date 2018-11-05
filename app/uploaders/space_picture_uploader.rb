@@ -23,6 +23,10 @@ class SpacePictureUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [500, 800]
   end
 
+  version :show do
+    process resize_to_fit: [500, 3000]
+  end
+
 
 
 
