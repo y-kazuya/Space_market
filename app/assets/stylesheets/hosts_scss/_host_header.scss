@@ -12,11 +12,16 @@
     }
     .host-left-navs{
       line-height: 48px;
+      &__txt:hover{
+        color: white;
+        border-bottom: 2px solid #0E4;
+      }
       &__txt{
         height: 48px;
         color: white;
         float: left;
-        margin-left: 20px;
+        padding-left: 10px;
+        padding-right:10px;
       }
     }
   }
@@ -56,15 +61,26 @@
           right: 0px;
           width: 300px;
           box-shadow: 1px 1px 1px 1px;
+          font-size: 14px;
+          display: none;
+          line-height: 40px;
           &__title{
             background-color: #F6F6F6;
             height: 40px;
             color: black;
+            border-bottom: 1px solid gray;
           }
-          &__txt{
+          &__message{
+            background-color: white;
             height: 40px;
             color: black;
           }
+        }
+        .content-mail-checkbox{
+          display: none;
+        }
+        input[type=checkbox]:checked ~ .content-mail-box{
+          display: block;
         }
       }
       &__content-down{
@@ -77,20 +93,77 @@
           right: 0px;
           width: 300px;
           box-shadow: 1px 1px 1px 1px;
+          font-size: 14px;
+          display: none;
+          line-height: 40px;
           &__title{
+            height: 40px;
+            background-color: #F6F6F6;
+            border-bottom: 1px solid gray;
           }
-          &__txt{
+          &__message{
+            height: 40px;
           }
+        }
+        .content-down-checkbox{
+          display: none;
+        }
+        input[type=checkbox]:checked ~ .content-down-box{
+          display: block;
         }
       }
       &__content-profile{
         float: right;
         margin-right: 10px;
+        position: relative;
         .content-profile-img{
-          height: 48px;
+          width: 36px;
+          height: 36px;
           border-radius: 100%;
         }
-
+        .content-profile-box{
+          position: absolute;
+          position: absolute;
+          top:50px;
+          right: 0px;
+          width: 200px;
+          box-shadow: 1px 1px 1px 1px gray;
+          font-size: 14px;
+          background-color: white;
+          color: gray;
+          display: none;
+          &__name-with-img{
+            background-color: #F6F6F6;
+          }
+          &__name{
+            padding-left: 10px;
+            border-bottom:2px solid #F6F6F6;
+          }
+          &__spacemarket{
+            padding-left: 10px;
+          }
+          &__spacemarket-stay{
+            padding-left: 10px;
+            border-bottom:2px solid #F6F6F6;
+          }
+          &__contact{
+            padding-left: 10px;
+          }
+          &__rule{
+            padding-left: 10px;
+            border-bottom:2px solid #F6F6F6;
+          }
+          &__sign-out{
+            padding-left: 10px;
+            border-bottom:1px solid gray;
+          }
+        }
+        .content-profile-checkbox{
+          display: none;
+        }
+        input[type=checkbox]:checked ~ .content-profile-box{
+          display: block;
+        }
       }
     }
 
