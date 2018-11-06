@@ -2,7 +2,8 @@ class PagesController < ApplicationController
   before_action :login?, only: [:host_entry]
 
   def top
-    @spaces = Space.public_spaces
+    # @spaces = Space.public_spaces
+    render "tmp/room_registration_main"
   end
 
   def host_entry
