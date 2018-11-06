@@ -1,0 +1,90 @@
+.Space-Management-container{
+  .Space-Management-TopBox{
+    box-shadow: 0px 0px 2px 0px;
+    height: 74px;
+    width: 100%;
+    .Space-Management-TopBox-Left{
+      height: 100%;
+      width: 95%;
+      float: left;
+      padding-left: 20px;
+      padding-top:10px;
+      &__title{
+
+        font-size: 22px;
+      }
+      &__spacename{
+        font-size: 14px;
+        color: gray;
+      }
+    }
+    .Space-Management-TopBox-Right{
+      height: 100%;
+      width: 5%;
+      float: right;
+      line-height: 60px;
+      &__close{
+        color: gray;
+        font-size: 60px;
+      }
+    }
+  }
+  .Space-Management-BottomBox{
+      height: 100%;
+      margin-top: 1px;
+    .Space-Management-BottomBox-Left{
+      height: 100%;
+      width: 250px;
+      background-color: #F6F6F6;
+      &__space-left-nav{
+        .space-left-nav-close{
+          display: block;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          margin: 0 auto;
+          border-bottom: 3px solid #f0f0f0;
+          border-top:3px solid #f0f0f0;
+          text-align: center;
+          font-size: 12px;
+        }
+        .space-left-nav-item{
+          display: block;
+          padding-left: 20px;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          padding-right: 20px;
+        }
+        .space-left-time-pre{
+          border-bottom: 3px solid #f0f0f0;
+          border-top:3px solid #f0f0f0;
+          .space-left-pre-preview{
+            color: green;
+          }
+          .space-left-pre-minitxt{
+            color: gray;
+            font-size: 12px;
+          }
+        }
+      }
+      &__space-stay{
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+        .space-stay-txt{
+          display: block;
+          font-size: 12px;
+        }
+        .space-stay-red-button{
+          padding: 5px 5px 5px 5px;
+          margin: 5px 5px 5px 5px;
+          background-color: #F4356A;//238 53 106
+          color: white;
+          border-radius: 4px;
+        }
+      }
+    }
+    .Space-Management-BottomBox-Right{
+
+    }
+  }
+}
