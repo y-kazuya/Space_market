@@ -57,6 +57,7 @@
         .space-left-time-pre{
           border-bottom: 3px solid #f0f0f0;
           border-top:3px solid #f0f0f0;
+          position: relative;
           .space-left-pre-preview{
             color: green;
           }
@@ -64,6 +65,62 @@
             color: gray;
             font-size: 12px;
           }
+          .onoffswitch {
+              position: absolute;
+              left: 190px;top:20px;
+              -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+          }
+          .onoffswitch-checkbox-ontext{
+            position: absolute;
+            left: 190px;top:45px;
+            font-size: 12px;
+            color: gray;
+            opacity: 0;
+          }
+          .onoffswitch-checkbox-offtext{
+            position: absolute;
+            left: 190px;top:45px;
+            font-size: 12px;
+            color: gray;
+            opacity: 1.0;
+          }
+          .onoffswitch-checkbox {
+              display: none;
+              margin-left:100px;
+          }
+          .onoffswitch-label {
+              display: block; overflow: hidden; cursor: pointer;
+              width:40px;height: 18px; padding: 0; line-height: 18px;
+              border: 0px solid #999999; border-radius: 70px;
+              background-color: #A1A1A1;
+          }
+          .onoffswitch-label:before {
+              content: "";
+              display: block; width: 28px;margin: -3px;
+              background: #EEEEEE;
+              position: absolute; top: 0; bottom: 0;
+              right: 28px;
+              border-radius: 70px;
+              box-shadow: 0 2px 2px 0px #757575;
+          }
+          .onoffswitch-checkbox:checked + .onoffswitch-label {
+              background-color: #36F78D;
+          }
+          .onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+             border-color: #36F78D;
+          }
+          .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+              right: -10px;
+              background-color: #13D45A;
+              box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);
+          }
+          .onoffswitch-checkbox:checked .onoffswitch-checkbox-ontext{
+            opacity: 1.0;
+          }
+          .onoffswitch-checkbox:checked .onoffswitch-checkbox-offtext{
+            opacity: 0.0;
+          }
+
         }
       }
       &__space-stay{

@@ -30,7 +30,7 @@
           %ul
             = link_to "#" do
               %li.Space-Management-BottomBox-Left__space-left-nav
-                %p.space-left-nav-item.link-black
+                %p.space-left-nav-item.link-black.hover-left-green
                   施設情報
 
             %li.Space-Management-BottomBox-Left__space-left-nav
@@ -40,35 +40,41 @@
                   プレビュー
                 %br
                 %span.space-left-pre-minitxt
-                  スペースマーケットに掲載
-
+                  SPACEMARKETに掲載
+                %span.onoffswitch
+                  %input{type:"checkbox" ,name:"onoffswitch" ,class:"onoffswitch-checkbox" ,id:"myonoffswitch"}
+                  %label{class:"onoffswitch-label" ,for:"myonoffswitch"}
+                %span.onoffswitch-checkbox-offtext
+                  非公開
+                %span.onoffswitch-checkbox-ontext
+                  公開中
             = link_to "#" do
               %li.Space-Management-BottomBox-Left__space-left-nav
-                %p.space-left-nav-item.link-black
+                %p.space-left-nav-item.link-black.hover-left-green
                   基本情報
             = link_to "#" do
               %li.Space-Management-BottomBox-Left__space-left-nav
-                %p.space-left-nav-item.link-black
+                %p.space-left-nav-item.link-black.hover-left-green
                   スペースの紹介・注意事項
             = link_to "#" do
               %li.Space-Management-BottomBox-Left__space-left-nav
-                %p.space-left-nav-item.link-black
+                %p.space-left-nav-item.link-black.hover-left-green
                   写真・動画
             = link_to "#" do
               %li.Space-Management-BottomBox-Left__space-left-nav
-                %p.space-left-nav-item.link-black
+                %p.space-left-nav-item.link-black.hover-left-green
                   プラン・価格設定
             = link_to "#" do
               %li.Space-Management-BottomBox-Left__space-left-nav
-                %p.space-left-nav-item.link-black
+                %p.space-left-nav-item.link-black.hover-left-green
                   オプション
             = link_to "#" do
               %li.Space-Management-BottomBox-Left__space-left-nav
-                %p.space-left-nav-item.link-black
+                %p.space-left-nav-item.link-black.hover-left-green
                   定型文
             = link_to "#" do
               %li.Space-Management-BottomBox-Left__space-left-nav
-                %p.space-left-nav-item.link-black
+                %p.space-left-nav-item.link-black.hover-left-green
                   キャンセルポリシー・利用規約
             %li.Space-Management-BottomBox-Left__space-left-nav
               %p.space-left-nav-close
@@ -80,7 +86,7 @@
               %p.space-stay-txt
                 宿泊として貸し出してみませんか？
               = link_to "#" ,class:'hover-back-gray' do
-                %p.space-stay-red-button
+                %p.space-stay-red-button.weight700
                   このスペースを宿泊で貸し出す
 
         .Space-Management-BottomBox-Right
