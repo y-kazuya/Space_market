@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def top
     # @spaces = Space.public_spaces
+    @space_info = SpaceInfo.new
     render "tmp/room_registration_main"
   end
 
