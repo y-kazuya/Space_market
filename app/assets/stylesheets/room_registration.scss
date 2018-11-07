@@ -594,3 +594,140 @@
 .facility_service{
   margin-bottom: 60px;
 }
+//view 4
+.photos{
+  .detail{
+  font-size: 11px;
+  color: #999;
+  margin-top: 8px;
+  }
+}
+.add_photo{
+  display: inline-block;
+  color: #60df52;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0,0,0,0);
+  cursor: pointer;
+  .add_button{
+    font-size: 13px;
+    margin-right: 4px;
+    margin-top:20px;
+  }
+}
+.photo_area{
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 60px;
+  .ul{
+    .li{
+      .photo_wrap1{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        touch-action: manipulation;
+        cursor: grab;
+        user-select: none;
+        margin: 0px 0px 24px;
+        .photo_wrap2{
+          width: 100%;
+          background-color: #fff;
+          border: 1px solid #b3b3b3;
+          border-radius: 3px;
+          overflow: hidden;
+          display: block;
+          height: 248px;
+          padding: 12px;
+          .photo{
+            display: block;
+            width: 100%;
+            margin-bottom: 8px;
+            border-radius: 3px;
+            position: relative;
+            height: 135px;
+            overflow: hidden;
+            .cover_photo{
+              text-decoration: none;
+              color: #60df52;
+              .cover_photo_wrap{
+                box-sizing: border-box;
+                color: #60df52;
+                .source{
+                  position: static;
+                  width: 100%;
+                  height: auto;
+                  ransform: translate(0);
+                  left: 50%;
+                  top: 50%;
+                  min-width: 100%;
+                }
+                .button{
+                  padding: 0 0 12px 12px;
+                  position: absolute;
+                  left: 0;
+                  bottom: 0;
+                  .button_1{
+                    display: inline-block;
+                    border-radius: 3px;
+                    color: #60df52;
+                    background-color: #fff;
+                    border: 1px solid #60df52;
+                    font-size: 12px;
+                    padding: 6px 12px;
+                    .button_2{
+                      display: block;
+                      vertical-align: middle;
+                      width: 100%;
+                      text-align: center;
+                    }
+                  }
+
+                }
+                .delete_button{
+                  padding: 0 12px 12px 0;
+                  position: absolute;
+                  right: 0;
+                  bottom: 0;
+                  .delete_1{
+                    float: none;
+                    text-align: right;
+                    margin-top: 12px;
+                    .delete_2{
+                      display: inline-block;
+                      padding: 8px 8px;
+                      height: 30px;
+                      border-radius: 3px;
+                      text-align: center;
+                      vertical-align: middle;
+                      cursor: pointer;
+                      font-weight: bold;
+                      color: #fff;
+                      background-color: #999;
+                      width: 30px;
+                      }
+                    }
+
+                }
+              }
+            }
+          }
+          .photo_memo{
+            flex: 1;
+            vertical-align: top;
+            display: block;
+            .memo{
+              font-size: 16px;
+              height: 80px;
+              border: 1px solid #b3b3b3;
+              border-radius: 3px;
+              display: block;
+              width: 100%;
+              padding: 12px;
+              line-height: 1.5;
+              outline: none;
+              resize: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
