@@ -577,3 +577,20 @@
   background-color: white;
 }
 
+// view 3
+.space_title, .space_explanation, .facility_service{
+  .input_area{
+    margin-top: 10px;
+    width: 600px;
+    min-width: 400px;
+  }
+  .detail{
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+  }
+}
+
+.facility_service{
+  margin-bottom: 60px;
+}
