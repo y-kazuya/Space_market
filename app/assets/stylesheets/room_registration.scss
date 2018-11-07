@@ -214,14 +214,92 @@
   clear: both;
 }
 
+//フッター
+.bottom{
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: 65px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 9;
+  .bottom_line {
+    margin: 0 12px;
+    border-top: 1px solid #d1d1d1;
+  }
+  .bottom_buttons{
+    position: relative;
+    padding: 12px;
+    .back_button_wrap{
+      float: left;
+      display: inline-block;
+      width: 50%;
+      text-align: left;
+      .back_button{
+        display: inline-block;
+        padding: 0 8px;
+        border-radius: 3px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        color: #fff;
+        background-color: #999;
+        width: 140px;
+        height: 40px;
+        font-size: 14px;
+        .back_button_inside{
+          display: flex;
+          background-color: #999;
+          border: none;
+          margin: 0px auto;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+    .forward_button_wrap{
+      float: right;
+      display: inline-block;
+      width: 50%;
+      text-align: right;
+      .forward_button{
+        display: inline-block;
+        padding: 0 8px;
+        border-radius: 3px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        color: #fff;
+        background-color: #60df52;
+        width: 140px;
+        height: 40px;
+        margin: 0 0 0 12px;
+        font-size: 14px;
+        .forward_button_inside{
+          display: flex;
+          background-color: #60df52;
+          border: none;
+          margin: 0px auto;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
 // view1
 .wrapper_1_1{
-  padding: 5px 12px 0px;
+  padding: 15px 12px 0px;
   .wrapper_1_2{
     width: 100%;
     max-width: 810px;
     margin: 0 auto;
-    padding: 56px 0;
+    padding: 80px 0px 5px;
     .upper{
       .title_base{
         float: left;
@@ -230,7 +308,7 @@
         min-width: 300px;
         .title{
           color: #333;
-          font-size: 18px;
+          font-size: 20px;
           font-weight: bold;
         }
         .detail{
@@ -258,7 +336,7 @@
     }
     .main {
       display: block;
-      margin-top: 100px;
+      margin-top: 70px;
 
       .title_base{
         display: block;
@@ -405,11 +483,97 @@
         }
       }
     }
-    .bottom{
-
-    }
   }
 }
 
+// view２
+.usage{
+  .detail{
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+  }
+  .wrap{
+    float: left;
+    display: block;
+    content: "";
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    margin-top: 20px;
+    width: 200px;
+    min-width: 150px;
+    font-size: 14px;
+  }
+}
 
+.capacity{
+  .input_area{
+    width: 100px;
+    min-width: 100px;
+  }
+}
+.area{
+  .input_area{
+    width: 100px;
+    min-width: 100px;
+  }
+}
+
+.keypick{
+  .detail{
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+  }
+  .wrap{
+    float: left;
+    display: block;
+    content: "";
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    margin-top: 10px;
+    width: 200px;
+    min-width: 150px;
+  }
+}
+
+.reserve_deadline{
+  display: block;
+  .detail{
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+  }
+  .input_base{
+    display: block;
+    margin-bottom: 30px;
+  }
+}
+
+.reserve_start{
+  display: block;
+  margin-bottom: 60px;
+  .detail{
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+  }
+}
+
+.select_area {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 300px;
+  min-width: 300px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  height: 40px;
+  border-radius: 3px;
+  padding-left: 10px;
+  border: 1px solid #b3b3b3;
+  background-color: white;
+}
 
