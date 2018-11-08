@@ -93,27 +93,40 @@
             /ここから下に各ページ,正確にはrenderで呼び出されるのは上のnavbarの部分
             .hostspace-fixed-phrase
               .hostspace-edit-title
-                キャンセルポリシー・利用規約
-              %p.red-box-description.red-color
-                1文字でも記載があるとスペースマーケットのキャンセルポリシーや利用規約は適用されません。ご注意ください。
+                定型文
               .hostspace-edit-wrapper
                 %span.gray-box.weight700
                   任意
                 %span.red-box-with-txt
-                  キャンセルポリシー
+                  予約確定時
                 %p.red-box-description
-                  未入力の場合は、スペースマーケットの標準キャンセルポリシーに準ずる旨を表示します。
+                  予約の確定（支払完了）時に設定した内容のメッセージが自動でゲストに送られます。
                 %p
                   = text_area :page, :comtent,class:'SI-textarea'
+                %p.red-box-description
+                  例）鍵の受け渡しは当日受付にて行います。プロジェクター、Wi-Fi、ホワイトボードなど一式無料でご利用できますのでご安心ください。
               .hostspace-edit-wrapper
                 %span.gray-box.weight700
                   任意
                 %span.red-box-with-txt
-                  利用規約
+                  予約否認時
                 %p.red-box-description
-                  未入力の場合は、スペースマーケットのゲスト規約に準ずる旨を表示します。
+                  予約の否認時に設定した内容のメッセージが自動でゲストに送られます。
                 %p
                   = text_area :page, :comtent,class:'SI-textarea'
+                %p.red-box-description
+                  例）大変申し訳ありません。本日程ですが、ビルの緊急メンテナンス日となってしまいました。またご予約いただけますことを心よりお待ちしております。
+              .hostspace-edit-wrapper
+                %span.gray-box.weight700
+                  任意
+                %span.red-box-with-txt
+                  利用日前日のリマインド
+                %p.red-box-description
+                  利用日の前日に設定したメッセージが自動でゲストに送られます。
+                %p
+                  = text_area :page, :comtent,class:'SI-textarea'
+                %p.red-box-description
+                  明日の利用時の案内を再度送ります。鍵の開け方、キッチンの利用方法、ゴミの片付け方をご確認ください。
             .space-edit-preserve-box
               .space-edit-preserve-box__button
                 保存
