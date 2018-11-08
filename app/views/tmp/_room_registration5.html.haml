@@ -1,0 +1,152 @@
+.wrapper_1_1
+  .wrapper_1_2
+    .upper
+      .title_base.clearfix
+        .title 5 プラン
+        .detail スペースを貸し出す際の料金プランを設定してください。
+    .main
+
+      .plan_name
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name プランの名称
+        .input_base
+          %input{:placeholder => "プランの名称", :type => "text", :class => "input_area"}
+          .explanation
+
+      .plan_explanation
+        .title_base
+          .title_name_base.clearfix
+            .title_type_optional 任意
+            .title_name プランの説明
+        .input_base
+          %input{:placeholder => "プランの説明", :type => "text", :class => "input_area", style: "height: 150px;"}
+          .explanation 例）Wi-Fi、ホワイトボード完備で会議からイベントまでご利用いただけます。その他必要な備品につきましては予約リクエスト時にお問い合わせください。
+      .rent_price
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 価格
+        %ul
+          %li.clearfix
+            .price_upper
+              .title
+                .title_name 時間価格
+              .slide
+                .slide_wrap1
+                  .slide_wrap2
+                    %input.slide_value{max: "1", min: "0", name: "num", onchange: "changeValue(this.value)", step: "1", type: "range", value: "0"}
+                    .slide_name 設定中
+              .price_bottom
+                .yen ￥
+                .price_wrap
+                  %input.price_content{placeholder: "3000", type: "text"}
+                .per_hour /時間
+          %li.clearfix
+            .price_upper
+              .title
+                .title_name 一日価格
+              .slide
+                .slide_wrap1
+                  .slide_wrap2
+                    %input.slide_value{max: "1", min: "0", name: "num", onchange: "changeValue(this.value)", step: "1", type: "range", value: "0"}
+                    .slide_name 設定中
+              .price_bottom
+                .yen ￥
+                .price_wrap
+                  %input.price_content{placeholder: "8000", type: "text"}
+                .per_hour /日
+          .border
+
+      .available_date_time
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 貸出可能な曜日・時間帯
+          .detail 貸出可能な曜日と時間を設定してください。0時〜36時（翌日12時）の間で入力してください。
+          .set_all - 一括で設定する
+
+          .set_all_view
+            .set_all_view_wrap
+              .close_button ✖︎
+              .upper.clearfix
+                .title_base
+                  .title 時間帯の一括設定
+                  .detail 全ての曜日を貸出可能にし、時間帯を一括で設定できます。
+              .main.clearfix
+                .title_base2
+                  .title_name_base.clearfix
+                    .title_type 必須
+                    .title_name 貸出し可能な時間帯
+                .time_wrap2
+                  = render partial: "/tmp/available_date_detail"
+              .bottom2
+                %button.bottom_button 設定
+          %ul
+            %li.clearfix
+              .price_upper
+                .title
+                  .title_name 日曜日
+                .slide_wrap0
+                  = render partial: "/tmp/available_date"
+            %li.clearfix
+              .price_upper
+                .title
+                  .title_name 月曜日
+                .slide_wrap0
+                  = render partial: "/tmp/available_date"
+            %li.clearfix
+              .price_upper
+                .title
+                  .title_name 火曜日
+                .slide_wrap0
+                  = render partial: "/tmp/available_date"
+            %li.clearfix
+              .price_upper
+                .title
+                  .title_name 水曜日
+                .slide_wrap0
+                  = render partial: "/tmp/available_date"
+            %li.clearfix
+              .price_upper
+                .title
+                  .title_name 木曜日
+                .slide_wrap0
+                  = render partial: "/tmp/available_date"
+            %li.clearfix
+              .price_upper
+                .title
+                  .title_name 金曜日
+                .slide_wrap0
+                  = render partial: "/tmp/available_date"
+            %li.clearfix
+              .price_upper
+                .title
+                  .title_name 土曜日
+                .slide_wrap0
+                  = render partial: "/tmp/available_date"
+            %li.clearfix
+              .price_upper
+                .title
+                  .title_name 祝日
+                  .detail 他の曜日と異なった設定をした場合、祝日の設定が優先されます。
+
+                .slide_wrap0
+                  = render partial: "/tmp/available_date"
+            .border
+      .approval
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 予約の承認方式
+        .detail 予約にホストの承認が必要かどうかを設定してください。
+        .detail 承認なし（今すぐ予約）に設定するとゲストとのやりとりが簡単になり、予約が入りやすくなります。
+        .input_base.clearfix
+          .wrap.recommendation
+            %input{type: "radio", id: "radio1", name: "type", width: "200px"}
+            %lavel.radio_type{for: "radio1"} 承認なし（今すぐ予約）
+          .recommendation_sign おすすめ
+          .wrap
+            %input{type: "radio", id: "radio2", name: "type"}
+            %lavel.radio_type{for: "radio2"} 承認あり
