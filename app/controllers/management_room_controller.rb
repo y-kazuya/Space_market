@@ -1,6 +1,6 @@
 class ManagementRoomController < ApplicationController
-  before_action :owner?, expect: :first_space
-  before_action :set_spaces, expect: :first_space
+  before_action :owner?
+  before_action :set_spaces
 
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181101065105) do
+ActiveRecord::Schema.define(version: 20181108111633) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
@@ -59,8 +59,24 @@ ActiveRecord::Schema.define(version: 20181101065105) do
     t.index ["room_id"], name: "index_basic_infos_on_room_id", using: :btree
   end
 
+  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "num_first",   null: false
+    t.string   "num_seconde", null: false
+    t.string   "num_thard",   null: false
+    t.string   "num_last",    null: false
+    t.string   "name",        null: false
+    t.integer  "mm",          null: false
+    t.integer  "yy",          null: false
+    t.string   "code",        null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "use"
+    t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
+  end
+
   create_table "company_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "post_code",         null: false
+    t.string   "post_code",         null: false
     t.integer  "state",             null: false
     t.string   "city",              null: false
     t.string   "city_kata",         null: false
@@ -74,6 +90,18 @@ ActiveRecord::Schema.define(version: 20181101065105) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["host_profile_id"], name: "index_company_addresses_on_host_profile_id", using: :btree
+  end
+
+  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "first_name",                   null: false
+    t.string   "last_name",                    null: false
+    t.string   "phone_number",                 null: false
+    t.boolean  "company",      default: false, null: false
+    t.string   "company_name"
+    t.integer  "user_id",                      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id", using: :btree
   end
 
   create_table "favorite_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -96,7 +124,7 @@ ActiveRecord::Schema.define(version: 20181101065105) do
   end
 
   create_table "host_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "post_code",         null: false
+    t.string   "post_code",         null: false
     t.integer  "state",             null: false
     t.string   "city",              null: false
     t.string   "city_kata",         null: false
@@ -114,10 +142,10 @@ ActiveRecord::Schema.define(version: 20181101065105) do
 
   create_table "host_banks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "bank_name",       null: false
-    t.integer  "bank_code",       null: false
+    t.string   "bank_code",       null: false
     t.string   "branch_name",     null: false
-    t.integer  "branch_code",     null: false
-    t.integer  "account_number",  null: false
+    t.string   "branch_code",     null: false
+    t.string   "account_number",  null: false
     t.string   "account_name",    null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -157,13 +185,22 @@ ActiveRecord::Schema.define(version: 20181101065105) do
     t.string   "company_name"
     t.string   "company_name_kata"
     t.string   "company_name_en"
-    t.integer  "company_number"
+    t.string   "company_number"
     t.integer  "user_id"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.text     "profile",           limit: 65535
     t.index ["user_id", "id"], name: "index_host_profiles_on_user_id_and_id", using: :btree
     t.index ["user_id"], name: "index_host_profiles_on_user_id", using: :btree
+  end
+
+  create_table "intend_points", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "point",      null: false
+    t.string   "date",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_intend_points_on_user_id", using: :btree
   end
 
   create_table "intros", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -241,6 +278,27 @@ ActiveRecord::Schema.define(version: 20181101065105) do
     t.index ["room_id"], name: "index_plans_on_room_id", using: :btree
   end
 
+  create_table "reserve_dates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "start_date",                 null: false
+    t.boolean  "day",        default: false, null: false
+    t.integer  "reserve_id",                 null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "start_time"
+    t.string   "end_time"
+    t.index ["reserve_id"], name: "index_reserve_dates_on_reserve_id", using: :btree
+  end
+
+  create_table "reserve_options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "reserve_id",             null: false
+    t.integer  "option_id",              null: false
+    t.integer  "amount",     default: 1, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["option_id"], name: "index_reserve_options_on_option_id", using: :btree
+    t.index ["reserve_id"], name: "index_reserve_options_on_reserve_id", using: :btree
+  end
+
   create_table "reserve_phrases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "success",    limit: 65535
     t.text     "fail",       limit: 65535
@@ -249,6 +307,29 @@ ActiveRecord::Schema.define(version: 20181101065105) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["room_id"], name: "index_reserve_phrases_on_room_id", using: :btree
+  end
+
+  create_table "reserves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean  "company",                                  null: false
+    t.integer  "payment",                                  null: false
+    t.integer  "purpose",                                  null: false
+    t.integer  "people",                                   null: false
+    t.text     "usage",      limit: 65535
+    t.boolean  "coupon",                   default: false, null: false
+    t.integer  "price"
+    t.integer  "user_id",                                  null: false
+    t.integer  "plan_id",                                  null: false
+    t.integer  "room_id",                                  null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "day"
+    t.boolean  "activated",                default: false
+    t.integer  "card_id"
+    t.index ["card_id"], name: "index_reserves_on_card_id", using: :btree
+    t.index ["plan_id"], name: "index_reserves_on_plan_id", using: :btree
+    t.index ["room_id"], name: "index_reserves_on_room_id", using: :btree
+    t.index ["user_id", "created_at"], name: "index_reserves_on_user_id_and_created_at", unique: true, using: :btree
+    t.index ["user_id"], name: "index_reserves_on_user_id", using: :btree
   end
 
   create_table "room_amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -270,14 +351,14 @@ ActiveRecord::Schema.define(version: 20181101065105) do
   end
 
   create_table "space_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "post_code",                  null: false
+    t.string   "post_code",                  null: false
     t.integer  "state",                      null: false
     t.string   "city",                       null: false
     t.string   "address",                    null: false
     t.string   "last_address"
     t.string   "map_address",                null: false
     t.text     "access",       limit: 65535, null: false
-    t.integer  "phone_number",               null: false
+    t.string   "phone_number",               null: false
     t.integer  "event_type",                 null: false
     t.integer  "user_id",                    null: false
     t.datetime "created_at",                 null: false
@@ -310,6 +391,22 @@ ActiveRecord::Schema.define(version: 20181101065105) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean  "about_mail_1", default: true
+    t.boolean  "about_mail_2", default: true
+    t.boolean  "about_mail_3", default: true
+    t.boolean  "about_mail_4", default: true
+    t.boolean  "about_mail_5", default: true
+    t.boolean  "about_call_1", default: true
+    t.boolean  "about_call_2", default: true
+    t.boolean  "about_call_3", default: true
+    t.integer  "user_id",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "about_call_4", default: true
+    t.index ["user_id"], name: "index_user_notifications_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "last_name",                                            null: false
     t.string   "first_name",                                           null: false
@@ -327,6 +424,7 @@ ActiveRecord::Schema.define(version: 20181101065105) do
     t.datetime "updated_at",                                           null: false
     t.boolean  "admin",                                default: false
     t.boolean  "owner",                                default: false
+    t.integer  "point",                                default: 1000
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -349,7 +447,9 @@ ActiveRecord::Schema.define(version: 20181101065105) do
   add_foreign_key "basic_info_usages", "basic_infos"
   add_foreign_key "basic_info_usages", "usages"
   add_foreign_key "basic_infos", "rooms"
+  add_foreign_key "cards", "users"
   add_foreign_key "company_addresses", "host_profiles"
+  add_foreign_key "contacts", "users"
   add_foreign_key "favorite_lists", "users"
   add_foreign_key "favorites", "favorite_lists"
   add_foreign_key "favorites", "rooms"
@@ -357,16 +457,24 @@ ActiveRecord::Schema.define(version: 20181101065105) do
   add_foreign_key "host_banks", "host_profiles"
   add_foreign_key "host_notifications", "host_profiles"
   add_foreign_key "host_profiles", "users"
+  add_foreign_key "intend_points", "users"
   add_foreign_key "intros", "rooms"
   add_foreign_key "movies", "rooms"
   add_foreign_key "option_pictures", "options"
   add_foreign_key "options", "rooms"
   add_foreign_key "pictures", "rooms"
   add_foreign_key "plans", "rooms"
+  add_foreign_key "reserve_dates", "reserves", column: "reserve_id"
+  add_foreign_key "reserve_options", "options"
+  add_foreign_key "reserve_options", "reserves", column: "reserve_id"
   add_foreign_key "reserve_phrases", "rooms"
+  add_foreign_key "reserves", "plans"
+  add_foreign_key "reserves", "rooms"
+  add_foreign_key "reserves", "users"
   add_foreign_key "room_amenities", "amenities"
   add_foreign_key "room_amenities", "rooms"
   add_foreign_key "rooms", "spaces"
   add_foreign_key "space_infos", "users"
+  add_foreign_key "user_notifications", "users"
   add_foreign_key "weeks", "plans"
 end

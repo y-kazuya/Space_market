@@ -1,0 +1,15 @@
+クレカページ
+
+= link_to "クレジットカードを追加", new_payments_path
+
+%h1
+  クレジットカード
+-@cards.each do |card|
+  %h1
+    = card.name
+    = link_to "削除", payments_path(id: card.id), method: :delete, data: { confirm: 'クレジットカードを削除します'}
+    = link_to "編集", new_payments_path(id: card.id)
+    -unless card.use?
+      = link_to "支払い方法に設定する", set_use_payments_path(id: card.id)
+    - else
+      支払い方法に設定ちゅう

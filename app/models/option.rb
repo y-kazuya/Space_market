@@ -2,6 +2,9 @@ class Option < ApplicationRecord
   has_many :option_pictures, dependent: :destroy
   accepts_nested_attributes_for :option_pictures, reject_if: :reject_pictures
 
+  has_many :reserve_options
+  has_many :reserves,class_name: "Reserve", through: :reserve_options
+
   belongs_to :room
 
   validates :name, length: { maximum: 64 }
