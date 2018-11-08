@@ -1,0 +1,60 @@
+.basic-information-box{
+  &__title{
+    font-size: 26px;
+  }
+  &__usage{
+    padding-top: 20px;
+    .BI-usage-checkbox{
+      display: table-cell;
+      font-size: 16px;
+      width: 240px;
+      padding-bottom: 10px;
+    }
+  }
+  &__seating-capacity{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    .seating-capacity-textarea{
+      font-size: 20px;
+      margin-top: 10px;
+      height: 30px;
+      border-radius: 5px;
+    }
+  }
+  &__floor-space{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .floor-space-textarea{
+      font-size: 20px;
+      margin-top: 10px;
+      height: 30px;
+      border-radius: 5px;
+    }
+  }
+  &__key-delivery{
+    .BI-key-delivery-checkbox{
+      display: table-cell;
+      padding-right: 30px;
+      padding-bottom: 60px;
+      padding-top: 30px;
+    }
+  }
+  &__reservation{
+
+  }
+  &__term{
+
+  }
+  &__ameniti{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    .AME-checkbox{
+      display: table-cell;
+      font-size: 16px;
+      width: 240px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+  }
+
+}

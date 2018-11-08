@@ -39,6 +39,7 @@
       height: 100%;
       width: 250px;
       background-color: #F6F6F6;
+      position: fixed;
       &__space-left-nav{
         .space-left-nav-close{
           display: block;
@@ -145,6 +146,7 @@
     }
     .Space-Management-BottomBox-Right{
       width: calc(100% - 250px);
+      margin-left: 250px;
       .Space-Management-BottomBox-Right-container{
         width: 60%;height:100%;
         padding:40px 40px 40px 40px;
@@ -154,7 +156,6 @@
   }
   .space-edit-preserve-box{
     border-top:1px solid gray;
-    position: fixed;
     &__button{
       margin-left: 420px;
       margin-right: 20px;
