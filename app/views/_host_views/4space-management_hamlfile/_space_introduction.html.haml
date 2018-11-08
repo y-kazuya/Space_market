@@ -1,0 +1,71 @@
+.space-introduction-box
+  .space-introduction-box__title.weight700
+    スペースの紹介・注意事項
+  .space-introduction-box__wrapper
+    %span.red-box.weight700
+      必須
+    %span.red-box-with-txt
+      スペースの見出し
+    %p.red-box-description
+      キャッチコピーやスペースの特徴を記入してください。最大64文字。
+    %p
+      = text_area :page, :comtent,class:'SI-textarea SI-mini-textarea'
+    %p.red-box-description
+      例）キッチン付きリノベスペース！女子会・誕生日会・ママ会・コスプレ撮影・会議利用などに！
+  .space-introduction-box__wrapper
+    %span.red-box.weight700
+      必須
+    %span.red-box-with-txt
+      スペースについて
+    %p.red-box-description
+      スペースの情報、利用用途、周辺施設について説明してください。10文字以上800文字以内。
+    %p
+      = text_area :page, :comtent,class:'SI-textarea'
+    %p.red-box-description
+      例）女子会や誕生日会から会議まで様々な用途でご利用です。マンションの前にコンビニ、最寄り駅前にスーパーがあります。
+  .space-introduction-box__wrapper
+    %span.red-box.weight700
+      必須
+    %span.red-box-with-txt
+      設備・サービスについて
+    %p.red-box-description
+      設備やサービスについて説明を記述してください。10文字以上800文字以内。
+    %p
+      = text_area :page, :comtent,class:'SI-textarea'
+    %p.red-box-description
+      例）Wi-Fi、ホワイトボード完備で会議からイベントまでご利用いただけます。その他必要な備品につきましては予約リクエスト時にお問い合わせください。
+  .space-introduction-box__wrapper
+    %span.gray-box.weight700
+      任意
+    %span.red-box-with-txt
+      飲食について
+    %p.red-box-description
+      最大800文字。
+    %p
+      = text_area :page, :comtent,class:'SI-textarea'
+    %p.red-box-description
+      例）飲食持ち込み可、ケータリングもオプションで承っております。
+  .space-introduction-box__wrapper
+    %span.gray-box.weight700
+      任意
+    %span.red-box-with-txt
+      後片付け・ゴミについて
+    %p.red-box-description
+      最大800文字。
+    %p
+      = text_area :page, :comtent,class:'SI-textarea'
+    %p.red-box-description
+      例）瓶、缶類の分別をお願いいたします。回収は45L袋1つ500円（税込）とさせていただき、撤収時の精算になります。
+    .space-introduction-box__wrapper
+      %span.gray-box.weight700
+        任意
+      %span.red-box-with-txt
+        PDFファイル
+      %p.red-box-description
+        スペースの紹介、利用方法などを記載したPDFファイルをアップロードすることができます。
+      = link_to "#" do
+        %p.new_add_button
+          +ファイルを追加
+.space-edit-preserve-box
+  .space-edit-preserve-box__button
+    保存
