@@ -4,22 +4,17 @@
 @import "./register/register";
 @import "./reset";
 @import "./last";
-//@import "./config/color";
-@import "./config/valiable";
-@import "./test";
 //上は最初からあったやつです
 
 @import 'bootstrap-datetimepicker';
 @import "./index/top_page";
 @import "./index/3topic";
+@import "./index/search_result";
 @import "./parts/colors";
 @import "./parts/size";
 @import "./shared/header";
 @import "./shared/footer";
-@import "font-awesome";
+@import "./shared/search_form";
 @import "font-awesome";
 @import "./config/color";
 @import "./config/valiable";
-@import "./test";
-
-
