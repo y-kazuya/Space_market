@@ -46,7 +46,7 @@ class Room < ApplicationRecord
 
   def time_low_price #roomがもつプランの中で時間がしで一番安いプランの価格を返す
     p = 1000000000000000
-    plans.each do |plan|
+    public_plans.each do |plan|
       if plan.time_price
         p = plan.time_price if p > plan.time_price
       end
@@ -56,7 +56,7 @@ class Room < ApplicationRecord
 
   def time_high_price #roomがもつプランの中で時間がしで一番高いプランの価格を返す
     p = 0
-    plans.each do |plan|
+    public_plans.each do |plan|
       if plan.time_price
         p = plan.time_price if p < plan.time_price
       end
@@ -66,7 +66,7 @@ class Room < ApplicationRecord
 
   def day_low_price #roomがもつプランの中で日がしで一番安いプランの価格を返す
     p = 1000000000000000
-    plans.each do |plan|
+    public_plans.each do |plan|
       if plan.day_price
         p = plan.day_price if p > plan.day_price
       end
@@ -76,7 +76,7 @@ class Room < ApplicationRecord
 
   def day_high_price #roomがもつプランの中で日がしで一番高いプランの価格を返す
     p = 0
-    plans.each do |plan|
+    public_plans.each do |plan|
       if plan.day_price
         p = plan.day_price if p < plan.day_price
       end

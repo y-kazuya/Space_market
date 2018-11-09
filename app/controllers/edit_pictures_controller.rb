@@ -1,4 +1,4 @@
-class EditPicturesController < ApplicationController
+class EditPicturesController < RoomEditsController
 
   def show
     @room = Room.find(params[:room_id])

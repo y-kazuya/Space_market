@@ -1,5 +1,5 @@
-class AdminsController < ApplicationController
-
+class AdminsController < SettingsController
+  before_action :set_host_profile, only: []
 
   def show
     @admins = []

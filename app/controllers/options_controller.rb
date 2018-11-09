@@ -1,4 +1,4 @@
-class OptionsController < ApplicationController
+class OptionsController < RoomEditsController
   def index
     @room = Room.find(params[:room_id])
     @options = @room.options

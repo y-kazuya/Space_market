@@ -9,12 +9,13 @@
 @import 'bootstrap-datetimepicker';
 @import "./index/top_page";
 @import "./index/3topic";
-@import "./index/search_result";
-@import "./parts/colors";
 @import "./parts/size";
 @import "./shared/header";
 @import "./shared/footer";
-@import "./shared/search_form";
 @import "font-awesome";
 @import "./config/color";
 @import "./config/valiable";
+@import "./register/_host_entry2";
+@import "./devise/sign_in";
+@import "./shared/search_form";
+@import "./index/search_result";

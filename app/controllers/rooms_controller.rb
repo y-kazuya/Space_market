@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :owner?, only: [:index, :newww, :stats]
+
   def index
     @spaces = Space.where(user_id: current_user.id).includes(:rooms)
   end
@@ -65,5 +67,10 @@ class RoomsController < ApplicationController
   def terms
     @room = Room.find(params[:id])
   end
+
+  private
+    def owner?
+      redirect_to root_path if current_user.owner == false || current_user.id != params[:user_id].to_i
+    end
 
 end

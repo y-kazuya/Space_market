@@ -31,7 +31,11 @@
 %h2
   = link_to "空き情報のかくにん/予約リクエスト", "#"
 %h2
-  = link_to "お気に入り", "#"
+  - if favalite_room?(@room)
+    = link_to "お気に入り", space_room_favorites_path(@space.id, @room.id)
+
+  - else
+    = link_to "お気に入りにする！", first_create_space_room_favorites_path(@space.id, @room.id), method: :post
 
 %h2
   = link_to "シェア"
@@ -39,7 +43,8 @@
 
 %h2
   サイドバーここまで
-
+= current_user.favalite_rooms
+= favalite_room?(@room)
 
 
 
@@ -82,6 +87,7 @@
   %h1
     プランタイトル：
     = plan.name
+    = plan.id
     = link_to "このプランで予約する", "#"
     -if plan.about_reserve == false
       %h2
@@ -89,7 +95,7 @@
 
     - unless plan.discount == "設定しない"
       %h2
-        = "直前割利用日5日前の予約から#{pan.discount}割引！"
+        = "直前割利用日5日前の予約から#{plan.discount}割引！"
 
     - if plan.min_time
       %h2

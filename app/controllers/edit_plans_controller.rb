@@ -1,4 +1,4 @@
-class EditPlansController < ApplicationController
+class EditPlansController < RoomEditsController
   def index
     @room = Room.find(params[:room_id])
     @plans = @room.plans

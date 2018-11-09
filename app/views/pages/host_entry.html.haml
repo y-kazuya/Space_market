@@ -1,5 +1,615 @@
-%h1
- ホストエントリーページ
+%noscript
+  / Google Tag Manager (noscript)
+  %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-TBF7ND5", :style => "display:none;visibility:hidden", :width => "0"}
+  / End Google Tag Manager (noscript)
+#js-root
+  %div
+    .site-main
+      .host-lp.sc-gxMtzJ.bcgqPY
+        %header.sc-dfVpRl.fcvuns
+          %p.sc-gzOgki.bqFTyS
+            %a.sc-iyvyFf.dlXLao{:href => "https://spacemarket.com/"}
+              スペースマーケット
+              / 第一ブロック
+        .sc-hwwEjo.EiLbn
+          .sc-kPVwWT.jTaSvC
+            .sc-kfGgVZ.hIQySa
+              %h1.sc-esjQYD.sBDTv 空きスペースで収益アップ
+              .sc-kIPQKe.hibFsE
+                %p.sc-hmXxxW.jTrnLk
+                  スペースマーケットではお持ちのスペースを1時間単位から貸し出すことができます。
+                  %br>/
+                  ホスト登録して、収益アップをしませんか？
+        .sc-eXEjpC.kDPrUt
+          .sc-dqBHgY.gvqmQP
+            .sc-kgAjT.gayETD
+              .sc-cJSrbW.hoBnWi
+                %p.sc-ksYbfQ.cFihrX
+                  %span.sc-hmzhuo.cSONKD
+                    どのくらい
+                    %br>/
+                    稼げるの？
+              .sc-frDJqD.hLuObW
+                .sc-kvZOFW.fIcsIS
+                  %h3.sc-hqyNC.cBtJfD
+                    お持ちのスペースの収益をチェック！
+                .sc-jbKcbu.fRWcwX
+                  .sc-dNLxif.kplau
+                    .ant-select.ant-select-enabled
+                      .ant-select-selection.ant-select-selection--single{"aria-autocomplete" => "list", "aria-expanded" => "false", "aria-haspopup" => "true", :role => "combobox", :tabindex => "0"}
+                        .ant-select-selection__rendered
+                          .ant-select-selection-selected-value{:style => "display: block; opacity: 1;", :title => "東京"}
+                            東京
+                        %span.ant-select-arrow{:style => "user-select: none;", :unselectable => "on"}
+                          %b
+                  .sc-dNLxif.kplau
+                    .ant-select.ant-select-enabled
+                      .ant-select-selection.ant-select-selection--single{"aria-autocomplete" => "list", "aria-expanded" => "false", "aria-haspopup" => "true", :role => "combobox", :tabindex => "0"}
+                        .ant-select-selection__rendered
+                          .ant-select-selection-selected-value{:style => "display: block; opacity: 1;", :title => "23区内"}
+                            23区内
+                        %span.ant-select-arrow{:style => "user-select: none;", :unselectable => "on"}
+                          %b
+                  .sc-dNLxif.kplau
+                    .ant-select.ant-select-enabled
+                      .ant-select-selection.ant-select-selection--single{"aria-autocomplete" => "list", "aria-expanded" => "false", "aria-haspopup" => "true", :role => "combobox", :tabindex => "0"}
+                        .ant-select-selection__rendered
+                          .ant-select-selection-selected-value{:style => "display: block; opacity: 1;", :title => "定員30名"} 定員30名
+                        %span.ant-select-arrow{:style => "user-select: none;", :unselectable => "on"}
+                          %b
+                  .sc-jqCOkK.hITAsh
+                    .sc-uJMKN.dHnwtU
+                      予想収益：
+                      .sc-TOsTZ.enULkL
+                        %i.fa.fa-question-circle.sc-jKJlTe.bCBUtn
+                        .sc-cHGsZl.jbkajK
+                          .sc-gisBJw.emfimi
+                            .sc-kjoXOD.cOwpyj 予想収益は、選択されたエリア、収容人数と同条件の人気スペースによる1ヶ月間(特定の月)での実績値を元に推定しています。実際の収益は、貸出価格、施設の種類、立地、貸出可能な利用用途などの要因によって異なる場合があり、表示された推定額は、収益を保証するものではございません。
+                    %p.sc-bbmXgH.cdUcxL
+                      %i.fa.fa-yen.sc-jKJlTe.bKdnKb>
+                      230,000
+                    .sc-gGBfsJ.xHTQH
+                      .sc-hMqMXs.gRFWZM
+                        %span.sc-kEYyzF.bgQmZj
 
-= link_to "スペース掲載を始める",new_first_spaces_path
-//この時点でスペースを作りそれをidにしてroom#newへリダイレクト
+
+        .sc-ibxdXY.cuZnxw
+          .sc-dqBHgY.gvqmQP
+            .sc-lkqHmb.ejVVRe
+              .sc-eLExRp.bvJmZk
+                .sc-cbkKFq.lhnlob
+                  予想収益：
+                  .sc-TOsTZ.enULkL
+                    %i.fa.fa-fa.fa-question-circle.sc-jKJlTe.bCBUtn
+                    .sc-cHGsZl.fEoKOV
+                      .sc-gisBJw.jmvMAc
+                        .sc-kjoXOD.cOwpyj 予想収益は、選択されたエリア、収容人数と同条件の人気スペースによる1ヶ月間(特定の月)での実績値を元に推定しています。実際の収益は、貸出価格、施設の種類、立地、貸出可能な利用用途などの要因によって異なる場合があり、表示された推定額は、収益を保証するものではございません。
+                .sc-krvtoX.fXPFae
+                  %i.fa.fa-yen.sc-jKJlTe.jUJbfT>
+                  230,000
+                = link_to new_first_spaces_path do
+                  .sc-fYiAbW.igwNfb
+                    .sc-hMqMXs.jejrBi
+
+                      %span.sc-kEYyzF.bgQmZj
+                        スペース掲載を
+                        始める
+          / 第２ブロック
+        .sc-RefOD.dtWQpV
+          .sc-dqBHgY.gvqmQP
+            %h2.sc-iQKALj.fgLEPd
+              スペースマーケットが
+              %br.sc-bwCtUz.jmpxYn>/
+              選ばれる3つの理由
+            %ol.sc-hrWEMg.fyhGPW
+              %li.sc-eTuwsz.jzdyEk
+                %h3.sc-gwVKww.fGisqG
+                  %span.sc-hXRMBi.kvokUC> 1.
+                  充実のサポート
+                .sc-epnACN.ergbaZ
+                  %p.sc-hmXxxW.jTrnLk ページの作成から集客、運営までのお悩み・ご相談など、スタッフがサポート。定期的に説明会も開催し、スペース運営のノウハウをシェアしています。
+                %p.sc-iQNlJl.dlKibg
+                  = image_tag "point_01@3x-3149c21b05.png", width: "100%"
+              %li.sc-eTuwsz.jzdyEk
+                %h3.sc-gwVKww.fGisqG
+                  %span.sc-hXRMBi.kvokUC> 2.
+                  多様な利用シーン
+                .sc-epnACN.ergbaZ
+                  %p.sc-hmXxxW.jTrnLk イベント開催、会議・社員研修などのビジネス利用から結婚式・誕生会などのパーティー利用まで、幅広いシーンに利用されています。
+                %p.sc-iQNlJl.dlKibg
+                  = image_tag "point_02@3x-ddee3fc2f2.png", width: "100%"
+              %li.sc-eTuwsz.jzdyEk
+                %h3.sc-gwVKww.fGisqG
+                  %span.sc-hXRMBi.kvokUC> 3.
+                  安心のリスク回避
+                .sc-epnACN.ergbaZ
+                  %p.sc-hmXxxW.jTrnLk 信頼できるゲスト予約を選定し、突然のキャンセルを回避します。また、何らかのトラブルが発生した場合、損害額を1億円を限度として補償します。
+                %p.sc-iQNlJl.dlKibg
+                  = image_tag "point_03@3x-67f84c87dc.png", width: "100%"
+        / 第３ブロック
+        .sc-bsbRJL.ihkXoH
+          .sc-dqBHgY.gvqmQP
+            .sc-hZSUBg.fNpFNF
+              %span.sc-cMhqgX.jROZXE 無料
+              %h2.sc-iuJeZd.fEqSFF ホスト向け説明会開催中！
+              .sc-esOvli.fJLxUc
+                %p.sc-hmXxxW.jTrnLk
+                  説明会ではスペースマーケットをご利用中のホスト様の事例を紹介しながら、
+                  %br.sc-cmthru.jiqQCf>/
+                  これからスペースを運営していかれる皆さまのご不明点などに直接お答えして行きます。
+            .sc-hMFtBS.ijCbqd
+              .third_box_1.sc-cLQEGU.hiviCA
+                %h3.sc-gqPbQI.ehOtSp
+                  %i.fa.fa-flag.sc-jKJlTe.hfdsLq>
+                  シェアリングエコノミーセミナー。急成長するシェア市場
+                .sc-hORach.jfcdOd.clearfix
+                  %p.sc-bMVAic.eALNXd
+                    %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    千葉県稲毛区千葉大学
+                  %p.sc-bAeIUo.gofUpp
+                    %i.fa.fa-calendar-alt.sc-jKJlTe.hfdsLq>
+                    2018/11/05 (月)
+                  %p.sc-iujRgT.ehmOcY
+                    %i.far.fa-clock.sc-jKJlTe.hfdsLq>
+                    13：30 - 16：30
+                .sc-GMQeP.jUQazZ
+                  %a.sc-exAgwC.fVjqAo{:href => "https://chiba-bank.peatix.com/", :target => "_blank"}
+                    %i.fa.fa-external-link-alt.sc-jKJlTe.hfdsLq>
+                    詳細を見る
+              .third_box_2.sc-cLQEGU.hiviCA
+                %h3.sc-gqPbQI.ehOtSp
+                  %i.fa.fa-flag.sc-jKJlTe.hfdsLq>
+                  空きスペースを有効活用！スペース活用ノウハウ公開
+                .sc-hORach.jfcdOd.clearfix
+                  %p.sc-bMVAic.eALNXd
+                    %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    東京都新宿区西新宿
+                  %p.sc-bAeIUo.gofUpp
+                    %i.fa.fa-calendar-alt.sc-jKJlTe.hfdsLq>
+                    2018/11/07 (水)
+                  %p.sc-iujRgT.ehmOcY
+                    %i.far.fa-clock.sc-jKJlTe.hfdsLq>
+                    19:00 - 20:00
+                .sc-GMQeP.jUQazZ
+                  %a.sc-exAgwC.fVjqAo{:href => "https://spacemarket-new-42.peatix.com/", :target => "_blank"}
+                    %i.fa.fa-external-link-alt.sc-jKJlTe.hfdsLq>
+                    詳細を見る
+              .third_box_3.sc-cLQEGU.hiviCA
+                %h3.sc-gqPbQI.ehOtSp
+                  %i.fa.fa-flag.sc-jKJlTe.hfdsLq>
+                  サポート付き！1時間で完結♪スペース登録相談会
+                .sc-hORach.jfcdOd.clearfix
+                  %p.sc-bMVAic.eALNXd
+                    %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    東京都新宿区西新宿
+                  %p.sc-bAeIUo.gofUpp
+                    %i.fa.fa-calendar-alt.sc-jKJlTe.hfdsLq>
+                    2018/11/14 (水)
+                  %p.sc-iujRgT.ehmOcY
+                    %i.far.fa-clock.sc-jKJlTe.hfdsLq>
+                    10:00 - 18:30
+                .sc-GMQeP.jUQazZ
+                  %a.sc-exAgwC.fVjqAo{:href => "https://spacemarket-hour-14.peatix.com/", :target => "_blank"}
+                    %i.fa.fa-external-link-alt.sc-jKJlTe.hfdsLq>
+                    詳細を見る
+              .third_box_4.sc-cLQEGU.hiviCA
+                %h3.sc-gqPbQI.ehOtSp
+                  %i.fa.fa-flag.sc-jKJlTe.hfdsLq>
+                  はじめての方向け！スペースマーケット説明会
+                .sc-hORach.jfcdOd.clearfix
+                  %p.sc-bMVAic.eALNXd
+                    %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    東京都新宿区西新宿
+                  %p.sc-bAeIUo.gofUpp
+                    %i.fa.fa-calendar-alt.sc-jKJlTe.hfdsLq>
+                    2018/11/28 (水)
+                  %p.sc-iujRgT.ehmOcY
+                    %i.far.fa-clock.sc-jKJlTe.hfdsLq>
+                    19:30 - 20:45
+                .sc-GMQeP.jUQazZ
+                  %a.sc-exAgwC.fVjqAo{:href => "https://spacemarket-new-44.peatix.com/", :target => "_blank"}
+                    %i.fa.fa-external-link-alt.sc-jKJlTe.hfdsLq>
+                    詳細を見る
+            .sc-cQFLBn.LEKpE
+              %a.sc-gojNiO.hUbARb{:href => "https://peatix.com/group/35033/events", :target => "_blank"}
+                %i.fa.fa-external-link-alt.sc-jKJlTe.hfdsLq>
+                その他の説明会はこちら
+        / 第４ブロック
+        .sc-daURTG.hvHcyh
+          .sc-dqBHgY.gvqmQP
+            %h2.sc-iQKALj.fgLEPd 先輩ホストの声
+            .sc-bXGyLb.bvwlzc
+              .slick-initialized.slick-slider
+                %button.slick-arrow.slick-prev{"data-role" => "none", :style => "display: block;", :type => "button", :value => "<"}
+                  = fa_icon 'chevron-circle-left', class: 'fa'
+                .slick-list
+                  .slick-track{:style => "opacity: 1; transform: translate3d(200px, 0px, 0px); width: 6230px;"}
+                    .slick-slide.slick-cloned.sc-jnlKLf.DRakt{"data-index" => "-1"}
+                    /   .sc-fYxtnH.dhiRdm
+                    /     .sc-tilXH.kFNXye
+                    /       %p.sc-hEsumM.trvSG 月の売上実績：
+                    /       %p.sc-ktHwxA.cQHaeO
+                    /         %i.fa.fa-yen-sign.sc-jKJlTe.fAiwoI 163,734
+                    /     = image_tag "img-sample05-e83bba8d0b.jpg", width: "100%", class: "sc-kafWEX dxyAQM"
+                    /   .sc-feJyhm.jtYqwG
+                    /     .sc-cIShpX.ktDFOh
+                    /       = image_tag "space-owner05-9c88b40d7f.png", width: "100%", class: "sc-iELTvK kNnoxF"
+                    /       %h3.sc-cmTdod.epoNea 運用している不動産の空室時間の稼働が増加！
+                    /     .sc-jwKygS.XsfHF
+                    /       %p.sc-btzYZH.jmFNTq
+                    /         運用している不動産の物件に空き時間があったので、少しでも空き時間を少なくできればと思い、スペースマーケットの利用を開始しました。
+                    /         %br>/
+                    /         利用を始めてみると思っていた以上に運用施設とスペースマーケットの親和性が高く、本来の用途とは異なるパーティーや撮影などで空室時間の稼働が増加しました。スペースマーケットを使った空き時間の活用の可能性は今後も広がっていくと感じています。
+                    /   .sc-lhVmIH.gbvFMz
+                    /     %p.sc-bYSBpT.ecQoGa トリップモール
+                    /     .sc-elJkPf.bkXIjH
+                    /       %p.sc-jtRfpW.cpHUBJ 都内各所で撮影・パーティなどに利用できる様々なスペースをご提供。
+                    /     %p.sc-kTUwUJ.jOmweg
+                    /       %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    /       東京都渋谷区
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       5,000/時間
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       28,500/日
+                    .slick-slide.slick-active.sc-jnlKLf.DRakt.clearfix{"data-index" => "0", :style => "outline: none; width: 680px;", :tabindex => "-1"}
+                      .right-info
+                        .dhiRdm
+                          .sc-tilXH.kFNXye
+                            %p.sc-hEsumM.trvSG 月の売上実績：
+                            %p.sc-ktHwxA.cQHaeO
+                              %i.fa.fa-yen-sign.sc-jKJlTe.fAiwoI>
+                              656,532
+                          = image_tag "img-sample01-40333a4871.jpg", width: "100%", class: "sc-kafWEX dxyAQM"
+                        .gbvFMz
+                          %p.sc-bYSBpT.ecQoGa ASAGORO
+                          .sc-elJkPf.bkXIjH
+                            %p.sc-jtRfpW.cpHUBJ 23区内にありながら、木々に囲まれ築93年を超す、昔ながらの風情あふれる平屋建ての人気古民家スペース。
+                          %p.sc-kTUwUJ.jOmweg
+                            %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                            東京都中野区　
+                            %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                            3,000〜15,000円/時間
+                            %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                            22,000〜120,000円/日
+                      .jtYqwG
+                        .sc-cIShpX.ktDFOh
+                          = image_tag "space-owner01-61dd4e6ea1.png", width: "100%", class: "sc-iELTvK kNnoxF"
+                          %h3.sc-cmTdod.epoNea 売上は月平均600,000円超え！
+                        .sc-jwKygS.XsfHF
+                          %p.sc-btzYZH.jmFNTq
+                            元々物件が素晴らしく、もっと多くの人にこの物件の良さを感じて欲しいと思い、スペースの貸出を始めました。スペースマーケットを利用してからはスペースとしての利用用途がかなり広がりました。法人の撮影や、最近では朗読や、落語、演劇などの個人の発表の場としても利用をされるようになりました。
+                            %br>/
+                            元々自社だけで集客をしていましたがスペースマーケットのサービスは使いやすく、利用を開始してからも簡単にやり取りや売り上げの管理などを行うことができています。
+                    / .slick-slide.sc-jnlKLf.DRakt{"data-index" => "1", :style => "outline: none; width: 890px;", :tabindex => "-1"}
+                    /   .sc-fYxtnH.dhiRdm
+                    /     .sc-tilXH.kFNXye
+                    /       %p.sc-hEsumM.trvSG 月の売上実績：
+                    /       %p.sc-ktHwxA.cQHaeO
+                    /         %i.fa.fa-yen-sign.sc-jKJlTe.fAiwoI>
+                    /         351,540
+                    /     %img.sc-kafWEX.dxyAQM{:alt => "紫栄庵", :src => "./host_entry_files/img-sample02-a411622643.jpg"}/
+                    /   .sc-feJyhm.jtYqwG
+                    /     .sc-cIShpX.ktDFOh
+                    /       %img.sc-iELTvK.kNnoxF{:alt => "", :src => "./host_entry_files/space-owner02-55ee03aef3.png"}/
+                    /       %h3.sc-cmTdod.epoNea 想定外の利用用途でホストを楽しんでいます！
+                    /     .sc-jwKygS.XsfHF
+                    /       %p.sc-btzYZH.jmFNTq
+                    /         スペースマーケットで貸出をしてからは意外にコスプレイヤーの方の撮影利用が多くとても驚きました。最初は意図していない利用用途だったので不安な気持ちもありましたが実際に貸出を行ってみるとコスプレイヤーの方は親切でマナーもよく安心して貸出をすることができました。
+                    /         %br>/
+                    /         いい意味で想定外の利用用途が増えることで利用者のいろいろなニーズが知れ成約数増加に繋がっているのだと思います。自分でも考えつかなかった用途が次々見つかるのは非常に面白く、ホストを楽しんでいます。
+                    /   .sc-lhVmIH.gbvFMz
+                    /     %p.sc-bYSBpT.ecQoGa 紫栄庵
+                    /     .sc-elJkPf.bkXIjH
+                    /       %p.sc-jtRfpW.cpHUBJ 約300坪の敷地と純和風のお庭。撮影、お茶会、着付け、食事会ほか様々に利用可能。
+                    /     %p.sc-kTUwUJ.jOmweg
+                    /       %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    /       神奈川県横浜市神奈川区　
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       3,000〜20,000/時間
+                    / .slick-slide.sc-jnlKLf.DRakt{"data-index" => "2", :style => "outline: none; width: 890px;", :tabindex => "-1"}
+                    /   .sc-fYxtnH.dhiRdm
+                    /     .sc-tilXH.kFNXye
+                    /       %p.sc-hEsumM.trvSG 月の売上実績：
+                    /       %p.sc-ktHwxA.cQHaeO
+                    /         %i.fa.fa-yen-sign.sc-jKJlTe.fAiwoI>
+                    /         379,254
+                    /     %img.sc-kafWEX.dxyAQM{:alt => "ピース", :src => "./host_entry_files/img-sample03-4458de4c16.jpg"}/
+                    /   .sc-feJyhm.jtYqwG
+                    /     .sc-cIShpX.ktDFOh
+                    /       %img.sc-iELTvK.kNnoxF{:alt => "", :src => "./host_entry_files/space-owner03-867580ae83.png"}/
+                    /       %h3.sc-cmTdod.epoNea 空いている時間で賃貸以上の収益に！
+                    /     .sc-jwKygS.XsfHF
+                    /       %p.sc-btzYZH.jmFNTq
+                    /         元々自習室として運営していた施設の集客に困っており、施設を会議室に変えて運営を開始し直したタイミングで日経トレンディを見てスペースマーケットを利用し始めました。スペースマーケットで貸出を開始してからはすぐに売り上げが上がるようになり、値付けを工夫したこともあって、会議室のカテゴリーで1位を取るまでになりました。
+                    /         = succeed "\u{307e}\u{305f}\u{8cc3}\u{8cb8}\u{306b}\u{51fa}\u{305b}\u{3070}\u{81ea}\u{793e}\u{3067}\u{306f}\u{4f7f}\u{3048}\u{306a}\u{304f}\u{306a}\u{308a}\u{307e}\u{3059}\u{304c}\u{3001}\u{30b9}\u{30da}\u{30fc}\u{30b9}\u{30de}\u{30fc}\u{30b1}\u{30c3}\u{30c8}\u{3067}\u{8cb8}\u{51fa}\u{3092}\u{884c}\u{3046}\u{3053}\u{3068}\u{3067}\u{7a7a}\u{3044}\u{3066}\u{3044}\u{308b}\u{6642}\u{306f}\u{81ea}\u{5206}\u{305f}\u{3061}\u{3067}\u{5229}\u{7528}\u{3067}\u{304d}\u{3001}\u{7a7a}\u{3044}\u{3066}\u{3044}\u{308b}\u{6642}\u{9593}\u{3067}\u{8cc3}\u{8cb8}\u{4ee5}\u{4e0a}\u{306e}\u{53ce}\u{76ca}\u{3092}\u{4e0a}\u{3052}\u{308b}\u{3053}\u{3068}\u{304c}\u{3067}\u{304d}\u{3066}\u{3044}\u{308b}\u{306e}\u{3067}\u{975e}\u{5e38}\u{306b}\u{4fbf}\u{5229}\u{3060}\u{3068}\u{611f}\u{3058}\u{3066}\u{3044}\u{307e}\u{3059}\u{3002}" do
+                    /           %br/
+                    /   .sc-lhVmIH.gbvFMz
+                    /     %p.sc-bYSBpT.ecQoGa ピース
+                    /     .sc-elJkPf.bkXIjH
+                    /       %p.sc-jtRfpW.cpHUBJ ニコニコ生放送のゲーム実況チャンネルの番組制作に利用しているスタジオや控室・小会議室を利用可能。
+                    /     %p.sc-kTUwUJ.jOmweg
+                    /       %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    /       東京都豊島区　
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       490〜￥1,080/時間
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       3,980〜11,980/日
+                    / .slick-slide.sc-jnlKLf.DRakt{"data-index" => "3", :style => "outline: none; width: 890px;", :tabindex => "-1"}
+                    /   .sc-fYxtnH.dhiRdm
+                    /     .sc-tilXH.kFNXye
+                    /       %p.sc-hEsumM.trvSG 月の売上実績：
+                    /       %p.sc-ktHwxA.cQHaeO
+                    /         %i.fa.fa-yen-sign.sc-jKJlTe.fAiwoI>
+                    /         2,021,500
+                    /     %img.sc-kafWEX.dxyAQM{:alt => "hanami", :src => "./host_entry_files/img-sample04-403a479e9e.jpg"}/
+                    /   .sc-feJyhm.jtYqwG
+                    /     .sc-cIShpX.ktDFOh
+                    /       %img.sc-iELTvK.kNnoxF{:alt => "", :src => "./host_entry_files/space-owner04-f587a976dc.png"}/
+                    /       %h3.sc-cmTdod.epoNea 空いている時間で賃貸以上の収益に！
+                    /     .sc-jwKygS.XsfHF
+                    /       %p.sc-btzYZH.jmFNTq
+                    /         今までは飲食店舗として運営していたこともあり、個人でのパーティーでの利用が大多数でしたが、スペースマーケットを利用し始めてからは法人利用の機会が増えました。
+                    /         %br>/
+                    /         特に路面店舗の特性を生かして頂き、数ヶ月単位での企業のPRイベントでご利用頂くことが多く通常どおり飲食店を営業しながら、収益を上げることができ、さらにPR効果によって通常よりも多くのお客様に足を運んでもらうこともできました。お店の新しい収益の柱ができるとは利用を開始した頃は思ってもいませんでした。
+                    /   .sc-lhVmIH.gbvFMz
+                    /     %p.sc-bYSBpT.ecQoGa hanami
+                    /     .sc-elJkPf.bkXIjH
+                    /       %p.sc-jtRfpW.cpHUBJ 表参道駅から徒歩3分という好立地、新築一軒家。1階はカフェスペース・2階はイベントスペースで、雰囲気の違うところも魅力。
+                    /     %p.sc-kTUwUJ.jOmweg
+                    /       %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    /       東京都渋谷区　
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       490〜￥1,080/時間
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       15,000/時間
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       180,000/日
+                    / .slick-slide.sc-jnlKLf.DRakt{"data-index" => "4", :style => "outline: none; width: 890px;", :tabindex => "-1"}
+                    /   .sc-fYxtnH.dhiRdm
+                    /     .sc-tilXH.kFNXye
+                    /       %p.sc-hEsumM.trvSG 月の売上実績：
+                    /       %p.sc-ktHwxA.cQHaeO
+                    /         %i.fa.fa-yen-sign.sc-jKJlTe.fAiwoI>
+                    /         163,734
+                    /     %img.sc-kafWEX.dxyAQM{:alt => "トリップモール", :src => "./host_entry_files/img-sample05-e83bba8d0b.jpg"}/
+                    /   .sc-feJyhm.jtYqwG
+                    /     .sc-cIShpX.ktDFOh
+                    /       %img.sc-iELTvK.kNnoxF{:alt => "", :src => "./host_entry_files/space-owner05-9c88b40d7f.png"}/
+                    /       %h3.sc-cmTdod.epoNea 運用している不動産の空室時間の稼働が増加！
+                    /     .sc-jwKygS.XsfHF
+                    /       %p.sc-btzYZH.jmFNTq
+                    /         運用している不動産の物件に空き時間があったので、少しでも空き時間を少なくできればと思い、スペースマーケットの利用を開始しました。
+                    /         %br>/
+                    /         利用を始めてみると思っていた以上に運用施設とスペースマーケットの親和性が高く、本来の用途とは異なるパーティーや撮影などで空室時間の稼働が増加しました。スペースマーケットを使った空き時間の活用の可能性は今後も広がっていくと感じています。
+                    /   .sc-lhVmIH.gbvFMz
+                    /     %p.sc-bYSBpT.ecQoGa トリップモール
+                    /     .sc-elJkPf.bkXIjH
+                    /       %p.sc-jtRfpW.cpHUBJ 都内各所で撮影・パーティなどに利用できる様々なスペースをご提供。
+                    /     %p.sc-kTUwUJ.jOmweg
+                    /       %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    /       東京都渋谷区　
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       5,000/時間
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       28,500/日
+                    / .slick-slide.slick-cloned.sc-jnlKLf.DRakt{"data-index" => "5", :style => "width: 890px;"}
+                    /   .sc-fYxtnH.dhiRdm
+                    /     .sc-tilXH.kFNXye
+                    /       %p.sc-hEsumM.trvSG 月の売上実績：
+                    /       %p.sc-ktHwxA.cQHaeO
+                    /         %i.fa.fa-yen-sign.sc-jKJlTe.fAiwoI>
+                    /         656,532
+                    /     %img.sc-kafWEX.dxyAQM{:alt => "ASAGORO", :src => "./host_entry_files/img-sample01-40333a4871.jpg"}/
+                    /   .sc-feJyhm.jtYqwG
+                    /     .sc-cIShpX.ktDFOh
+                    /       %img.sc-iELTvK.kNnoxF{:src => "./host_entry_files/space-owner01-61dd4e6ea1.png"}/
+                    /       %h3.sc-cmTdod.epoNea 売上は月平均600,000円超え！
+                    /     .sc-jwKygS.XsfHF
+                    /       %p.sc-btzYZH.jmFNTq
+                    /         元々物件が素晴らしく、もっと多くの人にこの物件の良さを感じて欲しいと思い、スペースの貸出を始めました。スペースマーケットを利用してからはスペースとしての利用用途がかなり広がりました。法人の撮影や、最近では朗読や、落語、演劇などの個人の発表の場としても利用をされるようになりました。
+                    /         %br>/
+                    /         元々自社だけで集客をしていましたがスペースマーケットのサービスは使いやすく、利用を開始してからも簡単にやり取りや売り上げの管理などを行うことができています。
+                    /   .sc-lhVmIH.gbvFMz
+                    /     %p.sc-bYSBpT.ecQoGa ASAGORO
+                    /     .sc-elJkPf.bkXIjH
+                    /       %p.sc-jtRfpW.cpHUBJ 23区内にありながら、木々に囲まれ築93年を超す、昔ながらの風情あふれる平屋建ての人気古民家スペース。
+                    /     %p.sc-kTUwUJ.jOmweg
+                    /       %i.fa.fa-map-marker-alt.sc-jKJlTe.hfdsLq>
+                    /       東京都中野区　
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       3,000〜15,000円/時間
+                    /       %i.fa.fa-yen-sign.sc-jKJlTe.hfdsLq>
+                    /       22,000〜120,000円/日
+                %button.slick-arrow.slick-next{"data-role" => "none", :style => "display: block;", :type => "button"}
+                  = fa_icon 'chevron-circle-right', class: 'fa'
+                .slick-list
+
+                %ul.slick-dots{:style => "display: block;"}
+                  %li.slick-active
+                    %button ●
+                  %li
+                    %button ●
+                  %li
+                    %button ●
+                  %li
+                    %button ●
+                  %li
+                    %button ●
+        / 第５ブロック
+        .sc-fOKMvo.CvqSs
+          .sc-dqBHgY.gvqmQP
+            %h2.sc-iQKALj.fgLEPd スペース掲載までの流れ
+            %ol.sc-dUjcNx.fwMraN.clearfix
+              %li.sc-gHboQg.dRymLr
+                %span.sc-eilVRo.gVaZR 1
+                %h3.sc-emmjRN.cQmbBZ ホスト登録
+                .sc-gJWqzi.diPjaE
+                  .sc-bMvGRv.sIUgk
+                    %p.sc-hmXxxW.jTrnLk スペースマーケットへホスト登録して頂きます。
+                  %p.sc-CtfFt.heOnCU
+                    = image_tag "step_01@3x-f2ea663ae4.png", width: "100%"
+              %li.sc-gHboQg.dRymLr
+                %span.sc-eilVRo.gVaZR 2
+                %h3.sc-emmjRN.cQmbBZ
+                  ホスト/スペース情報入力
+                  %br.sc-cpmLhU.Aepxc>/
+                  ・審査
+                .sc-rBLzX.cNZEef
+                  .sc-bMvGRv.sIUgk
+                    %p.sc-hmXxxW.jTrnLk ホストとスペース詳細情報を入力頂き、審査を行います。審査を行う際は、免許証/パスポート/住基カードのいずれかが必要となります
+                  %p.sc-CtfFt.heOnCU
+                    = image_tag "step_02@3x-6e81b47c95.png", width: "100%"
+              %li.sc-gHboQg.dRymLr
+                %span.sc-eerKOB.gSxaao 3
+                %h3.sc-emmjRN.cQmbBZ スペースの掲載開始！
+                .sc-gJWqzi.diPjaE
+                  .sc-bMvGRv.sIUgk
+                    %p.sc-hmXxxW.jTrnLk 審査通過後、いよいよスペースの掲載が始まります。
+                  %p.sc-CtfFt.heOnCU
+                    = image_tag "step_03@3x-4480cb74fa.png", width: "100%"
+        / 第６ブロック
+        .sc-dymIpo.fhUQvp
+          .sc-dqBHgY.gvqmQP
+            %div
+              %h2.sc-iQKALj.fgLEPd 明快な料金システム
+              %p.sc-ipXKqB.fMUmau
+                掲載はもちろん無料！
+                %br>/
+                スペースが利用された場合、下記の利用料金をご登録銀行口座へ振込みさせて頂きます。
+            .sc-hGoxap.hfdJnA
+              %dl.sc-fjmCvl.fwbIzO
+                %dt
+                  %i.far.fa-sun.a-priceList__icon.sc-jKJlTe.hfdsLq
+                  1日レンタル
+                %dd
+                  %span.sc-bnXvFD.gSzOPh …成約金額の70%
+              %dl.sc-fjmCvl.fwbIzO
+                %dt
+                  %i.far.fa-clock.a-priceList__icon.sc-jKJlTe.hfdsLq
+                  時間レンタル
+                %dd
+                  %span.sc-bnXvFD.gSzOPh …成約金額の70%
+              %dl.sc-fjmCvl.fwbIzO
+                %dt
+                  %i.far.fa-moon.a-priceList__icon.sc-jKJlTe.hfdsLq
+                  宿泊レンタル
+                %dd
+                  %span.sc-bnXvFD.gSzOPh …成約金額の90%
+        / 第７ブロック
+        .sc-gFaPwZ.dZicSD
+          .sc-dqBHgY.gvqmQP
+            %h2.sc-iQKALj.fgLEPd 多くのメディアでも紹介！
+            .sc-fhYwyz.gQEhfy
+              %ul.sc-jzgbtB.dTxiRc
+                %li.logo
+                  %div
+                    %a{:href => "http://spacemarket.co.jp/archives/5331", :target => "_blank"}
+                      = image_tag "nhk-daed6d5c58.png", width: "100%", class: "gGBZQe"
+                %li.logo
+                  %div
+                    %a{:href => "http://spacemarket.co.jp/archives/5381", :target => "_blank"}
+                      = image_tag "nikkei-c44bd15e56.png", width: "100%", class: "gGBZQe"
+                %li.logo
+                  %div
+                    %a{:href => "http://spacemarket.co.jp/archives/6061", :target => "_blank"}
+                      = image_tag "fujitv-59f996a484.png", width: "100%", class: "gGBZQe"
+                %li.logo
+                  %div
+                    %a{:href => "http://spacemarket.co.jp/archives/5621", :target => "_blank"}
+                      = image_tag "tbs-bbc2670f0d.png", width: "100%", class: "gGBZQe"
+                %li.logo
+                  %div
+                    %a{:href => "http://spacemarket.co.jp/archives/5621", :target => "_blank"}
+                      = image_tag "asahi-8d13a451a8.png", width: "100%", class: "gGBZQe"
+                %li.logo
+                  %div
+                    %a{:href => "http://diamond.jp/articles/-/60963", :target => "_blank"}
+                      = image_tag "yahoo-26456d837b.png", width: "100%", class: "gGBZQe"
+                %li.logo
+                  %div
+                    %a{:href => "http://spacemarket.co.jp/archives/5471", :target => "_blank"}
+                      = image_tag "yomiuri-22d045996f.png", width: "100%", class: "gGBZQe"
+                %li.logo
+                  %div
+                    %a{:href => "http://spacemarket.co.jp/archives/721", :target => "_blank"}
+                      = image_tag "jwave-d4891eefbf.png", width: "100%", class: "gGBZQe"
+                %li.logo
+                  %div
+                    %a{:href => "http://spacemarket.co.jp/archives/7261", :target => "_blank"}
+                      = image_tag "reuters-dd146977e1.png", width: "100%", class: "gGBZQe"
+                %li.logo
+                  %div
+                    %a{:href => "http://spacemarket.co.jp/archives/7351", :target => "_blank"}
+                      = image_tag "r25-8386d4864f.png", width: "100%", class: "gGBZQe"
+        / / 第８ブロック
+        / .sc-TFwJa.inOBuK
+        /   #applyhost.contents
+        /     %div
+        /       %h2.sc-iQKALj.fgLEPd まずはホスト登録を！
+        /       %p.sc-laTMn.kfgzUQ
+        /         お持ちのスペースを今すぐ有効活用しませんか？
+        /         %br>/
+        /         様々なスペースが登録できます。
+        /     .sc-bHwgHz.cFrQGH
+        /       .sc-krDsej.inxkvh
+        /         %span.sc-itybZL.cnidAA お名前：
+        /         .sc-eMigcr.bgYnno
+        /           %input#family_name.ant-input{:name => "familyName", :placeholder => "姓", :type => "text", :value => ""}/
+        /         .sc-eMigcr.bgYnno
+        /           %input.ant-input{:name => "givenName", :placeholder => "名", :type => "text", :value => ""}/
+        /       .sc-dTdPqK.eqLgkk
+        /         %span.sc-itybZL.cnidAA メールアドレス
+        /         .sc-fzsDOv.cNYrYW
+        /           %input.ant-input{:name => "email", :placeholder => "メールアドレス", :type => "text", :value => ""}/
+        /       .sc-dTdPqK.eqLgkk
+        /         %span.sc-itybZL.cnidAA 電話番号
+        /         .sc-fzsDOv.cNYrYW
+        /           %input.ant-input{:label => "電話番号", :name => "tel", :type => "text", :value => ""}/
+        /       .sc-dTdPqK.eqLgkk
+        /         %span.sc-itybZL.cnidAA パスワード
+        /         .sc-fzsDOv.cNYrYW
+        /           %input.ant-input{:label => "パスワード", :name => "password", :type => "password", :value => ""}/
+        /       .sc-dTdPqK.eqLgkk
+        /         %span.sc-itybZL.cnidAA パスワード（確認）
+        /         .sc-fzsDOv.cNYrYW
+        /           %input.ant-input{:label => "パスワード（確認）", :name => "passwordConfirmation", :type => "password", :value => ""}/
+        /       .sc-jVODtj.cEvkCA
+        /         %p.sc-hmXxxW.jTrnLk
+        /           %a.sc-cqCuEk.kzYZzR{:href => "https://spacemarket.com/about/terms", :target => "_blank"}> スペースマーケット利用規約
+        /           と
+        /           %a.sc-cqCuEk.kzYZzR{:href => "https://spacemarket.com/owners/dashboard/about/terms_of_partner_for_new", :target => "_blank"}> ホスト規約
+        /           をお読みください。
+        /       .sc-dTdPqK.eqLgkk
+        /         %label.sc-gPWkxV.bdveuj
+        /           %input.sc-kUaPvJ.fKyApZ{:type => "checkbox", :value => "スペースマーケット利用規約に同意する"}/
+        /           %span
+        /             %label.ant-checkbox-wrapper
+        /               %span.ant-checkbox
+        /                 %input#checkbox-1.ant-checkbox-input{:name => "acceptTermOfService", :type => "checkbox", :value => ""}/
+        /                 %span.ant-checkbox-inner
+        /               %span スペースマーケット利用規約に同意する
+        /         %label.sc-gPWkxV.bdveuj
+        /           %input.sc-kUaPvJ.fKyApZ{:type => "checkbox", :value => "ホスト規約に同意する"}/
+        /           %span
+        /             %label.ant-checkbox-wrapper
+        /               %span.ant-checkbox
+        /                 %input#checkbox-2.ant-checkbox-input{:name => "acceptTermOfHost", :type => "checkbox", :value => ""}/
+        /                 %span.ant-checkbox-inner
+        /               %span ホスト規約に同意する
+        /       .sc-dTdPqK.eqLgkk
+        /         .sc-giadOv.VAGtM
+        /           .sc-hMqMXs.hASVng
+        /             %span.sc-kEYyzF.bgQmZj スペース掲載を始める
+        /         .sc-giadOv.VAGtM
+        /           %a.fab.fa-facebook-square.sc-dliRfk.iqSTnK{:href => "https://account.spacemarket.com/auth/facebook"} Facebookで登録
+        /       .sc-dTdPqK.eqLgkk
+        /         .sc-fONwsr.hfaFxm
+        /           %p.sc-hmXxxW.jTrnLk
+        /             すでにアカウントをお持ちの方は
+        /             %br.sc-VJcYb.bInYhu/
+        /             %a.sc-cqCuEk.kzYZzR{:href => "https://spacemarket.com/i/login"} ログイン
+        /         .sc-fONwsr.hfaFxm
+        /           %p.sc-hmXxxW.jTrnLk
+        /             %i.fa.fa-download.a-faDownload.sc-jKJlTe.hfdsLq>
+        /             資料ダウンロードは
+        /             %a.sc-cqCuEk.kzYZzR{:download => "スぺースマーケット_ホスト向け概要資料.pdf", :href => "https://d1p70l9icfjben.cloudfront.net/docs/for-host.pdf"} こちら
