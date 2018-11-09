@@ -23,7 +23,6 @@ class ReservationsController < ApplicationController
       end
 
       total += @reserve.reserve_dates.length * @reserve.plan.day_price
-      binding.pry
       total -= params[:nebiki].to_i if params[:nebiki]
       @reserve.price = total
     end

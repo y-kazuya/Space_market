@@ -1,11 +1,13 @@
+
 = form_tag('/search', method: "get") do
+  = hidden_field_tag :event_type, @event_type
   .serach_block
     .search_form
       .search_form__area
         = label_tag "エリア"
-        = select :state,:name,SpaceInfo.states.keys
+        = select :state,:name,SpaceInfo.states.keys, {prompt: "都道府県"}, selected: @ken
       .search_form__price
-        = text_field :max_price, :price, placeholder: '上限価格(1日につき)', class: 'max_price'
+        = number_field :state, :price,value: @price, placeholder: '上限価格(1日につき)', class: 'max_price'
       .search_form__capacity
-        = text_field :max_capacity, :capacity, placeholder: 'ご利用予定の最大人数', class: 'max_capacity'
+        = number_field :state, :capacity,value: @capa, placeholder: 'ご利用予定の最大人数', class: 'max_capacity'
       = submit_tag '詳細検索', class: 'search_form__submit'
