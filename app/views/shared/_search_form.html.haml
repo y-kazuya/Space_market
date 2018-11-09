@@ -5,7 +5,7 @@
         = label_tag "エリア"
         = select :state,:name,SpaceInfo.states.keys
       .search_form__price
-        = text_field :max_price, :price, placeholder: '上限価格(1日につき)',required: 'required', class: 'max_price'
+        = text_field :max_price, :price, placeholder: '上限価格(1日につき)', class: 'max_price'
       .search_form__capacity
-        = text_field :max_capacity, :capacity, placeholder: 'ご利用予定の最大人数',required: 'required', class: 'max_capacity'
+        = text_field :max_capacity, :capacity, placeholder: 'ご利用予定の最大人数', class: 'max_capacity'
       = submit_tag '詳細検索', class: 'search_form__submit'
