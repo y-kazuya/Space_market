@@ -1,0 +1,149 @@
+
+= render 'shared/errors', object: @reserve
+空き情報の確認・予約リクエスト
+.room_id
+  = @room.id
+
+
+
+
+= form_for @reserve, url: space_room_reservations_path, method: :post do |f|
+  %h1 プランを洗濯
+  - @room.public_plans.each_with_index do |plan, i|
+    - i == 0 ? set = true : set = false
+    %div{id: "plan#{plan.id}"}
+      = f.radio_button :plan_id, plan.id, checked: set
+      =plan.name
+      =plan.id
+      .preview_time_price
+        = set_price(plan.time_price, "時間") if plan.time_pay
+      .preview_day_price
+        = set_price(plan.day_price, "日") if plan.day_pay
+    %h1
+      = "今すぐ予約可能" if plan.about_reserve
+    %h1
+      = "直前割：5日前までの予約で#{plan.discount}割引" unless plan.discount == "設定しない"
+    %h1
+      = "最低利用時間#{plan.min_time}時間〜" if plan.min_time
+
+    %h1
+      = plan.about if plan.about
+
+  %h1
+    時間貸しか？
+  .pay_area
+    -if @room.public_plans.first.time_pay == true
+      .time_pay_area
+        .pay_type_time
+          時間貸し
+          = f.radio_button :day, 0
+        .time_price
+          = set_price(@room.public_plans.first.time_price, "時間")
+    -if @room.public_plans.first.day_pay == true
+      .day_pay_area
+        .pay_type_day
+          日がし
+          = f.radio_button :day, 1
+        .day_price
+          = set_price(@room.public_plans.first.day_price, "日")
+
+  %h1
+    個人利用・法人利用
+  %h2
+    = f.radio_button :company, 0 ,checked: true
+    個人利用
+  %h2
+    = f.radio_button :company, 1
+    法人利用
+
+  %h1
+    決済方法を洗濯
+  %h2
+    = f.radio_button :payment, 0,checked: true
+    クレジットカード
+  %h1
+    追加料金・おプチョン
+  %h2
+    施設・サービる
+  .options
+    = f.collection_check_boxes :option_ids, @room.options, :id, :name, include_hidden: false do |b|
+      .optin
+        %span.option_check(id="op-#{b.object.price}")
+          = b.check_box
+        %span.option_label
+          = b.label { b.text }
+        %span.option_price
+          = set_price(b.object.price, "回")
+
+  %h1
+    以下モーダル
+  %h1
+    利用目的
+    = f.select :purpose, Reserve.purposes.keys, {prompt: '選択してください'}
+  %h1
+    = "利用人数（〜#{@room.basic_info.capacity}人)"
+    = f.number_field :people
+
+  %h1
+    利用用途の詳細
+  %h2
+    =f.text_area :usage
+
+
+  %h1
+    お支払い方法
+  %h2
+    クレジットカード
+  %h1
+    = f.collection_radio_buttons :card_id, current_user.cards, :id, :name, include_hidden: false do |b|
+      %h2
+        = b.radio_button
+        = b.label { b.text }
+
+
+
+  %h1
+    ポイント/クーpんの利用
+  %h1
+    ポイント
+    =f.radio_button :coupon, 0, checked: true
+    クーポン
+    =f.radio_button :coupon, 1
+
+  %h1
+    保有ポイント
+    = current_user.point
+
+  %h1
+    ご利用ポイントを入力してください
+
+    = number_field_tag :nebiki
+
+
+  .reserve_data_area
+    .title
+      ここに予約でーたが入っていきます
+
+    .reserve_show
+      .long.need_re
+        .long__title
+          利用期間
+        .long_date
+          利用期間を入力してください
+
+      .cost_pay.need_re
+        -# .cost_pay__title
+        -#   管理維持ひ
+        -# .cost_pay__date
+
+      .total.need_re
+        .total_title
+          合計金額
+        .total_date
+
+    .reserve_dates
+
+  = f.submit "予約リクエストへ進む"
+
+.calender_area
+  %div#calendar

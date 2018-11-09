@@ -1,0 +1,39 @@
+メール・通知設定
+
+= render 'shared/errors', object: @noti
+
+= form_for @noti, url:notification_path do |f|
+  %h1
+    メール通知設定
+  %h2
+    スペースマーケットからのお知らせ
+    = f.check_box :about_mail_1, disabled: true
+  %h2
+    お問い合わせ・予約リクエストに関するお知らせ
+    = f.check_box :about_mail_2, disabled: true
+  %h2
+    お問い合わせ・予約リクエストに関するリマインド
+    = f.check_box :about_mail_3
+  %h2
+    おすすめスペース
+    = f.check_box :about_mail_4
+  %h2
+    クーポン・キャンペーンメール
+    = f.check_box :about_mail_5
+
+  %h1
+    アプリ通話受信設定
+  %h2
+    スペースマーケットからのお知らせ
+    = f.check_box :about_call_1
+  %h2
+    お問い合わせ・予約リクエストに関するお知らせ
+    = f.check_box :about_call_2
+  %h2
+    お問い合わせ・予約リクエストに関するリマインド
+    = f.check_box :about_call_3
+  %h2
+    おすすめスペース
+    = f.check_box :about_call_4
+
+  =f.submit "保存"

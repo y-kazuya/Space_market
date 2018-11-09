@@ -12,6 +12,7 @@ class Room < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :room_amenities, dependent: :destroy
   has_many :amenities, through: :room_amenities
+  has_many :reserves, dependent: :destroy
 
 
   validates :activated, presence: true
@@ -32,16 +33,7 @@ class Room < ApplicationRecord
   end
 
   def public_plans #公開中のプランを取得
-    a =[]
-    if plans.count > 1
-     b = plans.map{|plan| plan if plan.public == true}
-     return b.compact
-    elsif plans.count == 1
-      a << plans.first if plans.first.public == true
-
-      return a
-    end
-    return []
+    Plan.where(room_id: self.id).where(public: 1)
   end
 
   def time_low_price #roomがもつプランの中で時間がしで一番安いプランの価格を返す

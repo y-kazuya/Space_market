@@ -27,4 +27,9 @@ module RoomsHelper
 
     return false
   end
+
+
+  def set_price(price, type)
+    "¥#{price}/#{type}〜"
+  end
 end

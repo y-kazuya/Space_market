@@ -4,10 +4,35 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :avatar, AvaterUploader
-  has_many :spaces
-  has_many :space_infos
-  has_one :host_profile
+
+  has_many :spaces, dependent: :destroy
+  has_many :space_infos, dependent: :destroy
+  has_many :cards, dependent: :destroy
+  has_many :reserves, class_name: "Reserve", dependent: :destroy
+  has_many :intend_points, dependent: :destroy
+
+  has_one :host_profile, dependent: :destroy
+  has_one :contact, dependent: :destroy
+  has_one :user_notification ,dependent: :destroy
+
+
+
+
+  after_create :make_user_noti
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :last_name, presence: true, length: { maximum: 32 }
+  validates :first_name, presence: true, length: { maximum: 32 }
+
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+
+  validates :profile, length: {maximum: 800}
+
   has_many :favorite_lists, dependent: :destroy
+
 
   after_create :create_fav_list
 
@@ -59,6 +84,11 @@ class User < ApplicationRecord
       end
     end
     return a
+  end
+
+
+  def make_user_noti
+    UserNotification.create(user_id: self.id)
   end
 
 

@@ -2,13 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   root "pages#top"
 
+  ##ユーザーが見るだけのページ#################
   resource :pages, only:[] do
     collection do
       get :host_entry, :test
     end
   end
+  ####################3
 
-  resources :owners
+  ##
+  resources :owners, only: [:show]
 
   resources :spaces do
     get    '/dashboard', to: 'dashboards#first_space'
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
     end
 
     resources :rooms do
+      resource :reservations
       resources :favorites do
         collection do
           get :show
@@ -54,7 +58,7 @@ Rails.application.routes.draw do
       resources :host_banks, only: [:index,:create, :update]
     end
   end
-
+###オーナーの全体的なルート##########################
   resources :users do
     resources :rooms, only: [:index, :new, :create, :destroy] do
       member do
@@ -64,7 +68,7 @@ Rails.application.routes.draw do
       collection do
         get :newww
       end
-
+      #########ルームedit#########################3####
       resources :space_infos, controller: "edit_space_infos",only: [:index, :new, :show, :create, :update, :destroy] do
         member do
           patch :chose
@@ -86,6 +90,8 @@ Rails.application.routes.draw do
       resource :reserve_phrases, only: [:show, :create, :update]
       resource :agreements, only: [:show, :create, :update]
     end
+    #################################33
+    ######オーナーダッシュボード#################
     resource :dashboard
     resource :calender
     resource :inbox
@@ -97,6 +103,8 @@ Rails.application.routes.draw do
         get :sales
       end
     end
+    ###############################
+    #######オーナー設定#################
     resource :settings, only:[] do
       collection do
         get :host_profile
@@ -116,22 +124,42 @@ Rails.application.routes.draw do
         resource :host_notification, only: [:show, :update]
       end
     end
-
+    ####################################
   end
+  ##############33333#
 
   resources :rooms do
     member do
       get :for_wating
     end
   end
+  ##user 設定#############################
   scope  '/dashboard' do
     resources :favorite_lists
+    scope "/settings" do
+      resource :contact, only: [:show, :create, :update]
+      resource :account, only: [:show, :update]
+      resource :notification, only: [:show, :update]
+      resource :payments, only: [:show,:new, :create, :update, :destroy] do
+        member do
+          get :set_use
+        end
+      end
+    end
   end
-
+  ##################################
+  ##検索######################
   resource :search do
     collection do
       get :event_type, to: 'search#event_type'
       get :index, controller: 'search'
+    end
+  end
+
+
+  resources :events do
+    collection do
+      get :plan
     end
   end
 

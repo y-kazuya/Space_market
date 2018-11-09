@@ -1,6 +1,7 @@
 class Plan < ApplicationRecord
  belongs_to :room
  has_many :weeks ,dependent: :destroy
+ has_many :reserves,class_name: "Reserve", dependent: :destroy
 
  accepts_nested_attributes_for :weeks
 

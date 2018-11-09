@@ -12,7 +12,7 @@ class EditPlansController < RoomEditsController
 
   def new
     @room = Room.find(params[:room_id])
-    @week = %W[日曜日 月曜日 火曜日 水曜日 木曜日 金曜日 土曜日 祝日]
+    @week = %W[Sun Mon Tue Wed Thu Fri Sat Syuku]
     @plan = Plan.new(room_id: @room.id)
     @plan.weeks.build
   end
