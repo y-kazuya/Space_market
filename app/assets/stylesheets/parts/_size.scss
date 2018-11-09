@@ -35,6 +35,21 @@
   padding: 2px 0px 2px 2px;
   border-radius: 5px;
 }
+.green-box{
+  font-size: 14px;
+  color: white;
+  white-space: nowrap;
+  background-color:#13D45A ;
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+}
+.gomibako-button{
+  width: 20px;
+  height: 20px;
+  background-color: gray;
+}
+//%button.gomibako-button
+//%i{class:"far fa-trash-alt"}
 .new_add_button{
   color: #13D45A;
   padding-top:40px;padding-bottom:30px;
@@ -48,4 +63,59 @@
 }
 .SI-mini-textarea{
   height:30px;
+}
+
+.switchArea {
+  display: block;
+  position       : relative;            /* 親要素が基点       */
+  width          : 40px;               /* ボタンの横幅       */
+  background     : #fff;                /* デフォルト背景色   */
+}
+.switchArea_with_txt{
+  font-size: 14px;
+  &--green{
+    color: #13D45A;
+  }
+  &--gray{
+    color: #999999;
+  }
+}
+
+ /* === チェックボックス ==================================== */
+.switchArea input[type="checkbox"] {
+  display        : none;            /* チェックボックス非表示 */
+}
+
+ /* === チェックボックスのラベル（標準） ==================== */
+.switchArea label {
+  display        : block;               /* ボックス要素に変更 */
+  box-sizing     : border-box;          /* 枠線を含んだサイズ */
+  height         : 20px;                /* ボタンの高さ       */
+  border         : 2px solid #999999;   /* 未選択タブのの枠線 */
+  border-radius  : 30px;                /* 角丸               */
+  background: #999999;
+}
+
+ /* === チェックボックスのラベル（ONのとき） ================ */
+.switchArea input[type="checkbox"]:checked +label {
+  border-color   : #78bd78;             /* 選択タブの枠線     */
+  background: #13D45A;
+}
+
+ /* === 丸部分のSTYLE（標準） =============================== */
+.switchArea #swImg {
+  position       : absolute;            /* 親要素からの相対位置*/
+  width          : 22px;                /* 丸の横幅           */
+  height         : 22px;                /* 丸の高さ           */
+  background     : #f0f0f0;             /* カーソルタブの背景 */
+  top            : -1px;                 /* 親要素からの位置   */
+  left           : 0px;                 /* 親要素からの位置   */
+  border-radius  : 26px;                /* 角丸               */
+  transition     : .2s;                 /* 滑らか変化         */
+}
+
+ /* === 丸部分のSTYLE（ONのとき） =========================== */
+.switchArea input[type="checkbox"]:checked ~ #swImg {
+  transform      : translateX(20px);    /* 丸も右へ移動       */
+  background     : #78bd78;             /* カーソルタブの背景 */
 }

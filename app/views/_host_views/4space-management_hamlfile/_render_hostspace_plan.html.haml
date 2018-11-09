@@ -1,0 +1,32 @@
+.plan-box
+  .plan-box-left
+    %p.plan-box-left-title
+      基本プラン
+    %br
+    %p.red-box-description
+      価格
+    %span.weight700
+      ¥値段/
+    %span.red-box-description
+      per
+    = link_to "#" , class: 'hover-none' do
+      %p.confirmation_calender
+        カレンダーで確認
+  .plan-box-right
+    .plan-box-right-switch-button
+      .switchArea
+        %input{type:"checkbox",id:"switch1"}
+        %label{for:'switch1'}
+          %span
+        #swImg
+    %br
+      %p.switchArea_with_txt--gray
+        非公開
+      /%p.switchArea_with_txt--green
+      /公開中
+     = link_to "#" do
+      %span.green-box
+        プランの編集
+    %span
+      %button.gomibako-button
+        %i{class:"far fa-trash-alt"}
