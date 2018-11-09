@@ -1,34 +1,35 @@
 .summary_list
-  .summary_room__photo
-    - result.pictures.each do |picture|
-      - if picture.cover == "true"
-        = image_tag("#{picture.content}", class: 'room_photo')
-    .summary_room__favorite
-      = fa_icon 'heart', class: 'icon'
-    .summary_room__price
-      = day_low_high(result) #room_helper
-      = "/日"
-  .summary_room__title
-    = result.intro.title
-  .summary_room_detail
-    .summary_room__capacity
-      .summary_room__human
-        = fa_icon 'user', class: 'icon'
-      .summary_room__people
-        = result.basic_info.capacity
-    .summary_room__area
-      .summary_room__pin
-        = fa_icon 'map-marker', class: 'icon'
-      .summary_room__address
-        = result.space.space_info.city
-    .summary_room__evaluation
-      .summary_room__star
-        = fa_icon 'star', class: 'icon'
-        = fa_icon 'star', class: 'icon'
-        = fa_icon 'star', class: 'icon'
-        = fa_icon 'star', class: 'icon'
-        = fa_icon 'star', class: 'icon'
-      .summary_room__review
-        0件
-  .summary_room__access
-    = result.space.space_info.access
+  = link_to space_room_path(result.space.id, result.id) do
+    .summary_room__photo
+      - result.pictures.each do |picture|
+        - if picture.cover == "true"
+          = image_tag("#{picture.content}", class: 'room_photo')
+      .summary_room__favorite
+        = fa_icon 'heart'
+      .summary_room__price
+        = day_low_high(result) #room_helper
+        = "/日"
+    .summary_room__title
+      = result.intro.title
+    .summary_room_detail
+      .summary_room__capacity
+        .summary_room__human
+          = fa_icon 'user'
+        .summary_room__people
+          = result.basic_info.capacity
+      .summary_room__area
+        .summary_room__pin
+          = fa_icon 'map-marker'
+        .summary_room__address
+          = result.space.space_info.city
+      .summary_room__evaluation
+        .summary_room__star
+          = fa_icon 'star'
+          = fa_icon 'star'
+          = fa_icon 'star'
+          = fa_icon 'star'
+          = fa_icon 'star'
+        .summary_room__review
+          0件
+    .summary_room__access
+      = result.space.space_info.access
