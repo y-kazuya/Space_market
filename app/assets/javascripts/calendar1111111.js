@@ -1,8 +1,6 @@
 $(document).on('turbolinks:load', function(){
 
-  function total_price(pay){
 
-  }
 
   function set_cost_price(cost){
     $(".cost_pay").empty()
@@ -19,10 +17,12 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json',
     })
     .done(function(plan){
-      console.log(plan.cost == null)
-
+      $(".res").remove()
+      $(".option_check").find("input").prop("checked", false)
+      $(".total_date").text("0")
       if (!(plan.cost == null)){
         set_cost_price(plan.cost)
+        $(".total_date").text(`${plan.cost}`)
       }
 
     })
@@ -47,7 +47,7 @@ $(document).on('turbolinks:load', function(){
   function create_reserve_day(day){
     var re = /-/g;
     var result = day.replace(re, "/");
-    var html2 = `<div class="${day}" class="res_date">${result}</div>`
+    var html2 = `<div class="${day} res_date res">${result}</div>`
 
     return html2
 
@@ -61,6 +61,7 @@ $(document).on('turbolinks:load', function(){
     var day_s = String(day)
     $(".need_re").css("display", "block")
     var target = $(`[data-date=${day_s}]`)
+    var pay = event.title.match(/\d+/)[0]
 
     if (!$(target[0]).hasClass("selected_day")){
       $(jsEvent.currentTarget).addClass("selected_day")
@@ -70,13 +71,13 @@ $(document).on('turbolinks:load', function(){
       var html2 = create_reserve_day(day)
       target.prepend(html);
       $(".long_date").append(html2)
-
+      gtotal_price(pay)
     }
     else{
       $(target[0]).removeClass("selected_day")
       $(jsEvent.currentTarget).removeClass("selected_day")
       $(`.${day}`).remove()
-      console.log("aaaaaaaa")
+      dtotal_price(pay)
     }
 
 
@@ -339,6 +340,37 @@ $(document).on('turbolinks:load', function(){
     ///コード汚すぎいいいいいいいいいいいいいいい
 
 
+
+
+    /////////合計金額計算/////////////////
+
+    function gtotal_price(pay){ //金額あげる
+      var total_price = $(".total_date").text()
+      $(".total_date").empty()
+      $(".total_date").text(`${Number(total_price) + Number(pay)}`)
+    }
+
+    function dtotal_price(pay){  //金額下げる
+      var total_price = $(".total_date").text()
+      $(".total_date").empty()
+      $(".total_date").text(`${Number(total_price) - Number(pay)}`)
+    }
+
+    //オプション選択
+    $(".option_check").on("click", function(){
+
+      var pay = $(this).attr("id").match(/\d+/)[0]
+
+      var op_id = $(this).find(`input[name="reserve[option_ids][]"]:checked`).val()
+      console.log( )
+      if ( op_id == undefined ){
+        dtotal_price(pay)
+      }
+      else{
+        gtotal_price(pay)
+      }
+
+    })
 });
 
 

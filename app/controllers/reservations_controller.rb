@@ -10,7 +10,25 @@ class ReservationsController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
     @reserve = Reserve.new(reserve_params)
-    @reserve.save
+    @reserve.day = 1
+
+    if @reserve.valid?
+      total = 0
+      total = @reserve.plan.cost if @reserve.plan.cost
+
+      unless @reserve.options == []
+        @reserve.options.each do |op|
+          total += op.price
+        end
+      end
+
+      total += @reserve.reserve_dates.length * @reserve.plan.day_price
+      binding.pry
+      total -= params[:nebiki].to_i if params[:nebiki]
+      @reserve.price = total
+    end
+
+      @reserve.save
 
     redirect_to space_room_reservations_path(@room.space.id, @room.id)
   end

@@ -10,7 +10,24 @@ class Reserve < ApplicationRecord
   has_many :reserve_options,dependent: :destroy
   has_many :options, through: :reserve_options
 
-  validates :card_id ,length: {maximum: 10},allow_nil: true
+  validates :day,
+            :company,
+            :activated,
+            :coupon,
+            inclusion: { in: [true, false] }
+
+  validates :card_id,
+            :purpose,
+            :payment,
+            :people,
+            presence: true
+
+  validate :need_reserve_day
+
+
+
+
+
 
   enum purpose: {
     指定なし:0, パーティー:1, 会議・研修:2, 写真撮影:3, ロケ撮影:4,
@@ -19,8 +36,8 @@ class Reserve < ApplicationRecord
   }
 
   private
-    def reject_dates(attributed)
-      attributed['start_date'].blank?
-      # reject_if: :reject_dates
+
+    def need_reserve_day
+      errors.add(:resrve_dates, "予約日を選択してください") if reserve_dates == []
     end
 end

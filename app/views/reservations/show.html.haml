@@ -1,6 +1,9 @@
+
+= render 'shared/errors', object: @reserve
 空き情報の確認・予約リクエスト
 .room_id
   = @room.id
+
 
 
 
@@ -47,7 +50,7 @@
   %h1
     個人利用・法人利用
   %h2
-    = f.radio_button :company, 0
+    = f.radio_button :company, 0 ,checked: true
     個人利用
   %h2
     = f.radio_button :company, 1
@@ -62,12 +65,15 @@
     追加料金・おプチョン
   %h2
     施設・サービる
-  %h2
+  .options
     = f.collection_check_boxes :option_ids, @room.options, :id, :name, include_hidden: false do |b|
-      %h2
-        = b.check_box
-        = b.label { b.text }
-        = set_price(b.object.price, "回")
+      .optin
+        %span.option_check(id="op-#{b.object.price}")
+          = b.check_box
+        %span.option_label
+          = b.label { b.text }
+        %span.option_price
+          = set_price(b.object.price, "回")
 
   %h1
     以下モーダル
@@ -126,15 +132,14 @@
           利用期間を入力してください
 
       .cost_pay.need_re
-        .cost_pay__title
-          管理維持ひ
-        .cost_pay__date
-          000
+        -# .cost_pay__title
+        -#   管理維持ひ
+        -# .cost_pay__date
+
       .total.need_re
         .total_title
           合計金額
-        .tota_date
-          1000えん
+        .total_date
 
     .reserve_dates
 
