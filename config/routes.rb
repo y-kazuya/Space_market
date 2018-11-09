@@ -131,6 +131,7 @@ Rails.application.routes.draw do
   resource :search do
     collection do
       get :event_type, to: 'search#event_type'
+      get :index, controller: 'search'
     end
   end
 

@@ -6,9 +6,10 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvaterUploader
   has_many :spaces
   has_many :space_infos
-
   has_one :host_profile
+  has_many :favorite_lists, dependent: :destroy
 
+  after_create :create_fav_list
 
 
   def self.active_owners #User.active_owners で認証済みのroomをもつuserを全て取得
@@ -45,9 +46,6 @@ class User < ApplicationRecord
       return false
     end
   end
-  has_many :favorite_lists, dependent: :destroy
-
-  after_create :create_fav_list
 
   def create_fav_list
     self.favorite_lists.create(name: 'お気に入りリスト')
