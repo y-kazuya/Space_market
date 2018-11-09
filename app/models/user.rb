@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :avatar, AvaterUploader
+
   has_many :spaces, dependent: :destroy
   has_many :space_infos, dependent: :destroy
   has_many :cards, dependent: :destroy
@@ -30,6 +31,10 @@ class User < ApplicationRecord
 
   validates :profile, length: {maximum: 800}
 
+  has_many :favorite_lists, dependent: :destroy
+
+
+  after_create :create_fav_list
 
 
   def self.active_owners #User.active_owners で認証済みのroomをもつuserを全て取得
@@ -66,9 +71,6 @@ class User < ApplicationRecord
       return false
     end
   end
-  has_many :favorite_lists, dependent: :destroy
-
-  after_create :create_fav_list
 
   def create_fav_list
     self.favorite_lists.create(name: 'お気に入りリスト')

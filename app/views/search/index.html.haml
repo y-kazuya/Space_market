@@ -16,8 +16,8 @@
       .summary_contents
         .div_search_result
           スペース検索結果
-          #{@searchRooms.length}件
+          #{@results.length}件
 
         .summary_lists
-          = render partial: 'search_result', collection: @searchRooms, as: :result
+          = render partial: 'search_result', collection: @results, as: :result
       .map_contents

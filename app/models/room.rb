@@ -20,6 +20,10 @@ class Room < ApplicationRecord
 
   enum activated: %i(making waiting certification)
 
+  def self.public_rooms
+    Room.all.map{|room| room if room.activated == 'certification' && room.public == true}.compact
+  end
+
   def complete_infos? #そのroomが審査に必要な情報を全て持っているか？
     if space.space_info && basic_info && intro && pictures.first && plans.first
       return true

@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,13 +16,15 @@
  */
 
 
+
+@import 'font-awesome';
+
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
 // @import "./register/register";
 @import "./reset";
 @import "./last";
-
 //上は最初からあったやつです
 
 @import 'bootstrap-datetimepicker';
@@ -30,10 +33,12 @@
 @import "./parts/size";
 @import "./shared/header";
 @import "./shared/footer";
-@import "font-awesome";
 @import "./config/color";
 @import "./config/valiable";
-@import "./test";
 @import "./register/_host_entry2";
+
 @import "./modlues/reserve";
+
 @import "./devise/sign_in";
+@import "./shared/search_form";
+@import "./index/search_result";
