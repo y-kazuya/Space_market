@@ -12,8 +12,8 @@
             .title_type 必須
             .title_name プランの名称
         .input_base
-          %input{:placeholder => "プランの名称", :type => "text", :class => "input_area"}
-          .explanation
+          %input{placeholder: "プランの名称", type: "text", class: "input_area", id: "plan_name_unique"}
+        .attention_01.fa.fa-exclamation-circle#warning51 プランの名称を入力してください。
 
       .plan_explanation
         .title_base
@@ -33,31 +33,34 @@
             .price_upper
               .title
                 .title_name 時間価格
-              .slide
+              .slide#slide_hour_price
                 .slide_wrap1
                   .slide_wrap2
-                    %input.slide_value{max: "1", min: "0", name: "num", onchange: "changeValue(this.value)", step: "1", type: "range", value: "0"}
+                    %input.slide_value{max: "1", min: "0", name: "num", step: "1", type: "range", value: "0"}
                     .slide_name 設定中
               .price_bottom
                 .yen ￥
                 .price_wrap
-                  %input.price_content{placeholder: "3000", type: "text"}
+                  %input.price_content{placeholder: "3000", type: "text", id: "price_hour_unique"}
                 .per_hour /時間
           %li.clearfix
             .price_upper
               .title
                 .title_name 一日価格
-              .slide
+              .slide#slide_day_price
                 .slide_wrap1
                   .slide_wrap2
-                    %input.slide_value{max: "1", min: "0", name: "num", onchange: "changeValue(this.value)", step: "1", type: "range", value: "0"}
+                    %input.slide_value{max: "1", min: "0", name: "num", step: "1", type: "range", value: "0"}
                     .slide_name 設定中
               .price_bottom
                 .yen ￥
                 .price_wrap
-                  %input.price_content{placeholder: "8000", type: "text"}
+                  %input.price_content{placeholder: "8000", type: "text", id: "price_day_unique"}
                 .per_hour /日
           .border
+          .attention_01.fa.fa-exclamation-circle#warning52 入力必須項目です。
+          .attention_01.fa.fa-exclamation-circle#warning53 半角数字で入力してください。
+
 
       .available_date_time
         .title_base
@@ -65,7 +68,7 @@
             .title_type 必須
             .title_name 貸出可能な曜日・時間帯
           .detail 貸出可能な曜日と時間を設定してください。0時〜36時（翌日12時）の間で入力してください。
-          .set_all - 一括で設定する
+          .set_all.fas.fa-angle-down 一括で設定する
 
           .set_all_view
             .set_all_view_wrap
@@ -88,7 +91,7 @@
               .price_upper
                 .title
                   .title_name 日曜日
-                .slide_wrap0
+                .slide_wrap0#sunday
                   = render partial: "/tmp/available_date"
             %li.clearfix
               .price_upper

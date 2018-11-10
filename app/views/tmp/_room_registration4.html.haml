@@ -11,21 +11,11 @@
             .title_name 写真
         .detail ゲストが実際に利用するスペース、設備等の画像を最低1枚追加してください。推奨サイズは1260x840です。ドラッグ＆ドロップで入れ替え可。クリックで拡大することができます。最大30枚まで追加できます。写真
         .add_photo
-          .add_button ＋新規写真の追加
+          %label{for: "add_button_unique", class: ".add_button", cursor: "pointer"}
+            ＋新規写真の追加
+            %input{type: "file", id: "add_button_unique", style: "display: none"}
         .photo_area
           .ul
             .li
-              .photo_wrap1
-                .photo_wrap2
-                  .photo
-                    .cover_photo
-                      .cover_photo_wrap
-                        = image_tag("img-sample01-40333a4871.jpg", class:".source")
-                        .button
-                          .button_1
-                            .button_2 カバー写真
-                        .delete_button
-                          .delete_1
-                            .delete_2.fa.fa-trash-alt.clearfix
-                  .photo_memo
-                    %input.memo{:placeholder => "閑静なオフィス街にあるビル内の施設です。", :type => "text", :class => "input_area"}
+              .photo_wrap1#photo_wrap1_unique
+                =render "/tmp/photo.html.haml"

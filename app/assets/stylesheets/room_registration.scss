@@ -1,3 +1,15 @@
+//common
+.attention_01{
+  font-size: 11px;
+  color: #e95175;
+  margin-top: 8px;
+  display: none;
+}
+
+#warning11,#warning12,#warning13,#warning14,#warning15,#warning16,#warning21, #warning22,#warning31, #warning32, #warning33, #warning51, #warning52, #warning53 {
+  display: none;
+}
+
 // header
 .title_bar_up{
   position: fixed;
@@ -809,12 +821,41 @@
                 height:0;
               }
               .slide_value::-moz-range-thumb{
-                background:#60df52;
+                background:gray;
                 height:20px;
                 width:20px;
                 border:none;
                 border-radius:50%;
               }
+
+              .slide_value_g {
+                -webkit-appearance:none;
+                background:gray;
+                height:15px;
+                width:40px;
+                border-radius:8px;
+              }
+              .slide_value_g::-webkit-slider-thumb{
+                -webkit-appearance:none;
+                background:gray;
+                height:20px;
+                width:20px;
+                border-radius:50%;
+              }
+              .slide_value_g::-ms-tooltip{
+                display:none;
+              }
+              .slide_value_g::-moz-range-track{
+                height:0;
+              }
+              .slide_value_g::-moz-range-thumb{
+                background:gray;
+                height:20px;
+                width:20px;
+                border:none;
+                border-radius:50%;
+              }
+
               .slide_name{
                 display: block;
                 margin-top: 5px;
@@ -901,6 +942,7 @@
       display: block;
       border: 2px solid #d1d1d1;
       vertical-align: top;
+      display: none;
       .set_all_view_wrap{
         padding:20px;
         .close_button{
