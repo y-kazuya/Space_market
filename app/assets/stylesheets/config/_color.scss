@@ -21,6 +21,12 @@
 .color-white{
   color: white;
 }
+.red-color{
+  color: #F4356A;
+}
+.green-color{
+  color: #13D45A ;
+}
 //------------------------------------------------------------
 .hover-white:hover{
   color:#999999;
@@ -35,6 +41,17 @@
 .hover-back-gray:hover{
   background-color: #F6F6F6;
   text-decoration: none;
+}
+.hover-left-green:hover{
+  border-left:10px solid #00FD40;
+  text-decoration: none ;
+}
+.hover-none:hover{
+  text-decoration: none;
+}
+.hover-textarea:focus{
+  outline: none;
+  border-color: #00FD40;
 }
 //------------------------------------------------------------
 .back-light-gray{

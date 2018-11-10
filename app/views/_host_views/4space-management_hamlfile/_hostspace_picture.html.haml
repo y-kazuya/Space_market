@@ -1,0 +1,32 @@
+.hostspace-picture-box
+  .hostspace-edit-title
+    写真動画
+  .hostspace-edit-wrapper
+    %span.red-box.weight700
+      必須
+    %span.red-box-with-txt
+      写真
+    %p.red-box-description
+      ゲストが実際に利用するスペース、設備等の画像を最低1枚追加してください。推奨サイズは1260x840です。ドラッグ＆ドロップで入れ替え可。クリックで拡大することができます。最大30枚まで追加できます。
+    %p.new_add_button
+      +新規写真の追加
+    %span
+      = image_tag 'host-icon.png',class:'hostspace-picture-box__picture'
+      %button.garbage-button
+        %i{class:"far fa-trash-alt"}
+    %span
+      = text_area :page, :comtent,class:'SI-textarea textarea-with-picture'
+  .hostspace-edit-wrapper
+    %span.gray-box.weight700
+      任意
+    %span.red-box-with-txt
+      動画
+    %p.red-box-description
+      YouTubeの動画を表示できます。動画は写真とともにスライドショー内に表示されます。
+    %p
+      = text_area :page, :comtent,class:'SI-textarea SI-mini-textarea'
+    %p.red-box-description
+      例）http://www.youtube.com/watch?v=XXXXXXX
+.space-edit-preserve-box
+  .space-edit-preserve-box__button
+    保存
