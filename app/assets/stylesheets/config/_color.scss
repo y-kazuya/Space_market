@@ -49,6 +49,10 @@
 .hover-none:hover{
   text-decoration: none;
 }
+.hover-textarea:focus{
+  outline: none;
+  border-color: #00FD40;
+}
 //------------------------------------------------------------
 .back-light-gray{
   background-color: #f6f6f6;
