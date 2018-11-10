@@ -1,40 +1,8 @@
 .Space-Management-container{
-  .Space-Management-TopBox{
-    position: fixed;
-    background-color: white;
-    box-shadow: 0px 0px 2px 0px;
-    height: 74px;
-    width: 100%;
-    .Space-Management-TopBox-Left{
-      height: 100%;
-      width: 95%;
-      float: left;
-      padding-left: 20px;
-      padding-top:10px;
-      &__title{
-
-        font-size: 22px;
-      }
-      &__spacename{
-        font-size: 14px;
-        color: gray;
-      }
-    }
-    .Space-Management-TopBox-Right{
-      height: 100%;
-      width: 5%;
-      float: right;
-      line-height: 60px;
-      &__close{
-        color: gray;
-        font-size: 60px;
-      }
-    }
-  }
   .Space-Management-BottomBox{
     display: flex;
     height: 100%;
-    padding-top:75px;
+    padding-top:124px;
     .Space-Management-BottomBox-Left{
       height: 100%;
       width: 250px;

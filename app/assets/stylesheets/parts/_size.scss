@@ -64,7 +64,14 @@
 .SI-mini-textarea{
   height:30px;
 }
-
+.top-bottom-border-box{
+  width: 600px;
+  height: 100px;
+  border-top: 1px solid gray;
+  border-bottom:1px solid gray;
+  display: table;
+  vertical-align: middle;
+}
 .switchArea {
   display: block;
   position       : relative;            /* 親要素が基点       */
@@ -79,6 +86,27 @@
   &--gray{
     color: #999999;
   }
+}
+.gray-button{
+  background-color: #F0F0F0;
+  padding: 10px 20px 10px 20px;
+  width: 100px;
+  color: white;
+  border-radius: 5px;
+}
+.light-gray-button{
+  background-color: #BBB;
+  padding: 10px 20px 10px 20px;
+  width: 120px;
+  color: white;
+  border-radius: 5px;
+}
+.green-button{
+  background-color: #13D45A;
+  padding: 10px 20px 10px 20px;
+  width: 120px;
+  color: white;
+  border-radius: 5px;
 }
 
  /* === チェックボックス ==================================== */

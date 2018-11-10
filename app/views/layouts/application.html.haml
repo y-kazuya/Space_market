@@ -12,7 +12,90 @@
     /= render partial: 'shared/header'
     /.main_wrapper
     /= yield
-    .Space-Management-container
+    .host-header
+      .host-header__left
+        .host-left-logo
+          = image_tag 'host-icon.png' ,class: 'host-left-img'
+        .host-left-navs
+          %ul
+            = link_to '#' ,class:'link-white' do
+              %li.host-left-navs__txt
+                ダッシュボード
+            = link_to '#' ,class:'link-white' do
+              %li.host-left-navs__txt
+                カレンダー
+            = link_to '#' ,class:'link-white' do
+              %li.host-left-navs__txt
+                受信トレイ
+            = link_to '#' ,class:'link-white' do
+              %li.host-left-navs__txt
+                スペース管理
+            = link_to '#' ,class:'link-white' do
+              %li.host-left-navs__txt
+                実績
+            = link_to '#' ,class:'link-white' do
+              %li.host-left-navs__txt
+                設定
+      .host-header__right
+        .host-right-nav
+          %ul
+            %li.host-right-nav__content-profile
+              %input{id:"prof-tg",class:"content-profile-checkbox" ,type:"checkbox"}
+              %label{for:"prof-tg"}
+                = image_tag 'sin.jpeg' ,class: 'content-profile-img'
+              .content-profile-box
+                /-----------------------------------ここにプロフィールを設定してください---------
+                %ul
+                  %li.content-profile-box__name-with-img
+                    = image_tag 'sin.jpeg' ,class: 'content-profile-img'
+                    img & name
+                  = link_to '#' ,class:'link-black' do
+                    %li.content-profile-box__name.hover-back-gray
+                      name
+                  = link_to '#' ,class:'link-black' do
+                    %li.content-profile-box__spacemarket.hover-back-gray
+                      SPACEMARKET
+                  = link_to '#' ,class:'link-black' do
+                    %li.content-profile-box__spacemarket-stay.hover-back-gray
+                      SPACEMARKET STAY
+                  = link_to '#' ,class:'link-black' do
+                    %li.content-profile-box__contact.hover-back-gray
+                      お問い合わせ
+                  = link_to '#' ,class:'link-black hover-back-gray' do
+                    %li.content-profile-box__rule.hover-back-gray
+                      ホスト規約
+                  = link_to '#' ,class:'link-black' do
+                    %li.content-profile-box__sign-out.hover-back-gray
+                      ログアウト
+                /-----------------------------------ここにプロフィールを設定してください---------
+            %li.host-right-nav__content-down
+              %input{id:"todo-tg",class:"content-down-checkbox" ,type:"checkbox"}
+              %label{for:"todo-tg"}
+                = fa_icon 'check', class: 'content-down-img link-black color-white'
+              .content-down-box
+                %ul
+                  %li.content-down-box__title
+                    = fa_icon 'check', class: ''
+                    やることリスト
+                  %li.content-down-box__message
+                    some message
+            %li.host-right-nav__content-mail
+              %input{id:"mail-tg",class:"content-mail-checkbox" ,type:"checkbox"}
+              %label{for:"mail-tg"}
+                = fa_icon 'envelope', class: 'content-mail-img hover-white link-gray', id: 'envelope-size'
+                %br
+                %p.content-mail-txt.link-white
+                  お知らせ
+              .content-mail-box
+                %ul
+                  %li.content-mail-box__title
+                    = fa_icon 'envelope'
+                    お知らせ
+                  %li.content-mail-box__message
+                    some message
+            = link_to '#' ,class:'link-white' do
+              %li.host-right-nav__content-help
+                ヘルプ
       .Space-Management-TopBox
         .Space-Management-TopBox-Left
           %p.Space-Management-TopBox-Left__title.weight700
@@ -23,7 +106,7 @@
           = link_to "#" ,class:"hover-white" do
             %p.Space-Management-TopBox-Right__close
               ×
-
+    .Space-Management-container
 
       .Space-Management-BottomBox
         .Space-Management-BottomBox-Left
@@ -91,12 +174,344 @@
         .Space-Management-BottomBox-Right
           .Space-Management-BottomBox-Right-container
             /ここから下に各ページ,正確にはrenderで呼び出されるのは上のnavbarの部分
-            
+            .hostspace-newedit-plan-box
+              .hostspace-edit-title.weight700
+                新規プランの作成
+              = link_to "#" do
+                %p.green-color
+                  <戻る
+              .hostspace-edit-wrapper
+                %span.red-box.weight700
+                  必須
+                %span.red-box-with-txt
+                  プランの名称
+                %p
+                  = text_area :page, :comtent,class:'SI-textarea SI-mini-textarea'
+              .hostspace-edit-wrapper
+                %span.gray-box.weight700
+                  任意
+                %span.red-box-with-txt
+                  プランの説明
+                %p
+                  = text_area :page, :comtent,class:'SI-textarea'
+                %p.red-box-description
+                  例）Wi-Fi、ホワイトボード完備で会議からイベントまでご利用いただけます。その他必要な備品につきましては予約リクエスト時にお問い合わせください。
+              .hostspace-edit-wrapper
+                %span.red-box.weight700
+                  必須
+                %span.red-box-with-txt
+                  価格
+              %p.green-color
+                設定方法の変更
+              .free-value-checkbox
+                %input{id:"free-value-tg",type:"checkbox"}
+                %label{for:"free-value-tg"}
+                  .free-value-label
+                    %p
+                      単位の数値を自由に設定する
+                    %p.red-box-description
+                      3時間あたり、2日あたりなど単位の数値を自由に変更できるようになります。
+              %p.green-color.value-help
+                価格設定のヘルプ
+              .free-value-input-box
+                %span.weight700
+                  価格
+                %span.free-value-input-box__right
+                  ¥
+                  = text_area :page, :comtent ,class: 'free-value-input-box__txtarea'
+                  ／
+                  = text_area :page, :comtent,class: 'free-value-input-box__txtarea'
+                  %select{name:'example'}
+                    %option{value:"時"}時
+                    %option{value:"日"}日
+              .hostspace-edit-wrapper
+                %span.gray-box.weight700
+                  任意
+                %span.red-box-with-txt
+                  貸し出し可能な期間
+                %p.red-box-description
+                  このプランの貸出可能な期間を設定してください。
 
-
-
-
-              
-
-
+                .calender-form
+                  = text_area :page, :comtent
+                  %span
+                    〜
+                  = text_area :page, :comtent
+              .hostspace-edit-wrapper
+                %span.red-box.weight700
+                  必須
+                %span.red-box-with-txt
+                  貸出可能な曜日・時間帯
+                %p.red-box-description
+                  貸出可能な曜日と時間を設定してください。0時〜36時（翌日12時）の間で入力してください。
+                .weekdays-box
+                  .day-of-the-week
+                    .day-of-the-week__left
+                      日曜日
+                    .day-of-the-week__right
+                      .dotw-right-box
+                        %span.dotw-right-box__2
+                          .switchArea
+                            %input{type:"checkbox",id:"switch1"}
+                            %label{for:'switch1'}
+                              %span
+                            #swImg
+                        %span.dotw-right-box__3
+                          %select{name:'example'}
+                            %option{value:"0"}0
+                            %option{value:"1"}1
+                            %option{value:"2"}2
+                            %option{value:"3"}3
+                            %option{value:"4"}4
+                            %option{value:"5"}5
+                            %option{value:"6"}6
+                            %option{value:"7"}7
+                            %option{value:"8"}8
+                            %option{value:"9"}9
+                            %option{value:"10"}10
+                            %option{value:"11"}11
+                            %option{value:"12"}12
+                            %option{value:"13"}13
+                            %option{value:"14"}14
+                            %option{value:"15"}15
+                            %option{value:"16"}16
+                            %option{value:"17"}17
+                            %option{value:"18"}18
+                            %option{value:"19"}19
+                            %option{value:"20"}20
+                            %option{value:"21"}21
+                            %option{value:"22"}22
+                            %option{value:"23"}23
+                            %option{value:"24"}24
+                            %option{value:"25"}25
+                            %option{value:"26"}26
+                            %option{value:"27"}27
+                            %option{value:"28"}28
+                            %option{value:"29"}29
+                            %option{value:"30"}30
+                            %option{value:"31"}31
+                            %option{value:"32"}32
+                            %option{value:"33"}33
+                            %option{value:"34"}34
+                            %option{value:"35"}35
+                            %option{value:"36"}36
+                        %span.dotw-right-box__4
+                          ：00〜
+                        %span.dotw-right-box__5
+                          %select{name:'example'}
+                            %option{value:"0"}0
+                            %option{value:"1"}1
+                            %option{value:"2"}2
+                            %option{value:"3"}3
+                            %option{value:"4"}4
+                            %option{value:"5"}5
+                            %option{value:"6"}6
+                            %option{value:"7"}7
+                            %option{value:"8"}8
+                            %option{value:"9"}9
+                            %option{value:"10"}10
+                            %option{value:"11"}11
+                            %option{value:"12"}12
+                            %option{value:"13"}13
+                            %option{value:"14"}14
+                            %option{value:"15"}15
+                            %option{value:"16"}16
+                            %option{value:"17"}17
+                            %option{value:"18"}18
+                            %option{value:"19"}19
+                            %option{value:"20"}20
+                            %option{value:"21"}21
+                            %option{value:"22"}22
+                            %option{value:"23"}23
+                            %option{value:"24"}24
+                            %option{value:"25"}25
+                            %option{value:"26"}26
+                            %option{value:"27"}27
+                            %option{value:"28"}28
+                            %option{value:"29"}29
+                            %option{value:"30"}30
+                            %option{value:"31"}31
+                            %option{value:"32"}32
+                            %option{value:"33"}33
+                            %option{value:"34"}34
+                            %option{value:"35"}35
+                            %option{value:"36"}36
+                        %span.dotw-right-box__6
+                          ：00
+                  .day-of-the-week
+                    .day-of-the-week__left
+                      月曜日
+                    .day-of-the-week__right
+                      .dotw-right-box
+                        %span.dotw-right-box__2
+                          .switchArea
+                            %input{type:"checkbox",id:"switch2"}
+                            %label{for:'switch2'}
+                              %span
+                            #swImg
+                        %span.dotw-right-box__3
+                          %select{name:'example'}
+                            %option{value:"0"}0
+                            %option{value:"1"}1
+                            %option{value:"2"}2
+                            %option{value:"3"}3
+                            %option{value:"4"}4
+                            %option{value:"5"}5
+                            %option{value:"6"}6
+                            %option{value:"7"}7
+                            %option{value:"8"}8
+                            %option{value:"9"}9
+                            %option{value:"10"}10
+                            %option{value:"11"}11
+                            %option{value:"12"}12
+                            %option{value:"13"}13
+                            %option{value:"14"}14
+                            %option{value:"15"}15
+                            %option{value:"16"}16
+                            %option{value:"17"}17
+                            %option{value:"18"}18
+                            %option{value:"19"}19
+                            %option{value:"20"}20
+                            %option{value:"21"}21
+                            %option{value:"22"}22
+                            %option{value:"23"}23
+                            %option{value:"24"}24
+                            %option{value:"25"}25
+                            %option{value:"26"}26
+                            %option{value:"27"}27
+                            %option{value:"28"}28
+                            %option{value:"29"}29
+                            %option{value:"30"}30
+                            %option{value:"31"}31
+                            %option{value:"32"}32
+                            %option{value:"33"}33
+                            %option{value:"34"}34
+                            %option{value:"35"}35
+                            %option{value:"36"}36
+                        %span.dotw-right-box__4
+                          ：00〜
+                        %span.dotw-right-box__5
+                          %select{name:'example'}
+                            %option{value:"0"}0
+                            %option{value:"1"}1
+                            %option{value:"2"}2
+                            %option{value:"3"}3
+                            %option{value:"4"}4
+                            %option{value:"5"}5
+                            %option{value:"6"}6
+                            %option{value:"7"}7
+                            %option{value:"8"}8
+                            %option{value:"9"}9
+                            %option{value:"10"}10
+                            %option{value:"11"}11
+                            %option{value:"12"}12
+                            %option{value:"13"}13
+                            %option{value:"14"}14
+                            %option{value:"15"}15
+                            %option{value:"16"}16
+                            %option{value:"17"}17
+                            %option{value:"18"}18
+                            %option{value:"19"}19
+                            %option{value:"20"}20
+                            %option{value:"21"}21
+                            %option{value:"22"}22
+                            %option{value:"23"}23
+                            %option{value:"24"}24
+                            %option{value:"25"}25
+                            %option{value:"26"}26
+                            %option{value:"27"}27
+                            %option{value:"28"}28
+                            %option{value:"29"}29
+                            %option{value:"30"}30
+                            %option{value:"31"}31
+                            %option{value:"32"}32
+                            %option{value:"33"}33
+                            %option{value:"34"}34
+                            %option{value:"35"}35
+                            %option{value:"36"}36
+                        %span.dotw-right-box__6
+                          ：00
+              .hostspace-edit-wrapper
+                %span.red-box.weight700
+                  必須
+                %span.red-box-with-txt
+                  貸出可能な曜日・時間帯
+                %p.red-box-description
+                  予約にホストの承認が必要かどうかを設定してください。
+                  承認なし（今すぐ予約）に設定するとゲストとのやりとりが簡単になり、予約が入りやすくなります。
+                .approval-box
+                  .approval-box__left
+                    = radio_button :test, :foo, label: "承認なし", inline: true
+                    承認なし(今すぐ予約)
+                  .approval-box__right
+                    = radio_button :test, :foo, label: "承認あり", inline: true
+                    承認あり
+              .hostspace-edit-wrapper
+                %span.gray-box.weight700
+                  任意
+                %span.red-box-with-txt
+                  その他の設定
+                .top-bottom-border-box.mini-utilization-time
+                  .mini-utilization-time__intro.weight700
+                    最低利用時間
+                    %p.red-box-description
+                      ゲストが予約できる最低利用時間の設定です。
+                  .mini-utilization-time__txtarea
+                    = text_area :page, :comtent
+                  .mini-utilization-time__pulldown
+                    %select{name:'example'}
+                      %option{value:"時"}時
+                      %option{value:"日"}日
+                .top-bottom-border-box.clean-up-time
+                  .clean-up-time__intro.weight700
+                    片付け時間
+                    %p.red-box-description
+                      利用終了後に時間を設け、別の予約が入らないようにできます。
+                  .clean-up-time__txt
+                    利用終了後
+                  .clean-up-time__txtarea
+                    = text_area :page, :comtent
+                  .clean-up-time__txt
+                    時間
+                .top-bottom-border-box.just-before-time
+                  .just-before-time__intro.weight700
+                    直前割
+                    %p.red-box-description
+                      最低10%以上。利用日から5日前までの予約に適用されます。
+                  .just-before-time__txt
+                    割引率
+                  .just-before-time__pulldown
+                    %select{name:'example'}
+                      %option{value:"設定しない"}設定しない
+                      %option{value:"10%"}10%
+                      %option{value:"15%"}15%
+                      %option{value:"20%"}20%
+                      %option{value:"25%"}25%
+                      %option{value:"30%"}30%
+                      %option{value:"35%"}35%
+                      %option{value:"40%"}40%
+                      %option{value:"45%"}45%
+                      %option{value:"50%"}50%
+                .top-bottom-border-box.management-cost
+                  .management-cost__intro.weight700
+                    管理維持費
+                    %p.red-box-description
+                      スペースの利用料金とは別に清掃料金や光熱費など管理維持費を設定できます。
+                  .management-cost__txt
+                    ¥
+                  .management-cost__txtarea
+                    = text_area :page, :comtent
+                .top-bottom-border-box
+                .cancel-and-save-box
+                  .cancel-and-save-box__blank
+                  .cancel-and-save-box__left
+                    = link_to "#" do
+                      .light-gray-button
+                        キャンセル
+                  .cancel-and-save-box__right
+                    = link_to "#" do
+                      .gray-button
+                        保存
+                      /.light-green-button
+                      /  保存
 /= render partial: 'shared/footer'
