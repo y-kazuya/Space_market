@@ -18,20 +18,29 @@
       - break
 
 %h2
-  = time_low_high(@room) #room_helper
-  = "/時間"
+  - unless @room.public_plans == []
+    = time_low_high(@room) #room_helper
+    = "/時間"
 %h2
-  = day_low_high(@room) #room_helper
-  = "/日"
+  - unless @room.public_plans == []
+    = day_low_high(@room) #room_helper
+    = "/日"
 
 %h2
   ポイントが利用可能(point実装後にちゃんとする)
 
 
 %h2
-  = link_to "空き情報のかくにん/予約リクエスト", "#"
+  - unless @room.public_plans == []
+    = link_to "空き情報のかくにん/予約リクエスト", space_room_reservations_path(@space.id, @room.id)
+  -else
+    プランがないため予約できません
 %h2
-  = link_to "お気に入り", "#"
+  - if favalite_room?(@room)
+    = link_to "お気に入り", space_room_favorites_path(@space.id, @room.id)
+
+  - else
+    = link_to "お気に入りにする！", first_create_space_room_favorites_path(@space.id, @room.id), method: :post
 
 %h2
   = link_to "シェア"
@@ -39,7 +48,8 @@
 
 %h2
   サイドバーここまで
-
+= current_user.favalite_rooms
+= favalite_room?(@room)
 
 
 

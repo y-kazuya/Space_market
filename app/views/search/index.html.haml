@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title SpaceMarket
+    = favicon_link_tag('icon-256.ico')
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{:href => "https://use.fontawesome.com/releases/v5.0.6/css/all.css", :rel => "stylesheet"}/
+  %body
+    = render partial: 'shared/header'
+    .main_wrapper
+      = render partial: 'shared/search_form'
+
+      .summary_contents
+        .div_search_result
+          スペース検索結果
+          #{@results.length}件
+
+        .summary_lists
+          = render partial: 'search_result', collection: @results, as: :result
+      .map_contents

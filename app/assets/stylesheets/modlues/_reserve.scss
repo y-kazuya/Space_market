@@ -1,0 +1,105 @@
+.calender_area {
+  width: 50vw;
+  #calender{
+
+  }
+}
+
+.fc-highlight{
+  background-color: red !important;
+}
+
+
+.room_id {
+  display: none;
+}
+
+.fc-day{
+  background-color:#f3f3f3;
+}
+
+.fc-day-number{
+  float: left !important;
+  font-size: 2vh !important;
+  font-weight: 300;
+}
+
+.cant_reserve{
+  pointer-events: none;
+  background-color: #f3f3f3 !important;
+  color: #b3b3b4 !important;
+  font-size: 1.7vh !important;
+  height:7.5vh !important;
+  min-height: 80px !important;
+  border: none !important;
+  box-sizing: border-box !important;
+  line-height: 100%;
+  .fc-content{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box !important;
+    paddin-left: 10%;
+    padding-top: 20%;
+    span{
+      margin: auto auto !important;
+
+
+    }
+  }
+}
+
+.cant_reserve_day{
+
+}
+
+.can_reserve{ //プランを囲んでいる
+  background-color: #f3f3f3 !important;
+  color: #60df52 !important;
+  background-color: white !important;
+  cursor: pointer !important ;
+  font-size: 1.7vh !important;
+  height:7.5vh !important;
+  min-height: 80px !important;
+  border: none !important;
+  box-sizing: border-box !important;
+  line-height: 100%;
+  .fc-content{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box !important;
+    paddin-left: 10%;
+    padding-top: 20%;
+    span{
+      margin: auto auto !important;
+
+
+    }
+  }
+}
+
+
+
+.can_reserve_day{
+  background-color: white ;
+  box-sizing: border-box;
+}
+
+
+.selected_day {
+  background: #60df52 !important;
+  color: white !important;
+}
+
+.m_over {
+  background-color: #CCFFCC!important;
+}
+
+
+
+
+
+
+//予約情報////////////////////////////
+.need_re{
+  display: none;
+}

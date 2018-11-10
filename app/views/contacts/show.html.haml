@@ -1,0 +1,29 @@
+コンタクト設定
+
+
+= render 'shared/errors', object: @contact
+
+= form_for @contact, url:contact_path do |f|
+  %h1
+    名前
+  %h2
+    = f.text_field :first_name
+    = f.text_field :last_name
+
+  %h1
+    電話番号認証
+  %h2
+    =f.number_field :phone_number
+
+  %h1
+    法人・団体
+  %h2
+    =f.check_box :company
+
+  %h1
+    法人・団体めい
+
+  %h2
+    =f.text_field :company_name
+
+  =f.submit "保存"

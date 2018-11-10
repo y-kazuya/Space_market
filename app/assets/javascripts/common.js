@@ -1,6 +1,6 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   $('.datepicker').datetimepicker({
-    format : "YYYYMMDD",
+    format : "YYYY-MM-DD",
     icons: {
       previous: "fa fa-arrow-left",
       next: "fa fa-arrow-right"

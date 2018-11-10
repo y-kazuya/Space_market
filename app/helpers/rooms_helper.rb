@@ -15,4 +15,25 @@ module RoomsHelper
       return "¥#{room.time_low_price} ~ ¥#{room.time_high_price}"
     end
   end
+
+  def favalite_room?(room)
+    if current_user
+      current_user.favorite_lists.each do |list|
+        list.favorites.each do |f|
+          return true if f.room_id == room.id
+        end
+      end
+    end
+
+    return false
+  end
+
+
+  def set_price(price, type)
+    "¥#{price}/#{type}〜"
+  end
+
+  def set_event_type_count(id)
+    Room.joins(basic_info: [:basic_info_usages]).where("usage_id = ?", "#{id}").distinct.where(activated: "certification").where(rooms: {public: true }).count
+  end
 end
