@@ -11,6 +11,9 @@ class PicturesController < RoomInfosController
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
+      if Picture.where(room_id: params[:room_id] ).count > 1
+        Picture.where(room_id: params[:room_id] ).first.destroy
+      end
       return redirect_to new_space_room_plan_path(params[:space_id], params[:room_id])
     else
       @room = @picture.room

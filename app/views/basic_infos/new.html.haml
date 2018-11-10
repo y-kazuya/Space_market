@@ -75,7 +75,7 @@
           .detail 利用日の何日前に予約を締め切るかを設定してください。
           .detail 例）「利用日の7日前」に設定→ゲストが4月8日に利用したい場合、4月1日以前に予約をする必要があります。
           .input_base
-            = f.select :reserve_limit, BasicInfo.reserve_limits.keys, class: "select_area"
+            = f.select :reserve_limit, BasicInfo.reserve_limits.keys, {},{class: "select_area"}
 
 
         .reserve_start
@@ -86,7 +86,7 @@
           .detail ゲストが予約リクエストする日を起点として、利用日が何ヶ月先までの予約を受け付けるか設定してください。
           .detail 例）「12ヶ月先まで予約を受け付ける」を設定→2018年4月1日の場合、2019年4月1日まで予約を受け付けます。
           .input_base
-            = f.select :reserve_period, BasicInfo.reserve_periods.keys, class: "select_area"
+            = f.select :reserve_period, BasicInfo.reserve_periods.keys, {},{class: "select_area"}
   .bottom
     .bottom_line
       .bottom_buttons

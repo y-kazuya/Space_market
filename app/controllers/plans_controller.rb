@@ -14,6 +14,7 @@ class PlansController < RoomInfosController
     @plan = Plan.new(plan_params)
 
     if @plan.save
+
       if current_user.owner == true
         return redirect_to stats_user_room_path(current_user.id, @plan.room.id)
       else
