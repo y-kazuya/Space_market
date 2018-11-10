@@ -45,7 +45,7 @@ class SearchController < ApplicationController
 
 
       if results.length >= 1 && params[:state][:capacity] != ""
-
+        @capa = params[:state][:capacity]
         @oo = []
 
         results.each do |room|

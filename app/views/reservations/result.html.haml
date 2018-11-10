@@ -1,0 +1,60 @@
+.reserve__title
+  予約完了しました
+
+
+.place
+  .place__title
+    スペースの住所
+  .place__address
+    = @reserve.room.space.space_info.full_address
+
+  .place__picture
+    = image_tag(@reserve.room.pictures.first.content_url(:preview))
+
+.plan
+  .plan__title
+    ご利用いただくプラン
+  .plan__name
+    プラン名 :
+    = @reserve.plan.name
+  .plan__about
+    プランの詳細 :
+    = @reserve.plan.about
+
+- unless @reserve.options == []
+  .option
+    .option__title
+      追加オプション
+    .options
+    - @reserve.options.each do |op|
+      .option__list
+        %span.option__list__name
+          = "#{op.name} :"
+        %span.option__list__about
+          = op.about
+
+        .option__list__price
+          =op.price
+          円
+
+.day
+  .day__title
+    = @reserve.day ? "ご利用び" : "ご利用時間"
+  .day__days
+    - @reserve.reserve_dates.each do |rd|
+      .redays
+        .redays__show
+          = rd.start_date
+
+.total_price
+  .total_price__title
+    合計金額
+  .total_price__show
+    = "#{@reserve.price}円"
+
+  .total_price__point
+    = "付与ポイント: #{@reserve.price / 100}"
+
+
+= link_to "トップに戻る", root_path
+= link_to "予約をし直す", reservation_path(@reserve.id),method: :delete, data: { confirm: 'よろしいですか？' }

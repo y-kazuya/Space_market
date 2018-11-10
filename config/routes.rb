@@ -13,6 +13,13 @@ Rails.application.routes.draw do
   ##
   resources :owners, only: [:show]
 
+
+  resources :reservations, only: [:destroy] do
+    member do
+      get :result
+    end
+  end
+
   resources :spaces do
     get    '/dashboard', to: 'dashboards#first_space'
 

@@ -79,7 +79,7 @@
     以下モーダル
   %h1
     利用目的
-    = f.select :purpose, Reserve.purposes.keys, {prompt: '選択してください'}
+    = f.select :purpose, Reserve.purposes.keys
   %h1
     = "利用人数（〜#{@room.basic_info.capacity}人)"
     = f.number_field :people
