@@ -113,6 +113,15 @@
       float: right;
       margin:14px 10px;
       position: relative;
+      .prof-and-down{
+        margin-top: -5px;
+      }
+      .top-nav-down-checkbox{
+        display: none;
+      }
+      input[type=checkbox]:checked ~ .top-nav-parent{
+        display: block;
+      }
       .top-nav-parent{
         box-shadow: 0 0 8px #EBEBEB;
         border-radius: 3px;
@@ -120,8 +129,8 @@
         top: 40px;
         left: -230px;
         position: absolute;
-        visibility: hidden;
-        opacity: 0;
+        display: none;
+
         .child-user{
           border-bottom: solid 1px;
           border-color: #EBEBEB;
