@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load',function(){
 
-
 // 画面1
   error_message_blank('#kanji_last_name_unique','#warning_hr_11');
   error_message_blank('#kanji_first_name_unique','#warning_hr_12');
@@ -33,9 +32,7 @@ $(document).on('turbolinks:load',function(){
         reader = new FileReader(),
         $preview = $("#photo_wrap1_unique");
         t = this;
-    console.log('in');
     var name = $('#add_button_unique')[0].files[0].name;
-    console.log(name);
     // 画像ファイル以外の場合は何もしない
     if(file.type.indexOf("image") < 0){
       return false;
@@ -59,9 +56,7 @@ $(document).on('turbolinks:load',function(){
     reader.readAsDataURL(file);
   });
 
-
 // 共通
-
 
 // 表示・非表示
   function show_hide(s,m){
