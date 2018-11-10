@@ -1,0 +1,120 @@
+.wrapper_2_1
+  .wrapper_2_2
+    .upper
+      .title_base.clearfix
+        .title 1 基本情報
+
+    .main
+      .name
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 担当者氏名
+        .title 漢字
+        .input_base
+          .kanji_wrap.clearfix
+            .last_wrap
+              %input{placeholder: "", class: "input_area", type: "text", id: "kanji_last_name_unique"}
+              .explanation 例）森田
+            .first_wrap
+              %input{placeholder: "", class: "input_area", type: "text", id: "kanji_first_name_unique"}
+              .explanation 例）大智
+          .attention_01.fa.fa-exclamation-circle#warning_h11 漢字（姓）を入力してください。
+          .attention_01.fa.fa-exclamation-circle#warning_h12 漢字（名）を入力してください。
+        .title フリガナ
+        .input_base
+          .furigana_wrap.clearfix
+            .last_wrap
+              %input{placeholder: "", class: "input_area", type: "text", id: "kanji_last_name_unique"}
+              .explanation 例）モリタ
+            .first_wrap
+              %input{placeholder: "", class: "input_area", type: "text", id: "kanji_first_name_unique"}
+              .explanation 例）ダイチ
+          .attention_01.fa.fa-exclamation-circle#warning_h11 フリガナ（姓）を入力してください。
+          .attention_01.fa.fa-exclamation-circle#warning_h12 フリガナ（名）を入力してください。
+
+      .sex
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 性別
+        .input_base.clearfix
+          .wrap
+            %input{type: "radio", id: "radio1", name: "type", width: "200px"}
+            %lavel.radio_type{for: "radio1"} 男性
+          .wrap
+            %input{type: "radio", id: "radio2", name: "type"}
+            %lavel.radio_type{for: "radio2"} 女性
+
+      .birth_date
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 生年月日
+        .input_base.clearfix
+          .date_wrap
+            = render partial: "/tmp/year"
+          .title
+            .title_name 年
+          .date_wrap
+            = render partial: "/tmp/month"
+          .title
+            .title_name 月
+          .date_wrap
+            = render partial: "/tmp/day"
+          .title
+            .title_name 日
+
+      .profile_image
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name プロフィール画像
+        .photo_area
+          = image_tag("img-sample01-40333a4871.jpg",size: "120x120")
+        .add_photo
+          %label{for: "add_button_unique", class: ".add_button", cursor: "pointer"}
+            ＋ファイルの変更
+            %input{type: "file", id: "add_button_unique", style: "display: none"}
+
+      .phone_no
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 電話番号
+        .input_base
+          %input{placeholder: "電話番号", type: "text", class: "input_area",id: "phone_no_unique"}
+          .explanation 例）09012345678
+          .attention_01.fa.fa-exclamation-circle#warning16 電話番号を入力してください。
+
+
+      .id_doc
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 身分証明書類
+        .explanation 以下のうち、いずれかの画像をアップロードしてください。
+        .detail2 免許証 / パスポート / 住基カード
+        .id_image
+          = image_tag("identity_document-1125b4a186.svg")
+        .explanation ※カラーの画像をご用意ください。
+        .explanation ※免許証は写真の入った表面のみをお送りください。
+        .explanation ※パスポートは写真の入ったページと外務大臣印のあるページの見開きをお送りください。
+        .explanation ※住基カードは写真の入った表面のみをお送りください。
+        .explanation ※証明書部分が切れていないこと、影や反射がないこと、ピントがあっていることを確認し、内容が読み取りやすい画像をご用意ください。
+
+
+      .individual_organization
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 個人・法人
+        .detail 個人か法人のどちらかを選択してください
+
+        .input_base.clearfix
+          .wrap
+            %input{type: "radio", id: "radio1", name: "type", width: "200px"}
+            %lavel.radio_type{for: "radio1"} 個人
+          .wrap
+            %input{type: "radio", id: "radio2", name: "type"}
+            %lavel.radio_type{for: "radio2"} 法人

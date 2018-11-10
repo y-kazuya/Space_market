@@ -309,9 +309,9 @@
 }
 
 // view1
-.wrapper_1_1{
+.wrapper_2_1{
   padding: 15px 12px 0px;
-  .wrapper_1_2{
+  .wrapper_2_2{
     width: 100%;
     max-width: 810px;
     margin: 0 auto;
@@ -413,90 +413,120 @@
 
 
 
-      .postal_cd{
-
-      }
-      .ward{
-        select {
-          @extend .input_area;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
+      .name{
+        .title{
+          margin-top: 10px;
+        }
+        .last_wrap, .first_wrap{
+          margin-right: 5px;
           float: left;
         }
-        .select_area {
-          width: 200px;
-          min-width: 200px;
-          margin-right: 10px;
-          height: 40px;
-          float: left;
-          border-radius: 3px;
-          padding-left: 10px;
-          border: 1px solid #b3b3b3;
-        }
-        .input_area{
-          float: left;
-          width: 300px;
-          min-width: 300px;
-        }
-        .explanation{
-          font-size: 11px;
-          color: #999;
-          margin: 8px 220px 0px;
-        }
-
       }
-      .street{
-        .input_area{
-          width: 300px;
-          min-width: 300px;
-        }
-
-      }
-      .building{
-        .input_area{
-          width: 300px;
-          min-width: 300px;
-        }
-      }
-      .map{
-        .google_map{
-          height: 300px;
-          width: 400px;
-          padding: 0px;
-          border-width: 0px;
+      .sex{
+        .input_base{
           margin-top: 30px;
-          left: 0px;
-          top: 0px;
-          touch-action: pan-x pan-y;
+          .wrap{
+            float: left;
+            margin-right: 80px;
+          }
         }
       }
-      .access{
-        .input_area{
-          width: 500px;
-          min-width: 500px;
-          height: 100px;
+
+      .birth_date{
+        .input_base{
+          margin-top: 30px;
+          .title{
+            width: 30px;
+            text-align: center;
+            margin-top: 10px;
+          }
+          .date_wrap{
+            float: left;
+            .time_bottom{
+              float: left;
+              display: block;
+              text-align: right;
+              vertical-align: middle;
+              .time_wrap{
+                float: left;
+                display: inline-block;
+                select {
+                  @extend .input_area;
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none;
+                  float: left;
+                }
+                .year {
+                  width: 120px;
+                  min-width: 120px;
+                  height: 40px;
+                  float: left;
+                  font-size: 16px;
+                  text-align: center;
+                  background-color: white;
+                  border-radius: 3px;
+                  padding-left: 3px;
+                  border: 1px solid #b3b3b3;
+                }
+                .month, .day {
+                  @extend .year;
+                  width: 80px;
+                  min-width: 80px;
+;
+                }
+
+              }
+            }
+          }
+          .title{
+            float: left;
+          }
         }
-        .input_area::placeholder{
-          vertical-align: text-top;
+      }
+      .profile_image{
+        .photo_area{
+          -webkit-tap-highlight-color: rgba(0,0,0,0);
+          margin-top: 24px;
+          margin-bottom: 20px;
+          overflow: hidden;
+          border: 1px solid #b3b3b3;
+          border-radius: 3px;
+          width: 120px;
+          height: 120px;
+          border-radius: 60px;
         }
       }
       .phone_no{
 
       }
-      .type{
-        .wrap{
-          float: left;
-          display: block;
-          content: "";
-          position: relative;
-          display: block;
-          padding-left: 30px;
-          margin-top: 10px;
-          width: 200px;
-          min-width: 150px;
+      .id_doc{
+        .explanation{
+          font-size: 11px;
+          color: #999;
+          margin-top: 8px;
+        }
+        .detail2{
+          margin: 30px 0px;
+          @extend .detail;
+          font-size: 16px;
+        }
+        .id_image{
+          width: 500px;
+          height: 200px;
         }
       }
+      .individual_organization{
+        margin-bottom: 80px;
+        .input_base{
+          margin-top: 30px;
+          .wrap{
+            float: left;
+            margin-right: 80px;
+          }
+        }
+      }
+
     }
   }
 }
