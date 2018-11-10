@@ -15,11 +15,8 @@
     %script{:charset => "UTF-8", :src => "https://ajaxzip3.github.io/ajaxzip3.js"}
     -# %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"}
   %body
-    = render partial: 'shared/header'
+    -# = render partial: 'shared/header' #いつか消す
+    = render "tmp/room_registration_header"
     .main_wrapper
       = yield
-    = render partial: 'shared/footer'
-
-
-
 
