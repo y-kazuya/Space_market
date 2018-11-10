@@ -1,6 +1,6 @@
 class RoomInfosController < ApplicationController
-
-  layout :set_lay
+  layout "room_new"
+  # layout :set_lay
   before_action :logged_in_user?
   before_action :set_group_room , only: [:new, :info_select]
 

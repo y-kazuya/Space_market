@@ -1,0 +1,15 @@
+.photo_wrap2
+  .photo
+    .cover_photo
+      .cover_photo_wrap
+        = image_tag("img-sample01-40333a4871.jpg", class:".source")
+        .button
+          .button_1
+            .button_2 カバー写真
+        .delete_button
+          .delete_1
+            .delete_2.fa.fa-trash-alt.clearfix
+  .photo_memo
+    %input.memo{:placeholder => "閑静なオフィス街にあるビル内の施設です。", :type => "text", :class => "input_area"}
+
+

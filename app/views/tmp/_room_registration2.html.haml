@@ -1,0 +1,119 @@
+.wrapper_1_1
+  .wrapper_1_2
+    .upper
+      .title_base.clearfix
+        .title ２ 基本情報
+    .main
+      .usage
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 使用可能用途
+        .detail このスペースをどのような目的に使ってよいか選択してください。複数選択可能。
+        .input_base.clearfix
+          .wrap
+            %input{type: "checkbox", id: "check1", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check1"} パーティー
+          .wrap
+            %input{type: "checkbox", id: "check2", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check2"} 会議・研修
+          .wrap
+            %input{type: "checkbox", id: "check3", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check3"} 写真撮影
+          .wrap
+            %input{type: "checkbox", id: "check4", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check4"} ロケ撮影
+          .wrap
+            %input{type: "checkbox", id: "check5", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check5"} イベント
+          .wrap
+            %input{type: "checkbox", id: "check6", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check6"} 演奏・パフォーマンス
+          .wrap
+            %input{type: "checkbox", id: "check7", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check7"} 個展・展示会
+          .wrap
+            %input{type: "checkbox", id: "check8", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check8"} スポーツ・フィットネス
+          .wrap
+            %input{type: "checkbox", id: "check9", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check9"} オフィス
+          .wrap
+            %input{type: "checkbox", id: "check10", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check10"} 結婚式
+          .wrap
+            %input{type: "checkbox", id: "check11", name: "type", width: "150px"}
+            %lavel.checkbox_type{for: "check11"} その他
+          .explanation
+
+      .capacity
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 最大収容人数
+        .input_base
+          %input{placeholder: "10", type: "text", class: "input_area", id: "capacity_unique"} 人
+          .explanation
+            .attention_01.fa.fa-exclamation-circle#warning21 最大収容人数を入力してください。
+
+      .area
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 床面積
+        .input_base
+          %input{placeholder: "200", type: "text", class: "input_area", id: "area_unique"} ㎡
+          .explanation
+          .attention_01.fa.fa-exclamation-circle#warning22 床面積を入力してください。
+
+      .keypick
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 鍵の受け渡し
+        .detail 利用日当日の鍵の受け渡し方法を選択してください。
+        .input_base.clearfix
+          .wrap
+            %input{type: "radio", id: "radio1", name: "type", width: "200px"}
+            %lavel.radio_type{for: "radio1"} 対面
+          .wrap
+            %input{type: "radio", id: "radio2", name: "type"}
+            %lavel.radio_type{for: "radio2"} キーボックス
+          .wrap
+            %input{type: "radio", id: "radio3", name: "type"}
+            %lavel.radio_type{for: "radio3"} スマートロック
+          .wrap
+            %input{type: "radio", id: "radio4", name: "type"}
+            %lavel.radio_type{for: "radio4"} 予約成立後にメッセージで伝える
+
+      .reserve_deadline
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 予約の締め切り
+        .detail 利用日の何日前に予約を締め切るかを設定してください。
+        .detail 例）「利用日の7日前」に設定→ゲストが4月8日に利用したい場合、4月1日以前に予約をする必要があります。
+        .input_base
+          %select{name: "reserve_start", class: "select_area"}
+            %option{value: "0"} 利用日当日
+            %option{value: "1"} 利用日の１日前
+            %option{value: "2"} 利用日の２日前
+            %option{value: "3"} 利用日の３日前
+            %option{value: "7"} 利用日の７日前
+            %option{value: "14"} 利用日の１４日前
+
+      .reserve_start
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 予約の受付期間
+        .detail ゲストが予約リクエストする日を起点として、利用日が何ヶ月先までの予約を受け付けるか設定してください。
+        .detail 例）「12ヶ月先まで予約を受け付ける」を設定→2018年4月1日の場合、2019年4月1日まで予約を受け付けます。
+        .input_base
+          %select{name: "reserve_start", class: "select_area"}
+            %option{value: "3"} ３ヶ月先まで予約を受け付ける
+            %option{value: "6"} ６ヶ月先まで予約を受け付ける
+            %option{value: "9"} ９ヶ月先まで予約を受け付ける
+            %option{value: "12"} １２ヶ月先まで予約を受け付ける
+
+

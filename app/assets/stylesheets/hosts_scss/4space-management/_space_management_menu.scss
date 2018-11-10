@@ -1,0 +1,140 @@
+.Space-Management-container{
+  .Space-Management-BottomBox{
+    display: flex;
+    height: 100%;
+    padding-top:124px;
+    .Space-Management-BottomBox-Left{
+      height: 100%;
+      width: 250px;
+      background-color: #F6F6F6;
+      position: fixed;
+      &__space-left-nav{
+        .space-left-nav-close{
+          display: block;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          margin: 0 auto;
+          border-bottom: 3px solid #f0f0f0;
+          border-top:3px solid #f0f0f0;
+          text-align: center;
+          font-size: 12px;
+        }
+        .space-left-nav-item{
+          display: block;
+          padding-left: 20px;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          padding-right: 20px;
+        }
+        .space-left-time-pre{
+          border-bottom: 3px solid #f0f0f0;
+          border-top:3px solid #f0f0f0;
+          position: relative;
+          .space-left-pre-preview{
+            color: green;
+          }
+          .space-left-pre-minitxt{
+            color: gray;
+            font-size: 12px;
+          }
+          .onoffswitch {
+              position: absolute;
+              left: 190px;top:20px;
+              -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+          }
+          .onoffswitch-checkbox-ontext{
+            position: absolute;
+            left: 190px;top:45px;
+            font-size: 12px;
+            color: gray;
+            opacity: 0;
+          }
+          .onoffswitch-checkbox-offtext{
+            position: absolute;
+            left: 190px;top:45px;
+            font-size: 12px;
+            color: gray;
+            opacity: 1.0;
+          }
+          .onoffswitch-checkbox {
+              display: none;
+              margin-left:100px;
+          }
+          .onoffswitch-label {
+              display: block; overflow: hidden; cursor: pointer;
+              width:40px;height: 18px; padding: 0; line-height: 18px;
+              border: 0px solid #999999; border-radius: 70px;
+              background-color: #A1A1A1;
+          }
+          .onoffswitch-label:before {
+              content: "";
+              display: block; width: 28px;margin: -3px;
+              background: #EEEEEE;
+              position: absolute; top: 0; bottom: 0;
+              right: 28px;
+              border-radius: 70px;
+              box-shadow: 0 2px 2px 0px #757575;
+          }
+          .onoffswitch-checkbox:checked + .onoffswitch-label {
+              background-color: #36F78D;
+          }
+          .onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+             border-color: #36F78D;
+          }
+          .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+              right: -10px;
+              background-color: #13D45A;
+              box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);
+          }
+          .onoffswitch-checkbox:checked .onoffswitch-checkbox-ontext{
+            opacity: 1.0;
+          }
+          .onoffswitch-checkbox:checked .onoffswitch-checkbox-offtext{
+            opacity: 0.0;
+          }
+
+        }
+      }
+      &__space-stay{
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+        .space-stay-txt{
+          display: block;
+          font-size: 12px;
+        }
+        .space-stay-red-button{
+          padding: 5px 5px 5px 5px;
+          margin: 5px 5px 5px 5px;
+          background-color: #F4356A;//238 53 106
+          color: white;
+          border-radius: 4px;
+        }
+      }
+    }
+    .Space-Management-BottomBox-Right{
+      width: calc(100% - 250px);
+      margin-left: 250px;
+      .Space-Management-BottomBox-Right-container{
+        width: 60%;height:100%;
+        padding:40px 40px 40px 40px;
+        background-color: white;
+      }
+    }
+  }
+  .space-edit-preserve-box{
+    border-top:1px solid gray;
+    &__button{
+      margin-left: 420px;
+      margin-right: 20px;
+      margin-top: 10px;
+      text-align: center;
+      color: white;
+      font-size:20px;
+      padding: 5px 20px 5px 20px;
+      background-color: #13D45A;
+      border-radius: 5px;
+
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.hostspace-options-box{
+  &__add{
+    font-size: 20px;
+    margin-left: 220px;
+  }
+  &__options{
+    margin-top: 20px;
+    .option-box{
+      margin-bottom: 20px;
+      display: table;
+      width: 600px;
+      padding: 0px 20px 20px 20px;
+      border-top: 1px solid #A0A0A0;
+      border-bottom: 1px solid #A0A0A0;
+      border-left: 1px solid #A0A0A0;
+      border-right: 1px solid #A0A0A0;
+      .option-box-left{
+        display: table-cell;
+        width: 70%;
+        .option-box-title{
+        }
+      }
+      .option-box-right{
+        text-align: right;
+        display: table-cell;
+        padding-top: 10px;
+        .option-box-right-switch-button{
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+.hostspace-newedit-option-box{
+  &__cost-unit{
+    display: table;
+    width: 100px;
+    margin-top: 20px;
+    .cost-unit-txt{
+      display: table-cell;
+      vertical-align: middle;
+      textarea{
+        margin-top: 0;
+      }
+    }
+    textarea{
+      width: 100px;
+    }
+  }
+  .capable-of-providing{
+    textarea{
+      width: 100px;
+    }
+  }
+  .cancel-and-save-box{
+    width: 600px;
+    display: table;
+    text-align: center;
+    margin-top: 80px;
+    border-top: 1px solid gray;
+    padding-top: 10px;
+    &__blank{
+      display: table-cell;
+      width: 60%;
+    }
+    &__left{
+      display: table-cell;
+
+    }
+    &__right{
+      display: table-cell;
+    }
+  }
+  .hostspace-new-photo{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}

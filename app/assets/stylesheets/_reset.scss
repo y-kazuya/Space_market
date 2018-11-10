@@ -129,7 +129,14 @@ filter:alpha(opacity=80);
 }
 /* YUI CSS Detection Stamp */
 #yui3-css-stamp.cssreset { display: none; }
-
+textarea{
+  border-radius: 5px;
+  resize: none;
+}
+textarea:focus{
+  outline: none;
+  border-color: #00FD40;
+}
 .main_wrapper{
   min-height: 80vh;
   padding-top: 40px;

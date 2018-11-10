@@ -5,6 +5,7 @@ class BasicInfosController < RoomInfosController
 
   def create
     @basic_info = BasicInfo.new(basic_info_params)
+
     if @basic_info.save
       return redirect_to new_space_room_intro_path(params[:space_id], params[:room_id])
     else

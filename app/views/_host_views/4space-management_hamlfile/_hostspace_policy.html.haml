@@ -1,0 +1,23 @@
+.hostspace-policy
+  .hostspace-edit-title
+    キャンセルポリシー・利用規約
+  %p.red-box-description.red-color
+    1文字でも記載があるとスペースマーケットのキャンセルポリシーや利用規約は適用されません。ご注意ください。
+  .hostspace-edit-wrapper
+    %span.gray-box.weight700
+      任意
+    %span.red-box-with-txt
+      キャンセルポリシー
+    %p.red-box-description
+      未入力の場合は、スペースマーケットの標準キャンセルポリシーに準ずる旨を表示します。
+    %p
+      = text_area :page, :comtent,class:'SI-textarea'
+  .hostspace-edit-wrapper
+    %span.gray-box.weight700
+      任意
+    %span.red-box-with-txt
+      利用規約
+    %p.red-box-description
+      未入力の場合は、スペースマーケットのゲスト規約に準ずる旨を表示します。
+    %p
+      = text_area :page, :comtent,class:'SI-textarea'

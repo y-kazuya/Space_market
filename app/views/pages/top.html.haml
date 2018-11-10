@@ -3,7 +3,7 @@
   .site-main__title-logo
     = image_tag 'http://www.dreamnews.jp/?action_Image=1&p=0000092185&id=headimage'
   .h1.top-information
-    0件のレンタルスペースから 目的に合ったスペースをかんたん予約
+    = "#{Room.where(activated: "certification").where(public: true).distinct.count}件のレンタルスペースから 目的に合ったスペースをかんたん予約"
   .top-menu-container
     .container
       %ul.row
