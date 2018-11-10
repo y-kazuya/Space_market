@@ -1,0 +1,29 @@
+アカウント設定
+
+
+= render 'shared/errors', object: @user
+
+= form_for @user, url: account_path do |f|
+  %h1
+    名前
+  %h2
+    = f.text_field :first_name
+    = f.text_field :last_name
+
+  %h1
+    email
+  %h2
+    =f.email_field :email
+
+  %h1
+    プロフィールしゃしn
+  %h2
+    =f.file_field :avatar
+
+  %h1
+    プロフィール(任意))
+
+  %h2
+    =f.text_area :profile
+
+  =f.submit "保存"

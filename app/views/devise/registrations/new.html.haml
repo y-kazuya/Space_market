@@ -8,7 +8,7 @@
       %span.breadcrumbs-title{:itemprop => "title"} 新規登録
 %section#contents.page_signin
   %section#main_contents
-    %div{"data-react-class" => "SMSignUpView", "data-react-props" => "{\"resource\":{\"id\":null,\"email\":\"\",\"auth_uid\":null,\"name\":null,\"provider\":null,\"username\":null,\"owner_sign_in_at\":null,\"default_owner_id\":0,\"card_customer_id\":null,\"profile_image\":{\"url\":null,\"square\":{\"url\":null},\"thumb\":{\"url\":null},\"small\":{\"url\":null}},\"cancel_count\":0,\"refresh_token\":null,\"notified_at\":null,\"deleted_at\":null,\"created_at\":null,\"updated_at\":null,\"time_zone\":\"Asia/Tokyo\",\"reputation_count\":0.0,\"reputation_score\":0.0,\"registration_type\":0,\"profile\":null,\"certificate\":null,\"is_certificated\":false,\"certificate_status\":0,\"notification_checked_at\":null,\"registration_origin\":0,\"referred_by_user_id\":null,\"referral_token\":null},\"resource_name\":\"user\",\"errors\":{},\"authenticity_token\":\"zv5BjwEZXT3EIFoOqcwOr5p8MFqxVCZ1GAzpS8iPsdESYHn9mMgXjXa5A8ejaw+eQdh87s2/h7y3zQVXvC8pNA==\",\"last_name\":null,\"first_name\":null,\"email\":\"\",\"accept_term_of_service\":null,\"referrer_name\":null,\"referrer_image\":null,\"referrer_corpname\":null,\"coupon_amount\":null}"}
+    %div{"data-react-class" => "SMSignUpView", "data-react-props" => "{\"resource\":{\"id\":null,\"email\":\"\",\"auth_uid\":null,\"name\":null,\"provider\":null,\"username\":null,\"owner_sign_in_at\":null,\"default_owner_id\":0,\"card_customer_id\":null,\"avatar\":{\"url\":null,\"square\":{\"url\":null},\"thumb\":{\"url\":null},\"small\":{\"url\":null}},\"cancel_count\":0,\"refresh_token\":null,\"notified_at\":null,\"deleted_at\":null,\"created_at\":null,\"updated_at\":null,\"time_zone\":\"Asia/Tokyo\",\"reputation_count\":0.0,\"reputation_score\":0.0,\"registration_type\":0,\"profile\":null,\"certificate\":null,\"is_certificated\":false,\"certificate_status\":0,\"notification_checked_at\":null,\"registration_origin\":0,\"referred_by_user_id\":null,\"referral_token\":null},\"resource_name\":\"user\",\"errors\":{},\"authenticity_token\":\"zv5BjwEZXT3EIFoOqcwOr5p8MFqxVCZ1GAzpS8iPsdESYHn9mMgXjXa5A8ejaw+eQdh87s2/h7y3zQVXvC8pNA==\",\"last_name\":null,\"first_name\":null,\"email\":\"\",\"accept_term_of_service\":null,\"referrer_name\":null,\"referrer_image\":null,\"referrer_corpname\":null,\"coupon_amount\":null}"}
       .site-main{"data-react-checksum" => "819139192", "data-reactid" => "1", "data-reactroot" => ""}
         .page__even.lp-page__padding{"data-reactid" => "2"}
           .page__col1{"data-reactid" => "3"}
@@ -77,9 +77,9 @@
                               パスワード（確認）
                         .col-xs-12{"data-reactid" => "57"}
                           .signup-box__wrapper-form-profile.clearfix{"data-reactid" => "58"}
-                            %label.signup-box__wrapper-form-title.fl{"data-reactid" => "59", :for => "files"}
+                            %label.signup-box__wrapper-form-title.fl{"data-reactid" => "59", :for => "files", :name => "user[avatar]"}
                               プロフィール画像
-                            %input#files{"data-reactid" => "60", :hidden => "", :name => "user[profile_image]", :type => "file"}/
+                            %input#files{"data-reactid" => "60", :hidden => "", :name => "user[avatar]", :type => "file"}/
                             .signup-box__wrapper-form-profile__img{"data-reactid" => "61"}
                               .settings-img__change-img{"data-reactid" => "62"}
                                 %label.button-gray.settings-img{"data-reactid" => "63", :for => "files"}

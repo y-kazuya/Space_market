@@ -1,0 +1,35 @@
+クレカ新規ページ
+
+
+= render 'shared/errors', object: @card
+
+
+= form_for @card, url: payments_path do |f|
+  %h1
+    クレジットカード
+  %h2
+    = f.text_field :num_first, maxlength: 4
+    = f.text_field :num_seconde, maxlength: 4
+    = f.text_field :num_thard, maxlength: 4
+    = f.text_field :num_last, maxlength: 4
+
+  %h1
+    名義人（アルファベット
+  %h2
+    = f.text_field :name
+
+  %h1
+    有効期限
+  %h2
+    = f.select :mm, 1..12
+    = f.select :yy, 2014..2034
+
+  %h1
+    セキリュティーコード
+  %h2
+    = f.text_field :code, maxlength: 3
+
+  - if @card.id
+    = hidden_field_tag :id ,@card.id
+
+  = f.submit "保存"

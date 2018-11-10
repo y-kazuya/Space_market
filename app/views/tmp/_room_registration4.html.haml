@@ -1,0 +1,21 @@
+.wrapper_1_1
+  .wrapper_1_2
+    .upper
+      .title_base.clearfix
+        .title 4 写真・動画
+    .main
+      .photos
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 写真
+        .detail ゲストが実際に利用するスペース、設備等の画像を最低1枚追加してください。推奨サイズは1260x840です。ドラッグ＆ドロップで入れ替え可。クリックで拡大することができます。最大30枚まで追加できます。写真
+        .add_photo
+          %label{for: "add_button_unique", class: ".add_button", cursor: "pointer"}
+            ＋新規写真の追加
+            %input{type: "file", id: "add_button_unique", style: "display: none"}
+        .photo_area
+          .ul
+            .li
+              .photo_wrap1#photo_wrap1_unique
+                =render "/tmp/photo.html.haml"

@@ -27,4 +27,13 @@ module RoomsHelper
 
     return false
   end
+
+
+  def set_price(price, type)
+    "¥#{price}/#{type}〜"
+  end
+
+  def set_event_type_count(id)
+    Room.joins(basic_info: [:basic_info_usages]).where("usage_id = ?", "#{id}").distinct.where(activated: "certification").where(rooms: {public: true }).count
+  end
 end

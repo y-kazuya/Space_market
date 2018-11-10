@@ -80,6 +80,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'bootstrap-sass'
   gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
   gem 'momentjs-rails', '>= 2.9.0'
+  gem 'fullcalendar-rails'
   gem 'execjs'
   gem 'therubyracer'
 
