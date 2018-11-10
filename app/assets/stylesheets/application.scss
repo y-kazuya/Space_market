@@ -35,11 +35,19 @@
 @import "./shared/footer";
 @import "./config/color";
 @import "./config/valiable";
+
+@import "./test";
+
+@import "./hosts_scss/_host_header.scss";
+
+
 @import "./register/_host_entry2";
 
 @import "./modlues/reserve";
 
 @import "./devise/sign_in";
+
 @import "./room_registration";
 @import "./shared/search_form";
 @import "./index/search_result";
+

@@ -15,14 +15,26 @@
   text-decoration: none;
 }
 //------------------------------------------------------------
+.color-black{
+  color: black;
+}
+.color-white{
+  color: white;
+}
+//------------------------------------------------------------
 .hover-white:hover{
   color:#999999;
+  text-decoration: none;
 }
 .hover-green:hover{
   background:#5ED4AD;
 }
 .hover-border:hover{
   text-decoration: underline;
+}
+.hover-back-gray:hover{
+  background-color: #F6F6F6;
+  text-decoration: none;
 }
 //------------------------------------------------------------
 .back-light-gray{

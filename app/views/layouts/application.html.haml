@@ -10,6 +10,22 @@
     %script{:src => "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"}
 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+
+    /= render partial: 'shared/header'
+    /.main_wrapper
+    /= yield
+    .space-edit-menu-conatiner
+      .space-edit-menu-conatiner__title-box
+      
+      .space-edit-menu-conatiner__search-box
+      .space-edit-menu-conatiner__spaces
+        /renderでここは使いまわす
+
+
+    /= render partial: 'shared/footer'
+
     %link{:href => "https://use.fontawesome.com/releases/v5.0.6/css/all.css", :rel => "stylesheet"}/
     / 郵便番号→住所
     %script{:charset => "UTF-8", :src => "https://ajaxzip3.github.io/ajaxzip3.js"}
@@ -19,7 +35,6 @@
     .main_wrapper
       = yield
     = render partial: 'shared/footer'
-
 
 
 
