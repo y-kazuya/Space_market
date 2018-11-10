@@ -6,7 +6,6 @@ class SpaceInfo < ApplicationRecord
   VALID_POST_CODE_REGEX = /\A\d{7}\z/
   validates :title, presence: true, length: { maximum: 64 }
   validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }
-  validates :state, presence: true
   validates :city, presence: true, length: { maximum: 64 }
   validates :address, presence: true, length: { maximum: 128}
   validates :last_address, length: { maximum: 128}

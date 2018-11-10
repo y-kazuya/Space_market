@@ -16,6 +16,8 @@
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require moment
-//= require moment/ja.js
+//= require fullcalendar
 //= require bootstrap-datetimepicker
+// @ app/assets/javascripts/application.js
+//= require fullcalendar/lang/ja
 //= require_tree .
