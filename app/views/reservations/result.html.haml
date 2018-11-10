@@ -55,6 +55,7 @@
   .total_price__point
     = "付与ポイント: #{@reserve.price / 100}"
 
+= @use_point
 
 = link_to "トップに戻る", root_path
-= link_to "予約をし直す", reservation_path(@reserve.id),method: :delete, data: { confirm: 'よろしいですか？' }
+= link_to "予約をし直す", reservation_path(@reserve.id, point: @use_point),method: :delete, data: { confirm: 'よろしいですか？' }

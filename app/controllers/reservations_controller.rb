@@ -31,19 +31,20 @@ class ReservationsController < ApplicationController
       end
 
       total += @reserve.reserve_dates.length * @reserve.plan.day_price
+      point = current_user.point
+      point += total / 100
       if params[:nebiki]
+        use_point = params[:nebiki].to_i
         total -= params[:nebiki].to_i
-        point = current_user.point
-        point += total / 100
         point -= params[:nebiki].to_i
-        current_user.update(point: point)
       end
+      current_user.update(point: point)
       @reserve.price = total
 
     end
 
 
-    return redirect_to result_reservation_path(@reserve.id) if @reserve.save
+    return redirect_to result_reservation_path(@reserve.id, use_point: use_point) if @reserve.save
 
     redirect_to space_room_reservations_path(@room.space.id, @room.id)
   end
@@ -53,7 +54,13 @@ class ReservationsController < ApplicationController
     room = re.room
     sp = room.space
     if re.user.id == current_user.id
+      point = current_user.point
+      point += params[:point].to_i
+      point -= re.price / 100
+
+      current_user.update(point: point)
       re.destroy
+
       redirect_to space_room_reservations_path(sp.id, room.id)
 
     else
@@ -65,6 +72,7 @@ class ReservationsController < ApplicationController
 
   def result
     @reserve = Reserve.find(params[:id])
+    @use_point = params[:use_point].to_i || 0
 
   end
 
