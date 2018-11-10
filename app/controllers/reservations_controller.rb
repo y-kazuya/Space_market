@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
 
   def show
+    return redirect_to new_payments_path if current_user.cards =[]
     @room = Room.find(params[:room_id])
     @reserve = Reserve.new()
     @reserve.reserve_options.build
