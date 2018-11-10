@@ -33,6 +33,9 @@ $(document).on('turbolinks:load',function(){
       return false;
     }
 
+    // $("#add_button_unique").val("aaa")
+
+
     // ファイル読み込みが完了した際のイベント登録
 
 
@@ -41,6 +44,8 @@ $(document).on('turbolinks:load',function(){
       return function(e) {
         //既存のプレビューを削除
         $preview.empty();
+
+
         // .prevewの領域の中にロードした画像を表示するimageタグを追加
         $preview.append($('<img>').attr({
                   src: e.target.result,
@@ -48,6 +53,12 @@ $(document).on('turbolinks:load',function(){
                   class: "preview",
                   title: file.name
               }));
+
+
+        $(".photo_wrap1").append(`<div class="photo_memo">
+        <input class="input_area memo" placeholder="閑静なオフィス街にあるビル内の施設です。" type="text" name="picture[about]">
+        </div>`);
+
       };
     })(file);
 

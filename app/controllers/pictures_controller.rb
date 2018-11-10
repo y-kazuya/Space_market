@@ -20,7 +20,9 @@ class PicturesController < RoomInfosController
   end
 
   def update
+
     @picture = Picture.find(params[:id])
+
     if @picture.room.space.user.id == current_user.id
       if @picture.update(picture_params)
         return redirect_to new_space_room_plan_path(params[:space_id], params[:room_id])
