@@ -1,38 +1,99 @@
-%h1
-  ステップフォーム２room.basic_info
 
-=@basic_info
 
 
 = render 'shared/errors', object: @basic_info
 
+
 = form_for [@space, @room, @basic_info] do |f|
-  %h2
-    許容イベン
-  = f.collection_check_boxes :usage_ids, Usage.all, :id, :name, include_hidden: false do |b|
-    = b.check_box
-    = b.label { b.text }
+  .wrapper_1_1
+    .wrapper_1_2
+      .upper
+        .title_base.clearfix
+          .title ２ 基本情報
+      .main
+        .usage
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 使用可能用途
+          .detail このスペースをどのような目的に使ってよいか選択してください。複数選択可能。
+          .input_base.clearfix
+            = f.collection_check_boxes :usage_ids, Usage.all, :id, :name, include_hidden: false do |b|
+              .wrap
+                = b.label width: "150px" do
+                  =b.check_box + b.text
+            .explanation
 
-  %h2
-    収容人数
-  = f.number_field :capacity, in: 1...100000
+        .capacity
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 最大収容人数
+          .input_base
+            = f.text_field :capacity, in: 1...100000, placeholder: "10",class: "input_area", id: "capacity_unique"
+            人
+            .explanation
+              .attention_01.fa.fa-exclamation-circle#warning21 最大収容人数を入力してください。
 
-  %h2
-    床面積
-  = f.number_field :floor_space, in: 1...100000
+        .area
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 床面積
+          .input_base
+            = f.text_field :floor_space, in: 1...100000, placeholder: "200",class: "input_area", id: "area_unique"
+            ㎡
+
+            .explanation
+            .attention_01.fa.fa-exclamation-circle#warning22 床面積を入力してください。
+
+        .keypick
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 鍵の受け渡し
+          .detail 利用日当日の鍵の受け渡し方法を選択してください。
+          .input_base.clearfix
+            .wrap
+              %input{type: "radio", id: "radio1", name: "basic_info[key_type]", width: "200px", value: "対面"}
+              %lavel.radio_type{for: "radio1"} 対面
+            .wrap
+              %input{type: "radio", id: "radio2", name: "basic_info[key_type]", value: "キーボックス"}
+              %lavel.radio_type{for: "radio2"} キーボックス
+            .wrap
+              %input{type: "radio", id: "radio3", name: "basic_info[key_type]", value: "スマートロック"}
+              %lavel.radio_type{for: "radio3"} スマートロック
+            .wrap
+              %input{type: "radio", id: "radio4", name: "basic_info[key_type]", value: "予約成立後にメッセージで伝える"}
+              %lavel.radio_type{for: "radio4"} 予約成立後にメッセージで伝える
+
+        .reserve_deadline
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 予約の締め切り
+          .detail 利用日の何日前に予約を締め切るかを設定してください。
+          .detail 例）「利用日の7日前」に設定→ゲストが4月8日に利用したい場合、4月1日以前に予約をする必要があります。
+          .input_base
+            = f.select :reserve_limit, BasicInfo.reserve_limits.keys, class: "select_area"
 
 
-  %h2
-    カギの受け渡し
-  = f.select :key_type, BasicInfo.key_types.keys, {prompt: "カギの受け私"}
+        .reserve_start
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 予約の受付期間
+          .detail ゲストが予約リクエストする日を起点として、利用日が何ヶ月先までの予約を受け付けるか設定してください。
+          .detail 例）「12ヶ月先まで予約を受け付ける」を設定→2018年4月1日の場合、2019年4月1日まで予約を受け付けます。
+          .input_base
+            = f.select :reserve_period, BasicInfo.reserve_periods.keys, class: "select_area"
+  .bottom
+    .bottom_line
+      .bottom_buttons
+        .back_button_wrap
+          .back_button
+            %button.back_button_inside 保存して戻る
+        .forward_button_wrap
+          .forward_button
+            =f.submit "保存して進む", class: "forward_button_inside"
 
-  %h2
-    予約締め切り
-  = f.select :reserve_limit, BasicInfo.reserve_limits.keys, {prompt: "締め切り"}
-
-  %h2
-    予約の受付期間
-  = f.select :reserve_period, BasicInfo.reserve_periods.keys, {prompt: "受付期間"}
-
-
-  =f.submit "保存して進む"
