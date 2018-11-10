@@ -358,7 +358,7 @@
         display: block;
         margin-top: 40px;
         width: 500px;
-        min-width: 300px;
+        min-width: 500px;
         .title_name_base{
           .title_type{
             float: left;
@@ -532,6 +532,68 @@
 }
 
 // view２
+
+.title{
+  margin-top: 20px;
+}
+
+.sub_title{
+  font-size: 18px;
+  margin: 30px 0px 5px;
+}
+
+.posatl_cd{
+  #postal_cd_unique{
+    width:250px;
+  }
+}
+.ward{
+  .select_area{
+    width:150px;
+  }
+}
+.block, .street, .building{
+  .input_area{
+    width:300px;
+  }
+}
+
+.building{
+  margin-bottom: 60px;
+}
+
+.explanation{
+  font-size: 11px;
+  color: #999;
+  margin-top: 8px;
+}
+
+.explanation_wrap{
+  display: inline-block;
+  width: 400px;
+  min-width: 400px;
+  .explanation_black{
+    float: left;
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+  }
+  .explanation_red{
+    float: left;
+    font-size: 11px;
+    color: #e95175;
+    margin-top: 8px;
+  }
+}
+
+.border{
+  display: table;
+  width: 600px;
+  border-bottom: 1px solid #d1d1d1;
+  margin: 30px 0px 0px;
+}
+
+
 .usage{
   .detail{
     font-size: 11px;
