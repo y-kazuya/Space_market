@@ -2,23 +2,31 @@ $(document).on('turbolinks:load',function(){
 
 
 // 画面1
-  error_message_blank('#postal_cd_unique','#warning11');
-  error_message_doublebyte('#postal_cd_unique','#warning12');
-  error_message_blank('#ward_unique','#warning13');
-  error_message_blank('#street_unique','#warning14');
-  error_message_blank('#access_unique','#warning15');
-  error_message_blank('#phone_no_unique','#warning16');
+  error_message_blank('#kanji_last_name_unique','#warning_hr_11');
+  error_message_blank('#kanji_first_name_unique','#warning_hr_12');
+  error_message_blank('#kana_last_name_unique','#warning_hr_13');
+  error_message_blank('#kana_first_name_unique','#warning_hr_14');
+  error_message_blank('#birth_year_unique','#warning_hr_15');
+  error_message_blank('#birth_month_unique','#warning_hr_16');
+  error_message_blank('#birth_day_unique','#warning_hr_17');
+  error_message_blank('#phone_no_unique','#warning_hr_18');
+
 // 画面2
-  error_message_blank('#capacity_unique','#warning21');
-  error_message_blank('#area_unique','#warning22');
+  error_message_blank('#postal_cd_unique','#warning_hr_21');
+  error_message_doublebyte('#postal_cd_unique','#warning_hr_22');
+  error_message_blank('#ward_unique','#warning_hr_23');
+  error_message_blank('#block_unique','#warning_hr_24');
+  error_message_blank('#block_kana_unique','#warning_hr_25');
+  error_message_blank('#street_unique','#warning_hr_26');
+  error_message_blank('#street_kana_unique','#warning_hr_27');
 // 画面3
-  error_message_blank('#space_title_unique','#warning31');
-  error_message_blank('#space_explanation_unique','#warning32');
-  error_message_blank('#facility_unique','#warning33');
-// 画面4
-  // $('#add_button_unique').on('click',function(){
-  //   $('#photo_wrap1_unique').append("=render '/tmp/photo.html.haml'");
-  // });
+  error_message_blank('#bank_nm_unique','#warning_hr_31');
+  error_message_blank('#bank_cd_unique','#warning_hr_32');
+  error_message_blank('#branch_nm_unique','#warning_hr_33');
+  error_message_blank('#branch_cd_unique','#warning_hr_34');
+  error_message_blank('#account_no_unique','#warning_hr_35');
+  error_message_blank('#account_holder_name_unique','#warning_hr_36');
+
   //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
   $('#add_button_unique').on('change', function(e) {
     var file = e.target.files[0],
@@ -34,9 +42,6 @@ $(document).on('turbolinks:load',function(){
     }
 
     // ファイル読み込みが完了した際のイベント登録
-
-
-
     reader.onload = (function(file) {
       return function(e) {
         //既存のプレビューを削除
@@ -54,46 +59,6 @@ $(document).on('turbolinks:load',function(){
     reader.readAsDataURL(file);
   });
 
-
-// 画面5
-
-  error_message_blank('#plan_name_unique','#warning51');
-
-  $('#price_hour_unique').on('keyup',function(){
-    if($(this).val().length===0 || $('#price_day_unique').val()===0){
-      $('#warning52').css('display', 'block');
-    } else {
-      $('#warning52').css('display', 'none');
-    }
-  });
-  $('#price_day_unique').on('keyup',function(){
-    if($(this).val().length===0 || $('#price_hour_unique').val()===0){
-      $('#warning52').css('display', 'block');
-    } else {
-      $('#warning52').css('display', 'none');
-    }
-  });
-
-  $('#price_hour_unique').on('keyup',function(){
-    if($(this).val().match(/^\d+$/) && $('#price_day_unique').val().match(/^\d+$/)){
-      $('#warning53').css('display', 'none');
-    } else {
-      $('#warning53').css('display', 'block');
-    }
-  });
-
-  $('#price_day_unique').on('keyup',function(){
-    if($(this).val().match(/^\d+$/) && $('#price_hour_unique').val().match(/^\d+$/)){
-      $('#warning53').css('display', 'none');
-    } else {
-      $('#warning53').css('display', 'block');
-    }
-  });
-
-  slidebar_controll('#slide_hour_price');
-  slidebar_controll('.slide');
-
-  show_hide('.set_all.fas.fa-angle-down','.set_all_view')
 
 // 共通
 
@@ -130,20 +95,5 @@ $(document).on('turbolinks:load',function(){
       }
     });
   }
-
-  //スライドバーのコントロール
-  function slidebar_controll(s){
-    $(s).change(function(){
-      if($(this).find('.slide_value').val()=='0'){
-        $(this).find('.slide_name').css('color', '#60df52');
-        $(this).find('.slide_name').text('設定中');
-      } else {
-        $(this).find('.slide_value').toggleClass('.slide_value_g');
-        $(this).find('.slide_name').css('color','gray');
-        $(this).find('.slide_name').text('未設定');
-      }
-    });
-  }
-
 
 });
