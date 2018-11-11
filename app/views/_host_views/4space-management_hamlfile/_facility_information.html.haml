@@ -1,0 +1,42 @@
+.facility-information-box
+  .facility-information-box__title.weight700
+    施設情報
+  .facility-information-box__description-box
+    %span.red-box.weight700
+      必須
+    %span.red-box-with-txt
+      施設の選択
+    %p.red-box-description
+      スペースの場所に関する情報です。同一の施設に複数のスペースを登録できます。スペースを登録する施設を選択してください。
+  = link_to "#" do
+    .facility-information-box__create-facility.weight700
+      +新規施設の作成
+  %ul.facility-information-box__space-list-box
+    /= form_for @something do |form|
+    %li.FI-space-list-item
+      %span
+        %input{type:'radio',class:'Fi-space-list-radio-button'}
+          /= f.radio_button
+      %span.FI-space-list-item-txt
+        %span.FI-space-list-item-txt__1
+          施設の種類
+        %p.FI-space-list-item-txt__2.weight700
+          スペース名
+        %p.FI-space-list-item-txt__3
+          郵便番号
+        %p.FI-space-list-item-txt__4
+          住所
+        %p.FI-space-list-item-txt__5
+          最寄駅からの距離
+        %p.FI-space-list-item-txt__6
+          電話番号
+      .FI-space-list-item-buttons
+        = link_to "#" do
+          .FI-space-list-item-edit-button.weight700
+            編集
+        = link_to "#" do
+          .FI-space-list-item-delete-button.weight700
+            削除
+  .space-edit-preserve-box
+    .space-edit-preserve-box__button
+      保存

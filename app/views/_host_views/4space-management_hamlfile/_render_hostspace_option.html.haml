@@ -1,0 +1,29 @@
+.option-box
+  .option-box-left
+    %p.option-box-left-title
+      タイトル
+    %br
+    %p.red-box-description
+      価格
+    %span.weight700
+      ¥値段/
+    %span.red-box-description
+      per
+  .option-box-right
+    .option-box-right-switch-button
+      .switchArea
+        %input{type:"checkbox",id:"switch1"}
+        %label{for:'switch1'}
+          %span
+        #swImg
+    %br
+      %p.switchArea_with_txt--gray
+        非公開
+      /%p.switchArea_with_txt--green
+      /公開中
+    = link_to "#" do
+      %span.green-box
+        オプションの編集
+    %span
+      %button.gomibako-button
+        %i{class:"far fa-trash-alt"}

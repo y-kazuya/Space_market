@@ -1,0 +1,245 @@
+.hostspace-plans-box{
+  &__add{
+    font-size: 20px;
+    margin-left: 220px;
+  }
+  &__plans{
+    margin-top: 20px;
+    .plan-box{
+      margin-bottom: 20px;
+      display: table;
+      width: 600px;
+      padding: 0px 20px 20px 20px;
+      border-top: 1px solid #A0A0A0;
+      border-bottom: 1px solid #A0A0A0;
+      border-left: 1px solid #A0A0A0;
+      border-right: 1px solid #A0A0A0;
+      .plan-box-left{
+        display: table-cell;
+        width: 70%;
+      }
+      .plan-box-right{
+        text-align: right;
+        display: table-cell;
+        padding-top: 10px;
+        .plan-box-right-switch-button{
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+.hostspace-newedit-plan-box{
+  .free-value-checkbox{
+    margin:     0 0 10px 20px;
+  }
+  /* ラベルのスタイル*/
+  .free-value-checkbox label {
+    padding-left:   38px;     /* ラベルの位置 */
+    font-size:    14px;
+    line-height:    20px;
+    display:    inline-block;
+    cursor:     pointer;
+    position:   relative;
+  }
+
+  /* ボックスのスタイル */
+  .free-value-checkbox label:before {
+    content:    '';
+    width:      20px;     /* ボックスの横幅 */
+    height:     20px;     /* ボックスの縦幅 */
+    display:    inline-block;
+    position:   absolute;
+    left:     0;
+    background-color: #fff;
+    box-shadow:   inset 1px 2px 3px 0px #000;
+    border-radius:    6px 6px 6px 6px;
+  }
+  /* 元のチェックボックスを表示しない */
+  .free-value-checkbox input[type=checkbox] {
+    display:    none;
+  }
+  /* チェックした時のスタイル */
+  .free-value-checkbox input[type=checkbox]:checked + label:before {
+    content:    '\2713';    /* チェックの文字 */ 
+    font-size:    20px;     /* チェックのサイズ */
+    color:      #fff;     /* チェックの色 */
+    background-color: #00D430;     /* チェックした時の色 */
+  }
+  .value-help{
+    text-align: right;
+    width: 600px;
+  }
+  .free-value-input-box{
+    width: 600px;
+    height: 100px;
+    border-top: 1px solid gray;
+    border-bottom:1px solid gray;
+    display: table;
+    padding-top: 40px;
+    margin-bottom: 30px;
+    &__right{
+      height: 20px;
+      display: table-cell;
+      text-align: right;
+    }
+    &__txtarea{
+      height: 20px;
+      width:60px;
+    }
+  }
+  .calender-form{
+    display: table;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    textarea{
+      height: 30px;
+      display: table-cell;
+    }
+    span{
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .weekdays-box{
+    .day-of-the-week{
+      width: 600px;
+      height: 100px;
+      border-top: 1px solid gray;
+      border-bottom:1px solid gray;
+      display: table;
+      vertical-align: middle;
+      &__left{
+        width: 50%;
+        display: table-cell;
+        vertical-align: middle;
+      }
+      &__right{
+        display: table-cell;
+        vertical-align: middle;
+        .dotw-right-box{
+          display: table;
+          &__2{
+            display: table-cell;
+            vertical-align: middle;
+          }
+          &__3{
+            display: table-cell;
+          }
+          &__4{
+            display: table-cell;
+          }
+          &__5{
+            display: table-cell;
+          }
+          &__6{
+            display: table-cell;
+          }
+        }
+      }
+    }
+  }
+  .approval-box{
+    display: table;
+    width:600px;
+    height: 100px;
+    &__left{
+      display: table-cell;
+    }
+    &__right{
+      display: table-cell;
+    }
+  }
+  .mini-utilization-time{
+    display: table;
+    &__intro{
+      vertical-align: middle;
+      display: table-cell;
+      width: 80%;
+    }
+    &__txtarea{
+      vertical-align: middle;
+      display: table-cell;
+      textarea{
+        width: 50px;
+        height: 25px;
+      }
+    }
+    &__pulldown{
+      vertical-align: middle;
+      display: table-cell;
+
+    }
+  }
+  .clean-up-time{
+    display: table;
+    &__intro{
+      vertical-align: middle;
+      display: table-cell;
+    }
+    &__txt{
+      vertical-align: middle;
+      display: table-cell;
+    }
+    &__txtarea{
+      vertical-align: middle;
+      display: table-cell;
+      textarea{
+        height: 25px;
+        width: 50px;
+      }
+    }
+
+  }
+  .just-before-time{
+    display: table;
+    &__intro{
+      vertical-align: middle;
+      display: table-cell;
+    }
+    &__txt{
+      vertical-align: middle;
+      display: table-cell;
+    }
+    &__pulldown{
+      vertical-align: middle;
+      display: table-cell;
+    }
+  }
+  .management-cost{
+    display: table;
+    &__intro{
+      vertical-align: middle;
+      display: table-cell;
+    }
+    &__txt{
+      vertical-align: middle;
+      display: table-cell;
+    }
+    &__txtarea{
+      vertical-align: middle;
+      display: table-cell;
+      textarea{
+        width: 100px;
+        height: 25px;
+      }
+    }
+  }
+  .cancel-and-save-box{
+    width: 600px;
+    display: table;
+    text-align: center;
+    margin-top: 10px;
+    &__blank{
+      display: table-cell;
+      width: 60%;
+    }
+    &__left{
+      display: table-cell;
+
+    }
+    &__right{
+      display: table-cell;
+    }
+  }
+}

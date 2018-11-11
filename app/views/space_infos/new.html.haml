@@ -1,55 +1,115 @@
-%h1
-  space info 入力画面
 
--if current_user.owner == true
-  = link_to "選ぶ", info_select_space_room_space_infos_path(@space, @room)
 
 = render 'shared/errors', object: @space_info
 
 = form_for [@space, @room, @space_info] do |f|
-  %h2
-    施設の眼症
-  = f.text_field :title
+  =f.hidden_field :title, value: "回路"
+  .wrapper_1_1
+    .wrapper_1_2
+      .upper
+        .title_base.clearfix
+          .title 1 施設情報
+          .detail スペースの場所や連絡先に関する情報です。
+        -if current_user.owner == true
+          = link_to info_select_space_room_space_infos_path(@space, @room) do
+            .green_button_base
+              .green_button 以前作成した施設情報を利用
+      .main
+        .postal_cd
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 郵便番号
+            .detail ハイフンなしの半角数字。入力すると住所が自動補完されます。
+          .input_base
+            = f.text_field :post_code, placeholder: "郵便番号",maxlength: "8",onkeyup: "AjaxZip3.zip2addr(this,'','space_info[state]','space_info[city]');", size: "10", id: "postal_cd_unique", class: "input_area"
+            .explanation 例）1600023
+            .attention_01.fa.fa-exclamation-circle#warning11 郵便番号を入力してください。
+            .attention_01.fa.fa-exclamation-circle#warning12 半角数字で入力してください。
 
-  %h2
-    郵便番号
-  = f.text_field :post_code, placeholder: "郵便番号だよ",maxlength: 7
+        .ward
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 都道府県・市区町村
+          .input_base.clearfix
+            = f.text_field :state, placeholder: "都道府県", size: "20", class: "select_area"
+            = f.text_field :city, placeholder: "市区町村" ,size: "60", type: "text", id: "ward_unique", class: "input_area"
+          .explanation 例）新宿区
+          .attention_01.fa.fa-exclamation-circle#warning13 都道府県・市区町村を入力してください。
 
-  %h2
-    トドふけん
-  = f.select :state, SpaceInfo.states.keys, {prompt: '選択してください'}
+        .street
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 町名・番地
+          .input_base
+            = f.text_field :address, placeholder: "町名・番地", class: "input_area", id: "street_unique"
+            .explanation
+          .attention_01.fa.fa-exclamation-circle#warning14 町名・番地を入力してください。
 
+        .building
+          .title_base
+            .title_name_base.clearfix
+              .title_type_optional 任意
+              .title_name ビル名・部屋番号
+          .input_base
+            = f.text_field :address, :placeholder => "ビル名・部屋番号", :class => "input_area"
+            .explanation
+        .map
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 地図の設定
+          .detail ドラッグ&ドロップでピンの位置を変更できます。
+          .google_map
+            %iframe{allowfullscreen: "", frameborder: "0", src: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13298.547569352835!2d133.52734135!3d33.562809349999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1541566057293", :style => "border:0", width: "100%", height: "100%"}
+            = f.hidden_field :map_address, value: "aaa"
+        .access
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name アクセス
+          .detail 最寄駅からの歩き方や所要時間、高速道路の出口などを入力してください。
+          .input_base
+            -# %input{placeholder: "アクセス", type: "text", class: "input_area", id: "access_unique"}
+            = f.text_field :access, placeholder: "アクセス",class: "input_area", id: "access_unique"
+            .explanation例）JR新宿駅西口より徒歩7分
+            .attention_01.fa.fa-exclamation-circle#warning15 アクセスを入力してください。
 
-  %h2
-    市町村区
-  = f.text_field :city
+        .phone_no
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 電話番号
+          .detail この情報は予約が確定次第ゲストに送信される利用日程表で開示されます。
+          .input_base
+            -# %input{placeholder: "電話番号", type: "text", class: "input_area",id: "phone_no_unique"}
+            = f.number_field :phone_number, in: 1...10000000000000, placeholder: "電話番号", type: "text", class: "input_area",id: "phone_no_unique"
+            .explanation 例）09012345678
+            .attention_01.fa.fa-exclamation-circle#warning16 電話番号を入力してください。
 
-  %h2
-    番地・ビル名
-  = f.text_field :address
+        .type
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 施設の種類
+          .input_base.clearfix
 
-  %h2
-    部屋番号
-  = f.text_field :last_address
+            - SpaceInfo.event_types.keys.each do |key|
+              .wrap
+                = f.radio_button :event_type,key, width: "200px"
+                -# %lavel.radio_type{for: "space_info_event_type_#{key}"} a
+                = key
+            .explanation
 
-  %h2
-    地図のやつ
-  = f.text_field :map_address
-
-  %h2
-    アクセス
-  = f.text_area :access
-
-  %h2
-    電話番号
-  = f.number_field :phone_number, in: 1...10000000000000
-
-  %h2
-    イベントタイプ
-  - SpaceInfo.event_types.keys.each do |key|
-    %h1
-      = f.radio_button :event_type,key
-      = key
-
-
-  =f.submit "保存して進む"
+      .bottom
+        .bottom_line
+          .bottom_buttons
+            .back_button_wrap
+              .back_button
+                %button.back_button_inside 保存して戻る
+            .forward_button_wrap
+              .forward_button
+                =f.submit "保存して進む", class: "forward_button_inside"
+                -# %button.forward_button_inside 保存して進む
