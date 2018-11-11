@@ -5,11 +5,12 @@
     %title SpaceMarket
     = favicon_link_tag('icon-256.ico')
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js", :type => "text/javascript"}
     %script{:src => "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"}
-
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{:href => "https://use.fontawesome.com/releases/v5.0.6/css/all.css", :rel => "stylesheet"}/
+    %script{:charset => "UTF-8", :src => "https://ajaxzip3.github.io/ajaxzip3.js"}
 
   %body
     -# /= render partial: 'shared/footer'

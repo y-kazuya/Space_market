@@ -1,0 +1,79 @@
+.wrapper_2_1
+  .wrapper_2_2
+    .upper
+      .title_base.clearfix
+        .title ２　住所
+        .sub_title 担当者の住所
+        .explanation_wrap.clearfix
+          .explanation_black アカウントで登録した
+          .explanation_red 身分証明書類に記載の住所
+          .explanation_black を入力してください。
+      .border
+    .main
+      .postal_cd
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 郵便番号
+          .detail ハイフンなしの半角数字。入力すると住所が自動補完されます。
+        .input_base
+          %input{placeholder: "郵便番号", class: "input_area", maxlength: "8", name: "zip01", onkeyup: "AjaxZip3.zip2addr(this,'','pref01','addr01');", size: "10", type: "text", id: "postal_cd_unique"}
+          .explanation 例）1600023
+          .attention_01.fa.fa-exclamation-circle#warning_hr_21 郵便番号を入力してください。
+          .attention_01.fa.fa-exclamation-circle#warning_hr_22 半角数字で入力してください。
+
+      .ward
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 都道府県
+        .input_base.clearfix
+          %input.select_area{placeholder: "都道府県", type: "text", name: "pref01", size: "20", type: "text", id: "ward_unique"}
+        .attention_01.fa.fa-exclamation-circle#warning_hr_23 都道府県を入力してください。
+
+      .block
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 市区町村
+        .title 漢字
+        .input_base
+          %input.input_area{placeholder: "市区町村", type: "text",name: "addr01", size: "60", type: "text", id: "block_unique"}
+        .explanation 例）新宿区
+        .attention_01.fa.fa-exclamation-circle#warning_hr_24 市区町村（漢字）を入力してください。
+        .title フリガナ
+        .input_base
+          %input{placeholder: "シクチョウソン", class: "input_area", type: "text", id: "block_kana_unique"}
+        .explanation 例）シンジュクク
+        .attention_01.fa.fa-exclamation-circle#warning_hr_25 市区町村（カナ）を入力してください。
+
+      .street
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 町名・番地
+        .title 漢字
+        .input_base
+          %input{placeholder: "町名・番地", type: "text", class: "input_area", id: "street_unique"}
+        .explanation 例）西新宿6丁目
+        .attention_01.fa.fa-exclamation-circle#warning_hr_26 町名・番地（漢字）を入力してください。
+        .title フリガナ
+        .input_base
+          %input{placeholder: "チョウメイ・バンチ", class: "input_area", type: "text", id: "street_kana_unique"}
+        .explanation 例）ニシシンジュク6チョウメ
+        .attention_01.fa.fa-exclamation-circle#warning_hr_27 町名・番地（カナ）を入力してください。
+
+      .building
+        .title_base
+          .title_name_base.clearfix
+            .title_type_optional 任意
+            .title_name ビル名・部屋番号
+        .title 漢字
+        .input_base
+          %input{:placeholder => "ビル名・部屋番号", :type => "text", :class => "input_area"}
+        .explanation 例）ラ・トゥール新宿608号室
+        .title フリガナ
+        .input_base
+          %input{placeholder: "ビルメイ・ヘヤバンゴウ", class: "input_area", type: "text"}
+        .explanation 例）ラトゥールシンジュク608ゴウシツ
+
