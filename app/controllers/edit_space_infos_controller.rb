@@ -59,8 +59,9 @@ class EditSpaceInfosController < RoomEditsController
 
   def destroy
     space_info = SpaceInfo.find(params[:id])
+
     unless current_user.space_infos.count == 1
-      unless space_info.space
+      if space_info.space == nil
         if space_info.user_id == current_user.id
           space_info.destroy
         else

@@ -22,7 +22,7 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
-// @import "./register/register";
+@import "./register/register";
 @import "./reset";
 @import "./last";
 //上は最初からあったやつです
@@ -57,4 +57,5 @@
 @import "./room_registration";
 @import "./shared/search_form";
 @import "./index/search_result";
+@import "./index/room_show";
 @import "./host_registration.scss";

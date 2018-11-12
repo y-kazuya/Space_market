@@ -2,34 +2,24 @@ class EditPicturesController < RoomEditsController
 
   def show
     @room = Room.find(params[:room_id])
-    @movie = Movie.find_by(room_id: @room.id) || Movie.new(room_id: @room_id)
-    @pictures = Picture.where(room_id: @room.id)
-  end
-
-  def create
-    @movie = Movie.new(movie_params)
-
-    unless @movie.save
-      @room = Room.find(params[:room_id])
-      @pictures = Picture.where(room_id: @room.id)
-      render :show
-    end
-
-   redirect_to user_room_pictures_path(current_user.id, params[:room_id])
-
-
+    @picture = Picture.where(room_id: @room.id).first
   end
 
   def update
     @room = Room.find(params[:room_id])
-    @movie = Movie.find(@room.movie.id)
+    @picture = @room.pictures.first
 
-    unless @movie.update(movie_params)
-      @pictures = Picture.where(room_id: @room.id)
-      return render :show
+    if @picture.room.space.user.id == current_user.id
+      if @picture.update(picture_params)
+        return redirect_to user_room_pictures_path(current_user.id, params[:room_id])
+      else
+        @room = @picture.room
+        @space = @room.space
+        return render :show
+      end
+    else
+      redirect_to root_path
     end
-   redirect_to user_room_pictures_path(current_user.id, params[:room_id])
-
   end
 
   def destroy
@@ -40,7 +30,8 @@ class EditPicturesController < RoomEditsController
       params.require(:picture).permit(
         :content,
         :about,
-        :cover
+        :cover,
+        :movie
       ).merge(room_id: params[:room_id].to_i)
     end
 
