@@ -29,11 +29,11 @@
       - if user_signed_in? == true
         %li.navs-right
           .prof-and-down
-            %span.navs-right__text.link-black.hover-white
-              =image_tag(set_thubm(current_user), class: "user_icon")
             %input{id:"prof-tg",class:"top-nav-down-checkbox" ,type:"checkbox"}
             %label{for:"prof-tg"}
-              = fa_icon 'caret-down', class: 'top-nav-down hover-white link-black'
+              %span.navs-right__text.link-black.hover-white
+                =image_tag(set_thubm(current_user), class: "user_icon")
+                = fa_icon 'caret-down', class: 'top-nav-down hover-white link-black'
             %ul.top-nav-parent
               %li.child-user
                 %p.name
