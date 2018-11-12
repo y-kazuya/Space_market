@@ -156,5 +156,9 @@ $(document).on('turbolinks:load',function(){
     });
   }
 
+  $('house').on('click',function(){
+    drawMap();
+  });
+
 
 });
