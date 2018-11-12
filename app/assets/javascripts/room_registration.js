@@ -157,4 +157,32 @@ $(document).on('turbolinks:load',function(){
   }
 
 
+  ///////////////法人の入力出したり消したり///////////
+  if (location.pathname.includes('settings/host_profiles')) { ///ページ遷移際の挙動
+    var target = $("input[name='host_profile[company]']:checked")[0].value
+    console.log(target)
+
+    if (target == "true") {
+      $(".y-com-wp").css("display", "block")
+    }
+   }
+
+   $("input[name='host_profile[company]']").on("click", function(){ //法人のの変更がされるたび
+    var target = $(this)[0].value
+    console.log(String(target))
+
+    if (target == "true") {
+      $(".y-com-wp").css("display", "block")
+    }
+    else{
+      $(".y-com-wp").css("display", "none")
+    }
+
+   })
+
+
+
+
+
+
 });

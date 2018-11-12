@@ -1,33 +1,96 @@
-%h1
-  3. 振込口座
-= render 'shared/errors', object: @host_bank
 
 = form_for [@space ,"settings",@host_bank] do |f|
+  .wrapper_2_1
+    .wrapper_2_2
+      .upper
+        .title_base.clearfix
+          .title ３ 振込口座
+          .detail スペースマーケットからの利用料の振込先を登録してください。普通預金の口座のみ登録できます。
+      .main
+        .bank_nm
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 銀行名
+          .explanation
+          .input_base
 
-  %h2
-    銀行名
-  = f.text_field :bank_name
+            = f.text_field :bank_name, placeholder: "銀行名", type: "text", class: "input_area", id: "bank_nm_unique"
+            .explanation 例）スペースマーケット銀行
+          .attention_01.fa.fa-exclamation-circle#warning_hr_31 銀行名を入力してください。
 
-  %h2
-    銀行コード
-  = f.number_field :bank_code, in: 1...10000000000000
+        .bank_cd
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 銀行コード
+          .explanation 利用料振込先となる銀行口座の銀行コードを入力してください。銀行コードを調べる
 
-  %h2
-    支店めい
-  = f.text_field :branch_name
+          .input_base
 
-  %h2
-    支店こーど
-  = f.number_field :branch_code, in: 1...10000000000000
+            = f.number_field :bank_code, in: 1...10000000000000, placeholder: "銀行名", type: "text", class: "input_area", id: "bank_cd_unique"
+            .explanation 例）1101
+          .attention_01.fa.fa-exclamation-circle#warning_hr_32 銀行コードを入力してください。
 
-  %h2
-    口座番号
-  = f.number_field :account_number, in: 1...10000000000000
+        .branch_nm
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 支店名
+          .explanation
+          .input_base
+            = f.text_field :branch_name, placeholder: "支店", type: "text", class: "input_area", id: "branch_nm_unique"
+            .explanation 例）渋谷支店
+          .attention_01.fa.fa-exclamation-circle#warning_hr_33 支店名を入力してください。
 
-  %h2
-    口座名義オンリーカタカナ！
-  = f.text_field :account_name
+        .branch_cd
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 支店コード
+          .explanation 利用料振込先となる銀行口座の支店コードを入力してください。支店コードを調べる
+
+          .input_base
+
+            = f.number_field :branch_code, in: 1...10000000000000, placeholder: "銀行名", type: "text", class: "input_area", id: "branch_cd_unique"
+            .explanation 例）110
+          .attention_01.fa.fa-exclamation-circle#warning_hr_34 支店コードを入力してください。
+
+        .account_no
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 口座番号
+          .explanation 普通預金の口座のみ登録できます。
+          .input_base
+
+            = f.number_field :account_number, in: 1...10000000000000, placeholder: "銀行名", type: "text", class: "input_area", id: "account_no_unique"
+            .explanation 例）12345678
+          .attention_01.fa.fa-exclamation-circle#warning_hr_35 口座番号を入力してください。
+
+        .account_holder_name#y-mar-bot
+          .title_base
+            .title_name_base.clearfix
+              .title_type 必須
+              .title_name 口座名義
+          .explanation カタカナで記入してください。法人の場合は会社名のみ記入してください。
+
+          .input_base
+            = f.text_field :account_name, placeholder: "銀行名", type: "text", class: "input_area", id: "account_holder_name_unique"
+            .explanation 例）モリタダイチ
+          .attention_01.fa.fa-exclamation-circle#warning_hr_36 口座名義人のお名前を入力してください。
 
 
 
-  = f.submit "保存して進む"
+
+    .bottom
+      .bottom_line
+        .bottom_buttons
+          .back_button_wrap
+            .back_button
+              %button.back_button_inside 保存して戻る
+          .forward_button_wrap
+            .forward_button
+              =f.submit "保存して進む", class: "forward_button_inside"
+              -# %button.forward_button_inside 保存して進む
+
