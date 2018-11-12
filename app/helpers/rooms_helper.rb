@@ -33,6 +33,34 @@ module RoomsHelper
     "¥#{price}/#{type}〜"
   end
 
+  def set_plan_price(plan, count, k)
+    if count == 2 && k == 1
+      return "¥#{plan.time_price}/"
+    elsif count == 2 && k == 2
+      return "¥#{plan.day_price}/"
+    else
+      if plan.day_pay == true
+        return "¥#{plan.day_price}/"
+      else
+        return "¥#{plan.time_price}/"
+      end
+    end
+  end
+
+  def set_plan_unit(plan,count, k)
+    if count == 2 && k == 1
+      return "時間"
+    elsif count == 2 && k == 2
+      return "日"
+    else
+      if plan.day_pay == true
+        return "日"
+      else
+        return "時間"
+      end
+    end
+  end
+
   def set_event_type_count(id)
     Room.joins(basic_info: [:basic_info_usages]).where("usage_id = ?", "#{id}").distinct.where(activated: "certification").where(rooms: {public: true }).count
   end
