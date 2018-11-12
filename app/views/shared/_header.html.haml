@@ -52,7 +52,11 @@
               %li.child
                 = link_to account_path ,class: 'navs-right__link child-link hover-green' do
                   %p.link-black
-                    設定　　　　　　　　　　　　　　>
+                    クレジットカードを編集　　　　　>
+              %li.child
+                = link_to "#" ,class: 'navs-right__link child-link hover-green' do
+                  %p.link-black
+                    予約確認　　　　　　　　　　　　>
               %li.child
                 %a.btn{"data-method" => "delete", :href => "/users/sign_out", :rel => "nofollow",class: "hover-green navs-right__link link-black child-link"}ログアウト　　　　　　　　　　　>
         %li.navs-right
