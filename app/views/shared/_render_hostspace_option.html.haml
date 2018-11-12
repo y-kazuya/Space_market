@@ -1,0 +1,32 @@
+
+.option-box
+  - option.public == true ? public = true : public = false
+  .option-box-left.y-op-box
+    %p.option-box-left-title
+      = option.name
+    %br
+    %p.red-box-description
+      価格
+    %span.weight700
+      ="¥#{option.price}/"
+    %span.red-box-description
+      = option.unit
+  .option-box-right
+    .option-box-right-switch-button
+      .switchArea
+        = link_to public_user_room_option_path(current_user.id, @room.id, option.id), method: :patch do
+          = check_box 'option', 'public', {:checked => public}, true, false
+          %label{for:"switch#{option.id}"}
+            %span
+          #swImg
+    %br
+      %p.switchArea_with_txt--gray
+        非公開
+    = link_to user_room_option_path(current_user.id, @room.id, option.id) do
+      %span.green-box.y-gbox
+        オプションの編集
+
+    = link_to user_room_option_path(current_user.id, @room.id, option.id), method: :delete, data: { confirm: "よろしいですか？"} do
+      %span.y-gomi
+        %button.gomibako-button.y-gomibako
+          %i{class:"far fa-trash-alt fa-white"}

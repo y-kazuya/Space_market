@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181108111633) do
+ActiveRecord::Schema.define(version: 20181112005246) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
@@ -216,14 +216,6 @@ ActiveRecord::Schema.define(version: 20181108111633) do
     t.index ["room_id"], name: "index_intros_on_room_id", using: :btree
   end
 
-  create_table "movies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "content",    null: false
-    t.integer  "room_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_movies_on_room_id", using: :btree
-  end
-
   create_table "option_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content",                  null: false
     t.text     "about",      limit: 65535
@@ -254,6 +246,7 @@ ActiveRecord::Schema.define(version: 20181108111633) do
     t.integer  "room_id",                  null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "movie"
     t.index ["room_id"], name: "index_pictures_on_room_id", using: :btree
   end
 
@@ -272,8 +265,8 @@ ActiveRecord::Schema.define(version: 20181108111633) do
     t.integer  "clean_time"
     t.integer  "discount",                    default: 0
     t.integer  "cost"
-    t.integer  "start_day"
-    t.integer  "end_day"
+    t.string   "start_day"
+    t.string   "end_day"
     t.boolean  "public",                      default: true
     t.index ["room_id"], name: "index_plans_on_room_id", using: :btree
   end
@@ -459,7 +452,6 @@ ActiveRecord::Schema.define(version: 20181108111633) do
   add_foreign_key "host_profiles", "users"
   add_foreign_key "intend_points", "users"
   add_foreign_key "intros", "rooms"
-  add_foreign_key "movies", "rooms"
   add_foreign_key "option_pictures", "options"
   add_foreign_key "options", "rooms"
   add_foreign_key "pictures", "rooms"

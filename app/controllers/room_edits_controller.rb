@@ -1,6 +1,7 @@
 class RoomEditsController < ApplicationController
   before_action :owner?
   # before_action :set_spaces
+  layout "room_edit"
 
 
 

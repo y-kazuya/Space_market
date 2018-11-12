@@ -1,26 +1,43 @@
-= render partial: 'shared/room_setiing_topside'
-
-- @pictures.each do |picture|
-  = render 'shared/errors', object: picture
-
-= render 'shared/errors', object: @movie
-
-= @pictures.count
 
 
--@pictures.each do |p|
-  %h2
-    = image_tag(p.content_url(:preview))
-    = p.about
+= form_for @picture ,url: user_room_pictures_path(current_user.id, @room.id) do |f|
+  .hostspace-picture-box
+    .hostspace-edit-title
+      写真動画
+    .hostspace-edit-wrapper
+      %span.red-box.weight700
+        必須
+      %span.red-box-with-txt
+        写真
+      %p.red-box-description
+        ゲストが実際に利用するスペース、設備等の画像を最低1枚追加してください。推奨サイズは1260x840です。ドラッグ＆ドロップで入れ替え可。クリックで拡大することができます。最大30枚まで追加できます。
+      %p.new_add_button
+        +新規写真の追加
+      %span
+        %label{for: "picture_content"}
+          .photo_wrap1_unique
+            = image_tag @picture.content_url,class:'hostspace-picture-box__picture'
+        = f.file_field :content, class: "y-p add_button_unique"
 
 
 
-= form_for @movie ,url: user_room_pictures_path(current_user.id, @room.id) do |f|
-  %h2
-    youtubeのURL
-  = f.text_field :content
 
-  =f.submit "保存"
+      %span
+        = f.text_area :about,class:'SI-textarea textarea-with-picture'
+    .hostspace-edit-wrapper
+      %span.gray-box.weight700
+        任意
+      %span.red-box-with-txt
+        動画
+      %p.red-box-description
+        YouTubeの動画を表示できます。動画は写真とともにスライドショー内に表示されます。
+      %p
+        = f.text_area :movie,class:'SI-textarea SI-mini-textarea'
+      %p.red-box-description
+        例）http://www.youtube.com/watch?v=XXXXXXX
+
+    .space-edit-preserve-box
+      =f.submit "保存", class: "space-edit-preserve-box__button"
 
 
 
