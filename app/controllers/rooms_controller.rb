@@ -1,11 +1,12 @@
 class RoomsController < ApplicationController
   before_action :owner?, only: [:index, :newww, :stats]
-  layout "room_new", only: [:index, :newww, :stats]
+  layout "room_new", only: [:index,:new, :newww, :stats]
   def index
     @spaces = Space.where(user_id: current_user.id).includes(:rooms)
   end
 
   def new
+
   end
 
   def newww
