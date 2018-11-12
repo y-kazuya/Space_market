@@ -3,7 +3,6 @@ class DashboardsController < ApplicationController
   before_action :set_spaces, only: :show
   layout "room_new", only: :show
   def first_space
-    new_space_room_path() unless @space && @room
     @space = current_user.spaces.first
     @room = @space.rooms.first
     return redirect_to new_space_room_path(@space.id) unless @space && @room
