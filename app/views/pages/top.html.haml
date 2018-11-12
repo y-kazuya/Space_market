@@ -3,25 +3,25 @@
   .site-main__title-logo
     = image_tag 'http://www.dreamnews.jp/?action_Image=1&p=0000092185&id=headimage'
   .h1.top-information
-    0件のレンタルスペースから 目的に合ったスペースをかんたん予約
+    = "#{Room.where(activated: "certification").where(public: true).distinct.count}件のレンタルスペースから 目的に合ったスペースをかんたん予約"
   .top-menu-container
     .container
       %ul.row
         %li.top-menu-list
-          = link_to event_type_search_path(id: "1") ,class: 'top-menu-list__button' do
+          = link_to search_path(event_type: 1) ,class: 'top-menu-list__button' do
             = image_tag 'party.png',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               パーティ
               %span.top-menu-list__button-num
-                "0"
+                = set_event_type_count(1)
                 件
         %li.top-menu-list
-          = link_to event_type_search_path(id: "2") ,class: 'top-menu-list__button' do
+          = link_to search_path(event_type: 2) ,class: 'top-menu-list__button' do
             = image_tag 'meeting.png',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               会議
               %span.top-menu-list__button-num
-                "0"
+                = set_event_type_count(2)
                 件
         %li.top-menu-list
           = link_to "#" ,class: 'top-menu-list__button' do
@@ -29,33 +29,33 @@
             %span.top-menu-list__button-text
               民泊
               %span.top-menu-list__button-num
-                "0"
+                5000000
                 件
     .container
       %ul.row
         %li.top-menu-list.row-list
-          = link_to event_type_search_path(id: "3") ,class: 'top-menu-list__button' do
+          = link_to search_path(event_type: 3 ) ,class: 'top-menu-list__button' do
             = image_tag 'camera.png',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               写真撮影
               %span.top-menu-list__button-num
-                "0"
+                = set_event_type_count(3)
                 件
         %li.top-menu-list.row-list
-          = link_to event_type_search_path(id: "4") ,class: 'top-menu-list__button' do
+          = link_to search_path(event_type: 4 ) ,class: 'top-menu-list__button' do
             = image_tag 'moovie.png',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               ロケ撮影
               %span.top-menu-list__button-num
-                "0"
+                = set_event_type_count(4)
                 件
         %li.top-menu-list.row-list
-          = link_to event_type_search_path(id: "8") ,class: 'top-menu-list__button' do
+          = link_to search_path(event_type: 8 ) ,class: 'top-menu-list__button' do
             = image_tag 'run.png',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               スポーツ
               %span.top-menu-list__button-num
-                "0"
+                = set_event_type_count(8)
                 件
         %li.top-menu-list.row-list
           = link_to "#" ,class: 'top-menu-list__button' do
@@ -93,18 +93,3 @@
 
 
 %br/
-%h1
-  仮置き全てのルーム
-  審査通ったroomかつpublicがtrueのroomをもつスペースを全表示
-  本番はroomをインデックスで表示してroomのページにとぶ
-
-- @spaces.each do |space|
-  %h2
-    = "スペースのタイトル： #{space.space_info.title}|"
-    = "スペースの住所： #{space.space_info.state + space.space_info.city}"
-    - if space.public_rooms.count == 1
-      = link_to space_room_path(space.id, space.public_rooms.first.id) do
-        = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))
-    -else
-      = link_to space_path(space.id) do
-        = image_tag(space.public_rooms.first.pictures.first.content_url(:thumb))

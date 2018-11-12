@@ -1,43 +1,58 @@
-= render partial: 'shared/room_setiing_topside'
-
-= render 'shared/errors', object: @option
-%h1
-  オプションの編集
-
-= link_to "戻る", user_room_options_path(current_user.id, @room.id)
 
 = form_for [current_user, @room, @option] do |f|
-  %h2
-    オプションの名称
-  = f.text_field :name
-
-  %h2
-    オプションの説明
-  = f.text_area :about
-
-  %h2
-    価格と単位
-  ¥
-  = f.number_field :price
-  = "/"
-  = f.number_field :unit
-
-  %h2
-    いて今日可能な数量
-  = f.number_field :amount
-
-
-
-  = f.fields_for :option_pictures do |p|
-    %h2
-      写真
-    - if @option.option_pictures.first.cover
-      = image_tag(@option.option_pictures.first.content_url(:preview))
-    = p.file_field :content
-    = p.text_area :about
-    = p.hidden_field :cover, value: 1
-
-
-
-
-  = f.submit "保存"
+  .hostspace-newedit-option-box
+    .hostspace-edit-title.weight700
+      新規オプションの作成
+    = link_to user_room_options_path(current_user.id, @room.id) do
+      %p.green-color
+        <戻る
+    .hostspace-edit-wrapper
+      %span.red-box.weight700
+        必須
+      %span.red-box-with-txt
+        オプションの名称
+      %p
+        = f.text_area :name,class:'SI-textarea SI-mini-textarea'
+      %p.red-box-description
+        例）撮影機材の一式レンタル
+    .hostspace-edit-wrapper
+      %span.gray-box.weight700
+        任意
+      %span.red-box-with-txt
+        オプションの説明
+      %p
+        = f.text_area :about,class:'SI-textarea'
+      %p.red-box-description
+        例）撮影用照明、背景紙、ムービー用機材を貸し出します。
+    .hostspace-edit-wrapper
+      %span.red-box.weight700
+        必須
+      %span.red-box-with-txt
+        価格と単位
+      .hostspace-newedit-option-box__cost-unit
+        %span.cost-unit-txt
+          ¥
+        %span.cost-unit-txt
+          = f.text_area :price,class:'SI-textarea SI-mini-textarea'
+        %span.cost-unit-txt
+          ／
+        %span.cost-unit-txt
+          = f.text_area :unit,class:'SI-textarea SI-mini-textarea'
+    .hostspace-edit-wrapper
+      %span.gray-box.weight700
+        任意
+      %span.red-box-with-txt
+        提供可能な数量
+      %p.red-box-description
+        数量を設定すると、ゲストが利用する数量を指定できるようになります。
+      %p.capable-of-providing
+        = f.text_area :amount,class:'SI-textarea SI-mini-textarea' ,placeholder:"10"
+    .hostspace-edit-wrapper
+    .cancel-and-save-box
+      .cancel-and-save-box__blank
+      .cancel-and-save-box__left
+        = link_to user_room_options_path(current_user.id, @room.id) do
+          .light-gray-button
+            キャンセル
+      .cancel-and-save-box__right
+        = f.submit "保存", class: "gray-button"

@@ -1,0 +1,75 @@
+.wrapper_2_1
+  .wrapper_2_2
+    .upper
+      .title_base.clearfix
+        .title ３ 振込口座
+        .detail スペースマーケットからの利用料の振込先を登録してください。普通預金の口座のみ登録できます。
+    .main
+      .bank_nm
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 銀行名
+        .explanation
+        .input_base
+          %input{placeholder: "銀行名", type: "text", class: "input_area", id: "bank_nm_unique"}
+          .explanation 例）スペースマーケット銀行
+        .attention_01.fa.fa-exclamation-circle#warning_hr_31 銀行名を入力してください。
+
+      .bank_cd
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 銀行コード
+        .explanation 利用料振込先となる銀行口座の銀行コードを入力してください。銀行コードを調べる
+
+        .input_base
+          %input{placeholder: "銀行名", type: "text", class: "input_area", id: "bank_cd_unique"}
+          .explanation 例）1101
+        .attention_01.fa.fa-exclamation-circle#warning_hr_32 銀行コードを入力してください。
+
+      .branch_nm
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 支店名
+        .explanation
+        .input_base
+          %input{placeholder: "銀行名", type: "text", class: "input_area", id: "branch_nm_unique"}
+          .explanation 例）渋谷支店
+        .attention_01.fa.fa-exclamation-circle#warning_hr_33 支店名を入力してください。
+
+      .branch_cd
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 支店コード
+        .explanation 利用料振込先となる銀行口座の支店コードを入力してください。支店コードを調べる
+
+        .input_base
+          %input{placeholder: "銀行名", type: "text", class: "input_area", id: "branch_cd_unique"}
+          .explanation 例）110
+        .attention_01.fa.fa-exclamation-circle#warning_hr_34 支店コードを入力してください。
+
+      .account_no
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 口座番号
+        .explanation 普通預金の口座のみ登録できます。
+        .input_base
+          %input{placeholder: "銀行名", type: "text", class: "input_area", id: "account_no_unique"}
+          .explanation 例）12345678
+        .attention_01.fa.fa-exclamation-circle#warning_hr_35 口座番号を入力してください。
+
+      .account_holder_name
+        .title_base
+          .title_name_base.clearfix
+            .title_type 必須
+            .title_name 口座名義
+        .explanation カタカナで記入してください。法人の場合は会社名のみ記入してください。
+
+        .input_base
+          %input{placeholder: "銀行名", type: "text", class: "input_area", id: "account_holder_name_unique"}
+          .explanation 例）KAZUYA YAMAGUCHI
+        .attention_01.fa.fa-exclamation-circle#warning_hr_36 口座名義人のお名前を入力してください。

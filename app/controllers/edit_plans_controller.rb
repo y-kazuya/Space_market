@@ -12,13 +12,27 @@ class EditPlansController < RoomEditsController
 
   def new
     @room = Room.find(params[:room_id])
-    @week = %W[Sun Mon Tue Wed Thu Fri Sat Syuku]
+    @week = %W[日曜日 月曜日 火曜日 水曜日 木曜日 金曜日 土曜日 祝日]
     @plan = Plan.new(room_id: @room.id)
     @plan.weeks.build
   end
 
   def create
     @plan = Plan.new(plan_params)
+
+    return redirect_to :back unless params[:plan2][:how_price]
+
+    if params[:plan2][:how_type] == "日"
+      @plan.day_pay = true
+      @plan.time_pay = false
+      @plan.day_price = params[:plan2][:how_price].to_i
+    else
+      @plan.day_pay = false
+      @plan.time_pay = true
+      @plan.time_price= params[:plan2][:how_price].to_i
+    end
+
+
     unless @plan.save
       @week = %W[日曜日 月曜日 火曜日 水曜日 木曜日 金曜日 土曜日 祝日]
       @room = Room.find(params[:room_id])

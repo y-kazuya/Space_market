@@ -10,7 +10,6 @@ class SpaceInfosController < RoomInfosController
   def create
     @space_info = SpaceInfo.new(space_info_params)
     @space = Space.find(params[:space_id])
-
     if @space_info.save
       @space.update(space_info_id: @space_info.id)
       redirect_to new_space_room_basic_info_path(params[:space_id], params[:room_id])

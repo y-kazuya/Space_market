@@ -6,7 +6,7 @@ class EditBasicInfosController < RoomEditsController
   end
 
   def update
-    @basic_info = BasicInfo.find(params[:id].to_i)
+    @basic_info = BasicInfo.find(params[:room_id].to_i)
     @room = @basic_info.room
     if params[:basic_info][:room]
       @room.update(room_params)

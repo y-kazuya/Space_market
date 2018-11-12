@@ -74,7 +74,7 @@ namespace :deploy do
     on roles(:db) do |host|
       with rails_env: fetch(:rails_env) do
         within current_path do
-          execute :bundle, :exec, :rake, 'db:migrate:reset'
+          execute :bundle, :exec, :rake, 'db:migrate:reset', "DISABLE_DATABASE_ENVIRONMENT_CHECK=1"
         end
       end
     end

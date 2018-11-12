@@ -22,8 +22,6 @@ class Plan < ApplicationRecord
  validates :min_time, numericality: { only_integer: true, less_than_or_equal_to: 48 }, allow_nil: true
  validates :clean_time, numericality: { only_integer: true, less_than_or_equal_to: 100 }, allow_nil: true
  validates :cost, numericality: { only_integer: true }, length: { maximum: 10 }, allow_nil: true
- validates :start_day, numericality: { only_integer: true }, length: { is: 8 }, allow_nil: true
- validates :end_day, numericality: { only_integer: true }, length: { is: 8 }, allow_nil: true
 
  validate :correct_day
 

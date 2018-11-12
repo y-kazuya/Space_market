@@ -5,7 +5,7 @@ class EditIntrosController < RoomEditsController
   end
 
   def update
-    @intro = Intro.find(params[:id].to_i)
+    @intro = Intro.find(params[:room_id].to_i)
     @room = @intro.room
 
     if @intro.room.space.user.id == current_user.id

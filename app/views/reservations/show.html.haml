@@ -79,7 +79,7 @@
     以下モーダル
   %h1
     利用目的
-    = f.select :purpose, Reserve.purposes.keys, {prompt: '選択してください'}
+    = f.select :purpose, Reserve.purposes.keys
   %h1
     = "利用人数（〜#{@room.basic_info.capacity}人)"
     = f.number_field :people
@@ -108,7 +108,7 @@
     ポイント
     =f.radio_button :coupon, 0, checked: true
     クーポン
-    =f.radio_button :coupon, 1
+    =f.radio_button :coupon, 1, disabled: true
 
   %h1
     保有ポイント
@@ -117,7 +117,7 @@
   %h1
     ご利用ポイントを入力してください
 
-    = number_field_tag :nebiki
+    = number_field_tag :nebiki, in: 1...10
 
 
   .reserve_data_area

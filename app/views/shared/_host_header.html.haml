@@ -1,0 +1,84 @@
+.host-header
+  .host-header__left
+    .host-left-logo
+      = image_tag 'host-icon.png' ,class: 'host-left-img'
+    .host-left-navs
+      %ul
+        = link_to user_dashboard_path(current_user.id) ,class:'link-white' do
+          %li.host-left-navs__txt
+            ダッシュボード
+        = link_to user_calender_path(current_user.id) ,class:'link-white' do
+          %li.host-left-navs__txt
+            カレンダー
+        = link_to user_inbox_path(current_user.id) ,class:'link-white' do
+          %li.host-left-navs__txt
+            受信トレイ
+        = link_to user_rooms_path(current_user.id) ,class:'link-white' do
+          %li.host-left-navs__txt
+            スペース管理
+        = link_to summary_user_achievements_path(current_user.id) ,class:'link-white' do
+          %li.host-left-navs__txt
+            実績
+        = link_to host_profile_user_settings_path(current_user.id) ,class:'link-white' do
+          %li.host-left-navs__txt
+            設定
+  .host-header__right
+    .host-right-nav
+      %ul
+        %li.host-right-nav__content-profile
+          %input{id:"prof-tg",class:"content-profile-checkbox" ,type:"checkbox"}
+          %label{for:"prof-tg"}
+            = image_tag current_user.host_profile.avatar ,class: 'content-profile-img'
+          .content-profile-box
+            /-----------------------------------ここにプロフィールを設定してください---------
+            %ul
+              %li.content-profile-box__name-with-img
+                = image_tag current_user.host_profile.avatar ,class: 'content-profile-img'
+                = "#{current_user.host_profile.last_name} #{current_user.host_profile.first_name}"
+              = link_to user_dashboard_path(current_user.id) ,class:'link-black' do
+                %li.content-profile-box__name.hover-back-gray
+                  = "#{current_user.host_profile.last_name} #{current_user.host_profile.first_name}"
+              = link_to root_path ,class:'link-black' do
+                %li.content-profile-box__spacemarket.hover-back-gray
+                  SPACEMARKET
+              = link_to 'https://stay.spacemarket.com/' ,class:'link-black' do
+                %li.content-profile-box__spacemarket-stay.hover-back-gray
+                  SPACEMARKET STAY
+              = link_to 'https://help.spacemarket.com/hc/ja/categories/204528307' ,class:'link-black' do
+                %li.content-profile-box__contact.hover-back-gray
+                  お問い合わせ
+              = link_to '#' ,class:'link-black hover-back-gray' do
+                %li.content-profile-box__rule.hover-back-gray
+                  ホスト規約
+              = link_to destroy_user_session_path, mthood: :delete ,class:'link-black' do
+                %li.content-profile-box__sign-out.hover-back-gray
+                  ログアウト
+            /-----------------------------------ここにプロフィールを設定してください---------
+        %li.host-right-nav__content-down
+          %input{id:"todo-tg",class:"content-down-checkbox" ,type:"checkbox"}
+          %label{for:"todo-tg"}
+            = fa_icon 'check', class: 'content-down-img link-black color-white'
+          .content-down-box
+            %ul
+              %li.content-down-box__title
+                = fa_icon 'check', class: ''
+                やることリスト
+              %li.content-down-box__message
+                some message
+        %li.host-right-nav__content-mail
+          %input{id:"mail-tg",class:"content-mail-checkbox" ,type:"checkbox"}
+          %label{for:"mail-tg"}
+            = fa_icon 'envelope', class: 'content-mail-img hover-white link-gray', id: 'envelope-size'
+            %br
+            %p.content-mail-txt.link-white
+              お知らせ
+          .content-mail-box
+            %ul
+              %li.content-mail-box__title
+                = fa_icon 'envelope'
+                お知らせ
+              %li.content-mail-box__message
+                some message
+        = link_to 'https://help.spacemarket.com/hc/ja' ,class:'link-white' do
+          %li.host-right-nav__content-help
+            ヘルプ
