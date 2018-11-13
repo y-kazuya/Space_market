@@ -4,7 +4,9 @@ class PagesController < ApplicationController
   def top
     # @spaces = Space.public_spaces
     @space_info = SpaceInfo.new
+
     # render "tmp/host_registration_main"
+
   end
 
   def host_entry
