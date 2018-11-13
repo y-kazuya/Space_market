@@ -1,30 +1,29 @@
 .reservation-item-box
   .reservation-item-box__img
     /それぞれのイメージをとってくる
-    = image_tag "hito.jpg",class: 'reservation-img'
+    = image_tag("#{reservation.room.pictures.first.content}" ,class: 'reservation-img')
   .reservation-item-box__txts
     %span.reservation-space-name.weight700
-      すごい家
+      = reservation.room.intro.title
     %span.reservation-space-value.weight700
-      ¥2000円
+      /値段を入力
     %p
-      プラン
+      = reservation.plan.name
     %p
       オプション一覧
     .reservation-space-options
-      .reservation-space-options__item
-        これと
-      .reservation-space-options__item
-        あれと
-      .reservation-space-options__item
-        それと
+      - reservation.reserve_options do |option|
+        .reservation-space-options__item
+          = option
         /widthで食わせて回せばいい
     .reservation-space-days
-      20XX/XX/XX ~ 20XX/XX/XX
+      = reservation.reserve_dates.first.start_date
+      〜
+      = reservation.reserve_dates.last.start_date
     .reservation-space-addres
-      ここらへん
+      = reservation.room.space.space_info.access
     .detail-delete-button-box
       %button.detail-room-button
         ルームの紹介ページ
-      %button.delete-reservation-button
-        予約取り消し
+      /%button.delete-reservation-button
+      /予約取り消し

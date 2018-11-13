@@ -18,6 +18,11 @@ Rails.application.routes.draw do
     member do
       get :result
     end
+
+    collection do
+      get :confirm_reservation
+    end
+
   end
 
   resources :spaces do

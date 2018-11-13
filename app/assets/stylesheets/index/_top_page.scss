@@ -135,5 +135,51 @@
       }
     }
   }
+  .yellow-advertisement{
+    width: 100%;
+    padding: 20px 0px 20px 20px;
+    background-color: #F9D400;
+    text-align: center;
+    font-weight: 700;
+    .top-column{
+      font-size: 22px;
+    }
+    .middle-column-enphasize{
+      font-size: 40px;
+
+    }
+    .middle-column{
+      font-size: 18px
+
+    }
+    .back-white-column{
+      background-color: white;
+      padding: 5px 30px 5px 30px;
+      width: 400px;
+      margin: 0 auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      font-size: 16px
+    }
+    .bottom-column{
+      font-size: 16px
+
+    }
+  }
+  .white-advertisement{
+    padding: 20px 0px 20px 20px;
+    background-color: white;
+    width: 100%;
+    .blue-button{
+      text-align: center;
+      padding: 10px 30px 10px 30px;
+      width: 400px;
+      margin: 0 auto;
+      background-color: #52BEE0;
+      color: white;
+    }
+  }
+
 }
 

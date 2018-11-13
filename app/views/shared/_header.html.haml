@@ -37,28 +37,43 @@
             %ul.top-nav-parent
               %li.child-user
                 %p.name
-                  ユーザー名
+                  = current_user.first_name
+                  = current_user.last_name
                 = link_to "#",class: 'navs-right__link child-link ' do
                   %p.point.link-black.hover-border
-                    (ポイント)ポイント
+                    (
+                    = current_user.point
+                    )ポイント
               %li.child
                 = link_to "#" ,class: 'navs-right__link child-link hover-green' do
-                  %p.link-black
-                    ポイント　　　　　　　　　　　　>
+                  %span.link-black
+                    ポイント
+                  %span.link-black.child-link-arrow
+                    >
               %li.child
                 = link_to "#" ,class: 'navs-right__link child-link hover-green' do
-                  %p.link-black
-                    友達を招待　　　　　　　　　　　>
+                  %span.link-black
+                    友達を招待
+                  %span.link-black.child-link-arrow
+                    >
               %li.child
                 = link_to account_path ,class: 'navs-right__link child-link hover-green' do
-                  %p.link-black
-                    クレジットカードを編集　　　　　>
+                  %span.link-black
+                    クレジットカードを編集
+                  %span.link-black.child-link-arrow
+                    >
               %li.child
-                = link_to "#" ,class: 'navs-right__link child-link hover-green' do
-                  %p.link-black
-                    予約確認　　　　　　　　　　　　>
+                = link_to "/reservations/confirm_reservation" ,class: 'navs-right__link child-link hover-green' do
+                  %span.link-black
+                    予約確認
+                  %span.link-black.child-link-arrow
+                    >
               %li.child
-                %a.btn{"data-method" => "delete", :href => "/users/sign_out", :rel => "nofollow",class: "hover-green navs-right__link link-black child-link"}ログアウト　　　　　　　　　　　>
+                %a.btn{"data-method" => "delete", :href => "/users/sign_out", :rel => "nofollow",class: "hover-green navs-right__link link-black child-link"}
+                  %span.link-black
+                    ログアウト
+                  %span.link-black.child-link-arrow
+                    >
         %li.navs-right
           = link_to "#" ,class: 'navs-right__link child-link' do
             = fa_icon 'envelope', class: 'hover-white link-gray ', id: 'envelope-size'

@@ -87,5 +87,20 @@
     = render partial: '4topic'
   .top-page-topics.back-light-gray
     = render partial: 'pick_up'
+  .yellow-advertisement
+    %p.top-column
+      新規アカウント登録して頂いた方全員に
+    %span.middle-column-enphasize
+      ¥1,000
+    %span.middle-column
+      相当のポイントをプレゼント！
+    .back-white-column
+      全てのスペースにご利用可能です
+    %p.bottom-column
+      おトクにスペースを借りてみよう！
+  .white-advertisement
+    = link_to "users/sign_up" do
+      .blue-button
+        新規アカウント登録はこちら
   .top-page-topics.back-light-gray
     = render partial: '3topic'

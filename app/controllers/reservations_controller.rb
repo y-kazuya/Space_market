@@ -77,6 +77,12 @@ class ReservationsController < ApplicationController
 
   end
 
+  def confirm_reservation
+    @reservations = nil?
+    if Reserve.where(id:current_user.id) != nil?
+      @reservations = Reserve.where(user_id:current_user.id)
+    end
+  end
 
   private
     def reserve_params
