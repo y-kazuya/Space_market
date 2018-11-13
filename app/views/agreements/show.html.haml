@@ -1,21 +1,29 @@
-= render partial: 'shared/room_setiing_topside'
-
-
-= render 'shared/errors', object: @agree
-
-
-%h1
-  キャンセルポリシー・利用規約
-
 
 = form_for @agree, url: user_room_agreements_path(current_user.id, @room.id) do |f|
+  .hostspace-policy
+    .hostspace-edit-title
+      キャンセルポリシー・利用規約
+    %p.red-box-description.red-color
+      1文字でも記載があるとスペースマーケットのキャンセルポリシーや利用規約は適用されません。ご注意ください。
+    .hostspace-edit-wrapper
+      %span.gray-box.weight700
+        任意
+      %span.red-box-with-txt
+        キャンセルポリシー
+      %p.red-box-description
+        未入力の場合は、スペースマーケットの標準キャンセルポリシーに準ずる旨を表示します。
+      %p
 
-  %h2
-    キャンセルポリシー
-  = f.text_area :aggree
+        = f.text_area :aggree,class:'SI-textarea'
 
-  %h2
-    利用規約
-  = f.text_area :policy
-
-  =f.submit "保存"
+    .hostspace-edit-wrapper
+      %span.gray-box.weight700
+        任意
+      %span.red-box-with-txt
+        利用規約
+      %p.red-box-description
+        未入力の場合は、スペースマーケットのゲスト規約に準ずる旨を表示します。
+      %p
+        = f.text_area :policy,class:'SI-textarea'
+    .space-edit-preserve-box
+      =f.submit "保存", class: "space-edit-preserve-box__button"

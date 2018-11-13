@@ -16,7 +16,7 @@
       border-right: 1px solid #A0A0A0;
       .plan-box-left{
         display: table-cell;
-        width: 70%;
+        width: 58%;
       }
       .plan-box-right{
         text-align: right;
@@ -61,7 +61,7 @@
   }
   /* チェックした時のスタイル */
   .free-value-checkbox input[type=checkbox]:checked + label:before {
-    content:    '\2713';    /* チェックの文字 */ 
+    content:    '\2713';    /* チェックの文字 */
     font-size:    20px;     /* チェックのサイズ */
     color:      #fff;     /* チェックの色 */
     background-color: #00D430;     /* チェックした時の色 */
@@ -242,4 +242,106 @@
       display: table-cell;
     }
   }
+}
+
+
+.fa-white::before{
+  color: white
+}
+
+
+.y-gbox {
+  margin-right: 10px;
+  padding: 10px 30px;
+
+}
+
+.y-gomibako {
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  border: none;
+
+}
+
+.y-gomi {
+  border-radius: 5px;
+  width: 35px;
+  height: 35px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #aaaaaa;
+  // :hover{
+  //   background-color: red;
+  // }
+
+
+}
+
+.y-sw {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.y-ri-b{
+  margin-top: 20px;
+}
+
+.y-ri-b-b{
+  width: 10vw;
+  min-width: 100px;
+}
+
+.modoru {
+  margin-top: 10px;
+  margin-bottom: 12px;
+  color: lightgreen;
+  text-decoration: none;
+}
+
+.y-height{
+  height: 50px;
+}
+
+.y-p-non {
+  padding: 0px !important;
+}
+
+.y-sp-b{
+  width: 750px !important;
+
+  left: 250px !important;
+}
+
+#padding1{
+  padding-bottom: 70px;
+}
+
+.y-p{
+  display: none !important;
+}
+
+.y-op-box{
+  width: 50% !important;
+}
+
+.y-com-n{
+  width: 100px;
+  display: inline-block;
+}
+
+.y-ib{
+  width: 500px !important;
+}
+
+.y-ex{
+  margin-left: 110px;
+}
+
+.y-com-wp{
+  display: none;
+}
+
+#y-mar-bot{
+  margin-bottom: 100px;
 }

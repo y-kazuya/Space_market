@@ -4,22 +4,22 @@
       = image_tag 'host-icon.png' ,class: 'host-left-img'
     .host-left-navs
       %ul
-        = link_to '#' ,class:'link-white' do
+        = link_to user_dashboard_path(current_user.id) ,class:'link-white' do
           %li.host-left-navs__txt
             ダッシュボード
-        = link_to '#' ,class:'link-white' do
+        = link_to user_calender_path(current_user.id) ,class:'link-white' do
           %li.host-left-navs__txt
             カレンダー
-        = link_to '#' ,class:'link-white' do
+        = link_to user_inbox_path(current_user.id) ,class:'link-white' do
           %li.host-left-navs__txt
             受信トレイ
-        = link_to '#' ,class:'link-white' do
+        = link_to user_rooms_path(current_user.id) ,class:'link-white' do
           %li.host-left-navs__txt
             スペース管理
-        = link_to '#' ,class:'link-white' do
+        = link_to summary_user_achievements_path(current_user.id) ,class:'link-white' do
           %li.host-left-navs__txt
             実績
-        = link_to '#' ,class:'link-white' do
+        = link_to host_profile_user_settings_path(current_user.id) ,class:'link-white' do
           %li.host-left-navs__txt
             設定
   .host-header__right
@@ -28,29 +28,29 @@
         %li.host-right-nav__content-profile
           %input{id:"prof-tg",class:"content-profile-checkbox" ,type:"checkbox"}
           %label{for:"prof-tg"}
-            = image_tag 'sin.jpeg' ,class: 'content-profile-img'
+            = image_tag current_user.host_profile.avatar ,class: 'content-profile-img'
           .content-profile-box
             /-----------------------------------ここにプロフィールを設定してください---------
             %ul
               %li.content-profile-box__name-with-img
-                = image_tag 'sin.jpeg' ,class: 'content-profile-img'
-                img & name
-              = link_to '#' ,class:'link-black' do
+                = image_tag current_user.host_profile.avatar ,class: 'content-profile-img'
+                = "#{current_user.host_profile.last_name} #{current_user.host_profile.first_name}"
+              = link_to user_dashboard_path(current_user.id) ,class:'link-black' do
                 %li.content-profile-box__name.hover-back-gray
-                  name
-              = link_to '#' ,class:'link-black' do
+                  = "#{current_user.host_profile.last_name} #{current_user.host_profile.first_name}"
+              = link_to root_path ,class:'link-black' do
                 %li.content-profile-box__spacemarket.hover-back-gray
                   SPACEMARKET
-              = link_to '#' ,class:'link-black' do
+              = link_to 'https://stay.spacemarket.com/' ,class:'link-black' do
                 %li.content-profile-box__spacemarket-stay.hover-back-gray
                   SPACEMARKET STAY
-              = link_to '#' ,class:'link-black' do
+              = link_to 'https://help.spacemarket.com/hc/ja/categories/204528307' ,class:'link-black' do
                 %li.content-profile-box__contact.hover-back-gray
                   お問い合わせ
               = link_to '#' ,class:'link-black hover-back-gray' do
                 %li.content-profile-box__rule.hover-back-gray
                   ホスト規約
-              = link_to '#' ,class:'link-black' do
+              = link_to destroy_user_session_path, mthood: :delete ,class:'link-black' do
                 %li.content-profile-box__sign-out.hover-back-gray
                   ログアウト
             /-----------------------------------ここにプロフィールを設定してください---------
@@ -79,6 +79,6 @@
                 お知らせ
               %li.content-mail-box__message
                 some message
-        = link_to '#' ,class:'link-white' do
+        = link_to 'https://help.spacemarket.com/hc/ja' ,class:'link-white' do
           %li.host-right-nav__content-help
             ヘルプ

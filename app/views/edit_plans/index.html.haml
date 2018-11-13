@@ -1,17 +1,10 @@
-= render partial: 'shared/room_setiing_topside'
-
-
-%h2
-  = link_to "新規プランを追加", new_user_room_plan_path(current_user.id, @room.id)
-
-%h2
-  プラン一覧
-- @plans.each do |plan|
-  - plan.public == true ? public = true : public = false
-  = public
-  = plan.id
-  = link_to public_user_room_plan_path(current_user.id, @room.id, plan.id), method: :patch do
-    = check_box 'plan', 'public', {:checked => public}, true, false
-
-  = link_to "編集", user_room_plan_path(current_user.id, @room.id, plan.id)
-  = link_to "削除", user_room_plan_path(current_user.id, @room.id, plan.id), method: :delete
+.hostspace-plans-box
+  %span.hostspace-edit-title
+    プラン一覧
+  = link_to new_user_room_plan_path(current_user.id, @room.id) do
+    %span.hostspace-plans-box__add.new_add_button
+      ＋新規プランの追加
+  %p.red-box-description
+    ドラッグ＆ドロップで入れ替え可。
+  .hostspace-plans-box__plans
+    = render partial: 'shared/render_hostspace_plan', collection: @plans, as: "plan"

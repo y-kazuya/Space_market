@@ -38,6 +38,7 @@
 
 
 @import "./hosts_scss/_host_header.scss";
+@import "./hosts_scss/_space_or_stay.scss";
 @import "./hosts_scss/4space-management/space_management_menu";
 @import "./hosts_scss/4space-management/facility_information";
 @import "./hosts_scss/4space-management/basic_information";
@@ -56,5 +57,6 @@
 @import "./room_registration";
 @import "./shared/search_form";
 @import "./index/search_result";
+@import "./index/room_show";
 @import "./host_registration.scss";
 @import "./registration_menu.scss";

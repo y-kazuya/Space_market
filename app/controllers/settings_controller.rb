@@ -1,6 +1,6 @@
 class SettingsController < ManagementRoomController
   before_action :set_host_profile
-
+  layout "room_new"
   before_action :set_spaces ,only: []
   def host_profile
   end

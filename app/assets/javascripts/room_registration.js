@@ -20,13 +20,13 @@ $(document).on('turbolinks:load',function(){
   //   $('#photo_wrap1_unique').append("=render '/tmp/photo.html.haml'");
   // });
   //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
-  $('#add_button_unique').on('change', function(e) {
+  $('.add_button_unique').on('change', function(e) {
     var file = e.target.files[0],
         reader = new FileReader(),
-        $preview = $("#photo_wrap1_unique");
+        $preview = $(".photo_wrap1_unique");
         t = this;
     console.log('in');
-    var name = $('#add_button_unique')[0].files[0].name;
+    var name = $('.add_button_unique')[0].files[0].name;
     console.log(name);
     // 画像ファイル以外の場合は何もしない
     if(file.type.indexOf("image") < 0){
@@ -159,6 +159,34 @@ $(document).on('turbolinks:load',function(){
   $('house').on('click',function(){
     drawMap();
   });
+
+
+  ///////////////法人の入力出したり消したり///////////
+  if (location.pathname.includes('settings/host_profiles')) { ///ページ遷移際の挙動
+    var target = $("input[name='host_profile[company]']:checked")[0].value
+    console.log(target)
+
+    if (target == "true") {
+      $(".y-com-wp").css("display", "block")
+    }
+   }
+
+   $("input[name='host_profile[company]']").on("click", function(){ //法人のの変更がされるたび
+    var target = $(this)[0].value
+    console.log(String(target))
+
+    if (target == "true") {
+      $(".y-com-wp").css("display", "block")
+    }
+    else{
+      $(".y-com-wp").css("display", "none")
+    }
+
+   })
+
+
+
+
 
 
 });
