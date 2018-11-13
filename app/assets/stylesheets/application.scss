@@ -38,9 +38,17 @@
 @import "./mypages/confirm_reservation.scss";
 
 @import "./hosts_scss/_host_header.scss";
+@import "./hosts_scss/_space_or_stay.scss";
+@import "./hosts_scss/4space-management/space_management_menu";
+@import "./hosts_scss/4space-management/facility_information";
+@import "./hosts_scss/4space-management/basic_information";
+@import "./hosts_scss/4space-management/space_introduction";
+@import "./hosts_scss/4space-management/hostspace_picture";
+@import "./hosts_scss/4space-management/hostspace_option";
+@import "./hosts_scss/4space-management/hostspace_plan";
 
 
-@import "./register/_host_entry2";
+// @import "./register/_host_entry2";
 
 @import "./modlues/reserve";
 
@@ -49,4 +57,6 @@
 @import "./room_registration";
 @import "./shared/search_form";
 @import "./index/search_result";
-
+@import "./index/room_show";
+@import "./host_registration.scss";
+@import "./registration_menu.scss";

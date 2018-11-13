@@ -1,0 +1,70 @@
+.hostspace-newedit-option-box
+  .hostspace-edit-title.weight700
+    新規オプションの作成
+  = link_to "#" do
+    %p.green-color
+      <戻る
+  .hostspace-edit-wrapper
+    %span.red-box.weight700
+      必須
+    %span.red-box-with-txt
+      オプションの名称
+    %p
+      = text_area :page, :comtent,class:'SI-textarea SI-mini-textarea'
+    %p.red-box-description
+      例）撮影機材の一式レンタル
+  .hostspace-edit-wrapper
+    %span.gray-box.weight700
+      任意
+    %span.red-box-with-txt
+      オプションの説明
+    %p
+      = text_area :page, :comtent,class:'SI-textarea'
+    %p.red-box-description
+      例）撮影用照明、背景紙、ムービー用機材を貸し出します。
+  .hostspace-edit-wrapper
+    %span.red-box.weight700
+      必須
+    %span.red-box-with-txt
+      価格と単位
+    .hostspace-newedit-option-box__cost-unit
+      %span.cost-unit-txt
+        ¥
+      %span.cost-unit-txt
+        = text_area :page, :comtent,class:'SI-textarea SI-mini-textarea'
+      %span.cost-unit-txt
+        ／
+      %span.cost-unit-txt
+        = text_area :page, :comtent,class:'SI-textarea SI-mini-textarea'
+  .hostspace-edit-wrapper
+    %span.gray-box.weight700
+      任意
+    %span.red-box-with-txt
+      提供可能な数量
+    %p.red-box-description
+      数量を設定すると、ゲストが利用する数量を指定できるようになります。
+    %p.capable-of-providing
+      = text_area :page, :comtent,class:'SI-textarea SI-mini-textarea' ,placeholder:"10"
+  .hostspace-edit-wrapper
+    %span.gray-box.weight700
+      任意
+    %span.red-box-with-txt
+      写真
+    %p.red-box-description
+      オプション内容が分かる画像を最低1枚追加してください。推奨サイズは1260x840です。
+      ドラッグ＆ドロップで入れ替え可。クリックで拡大することができます。最大5枚まで追加できます。
+    %p.green-color.hostspace-new-photo
+      ＋新規写真の追加
+    写真はありません
+  .cancel-and-save-box
+    .cancel-and-save-box__blank
+    .cancel-and-save-box__left
+      = link_to "#" do
+        .light-gray-button
+          キャンセル
+    .cancel-and-save-box__right
+      = link_to "#" do
+        .gray-button
+          保存
+        /.light-green-button
+        /  保存

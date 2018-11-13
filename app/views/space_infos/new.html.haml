@@ -1,5 +1,9 @@
 
+
+= render 'shared/errors', object: @space_info
+
 = form_for [@space, @room, @space_info] do |f|
+  =f.hidden_field :title, value: "回路"
   .wrapper_1_1
     .wrapper_1_2
       .upper
@@ -94,7 +98,8 @@
 
             - SpaceInfo.event_types.keys.each do |key|
               .wrap
-                = f.radio_button :event_type,key, id: "radio1", name: "type", width: "200px"
+                = f.radio_button :event_type,key, width: "200px"
+                -# %lavel.radio_type{for: "space_info_event_type_#{key}"} a
                 = key
             .explanation
 

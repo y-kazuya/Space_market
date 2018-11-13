@@ -1,0 +1,47 @@
+.stay-or-space-container{
+  min-height: 700px;
+  width:960px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 120px;
+  &__txt{
+    font-size: 30px;
+    padding-bottom: 30px;
+  }
+  &__two-box{
+    padding-top:70px;
+    height: 300px;
+    width: 100%;
+    background-color: white;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 10px 0;
+    .space-stay-and-market-box{
+      border: 1px solid gray;
+      height: 200px;
+      width: 30%;
+      
+      display: table-cell;
+      &__logo{
+        margin-top: 30px;
+      }
+      &__txts{
+        font-size: 12px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      &__button{
+        margin: 0 auto;
+        margin-bottom: 30px;
+        width: 50%;
+        font-size: 26px;
+        font-weight: 700;
+        padding: 10px 20px 10px 20px;
+        color: white;
+      }
+    }
+
+
+  }
+}
+

@@ -1,114 +1,199 @@
-= render partial: 'shared/room_setiing_topside'
 
-= render 'shared/errors', object: @plan
-
-= link_to "戻る", user_room_plans_path(current_user.id, @room.id)
-
-
-%h1
-  新規プランの追加
 
 = form_for [current_user, @room, @plan] do |f|
-  %h2
-    プランの名称
-  = f.text_field :name
+  .hostspace-newedit-plan-box
+    .hostspace-edit-title.weight700
+      新規プランの作成
+      /プランの編集
+    = link_to user_room_plans_path(current_user.id, @room.id) do
+      %p.green-color
+        <戻る
+    .hostspace-edit-wrapper
+      %span.red-box.weight700
+        必須
+      %span.red-box-with-txt
+        プランの名称
+      %p
+        = f.text_area :name ,class:'SI-textarea SI-mini-textarea'
+    .hostspace-edit-wrapper
+      %span.gray-box.weight700
+        任意
+      %span.red-box-with-txt
+        プランの説明
+      %p
+        = text_area :about,class:'SI-textarea'
+      %p.red-box-description
+        例）Wi-Fi、ホワイトボード完備で会議からイベントまでご利用いただけます。その他必要な備品につきましては予約リクエスト時にお問い合わせください。
+    .hostspace-edit-wrapper
+      %span.red-box.weight700
+        必須
+      %span.red-box-with-txt
+        価格
+    -# %p.green-color
+    -#   設定方法の変更
+    -# .free-value-checkbox
+    -#   %input{id:"free-value-tg",type:"checkbox"}
+    -#   %label{for:"free-value-tg"}
+    -#     .free-value-label
+    -#       %p
+    -#         単位の数値を自由に設定する
+    -#       %p.red-box-description
+    -#         3時間あたり、2日あたりなど単位の数値を自由に変更できるようになります。
+    %p.green-color.value-help
+      価格設定のヘルプ
+    .free-value-input-box
+      %span.weight700
+        価格
+      %span.free-value-input-box__right
+        ¥
+        = text_area :plan2, :how_price ,class: 'free-value-input-box__txtarea'
+        %select{name:'plan2[how_type]'}
+          %option{value:"時"}時
+          %option{value:"日"}日
+    .hostspace-edit-wrapper
+      %span.gray-box.weight700
+        任意
+      %span.red-box-with-txt
+        貸し出し可能な期間
+      %p.red-box-description
+        このプランの貸出可能な期間を設定してください。
 
-  %h2
-    プランの説明
-  = f.text_area :about
-
-  %h2
-    時間価格にする？
-  = f.check_box :time_pay
-
-  %h2
-    時間価格
-  = f.text_field :time_price
-
-  %h2
-    一日価格にする？
-  = f.check_box :day_pay
-
-  %h2
-    1日価格
-  = f.text_field :day_price
-
-  %h2
-    貸出可能な期間
-
-
-  .input-group.date.datepicker
-    = f.text_field :start_day, class: 'form-control'
-    %span.input-group-addon
-      %span.fa.fa-calendar
-  %h2
-    から
-  .input-group.date.datepicker
-    = f.text_field :end_day, class: 'form-control'
-    %span.input-group-addon
-      %span.fa.fa-calendar
-
-
-  %h2
-    予約の承認方法
-  %h3
-    承認なし
-  = f.radio_button :about_reserve, :true
-
-  %h3
-    承認あり
-  = f.radio_button :about_reserve, :false
-
-
-  - if @plan.name == nil
-    - @week.each do |day|
-      = f.fields_for :weeks do |w|
-        %h2
-          = day
-        = w.hidden_field :name ,value: "#{day}"
-        = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-        = w.select :start_time, 0..36, selected: 9
-        ：００〜
-        = w.select :end_time, 0..36, selected: 22
-        ：００
-
-  - else
-    = f.fields_for :weeks do |w|
-      %h2
-        = w.object.name
-      = w.hidden_field :name
-      = w.check_box :can,{},checked_value = "true",unchecked_value = "false"
-      = w.select :start_time, 0..36
-      ：００〜
-      = w.select :end_time, 0..36
-      ：００
+      .calender-form
+        .input-group.date.datepicker
+          = f.text_field :start_day, class: 'form-control'
+          %span.input-group-addon
+            %span.fa.fa-calendar
+        %span
+          〜
+        .input-group.date.datepicker
+          = f.text_field :end_day, class: 'form-control'
+          %span.input-group-addon
+            %span.fa.fa-calendar
+    .hostspace-edit-wrapper
+      %span.red-box.weight700
+        必須
+      %span.red-box-with-txt
+        貸出可能な曜日・時間帯
+      %p.red-box-description
+        貸出可能な曜日と時間を設定してください。0時〜36時（翌日12時）の間で入力してください。
+      .weekdays-box
+        - if @plan.name == nil
+          - @week.each_with_index do |day, i|
+            .day-of-the-week
+              = f.fields_for :weeks do |w|
+                .day-of-the-week__left
+                  = day
+                  = w.hidden_field :name ,value: "#{day}"
+                .day-of-the-week__right
+                  .dotw-right-box
+                    %span.dotw-right-box__2
+                      .switchArea
+                        -# %input{type:"checkbox",id:"switch1"}
+                        = w.check_box :can,{id: "switch#{i}"},checked_value = "true",unchecked_value = "false"
+                        %label{for:"switch#{i}"}
+                          %span
+                        #swImg
+                    %span.dotw-right-box__3
+                      = w.select :start_time, 0..24, {selected: 9} , {class: 'starttime'}
+                    %span.dotw-right-box__4
+                    ：00〜
+                    %span.dotw-right-box__5
+                      = w.select :end_time, 0..24, {selected: 24} , {class: 'starttime'}
+                    %span.dotw-right-box__6
+                      ：00
+        - else
+          = f.fields_for :weeks do |w|
+            .day-of-the-week
+              .day-of-the-week__left
+                = w.object.name
+                = w.hidden_field :name
+              .day-of-the-week__right
+                .dotw-right-box
+                  %span.dotw-right-box__2
+                    .switchArea
+                      -# %input{type:"checkbox",id:"switch1"}
+                      = w.check_box :can,{id: "switch#{w.index}"},checked_value = "true",unchecked_value = "false"
+                      %label{for:"switch#{w.index}"}
+                        %span
+                      #swImg
+                  %span.dotw-right-box__3
+                    = w.select :start_time, 0..24 , {class: 'starttime'}
+                  %span.dotw-right-box__4
+                  ：00〜
+                  %span.dotw-right-box__5
+                    = w.select :end_time, 0..24 , {class: 'starttime'}
+                  %span.dotw-right-box__6
+                    ：00
 
 
-
-  %h2
-    その他の設定
-  %h2
-    最低利用時間
-    = f.number_field :min_time
-    = select :day_time, :in, [["時間", 1], ["日", 24]]
-
-  %h2
-    片付け時間/
-    利用終了後
-    = f.number_field :clean_time
-    時間
-
-  %h2
-    直前割/
-    割引りつ
-    = f.select :discount, Plan.discounts.keys
-
-  %h2
-    管理維持費
-    = f.number_field :cost
-
-
-
-
-
-  = f.submit "保存"
+    .hostspace-edit-wrapper
+      %span.red-box.weight700
+        必須
+      %span.red-box-with-txt
+        貸出可能な曜日・時間帯
+      %p.red-box-description
+        予約にホストの承認が必要かどうかを設定してください。
+        承認なし（今すぐ予約）に設定するとゲストとのやりとりが簡単になり、予約が入りやすくなります。
+      .approval-box
+        .approval-box__left
+          = f.radio_button :about_reserve, :true, label: "承認なし", inline: true
+          承認なし(今すぐ予約)
+        .approval-box__right
+          = f.radio_button :about_reserve, :false, label: "承認あり", inline: true
+          承認あり
+    .hostspace-edit-wrapper
+      %span.gray-box.weight700
+        任意
+      %span.red-box-with-txt
+        その他の設定
+      .top-bottom-border-box.mini-utilization-time
+        .mini-utilization-time__intro.weight700
+          最低利用時間
+          %p.red-box-description
+            ゲストが予約できる最低利用時間の設定です。
+        .mini-utilization-time__txtarea
+          = f.text_area :min_time
+        .mini-utilization-time__pulldown
+          = select :day_time, :in, [["時間", 1], ["日", 24]]
+      .top-bottom-border-box.clean-up-time
+        .clean-up-time__intro.weight700
+          片付け時間
+          %p.red-box-description
+            利用終了後に時間を設け、別の予約が入らないようにできます。
+        .clean-up-time__txt
+          利用終了後
+        .clean-up-time__txtarea
+          = f.text_area :clean_time
+        .clean-up-time__txt
+          時間
+      .top-bottom-border-box.just-before-time
+        .just-before-time__intro.weight700
+          直前割
+          %p.red-box-description
+            最低10%以上。利用日から5日前までの予約に適用されます。
+        .just-before-time__txt
+          割引率
+        .just-before-time__pulldown
+          = f.select :discount, Plan.discounts.keys
+      .top-bottom-border-box.management-cost
+        .management-cost__intro.weight700
+          管理維持費
+          %p.red-box-description
+            スペースの利用料金とは別に清掃料金や光熱費など管理維持費を設定できます。
+        .management-cost__txt
+          ¥
+        .management-cost__txtarea
+          = f.text_area :cost
+      .top-bottom-border-box
+      .cancel-and-save-box
+        .cancel-and-save-box__blank
+        .cancel-and-save-box__left
+          = link_to user_room_plans_path(current_user.id, @room.id) do
+            .light-gray-button
+              キャンセル
+        .cancel-and-save-box__right
+          = f.submit "保存", class: "gray-button"
+          -# .gray-button
+          -#   保存
+          /.light-green-button
+          /  保存

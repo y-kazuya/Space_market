@@ -1,0 +1,4 @@
+.time_bottom
+    .time_wrap
+        -# %select{name: "day", class: "year", id: "birth_year_unique"}
+        = f.select :born_year, 1900..2017, class: "year", id: "birth_year_unique"

@@ -1,186 +1,195 @@
-%h1
-  ルーム詳細ページです
-  ルームID
-  = @room.id
-%h1
-  ルームタイトル：
-  =@room.intro.title
-%h1
+.room_show__photo
   - @room.pictures.each do |pic|
-    = image_tag(pic.content_url(:preview))
+    = image_tag(pic.content_url(:preview), class: 'room_show__photo-wide')
 
-%h1
-  サイドバー！！
-%h2
-  -@room.public_plans.each do |plan|
-    - if plan.about_reserve == false
-      今すぐ予約可能
-      - break
+.room_contents
+  .room_left
+    .room_show__title
+      = @room.intro.title
+    .room_show__detail
+      .room_show__capacity
+        .room_show__human
+          = fa_icon 'user'
+        .room_show__people
+          = "〜"
+          = @room.basic_info.capacity
+          = "人"
+      .room_show__area
+        .room_show__pin
+          = fa_icon 'map-marker'
+        .room_show__address
+          = @room.space.space_info.city
+    .room_show__info
+      .room_show__wide
+        .room_show__info-title
+          広さ
+        .room_show__info-item
+          = @room.basic_info.floor_space
+          = "㎡"
+      .room_show__capa
+        .room_show__info-title
+          収容人数
+        .room_show__info-item
+          = "〜"
+          = @room.basic_info.capacity
+          = "人"
+    .room_show__about
+      .room_show__about-title
+        スペースについて
+      .room_show__about-item
+        = @room.intro.content
+    .room_show__service
+      .room_show__service-title
+        施設・サービス
+      .room_show__service-item
+        = @room.intro.service
+    .room_show__map
+      .room_show__map-title
+        アクセス
+      .room_show__map-google
+        = @room.space.space_info.map_address
+      .room_show__map-info
+        .room_show__address-title
+          住所
+        .room_show__address-item
+          = @room.space.space_info.full_address
+        .room_show__access-title
+          アクセス
+        .room_show__access-item
+          = @room.space.space_info.access
+    .room_show__plan
+      .room_show__plan-bigtitle
+        プラン一覧
+      .room_show__plan-background
+        .room_show__plan-lists
+          - @room.public_plans.each do |plan|
+            .room_show__plan-list
+              .room_show__plan-title
+                = "🌟 "
+                = plan.name
+                .room_show__plan-booking-link
+                  = link_to "> このプランで予約する", "#"
+              - if plan.about_reserve == false
+                .room_show__plan-remark
+                  = "⚡️ 今すぐ予約OK !"
+                .room_show__plan-price-time
+                  .room_show__plan-discount
+                    - unless plan.discount == "設定しない"
+                      = "直前割利用日5日前の予約から#{plan.discount}割引！"
+                  .room_show__plan-min-time
+                    - if plan.min_time
+                      = "最低利用時間#{plan.min_time}時間〜"
+                .room_show__plan-detail
+                  プランの説明
+                  = plan.about
+        .room_show__plan-option
+          .room_show__plan-option-title
+            オプション追加料金
+          .room_show__plan-option-lists
+            - @room.options.each do |op|
+              .room_show__plan-option-list
+                .room_show__plan-option-name
+                  = "+ 🌟"
+                  = op.name
+                .room_show__plan-option-price
+                  = "¥ "
+                  = op.price
+                  = "/1"
+              .room_show__plan-option-about
+                オプションについて
+                = op.about
+    .room_show__amenity
+      .room_show__amenity-title
+        アメニティ
+      - @room.amenities.each do |ame|
+        .room_show__amenity-item
+          = ame.name
+    .room_show__admin
+      .room_show__admin-title
+        管理者
+      .room_show__admin-name
+        = @room.space.user.host_profile.last_name
+        = @room.space.user.host_profile.first_name
+      .room_show__admin-link
+        = link_to "ホストについてもっと詳しく", owner_path(@room.space.user.host_profile.id)
 
-%h2
-  - unless @room.public_plans == []
-    = time_low_high(@room) #room_helper
-    = "/時間"
-%h2
-  - unless @room.public_plans == []
-    = day_low_high(@room) #room_helper
-    = "/日"
+  .side-fixed
+    .side-intro
+      - @room.public_plans.each do |plan|
+        - if plan.about_reserve == false
+          .side-booking-now
+            = "⚡️ 今すぐ予約OK !"
+          - break
+      - unless @room.public_plans == []
+        .side-time_price
+          = time_low_high(@room) #room_helper
+          = "/時間"
+      - unless @room.public_plans == []
+        .side-time_price
+          = day_low_high(@room) #room_helper
+          = "/日"
+        .side-point
+          1,000円分のポイントが利用可能
+      - unless @room.public_plans == []
+        .side-booking_btn
+          = link_to "空き状況の確認／予約リクエスト", space_room_reservations_path(@space.id, @room.id)
+      - else
+        プランが無いため予約できません
+      .side-btns
+        .side-fav_btn
+          - if favalite_room?(@room)
+            = link_to "❤︎ お気に入り", space_room_favorites_path(@space.id, @room.id)
+          - else
+            = link_to "❤︎ お気に入り", first_create_space_room_favorites_path(@space.id, @room.id), method: :post
+        .side-share_btn
+          = link_to "シェア"
+          / サイドバーここまで
+          / = current_user.favalite_rooms
+          / = favalite_room?(@room)
 
-%h2
-  ポイントが利用可能(point実装後にちゃんとする)
-
-
-%h2
-  - unless @room.public_plans == []
-    = link_to "空き情報のかくにん/予約リクエスト", space_room_reservations_path(@space.id, @room.id)
-  -else
-    プランがないため予約できません
-%h2
-  - if favalite_room?(@room)
-    = link_to "お気に入り", space_room_favorites_path(@space.id, @room.id)
-
-  - else
-    = link_to "お気に入りにする！", first_create_space_room_favorites_path(@space.id, @room.id), method: :post
-
-%h2
-  = link_to "シェア"
-
-
-%h2
-  サイドバーここまで
-= current_user.favalite_rooms
-= favalite_room?(@room)
-
-
-
-
-
-
-
-%h1
-  広さ:
-  = @room.basic_info.floor_space
-  収容人数: ~
-  = @room.basic_info.capacity
-
-
-%h1
-  スペースについて!!!
-  =@room.intro.content
-
-%h1
-  施設・サービスについて
-  =@room.intro.service
-
-
-%h1
-  アクセうす
-  地図表示
-  = @room.space.space_info.map_address
-
-%h2
-  住所
-  = @room.space.space_info.full_address
-%h2
-  アクセル
-  = @room.space.space_info.access
-
-%h1
-  プラン一覧
-
--@room.public_plans.each do |plan|
-  %h1
-    プランタイトル：
-    = plan.name
-    = plan.id
-    = link_to "このプランで予約する", "#"
-    -if plan.about_reserve == false
-      %h2
-        今すぐよやくOK
-
-    - unless plan.discount == "設定しない"
-      %h2
-        = "直前割利用日5日前の予約から#{plan.discount}割引！"
-
-    - if plan.min_time
-      %h2
-        = "最低利用時間#{plan.min_time}時間~"
-
-    %h2
-      プランの説明：：：
-      =plan.about
-
-%h1
-  オプション追加料金
-- @room.options.each do |op|
-  %h2
-    オプションネーム::
-    = op.name
-    = op.price
-  %h2
-    オプションについて
-    = op.about
-
-%h1
-  アメニティー
--@room.amenities.each do |ame|
-  = ame.name
-
-%h1
-  れっびゅー
-
-
-%h1
-  管理社
-
-%h1
-  = @room.space.user.host_profile.last_name
-  = @room.space.user.host_profile.first_name
-
-%h1
-  = link_to "オーナーについてもっと詳しく", owner_path(@room.space.user.host_profile.id)
-
-
-%h1
-  注意事項
-%h1
-  - if @room.intro.clean
-    後片付けごみについて：：：
-    = @room.intro.clean
-
-%h1
-  - if @room.intro.food
-    飲食につてい
-    = @room.intro.food
-
-%h1
-  お支払い方法
-  = link_to "決済方法についての小愛はこちら", "#"
-
-%h1
-  キャンセル料金
-  = link_to "キャンセルポリシー", cancel_policy_space_room_path(@space.id, @room.id), target: "_blank"
-
-%h1
-  注意事項
-  = link_to "ゲスト規約", terms_space_room_path(@space.id, @room.id), target: "_blank"
-
-%h1
-  お問い合わせ：：：
-  = link_to "スペースへのお問い合わせ", "#" #予約と同じくuserの連絡先テーブル必要
-
-%h1
-  利用可能な用途
-
-%h1
-  - @room.basic_info.usages.each do |usa|
-    = link_to "#" do
-      = usa.name
-    /イベントタイプ#イベント名へ飛ばす
-
-%h1
-  このスペース主編の人気スペース
-
-
-
-
+.room_notes-background
+  .room_notes
+    .room_note
+      .room_note-title-main
+        注意事項
+      .room_note-title-sub
+        ※ご予約の際は必ずお読みください
+    .room_note-gomi
+      - if @room.intro.clean
+        .room_note-gomi-title
+          後片付け・ごみについて
+        .room_note-gomi-item
+          = @room.intro.clean
+    .room_note-eat
+      - if @room.intro.food
+        .room_note-eat-title
+          飲食について
+        .room_note-eat-item
+          = @room.intro.food
+    .room_note-pay
+      .room_note-pay-title
+        お支払い方法
+      .room_note-pay-item
+        = link_to "決済方法についての詳細はこちら", "#"
+    .room_note-cancel
+      .room_note-cancel-title
+        キャンセル料金
+      .room_note-cancel-item
+        = link_to "キャンセルポリシー", cancel_policy_space_room_path(@space.id, @room.id), target: "_blank"
+    .room_note-note
+      .room_note-note-title
+        注意事項
+      .room_note-note-item
+        = link_to "ゲスト規約", terms_space_room_path(@space.id, @room.id), target: "_blank"
+    .room_note-contact
+      .room_note-contact-title
+        お問い合わせ
+      .room_note-contact-item
+        = link_to "スペースへのお問い合わせ", "#" #予約と同じくuserの連絡先テーブル必要
+    .room_note-event_type
+      .room_note-event_type-title
+        利用可能な用途
+    - @room.basic_info.usages.each do |usa|
+      .room_note-event_type-item
+        = link_to "#" do
+          = usa.name

@@ -1,6 +1,7 @@
 class ManagementRoomController < ApplicationController
   before_action :owner?
   before_action :set_spaces
+  layout "room_new"
 
 
 
