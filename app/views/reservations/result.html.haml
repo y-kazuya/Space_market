@@ -42,32 +42,20 @@
                     プラン料金
                   .result-info__right__plan
                     = @reserve.plan.day_price
-                    = " 円"
+                    = " 円 （1日あたりの料金）"
 
                 .reservation-result__info__option
-                  .result-info__left__option
-                    追加オプション
-                  .result-info__right__option
-                    なにがし
-
-
-
-- unless @reserve.options == []
-  .option
-    .option__title
-      追加オプション
-    .options
-    - @reserve.options.each do |op|
-      .option__list
-        %span.option__list__name
-          = "#{op.name} :"
-        %span.option__list__about
-          = op.about
-
-        .option__list__price
-          =op.price
-          円
-
+                  - unless @reserve.options == []
+                    .result-info__left__option
+                      追加オプション
+                    .result-info__each__option
+                      - @reserve.options.each do |op|
+                        .result-info__right__option
+                          %span.option__list__name
+                            = "#{op.name} :"
+                          %span.option__list__price
+                            = op.price
+                            = " 円"
 
 
 .total_price
