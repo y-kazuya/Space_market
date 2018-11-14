@@ -330,7 +330,7 @@
                   = "利用人数（〜#{@room.basic_info.capacity}人)"
               .modal-wp__top__main__content__box--area
                 .people
-                  = f.number_field :people
+                  = f.number_field :people, max: @room.basic_info.capacity
 
           .modal-wp__top__main__content
             .modal-wp__top__main__content__lbox

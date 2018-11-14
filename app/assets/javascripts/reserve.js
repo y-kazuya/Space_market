@@ -1,19 +1,21 @@
 
 $(document).on('turbolinks:load', function(){
-  var setBoxId = '.sp';      // スクロールさせる要素
-  var initOffsetTop = null;   // 要素の初期位置
-  var maxHeight= $(".reserve--wp").outerHeight(true) - $(".reserve__left").outerHeight();
+  if (location.pathname.includes('reservations')) {
+    var setBoxId = '.sp';      // スクロールさせる要素
+    var initOffsetTop = null;   // 要素の初期位置
+    var maxHeight= $(".reserve--wp").outerHeight(true) - $(".reserve__left").outerHeight();
 
-  initOffsetTop = $(setBoxId).offset().top;
-  var minHeight = initOffsetTop  + 5
+    initOffsetTop = $(setBoxId).offset().top;
+    var minHeight = initOffsetTop  + 5
 
-  $(document).on("click", function(){
-     maxHeight = $(".reserve--wp").outerHeight(true) - $(".reserve__left").outerHeight();
-  })
+    $(document).on("click", function(){
+      maxHeight = $(".reserve--wp").outerHeight(true) - $(".reserve__left").outerHeight();
+    })
 
-  $(window).scroll(function() {
-    scrollbox(maxHeight);
-  });
+    $(window).scroll(function() {
+      scrollbox(maxHeight);
+    });
+  }
 
 
   function scrollbox(mh){
@@ -46,14 +48,14 @@ $(document).on('turbolinks:load', function(){
 
 
     $(".modalOpen").click(function(){
-      console.log("aaa")
+
       var navClass = $(this).attr("class"),
       href = $(this).attr("href");
 
       $(href).fadeIn();
       $(this).addClass("open");
       //cssアニメーションの記述を追加する
-      $(href).children(".inner").css("animation","modal 0.5s forwards");
+      $(href).children(".inner").css("animation","modal 2s forwards");
       $("body").css("overflow", "hidden")
       return false;
 
@@ -64,7 +66,7 @@ $(document).on('turbolinks:load', function(){
         $(this).parents(".modal").fadeOut();
         $(".modalOpen").removeClass("open");
       //cssアニメーションの記述を追加する
-        $(this).parents(".modal").children(".inner").css("animation","modalClose 0.5s forwards");
+        $(this).parents(".modal").children(".inner").css("animation","modalClose 2s forwards");
         $("body").css("overflow", "scroll")
         return false;
 
@@ -74,7 +76,7 @@ $(document).on('turbolinks:load', function(){
     var point = Number($(this).parents(".point_bo").prevAll(".point_title").text().match(/\d+/)[0])
     $("#nebiki").val()
     $("#nebiki").val(point)
-    console.log($("input[name='aa_a']:checked").val())
+
     if ($("input[name='aa_a']:checked").val() == "a"){
       $("#nebiki").val("")
     }
