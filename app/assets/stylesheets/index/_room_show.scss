@@ -151,6 +151,10 @@
         height: 390px;
         background-color: #b2ebf2;
         border-bottom: 1px solid #eaeaea;
+        #map_room_show_contents{
+          height: 100%;
+          width: 100%;
+        }
       }
       .room_show__map-info{
         padding: 15px 0 3px;

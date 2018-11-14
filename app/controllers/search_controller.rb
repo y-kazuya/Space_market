@@ -8,7 +8,6 @@ class SearchController < ApplicationController
       rooms = BasicInfo.find(basic_infos_usage.basic_info_id)
       @searchRooms << rooms.room
     end
-    render :event_type, layout: false
   end
 
   def index
@@ -55,24 +54,5 @@ class SearchController < ApplicationController
       end
     end
     @results = results
-
-
-    # if @rooms.length >= 1
-    #    #さらに金額で絞り込む
-    #   @rooms.each do |room|
-    #     room.public_plans.each do |plan|
-    #       if plan.day_price <= max_price
-    #         #さらに人数で絞り込む
-    #         if room.basic_info.capacity >= max_capacity
-    #           @results << room
-    #           break
-    #         end
-    #       end
-    #     end
-    #   end
-    # end
-    render :index, layout: false
   end
 end
-
-

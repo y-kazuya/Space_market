@@ -1,0 +1,47 @@
+#map_room_show_contents
+
+:javascript
+  function sleep(waitMsec) {
+    var startMsec = new Date();
+    // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
+    while (new Date() - startMsec < waitMsec);
+  }
+
+  function initMap() {
+    var target = document.getElementById('map_room_show_contents');
+    var geocoder = new google.maps.Geocoder();
+    var room = $('#roomAdress')[0]
+
+    geocoder.geocode({ address: room.dataset.address }, function(results, status){
+      if (status === 'OK' && results[0]){  //status を確認して処理開始
+        //マップのインスタンスを変数に代入
+         var map = new google.maps.Map(target, {
+            center: results[0].geometry.location,
+            zoom: 14
+          });
+
+          //マーカーの生成
+            var marker = new google.maps.Marker({
+              position: results[0].geometry.location,
+              map: map,
+              animation: google.maps.Animation.DROP
+            });
+
+          //情報ウィンドウの生成
+            var infoWindow = new google.maps.InfoWindow({
+              content: 'Place!',
+              pixelOffset: new google.maps.Size(0, 5)
+            });
+
+          //マーカーにリスナーを設定
+          marker.addListener('click', function(){
+              infoWindow.open(map, marker);
+            });
+        }else if(status == "OVER_QUERY_LIMIT"){
+          sleep(1);
+        }else{
+          alert('失敗しました。理由: ' + status);
+          return;
+        }
+    });
+  }
