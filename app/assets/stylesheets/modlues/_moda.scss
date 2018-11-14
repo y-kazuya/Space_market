@@ -1,0 +1,250 @@
+
+body{
+  position: relative
+}
+
+/* モーダルウィンドウのスタイル */
+.modal {
+  position:absolute;
+  width:100%;
+  height:100vh;
+  top:0;
+  left:0;
+  display:none;
+}
+
+/* オーバーレイのスタイル */
+.overLay {
+  position: fixed;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,0.6);
+  width:100%;
+  height:100vh;
+  z-index:10;
+}
+
+/* モーダルウィンドウの中身のスタイル */
+.modal .inner {
+  width: 800px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  z-index:11;
+  height:100%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background-color: white;
+}
+
+@keyframes modal{
+  0% {top:-100%}
+  100% {top:50%}
+}
+@keyframes modalClose {
+  0% {top:50%}
+  100% {top:100%}
+}
+
+
+.modal-wp{
+  position: relative;
+  &__top{
+    padding: 0 56px;
+    position: relative;
+    &__head{
+      padding-bottom: 32px;
+      text-align: center;
+
+      &--title{
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 12px;
+        padding-top: 56px;
+        line-height: 1.3;
+      }
+
+      &--text{
+        font-size: 12px;
+        color: #999;
+        line-height: 1.5;
+        display: inline-block
+
+      }
+
+    }
+
+    &__main{
+      margin-left: -12px;
+      margin-right: -12px;
+      &__content{
+        clear: both;
+        padding: 24px 0;
+        background-image: linear-gradient(to left, #fff 12px, transparent 12px, transparent),linear-gradient(to right, #fff 12px, #ddd 12px, #ddd);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: left top;
+        &__box{
+          padding-bottom: 20px;
+          width: 50%;
+          float: left;
+          position: relative;
+          min-height: 1px;
+          padding-left: 12px;
+          padding-right: 12px;
+          &--title{
+            margin-bottom: 12px;
+
+          }
+          &--text{
+
+          }
+
+          &__area{
+
+          }
+        }
+
+        &__lbox{
+          width: 100%;
+          position: relative;
+          min-height: 1px;
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+      }
+    }
+
+  }
+  &__bot{
+
+  }
+}
+
+
+
+
+
+
+
+.people{
+  padding: 4px 0;
+  input{
+    width: 240px;
+    font-size: 16px !important;
+    padding: 0;
+    outline: none !important;
+  }
+}
+
+.moda-text{
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.requ{
+  background: #e95175;
+  display: block;
+  float: left;
+  border-radius: 3px;
+  padding: 4px;
+  margin-right: 8px;
+  color: #FFF;
+  font-size: 12px;
+}
+
+.norequ{
+  background: #b3b3b4;
+  display: block;
+  float: left;
+  border-radius: 3px;
+  padding: 4px;
+  margin-right: 8px;
+  color: #FFF;
+  font-size: 12px;
+}
+
+.title-text{
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2;
+  display: block;
+  padding-top: 5px;
+}
+
+
+#reserve_purpose{
+  width: 100%;
+  padding: 8px;
+  height: 32px;
+  line-height: 12px !important;
+  background-color: transparent;
+  font-size: 12px !important;
+}
+
+
+#reserve_usage{
+  width: 100%;
+  height: 120px;
+  padding: 8px;
+  line-height: 1.5;
+  font-size: 13px;
+  resize: vertical;
+  border: 1px solid #b3b3b4;
+  background: #FFF;
+}
+
+#reserve_usage:placeholder-shown{
+  color: #cfcfcf;
+}
+
+
+.card-area{
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background: #f1f1f1;
+  &__content{
+    padding: 24px 24px 12px 24px;
+    display: block;
+    &--title{
+      padding-bottom: 12px;
+
+
+    }
+
+    &--box{
+      padding: 8px 0 10px 30px;
+      border-top: 1px dashed #ddd;
+      margin: 0;
+
+      &--new{
+        margin: 12px 0;
+        overflow: hidden;
+        a{
+          color: #4abfe6;
+          text-decoration: none;
+
+        }
+      }
+
+    }
+  }
+
+}
+
+.fa-chevron-right{
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  margin-right: 5px;
+}
+
+.pay__type{
+  font-size: 14px;
+  line-height: 1.4;
+  display: block;
+  padding-top: 2px;
+}
