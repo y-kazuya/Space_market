@@ -1,15 +1,15 @@
 
 .site-main
   .site-main__title-logo
-    = image_tag 'http://www.dreamnews.jp/?action_Image=1&p=0000092185&id=headimage'
-  .h1.top-information
+    = image_tag 'top_page_icon'
+  .top-information.weight700
     = "#{Room.where(activated: "certification").where(public: true).distinct.count}件のレンタルスペースから 目的に合ったスペースをかんたん予約"
   .top-menu-container
     .container
       %ul.row
         %li.top-menu-list
           = link_to search_path(event_type: 1) ,class: 'top-menu-list__button' do
-            = image_tag 'party.png',class: 'top-menu-list__button-img'
+            = image_tag '//cdnspacemarket.com/packs-production/images/www/icon/party_blue-284ad75134.svg',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               パーティ
               %span.top-menu-list__button-num
@@ -17,7 +17,7 @@
                 件
         %li.top-menu-list
           = link_to search_path(event_type: 2) ,class: 'top-menu-list__button' do
-            = image_tag 'meeting.png',class: 'top-menu-list__button-img'
+            = image_tag '//cdnspacemarket.com/packs-production/images/www/icon/class_blue-e05f553eaf.svg',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               会議
               %span.top-menu-list__button-num
@@ -25,7 +25,7 @@
                 件
         %li.top-menu-list
           = link_to "#" ,class: 'top-menu-list__button' do
-            = image_tag 'bed.png',class: 'top-menu-list__button-img'
+            = image_tag '//cdnspacemarket.com/packs-production/images/www/icon/stay_blue-e36c43aef6.svg',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               民泊
               %span.top-menu-list__button-num
@@ -35,7 +35,7 @@
       %ul.row
         %li.top-menu-list.row-list
           = link_to search_path(event_type: 3 ) ,class: 'top-menu-list__button' do
-            = image_tag 'camera.png',class: 'top-menu-list__button-img'
+            = image_tag '//cdnspacemarket.com/packs-production/images/www/icon/photo_shoot_blue-9d526ca0c6.svg',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               写真撮影
               %span.top-menu-list__button-num
@@ -43,7 +43,7 @@
                 件
         %li.top-menu-list.row-list
           = link_to search_path(event_type: 4 ) ,class: 'top-menu-list__button' do
-            = image_tag 'moovie.png',class: 'top-menu-list__button-img'
+            = image_tag '//cdnspacemarket.com/packs-production/images/www/icon/film_shoot_blue-b0d90574c8.svg',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               ロケ撮影
               %span.top-menu-list__button-num
@@ -51,7 +51,7 @@
                 件
         %li.top-menu-list.row-list
           = link_to search_path(event_type: 8 ) ,class: 'top-menu-list__button' do
-            = image_tag 'run.png',class: 'top-menu-list__button-img'
+            = image_tag '//cdnspacemarket.com/packs-production/images/www/icon/sports_blue-d0e5f50187.svg',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               スポーツ
               %span.top-menu-list__button-num
@@ -59,7 +59,7 @@
                 件
         %li.top-menu-list.row-list
           = link_to "#" ,class: 'top-menu-list__button' do
-            = image_tag '3dot.png',class: 'top-menu-list__button-img'
+            = image_tag '3dot2.png',class: 'top-menu-list__button-img'
             %span.top-menu-list__button-text
               その他
               %span.top-menu-list__button-num
@@ -85,5 +85,22 @@
   /下のrenderで渡す引数は画像のurlとテキストと合わせて渡したい
   .top-page-topics.back-white
     = render partial: '4topic'
+  .top-page-topics.back-light-gray
+    = render partial: 'pick_up'
+  .yellow-advertisement
+    %p.top-column
+      新規アカウント登録して頂いた方全員に
+    %span.middle-column-enphasize
+      ¥1,000
+    %span.middle-column
+      相当のポイントをプレゼント！
+    .back-white-column
+      全てのスペースにご利用可能です
+    %p.bottom-column
+      おトクにスペースを借りてみよう！
+  .white-advertisement
+    = link_to "users/sign_up" do
+      .blue-button
+        新規アカウント登録はこちら
   .top-page-topics.back-light-gray
     = render partial: '3topic'

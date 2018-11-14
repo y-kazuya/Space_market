@@ -1,0 +1,12 @@
+.confirm-reservation-box
+  .confirm-reservation-box__title.weight700
+    予約確認
+  .confirm-reservation-box__description
+    予約の確認と削除を行うことができます。
+  .reservation-list
+    -if @reservations != nil?
+      - @reservations.each do |reservation|
+
+        = render partial: "reservations/reservation_item",locals: {reservation: reservation}
+    -else
+      予約はありません
