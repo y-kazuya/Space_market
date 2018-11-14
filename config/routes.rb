@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:destroy] do
     member do
       get :result
+      delete :destroy_reservation
     end
 
     collection do

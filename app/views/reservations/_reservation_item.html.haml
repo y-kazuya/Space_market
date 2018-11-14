@@ -6,7 +6,8 @@
     %span.reservation-space-name.weight700
       = reservation.room.intro.title
     %span.reservation-space-value.weight700
-      /値段を入力
+      = reservation.price
+      円
     %p
       = reservation.plan.name
     %p
@@ -17,13 +18,17 @@
           = option
         /widthで食わせて回せばいい
     .reservation-space-days
-      = reservation.reserve_dates.first.start_date
-      〜
-      = reservation.reserve_dates.last.start_date
+      - reservation.reserve_dates.each do |date|
+        = date.start_date
+        ,
     .reservation-space-addres
       = reservation.room.space.space_info.access
     .detail-delete-button-box
-      %button.detail-room-button
-        ルームの紹介ページ
-      /%button.delete-reservation-button
-      /予約取り消し
+      /space_room GET    /spaces/:space_id/rooms/:id(.:format)                              rooms#show
+      = link_to space_room_url(space_id:reservation.room.space.id ,id:reservation.room.id ),class:'hover-none' do
+        .detail-room-button
+          ルームの紹介ページ
+      /destroy_reservation_reservations DELETE /reservations/destroy_reservation(.:format)                        reservations#destroy_reservation
+      = link_to destroy_reservation_reservation_path(reservation.id),class:'hover-none', method: :delete ,data: {confirm: "本当に削除しますか？"}do
+        %button.delete-reservation-button
+          予約取り消し

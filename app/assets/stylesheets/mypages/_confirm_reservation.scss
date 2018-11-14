@@ -3,6 +3,7 @@
   width:960px;
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 50px;
   &__title{
     font-size: 26px;
   }
@@ -13,16 +14,24 @@
   }
   .reservation-list{
     margin: 0 auto;
-    width: 600px;
-    height: 300px;
+    margin-top: 30px;
+    width: 800px;
+    height: 600px;
+    overflow: scroll;
+    border: 1px solid black;
+    border-radius: 5px;
     .reservation-item-box{
       border-top: 1px solid gray;
       border-bottom: 1px solid gray;
       border-left:1px solid gray;
       border-right:1px solid gray;
+      border-radius: 5px;
       display: table;
       margin-top:30px;
       padding: 10px;
+      width: 700px;
+      margin: 0 auto;
+      margin-top: 30px;
       &__img{
         display: table-cell;
         text-align: left;
@@ -37,6 +46,7 @@
         vertical-align: top;
         padding-left: 5px;
         .reservation-space-name{
+          width: 400px;
           font-size: 20px;
         }
         .reservation-space-options{
@@ -66,6 +76,7 @@
           display: table;
           padding-left: 140px;
           padding-top: 20px;
+          float: right;
           .detail-room-button{
             display: table-cell;
             padding: 5px;
@@ -83,6 +94,7 @@
             font-weight:700;
             border-radius: 5px;
             border-left: 5px;
+            margin-left: 10px;
           }
         }
       }

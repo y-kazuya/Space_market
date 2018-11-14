@@ -74,7 +74,6 @@ class ReservationsController < ApplicationController
   def result
     @reserve = Reserve.find(params[:id])
     @use_point = params[:use_point].to_i || 0
-
   end
 
   def confirm_reservation
@@ -82,6 +81,12 @@ class ReservationsController < ApplicationController
     if Reserve.where(id:current_user.id) != nil?
       @reservations = Reserve.where(user_id:current_user.id)
     end
+  end
+
+  def destroy_reservation
+    reserve = Reserve.find(params[:id])
+    reserve.destroy
+    redirect_to confirm_reservation_reservations_path
   end
 
   private
