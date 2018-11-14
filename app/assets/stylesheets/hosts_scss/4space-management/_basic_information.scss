@@ -9,6 +9,15 @@
       font-size: 16px;
       width: 240px;
       padding-bottom: 10px;
+      position: relative;
+      input{
+
+      }
+
+      label{
+        position: absolute;
+        left: 30px;
+      }
     }
   }
   &__seating-capacity{
