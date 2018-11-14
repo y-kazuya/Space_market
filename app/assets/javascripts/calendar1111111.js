@@ -126,7 +126,7 @@ $(document).on('turbolinks:load', function(){
   }
 
   function out_day(calEvent, jsEvent, view){
-    console.log(view)
+
     var day = calEvent.start._i
     var day = String(day)
     var target = $(`[data-date=${day}]`)
@@ -141,7 +141,7 @@ $(document).on('turbolinks:load', function(){
   function aaa(){
     $(document).on({
       "mouseenter": function(){
-        console.log(this)
+
       },
       "mouseleave": function(){
 
@@ -220,7 +220,7 @@ $(document).on('turbolinks:load', function(){
 
     // select: function(data) { //日付がクリックされた時の日付データを取得
     //   var str = moment(data).format( 'YYYYMMDD' );
-    //   console.log(str);},
+    //
 
     eventClick: function(calEvent, jsEvent, view) {
       select_day(calEvent, jsEvent, view)
@@ -298,7 +298,7 @@ $(document).on('turbolinks:load', function(){
 
     if(plan_day_price == ""){ //プランが時間選択・日選択できるか？ラジオボタン差し込み
       $(".day_pay_area").remove()
-      console.log(22)
+
     }
     else{
       if($(".day_pay_area").length){
@@ -417,6 +417,9 @@ $(document).on('turbolinks:load', function(){
     function dtotal_price(pay){  //金額下げる
       $(".total_date").empty()
       total_price = Number(total_price) - Number(pay)
+      if (total_price < 0 ){
+        total_price = 0
+      }
       $(".total_date").append(`¥${total_price} <br> <span>(税込価格 ￥${Math.round(total_price * 1.08)})</span>`)
       var point = total_price * 0.05
       $(".poipoi").text(`${Math.round(point)}`)
@@ -426,9 +429,9 @@ $(document).on('turbolinks:load', function(){
     $(".opt").find("label").on("click", function(){
 
       var pay = $(this).parents(".opt").attr("id").match(/\d+/)[0]
-      console.log(pay)
+
       var op_id = $(this).prev(`input[name="reserve[option_ids][]"]:checked`).val()
-      console.log(op_id)
+
       if ( op_id != undefined ){
         dtotal_price(pay)
       }
@@ -456,26 +459,51 @@ $(document).on('turbolinks:load', function(){
     $(".vm").css("display", "none")
   })
 
-  // $("#nebiki").on("click", function(){
-  //   var ooo = $(this).val()
-  //   if ($(this).val()  == ""){
-  //     ooo = 0
-  //   }
-  //   $("#nebiki").on("keyup", function(){
-  //     var bbb = $(this).val()
+  var ooo = 0
+  $("#nebiki").on("change", function(){
+    var tota = $(".modal__sum--kikan--total").text().match(/\d+/)[0]
+    var poi = $(".point_title").text().match(/\d+/)[0]
+    var dpoi = Number($(this).val())
 
 
-  //     if (bbb > ooo) {
-  //       var pay = bbb -ooo
-  //       dtotal_price(pay)
-  //     }
-  //     else{
-  //       var pay = ooo - bbb
-  //       gtotal_price(pay)
-  //     }
-  //   })
 
-  // })
+    if (dpoi > poi){
+      $(this).val("");
+      var pay = ooo
+      ooo = 0
+      gtotal_price(pay)
+      // return false;
+    }
+    else{
+
+      if (dpoi > ooo) {
+        var pay = dpoi -ooo
+        dtotal_price(pay)
+      }
+      else{
+        var pay = ooo - dpoi
+        gtotal_price(pay)
+      }
+    ooo = dpoi
+    }
+  })
+
+
+//     $("#nebiki").on("keyup", function(){
+//       var bbb = $(this).val()
+
+// "
+//       if (bbb > ooo) {
+//         var pay = bbb -ooo
+//         dtotal_price(pay)
+//       }
+//       else{
+//         var pay = ooo - bbb
+//         gtotal_price(pay)
+//       }
+//     })
+
+
 });
 
 
