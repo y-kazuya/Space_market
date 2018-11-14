@@ -97,7 +97,6 @@
                     .result-info__right-day{
                       display: inline-block;
                       font-size: 16px;
-                      line-height: 70px;
                       overflow: auto;
                       max-width: calc(550px - 110px);
                       max-height: 70px;
@@ -156,6 +155,7 @@
                   }
                 }
                 .reservation-result__info__option{
+                  height: 70px;
                   .result-info__left__option{
                     text-align: left;
                     display: inline-block;
@@ -168,6 +168,7 @@
                     float:left ;
                   }
                   .result-info__each__option{
+                    height: 100%;
                     .result-info__right__option{
                       display: inline-block;
                       font-size: 16px;
@@ -178,6 +179,69 @@
                       float:left ;
                     }
                   }
+                }
+                .reservation-result__info__total_price{
+                  height: 70px;
+                  border-top: 1px dashed #aaa;
+                  border-bottom: 1px dashed #aaa;
+                  .result-info__left__total_price{
+                    font-weight: 600;
+                    text-align: left;
+                    display: inline-block;
+                    font-size: 16px;
+                    line-height: 70px;
+                    overflow: auto;
+                    max-width: calc(550px - 110px);
+                    min-width: 100px;
+                    padding-left: 15px;
+                    float:left ;
+                  }
+                  .result-info__right__total_price{
+                    font-weight: 600;
+                    display: inline-block;
+                    font-size: 16px;
+                    line-height: 70px;
+                    overflow: auto;
+                    max-width: calc(550px - 110px);
+                    max-height: 70px;
+                    padding-left: 80px;
+                    float:left ;
+                  }
+                  .total_price__point{
+                    display: inline-block;
+                    font-size: 16px;
+                    line-height: 35px;
+                    overflow: auto;
+                    max-width: calc(550px - 110px);
+                    max-height: 70px;
+                    padding-left: 120px;
+                    float:left ;
+                    .total_price__point__left{
+                    }
+                    .total_price__point__right{
+                    }
+                  }
+                }
+              }
+              .reservation-result__top-btn{
+                position: absolute;
+                bottom: 20px;
+                a{
+                  background-color: #4abfe6;
+                  color: #FFF;
+                  border-radius: 3px;
+                  padding: 20px 50px;
+                }
+              }
+              .reservation-result__edit-btn{
+                position: absolute;
+                bottom: 20px;
+                left: 200px;
+                a{
+                  background-color: #4abfe6;
+                  color: #FFF;
+                  border-radius: 3px;
+                  padding: 20px 50px;
                 }
               }
             }

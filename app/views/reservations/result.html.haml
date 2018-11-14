@@ -57,17 +57,18 @@
                             = op.price
                             = " 円"
 
+                .reservation-result__info__total_price
+                  .result-info__left__total_price
+                    合計金額
+                  .result-info__right__total_price
+                    = "#{@reserve.price}円"
+                  .total_price__point
+                    .total_price__point__left
+                    = "使用ポイント: #{@use_point} P"
+                    .total_price__point__right
+                    = "付与ポイント: #{@reserve.price / 100} P"
 
-.total_price
-  .total_price__title
-    合計金額
-  .total_price__show
-    = "#{@reserve.price}円"
-
-  .total_price__point
-    = "付与ポイント: #{@reserve.price / 100}"
-
-= @use_point
-
-= link_to "トップに戻る", root_path
-= link_to "予約をし直す", reservation_path(@reserve.id, point: @use_point),method: :delete, data: { confirm: 'よろしいですか？' }
+              .reservation-result__top-btn
+                = link_to "トップに戻る", root_path
+              .reservation-result__edit-btn
+                = link_to "予約をし直す", reservation_path(@reserve.id, point: @use_point),method: :delete, data: { confirm: 'よろしいですか？' }
