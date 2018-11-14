@@ -35,7 +35,8 @@
 @import "./shared/footer";
 @import "./config/color";
 @import "./config/valiable";
-
+@import "./mypages/confirm_reservation.scss";
+@import "./mypages/credit_card.scss";
 
 @import "./hosts_scss/_host_header.scss";
 @import "./hosts_scss/_space_or_stay.scss";
@@ -48,7 +49,7 @@
 @import "./hosts_scss/4space-management/hostspace_plan";
 
 
-@import "./register/_host_entry2";
+// @import "./register/_host_entry2";
 
 @import "./modlues/reserve";
 @import "./modlues/moda";
@@ -60,3 +61,4 @@
 @import "./index/search_result";
 @import "./index/room_show";
 @import "./host_registration.scss";
+@import "./registration_menu.scss";

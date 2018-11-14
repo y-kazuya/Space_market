@@ -113,15 +113,27 @@
       float: right;
       margin:14px 10px;
       position: relative;
+      .prof-and-down{
+        margin-top: -5px;
+      }
+      .top-nav-down-checkbox{
+        opacity: 0;
+      }
+      input[type=checkbox]:checked ~ .top-nav-parent{
+        display: block;
+      }
+      input[type=checkbox]:checked {
+        transform: scale(200);
+      }
       .top-nav-parent{
         box-shadow: 0 0 8px #EBEBEB;
         border-radius: 3px;
         //上はプルダウンの四角形の作図
         top: 40px;
-        left: -230px;
+        left: -170px;
         position: absolute;
-        visibility: hidden;
-        opacity: 0;
+        display: none;
+
         .child-user{
           border-bottom: solid 1px;
           border-color: #EBEBEB;
@@ -142,8 +154,17 @@
           white-space: nowrap;
           padding-top: 10px;
           padding-bottom: 10px;
-          padding-right: 150px;
           padding-left: 12px;
+          width: 220px;
+          padding-right: 10px;
+          background-color: white;
+          text-align: left;
+          .child-link-arrow{
+            float: right;
+          }
+        }
+        .child-link:hover{
+          background-color:#5ED4AD;
         }
       }
       &__link{

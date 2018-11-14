@@ -1,0 +1,212 @@
+//define
+$gray: #999;
+$lgray: #eaeaea;
+$green: #60df52;
+$pink: #e95175;
+$blue: #4abfe6;
+
+// common parts
+.s26{font-size: 26px;}
+.s22{font-size: 22px;}
+.s18{font-size: 18px;}
+.s16{font-size: 16px;}
+.s14{font-size: 14px;}
+.s12{font-size: 12px;}
+//  フォント色
+.cgray{color: $gray;}
+.cgreen{color: $green;}
+.cred{color: $pink;}
+.cblue{color: $blue;}
+.cwhite{color: white;}
+
+//  背景色
+.bcgray{background-color: $gray;}
+.bclgray{background-color: $lgray;}
+.bcgreen{background-color: $green;}
+.bcwhite{background-color: white;}
+//  線色
+.lcgray{border-color:  $gray;}
+.lcgreen{border-color: $green;}
+.lcred{border-color:  $pink;}
+.lcblue{border-color:  $blue;}
+
+// space明細行
+.step{
+  display: block;
+  margin-top: 15px;
+  width: 100vw;
+  .step_name_base{
+    .finished, .notfinished{
+      float: left;
+      width: 50px;
+      height: 24px;
+      border: 1px solid;
+      border-radius: 3px;
+      line-height: 24px;
+      display: inline-block;
+      margin-bottom: 1px;
+      text-align: center;
+      display: block;
+    }
+    .notfinished{
+      display: none;
+    }
+    .step_name {
+      float: left;
+      width: 200px;
+      height: 30px;
+      margin-left: 5px;
+    }
+    .edit_button{
+      float: left;
+      width: 100px;
+      text-align: right;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 2px;
+      margin-left: 60px;
+      width: 120px;
+      height: 30px;
+    }
+  }
+}
+
+// main
+.wrapper_0_1{
+  width: 100%;
+  min-width: 300px;
+  padding: 60px 0px 60px;
+  .wrapper_0_2{
+    margin: 0px auto 0px;
+    width: 80vw;
+    max-width: 810px;
+    .top{
+      width: 70vw;
+      min-width: 810px;
+      text-align: center;
+      .registration_title{
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      .registration_description{
+        margin-bottom: 30px;
+        .sub_title{
+          height: 16px;
+          width: 100%;
+          text-align: center;
+          margin: 0px;
+          padding: 0px;
+        }
+      }
+    }
+    .space, .host{
+      width: 70vw;
+      min-width: 810px;
+      height: 450px;
+      border: 2px solid #d1d1d1;
+      margin-top: 20px;
+      padding: 30px;
+      .header{
+        width: 100%;
+        height: 70px;
+        border-bottom: 1px solid #d1d1d1;
+        .left{
+            float: left;
+            width: 60px;
+            .house{
+            }
+        }
+        .middle{
+          float: left;
+          .title{
+            height: 30px;
+          }
+          .sub_title{
+            height: 15px;
+          }
+        }
+        .right{
+          float: right;
+          width: 180px;
+          .hourly, .daily{
+            float: right;
+            display: block;
+            border-radius: 3px;
+            margin: 2px 0px;
+            border: 1px solid;
+            text-align: center;
+            width: 78px;
+            min-width: 78px;
+            height: 24px;
+            line-height: 24px;
+            padding: 0px 6px;
+          }
+          .daily{
+            display: none;
+          }
+          .type_change{
+            float: right;
+            text-align: right;
+            font-weight: bold;
+            cursor: pointer;
+            width: 120px;
+          }
+        }
+      }
+      .main{
+        padding-top: 10px;
+        padding-bottom: 20px;
+        display: block;
+        border-bottom: 1px solid #d1d1d1;
+        .facility{}
+        .basic{}
+        .description{}
+        .image{}
+        .plan{}
+      }
+      .space_button, .host_button{
+        float: right;
+        margin-top: 30px;
+        margin-right: 30px;
+        border-radius: 3px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        width: 140px;
+        height: 40px;
+      }
+    }
+    .space{
+      height: 470px;
+    }
+    .host{
+      height: 380px;
+    }
+    .bottom_line{
+      margin-top: 40px;
+      border-top: 1px solid #d1d1d1;
+      width: 70vw;
+      min-width: 810px;
+    }
+  }
+  .bottom{
+    height: 120px;
+    .registration_title{
+      widows: 70vw;
+      padding-top: 5px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .application_button{
+      padding-top: 3px;
+      height: 40px;
+      width: 100vw;
+      font-weight: normal;
+    }
+  }
+}

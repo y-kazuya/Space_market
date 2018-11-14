@@ -1,0 +1,34 @@
+.reservation-item-box
+  .reservation-item-box__img
+    /それぞれのイメージをとってくる
+    = image_tag("#{reservation.room.pictures.first.content}" ,class: 'reservation-img')
+  .reservation-item-box__txts
+    %span.reservation-space-name.weight700
+      = reservation.room.intro.title
+    %span.reservation-space-value.weight700
+      = reservation.price
+      円
+    %p
+      = reservation.plan.name
+    %p
+      オプション一覧
+    .reservation-space-options
+      - reservation.reserve_options do |option|
+        .reservation-space-options__item
+          = option
+        /widthで食わせて回せばいい
+    .reservation-space-days
+      - reservation.reserve_dates.each do |date|
+        = date.start_date
+        ,
+    .reservation-space-addres
+      = reservation.room.space.space_info.access
+    .detail-delete-button-box
+      /space_room GET    /spaces/:space_id/rooms/:id(.:format)                              rooms#show
+      = link_to space_room_url(space_id:reservation.room.space.id ,id:reservation.room.id ),class:'hover-none' do
+        .detail-room-button
+          ルームの紹介ページ
+      /destroy_reservation_reservations DELETE /reservations/destroy_reservation(.:format)                        reservations#destroy_reservation
+      = link_to destroy_reservation_reservation_path(reservation.id),class:'hover-none', method: :delete ,data: {confirm: "本当に削除しますか？"}do
+        %button.delete-reservation-button
+          予約取り消し

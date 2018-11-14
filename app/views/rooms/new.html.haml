@@ -7,7 +7,7 @@
     後から貸し方の変更・追加もできます。
   .stay-or-space-container__two-box
     .space-stay-and-market-box
-      = image_tag 'space_stay' ,class: 'space-stay-and-market-box__logo'
+      = image_tag 'space-market' ,class: 'space-stay-and-market-box__logo '
       .space-stay-and-market-box__txts
         %p
           「SPACEMARKET」に掲載されます。
@@ -15,11 +15,11 @@
           スペースを1時間単位で貸し出すことができます。
         %p
           主にパーティー、会議、イベントなどに利用されます。
-      = link_to new_first_space_rooms_path(params[:space_id]) do
+      = link_to new_first_space_rooms_path(params[:space_id]) ,class:'hover-none' do
         .space-stay-and-market-box__button.back-color-light-blue
           時間貸し
     .space-stay-and-market-box
-      = image_tag 'space_stay' ,class: 'space-stay-and-market-box__logo'
+      = image_tag 'space_stay' ,class: 'space-stay-and-market-box__logo '
       .space-stay-and-market-box__txts
         %p
           「SPACEMARKET STAY」に掲載されます。
