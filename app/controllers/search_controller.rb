@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+
+
   def event_type
     usage = Usage.find(params[:id])
     basic_infos_usages = usage.basic_info_usages
@@ -12,6 +14,7 @@ class SearchController < ApplicationController
   end
 
   def index
+
     results = Room.joins(basic_info: [:basic_info_usages]).where("usage_id = ?", "#{params[:event_type].to_i}").distinct.where(activated: "certification").where(rooms: {public: true })
 
     @event_type = params[:event_type].to_i
@@ -55,22 +58,6 @@ class SearchController < ApplicationController
       end
     end
     @results = results
-
-
-    # if @rooms.length >= 1
-    #    #さらに金額で絞り込む
-    #   @rooms.each do |room|
-    #     room.public_plans.each do |plan|
-    #       if plan.day_price <= max_price
-    #         #さらに人数で絞り込む
-    #         if room.basic_info.capacity >= max_capacity
-    #           @results << room
-    #           break
-    #         end
-    #       end
-    #     end
-    #   end
-    # end
     render :index, layout: false
   end
 end

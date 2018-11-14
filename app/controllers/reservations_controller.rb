@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-
+  layout "all"
   def show
     return redirect_to new_payments_path if current_user.cards ==[]
     @room = Room.find(params[:room_id])
@@ -14,6 +14,7 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:room_id])
     @reserve = Reserve.new(reserve_params)
     @reserve.day = 1
+    use_point = 0
 
     if params[:nebiki]
       return redirect_to space_room_reservations_path(@room.space.id, @room.id) if params[:nebiki].to_i > current_user.point
@@ -34,6 +35,7 @@ class ReservationsController < ApplicationController
       total += @reserve.reserve_dates.length * @reserve.plan.day_price
       point = current_user.point
       point += total / 100
+
       if params[:nebiki]
         use_point = params[:nebiki].to_i
         total -= params[:nebiki].to_i
