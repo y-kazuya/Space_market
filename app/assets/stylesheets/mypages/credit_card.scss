@@ -1,0 +1,81 @@
+.credit-card-edit{
+  height: 100%;
+  width:960px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  &__title{
+    font-size: 26px;
+  }
+  &__description{
+    font-size: 14px;
+    color: gray;
+  }
+  &__list{
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .credit-card-item-box{
+      border-radius: 5px;
+      background-color: #F3F3F3;
+      padding: 4px;
+      margin-bottom: 10px;
+      text-align: left;
+      .credit-card-item{
+        margin-left: 10px;
+      }
+      &__links{
+        float: right;
+      }
+    }
+  }
+  &__new_button{
+    padding: 5px;
+    color: white;
+    background-color:#52BEE0;
+    font-weight:700;
+    border-radius: 5px;
+
+  }
+//下は新規登録画面で使われるviewのscss
+  .credit-card-edit-new-registration{
+    margin: 0 auto;
+    width: 650px;
+    background-color: #F3F3F3;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    &__caption{
+      font-size: 22px;
+
+    }
+    .credit-mini-textarea{
+      font-size: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .credit-big-textarea{
+      font-size: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 350px;
+    }
+    .credit-select{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .credit-select select{
+      padding: 5px;
+      font-size: 20px;
+      border-radius: 1px;
+      background-color: white;
+    }
+    &__button{
+      background-color: #00D940;
+      color: white;
+      font-size: 18px;
+      padding: 10px 50px 10px 50px;
+      margin-top: 20px;
+    }
+  }
+}

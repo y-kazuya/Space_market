@@ -1,35 +1,82 @@
-クレカ新規ページ
+-# クレカ新規ページ
 
 
-= render 'shared/errors', object: @card
+-# = render 'shared/errors', object: @card
 
 
-= form_for @card, url: payments_path do |f|
-  %h1
-    クレジットカード
-  %h2
-    = f.text_field :num_first, maxlength: 4
-    = f.text_field :num_seconde, maxlength: 4
-    = f.text_field :num_thard, maxlength: 4
-    = f.text_field :num_last, maxlength: 4
+-# = form_for @card, url: payments_path do |f|
+-#   %h1
+-#     クレジットカード
+-#   %h2
+-#     = f.text_field :num_first, maxlength: 4
+-#     = f.text_field :num_seconde, maxlength: 4
+-#     = f.text_field :num_thard, maxlength: 4
+-#     = f.text_field :num_last, maxlength: 4
 
-  %h1
-    名義人（アルファベット
-  %h2
-    = f.text_field :name
+-#   %h1
+-#     名義人（アルファベット
+-#   %h2
+-#     = f.text_field :name
 
-  %h1
-    有効期限
-  %h2
-    = f.select :mm, 1..12
-    = f.select :yy, 2014..2034
+-#   %h1
+-#     有効期限
+-#   %h2
+-#     = f.select :mm, 1..12
+-#     = f.select :yy, 2014..2034
 
-  %h1
-    セキリュティーコード
-  %h2
-    = f.text_field :code, maxlength: 3
+-#   %h1
+-#     セキリュティーコード
+-#   %h2
+-#     = f.text_field :code, maxlength: 3
 
-  - if @card.id
-    = hidden_field_tag :id ,@card.id
+-#   - if @card.id
+-#     = hidden_field_tag :id ,@card.id
 
-  = f.submit "保存"
+-#   = f.submit "保存"
+.credit-card-edit
+  .credit-card-edit__title
+    クレジットカードの新規登録
+  .credit-card-edit__description
+    スペースマーケット利用料の支払いに使用するクレジットカードを登録してください。
+  = form_for @card, url: payments_path do |f|
+    .credit-card-edit-new-registration
+      %span.red-box
+        必須
+      %span.credit-card-edit-new-registration__caption
+        クレジットカード
+      %p
+        = f.text_field :num_first, maxlength: 4 ,class: 'credit-mini-textarea'
+        = f.text_field :num_seconde, maxlength: 4 ,class: 'credit-mini-textarea'
+        = f.text_field :num_thard, maxlength: 4 ,class: 'credit-mini-textarea'
+        = f.text_field :num_last, maxlength: 4 ,class: 'credit-mini-textarea'
+      %span.red-box
+        必須
+      %span.credit-card-edit-new-registration__caption
+        名義人
+      %span.red-box-description
+        クレジットカード表記のまま入力してください。半角英数。
+      %p
+        = f.text_field :name ,class: 'credit-big-textarea'
+      %span.red-box
+        必須
+      %span.credit-card-edit-new-registration__caption
+        有効期限
+      %p.credit-select
+        = f.select :mm, 1..12
+        = f.select :yy, 2014..2034
+
+      %span.red-box
+        必須
+      %span.credit-card-edit-new-registration__caption
+        セキュリティーコード
+      %span.red-box-description
+        クレジットカード表記のまま入力してください。半角英数。
+      %p
+        = f.text_field :code, maxlength: 3 ,class: 'credit-mini-textarea'
+
+    - if @card.id
+      = hidden_field_tag :id ,@card.id
+
+    = f.submit "保存" ,class: 'credit-card-edit-new-registration__button'
+
+
