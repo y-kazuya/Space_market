@@ -45,30 +45,47 @@ $(document).on('turbolinks:load', function(){
 
 
 
-  $(".modalOpen").click(function(){
-    console.log("aaa")
-    var navClass = $(this).attr("class"),
-    href = $(this).attr("href");
+    $(".modalOpen").click(function(){
+      console.log("aaa")
+      var navClass = $(this).attr("class"),
+      href = $(this).attr("href");
 
-    $(href).fadeIn();
-    $(this).addClass("open");
-    //cssアニメーションの記述を追加する
-    $(href).children(".inner").css("animation","modal 0.5s forwards");
-    $("body").css("overflow", "hidden")
-    return false;
-
-});
-
-$(".modalClose").click(function(){
-
-      $(this).parents(".modal").fadeOut();
-      $(".modalOpen").removeClass("open");
-     //cssアニメーションの記述を追加する
-      $(this).parents(".modal").children(".inner").css("animation","modalClose 0.5s forwards");
-      $("body").css("overflow", "scroll")
+      $(href).fadeIn();
+      $(this).addClass("open");
+      //cssアニメーションの記述を追加する
+      $(href).children(".inner").css("animation","modal 0.5s forwards");
+      $("body").css("overflow", "hidden")
       return false;
 
-});
+  });
+
+  $(".modalClose").click(function(){
+
+        $(this).parents(".modal").fadeOut();
+        $(".modalOpen").removeClass("open");
+      //cssアニメーションの記述を追加する
+        $(this).parents(".modal").children(".inner").css("animation","modalClose 0.5s forwards");
+        $("body").css("overflow", "scroll")
+        return false;
+
+  });
+
+  $(".all_nebiki").on("click", function(){
+    var point = Number($(this).parents(".point_bo").prevAll(".point_title").text().match(/\d+/)[0])
+    $("#nebiki").val()
+    $("#nebiki").val(point)
+    console.log($("input[name='aa_a']:checked").val())
+    if ($("input[name='aa_a']:checked").val() == "a"){
+      $("#nebiki").val("")
+    }
+    else{
+      $("#nebiki").val(point)
+    }
+
+  })
+
+
+
 
 
 })

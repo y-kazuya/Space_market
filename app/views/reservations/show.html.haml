@@ -248,7 +248,7 @@
             = f.collection_check_boxes :option_ids, @room.options, :id, :name, include_hidden: false do |b|
               .reserve__next--type__wp.t-n.b-t
                 .optin
-                  .option__head(id="op-#{b.object.price}")
+                  .option__head.opt(id="op-#{b.object.price}")
                     = b.check_box
                     = b.label do
                       %span.opname
@@ -363,50 +363,115 @@
                         新しいカードを追加
 
                   = f.collection_radio_buttons :card_id, current_user.cards, :id, :name, include_hidden: false do |b|
-                    .card-area__content--box
-                      = b.radio_button
-                      = b.label { b.text }
+                    - b.object.use? ? set = true : set = false
+                    = b.label do
+                      .card-area__content--box
+                        = b.radio_button(checked: set)
+                        %span.credit-card-item-box
+                          %span.weight700.credit-card-item
+                            %i.fab.fa-cc-visa
+                          %span.weight700
+                            **** **** ****
+                            = b.object.num_last
+                          %span.credit-card-item
+                            名義人:
+                          %span.weight700
+                            = b.object.name
+                          %span.credit-card-item
+                            有効期限:
+                          %span.weight700
+                            = b.object.mm
+                            \/
+                            = b.object.yy
 
 
           .modal-wp__top__main__content
+            .modal-wp__top__main__content__lbox
+              .modal-wp__top__main__content__box--title
+                %span.norequ
+                  任意
+                %span.title-text
+                  ポイント/クーポンの利用
+              .modal--radi.reserve__right__plan--contents__con--name
+                =f.radio_button :coupon, 0, checked: true
+                = f.label "coupon_0" do
+                  ポイント
+                =f.radio_button :coupon, 1, disabled: true
+                = f.label "coupon_１" do
+                  クーポン
+
+              .point
+                .moda-text
+                  ご利用するポイント数を入力してください。
+                .point_title
+                  ="保有ポイント：#{current_user.point}"
+
+                = number_field_tag :nebiki,{}, max: current_user.point.to_i
+
+                .point_bo
+                  .optin
+                    .option__head
+                      = check_box_tag :aa_a, :a
+                      = label :aa, :a,class:'all_nebiki' do
+                        利用可能ポイントをすべて反映
 
 
 
-
-
-
-          %h1
-            = f.collection_radio_buttons :card_id, current_user.cards, :id, :name, include_hidden: false do |b|
-              %h2
-                = b.radio_button
-                = b.label { b.text }
-
-
-
-          %h1
-            ポイント/クーpんの利用
-          %h1
-            ポイント
-            =f.radio_button :coupon, 0, checked: true
-            クーポン
-            =f.radio_button :coupon, 1, disabled: true
-
-          %h1
-            保有ポイント
-            = current_user.point
-
-          %h1
-            ご利用ポイントを入力してください
-
-            = number_field_tag :nebiki, in: 1...10
-
-          = f.submit "予約リクエストへ進む"
       .modal-wp__bot
+        .modal-wp__top
+          .modal-wp__top__main
+            .modal__sum
+              .modal__sum--title
+                スペースご利用料金 内訳
+
+
+              %dl.modal__sum--kikan
+                %dt.modal__sum--kikan--title
+                  利用期間
+                %dd.modal__sum--kikan--days.long_date_2
+
+              %dl.modal__sum--show
+                %dt
+                  プラン料金
+                %dd.p--p
+                  = "基本プラン(¥100000)"
+                %dt
+                  管理維持費
+                  %span
+                    %i.fa.fa-question-circle
+                %dd.cost_pay
+
+                %dt.modal__sum--kikan--title
+                  合計
+                %dd.modal__sum--kikan--total.total_date
+
+              .modal__sum--point
+                このスペース利用で
+                %span.poipoi
+                  1111
+                ポイント獲得予定です。
+
+          .modal__last
+            .modal__last__note
+              %p
+                %i.fa.fa-flash.fa-lg.icon-direct
+                このプランは予約リクエスト送信後、即時に予約成立となり請求が発生します。
+              %ul.modal__last__note__lists
+                %li
+                  見積書の発行はこちら。印刷、またはPDFに保存してお使いいただけます。
+                %li
+                  ※キャンセルに関しましてはキャンセルポリシーをご確認ください。
+                %li
+                  ※予約リクエストを送信する前にゲスト規約をお読みください。
+                %li
+                  ※送信後に予約内容の確認など、ホストとのやりとりが開始されます
+            .modal__last__bot
+              = f.submit "予約リクエストを送信する",class: "y-r-b main_bot"
 
 
 
 
-        %a.modalClose{:href => ""} Close
+
 
 
 

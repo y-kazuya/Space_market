@@ -22,6 +22,8 @@ $(document).on('turbolinks:load', function(){
       $(".res_date").remove()
       $(".option_check").find("input").prop("checked", false)
       $(".total_date").text("0")
+      $(".p--n").text(`${plan.name}`)
+      $(".p--p").text(`${plan.name} (¥${plan.day_price})`)
 
       if (!(plan.cost == null)){
         set_cost_price(plan.cost)
@@ -408,18 +410,22 @@ $(document).on('turbolinks:load', function(){
       $(".total_date").empty()
       total_price = Number(total_price) + Number(pay)
       $(".total_date").append(`¥${total_price} <br> <span>(税込価格 ￥${Math.round(total_price * 1.08)})</span>`)
+      var point = total_price * 0.05
+      $(".poipoi").text(`${Math.round(point)}`)
     }
 
     function dtotal_price(pay){  //金額下げる
       $(".total_date").empty()
       total_price = Number(total_price) - Number(pay)
       $(".total_date").append(`¥${total_price} <br> <span>(税込価格 ￥${Math.round(total_price * 1.08)})</span>`)
+      var point = total_price * 0.05
+      $(".poipoi").text(`${Math.round(point)}`)
     }
 
     //オプション選択
-    $(".option__head").find("label").on("click", function(){
+    $(".opt").find("label").on("click", function(){
 
-      var pay = $(this).parents(".option__head").attr("id").match(/\d+/)[0]
+      var pay = $(this).parents(".opt").attr("id").match(/\d+/)[0]
       console.log(pay)
       var op_id = $(this).prev(`input[name="reserve[option_ids][]"]:checked`).val()
       console.log(op_id)
@@ -450,6 +456,26 @@ $(document).on('turbolinks:load', function(){
     $(".vm").css("display", "none")
   })
 
+  // $("#nebiki").on("click", function(){
+  //   var ooo = $(this).val()
+  //   if ($(this).val()  == ""){
+  //     ooo = 0
+  //   }
+  //   $("#nebiki").on("keyup", function(){
+  //     var bbb = $(this).val()
+
+
+  //     if (bbb > ooo) {
+  //       var pay = bbb -ooo
+  //       dtotal_price(pay)
+  //     }
+  //     else{
+  //       var pay = ooo - bbb
+  //       gtotal_price(pay)
+  //     }
+  //   })
+
+  // })
 });
 
 
