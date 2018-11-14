@@ -5,6 +5,7 @@ class DashboardsController < ApplicationController
   def first_space
     @space = current_user.spaces.first
     @room = @space.rooms.first
+    return redirect_to new_space_room_path(@space.id) unless @space && @room
     redirect_to root_path if @space == nil && @room == nil
   end
 

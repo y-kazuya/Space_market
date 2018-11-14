@@ -9,9 +9,9 @@ class HostAddressesController < OwnerSettingController
 
   def create
     @host_address = HostAddress.new(host_address_params)
+
     if @host_profile.company == true
       @company_address = CompanyAddress.new(company_address_params)
-
       unless @company_address.save
         return render :index
       end

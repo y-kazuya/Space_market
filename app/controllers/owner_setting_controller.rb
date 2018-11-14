@@ -1,6 +1,7 @@
 class OwnerSettingController < ApplicationController
   before_action :set_space_or_redirect
   before_action :set_host_prolie_or_redirect, unless: :host_profiles_controller?
+  layout "owner_new"
 
 
 
