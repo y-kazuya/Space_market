@@ -17,6 +17,15 @@
       .plan-box-left{
         display: table-cell;
         width: 58%;
+        .red-box-description{
+          margin-bottom: 5px;
+        }
+
+        a{
+          .green-color{
+            margin-top: 10px;
+          }
+        }
       }
       .plan-box-right{
         text-align: right;

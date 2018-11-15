@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+
+
   def event_type
     usage = Usage.find(params[:id])
     basic_infos_usages = usage.basic_info_usages
@@ -11,6 +13,7 @@ class SearchController < ApplicationController
   end
 
   def index
+
     results = Room.joins(basic_info: [:basic_info_usages]).where("usage_id = ?", "#{params[:event_type].to_i}").distinct.where(activated: "certification").where(rooms: {public: true })
 
     @event_type = params[:event_type].to_i
