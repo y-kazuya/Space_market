@@ -10,7 +10,6 @@ class SearchController < ApplicationController
       rooms = BasicInfo.find(basic_infos_usage.basic_info_id)
       @searchRooms << rooms.room
     end
-    render :event_type, layout: false
   end
 
   def index
@@ -58,8 +57,5 @@ class SearchController < ApplicationController
       end
     end
     @results = results
-    render :index, layout: false
   end
 end
-
-
