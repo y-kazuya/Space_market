@@ -1,6 +1,4 @@
 app_path = File.expand_path('../../../', __FILE__)
-app_path = '/var/www/Space_market'
-Unicorn::HttpServer::START_CTX[0] = File.join(app_path, 'shared/bin/unicorn')
 
 working_directory "#{app_path}/current"
 listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
