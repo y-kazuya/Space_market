@@ -1,4 +1,4 @@
-
+%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyCXvfSDCzjB2DgjPpEUQoAn0ZbzhQpdNog&callback=initMap"}
 #map_contents
 
 :javascript
@@ -17,7 +17,7 @@
     var target = document.getElementById('map_contents');
     var geocoder = new google.maps.Geocoder();
     var rooms = $('.summary_list')
-
+    
     geocoder.geocode({ address: rooms[0].dataset.address }, function(results, status){
       if (status === 'OK' && results[0]){  //status を確認して処理開始
          map = new google.maps.Map(target, {
@@ -30,10 +30,15 @@
     });
 
     for( var room of rooms ) {
+ 
       var address = room.dataset.address
-      geocoder.geocode({ address: address }, function(results, status){
-        if (status === 'OK' && results[0]){
+      let link = room.dataset.link
+      let title = room.dataset.title
 
+      geocoder.geocode({ address: address}, function(results, status){
+
+        if (status === 'OK' && results[0]){
+          console.log(link)          
           //マーカーの生成
             var marker = new google.maps.Marker({
               position: results[0].geometry.location,
@@ -41,14 +46,14 @@
               animation: google.maps.Animation.DROP
             });
 
-          //情報ウィンドウの生成
+          //情報ウィンドウ
             var infoWindow = new google.maps.InfoWindow({
-              content: 'Hello!',
+              content: `<a href="${link}" target="_blank">${title}</a>`,
               pixelOffset: new google.maps.Size(0, 5)
             });
 
           //マーカーにリスナーを設定
-          marker.addListener('click', function(){
+            marker.addListener('click', function(){
               infoWindow.open(map, marker);
             });
         }else if(status == "OVER_QUERY_LIMIT"){

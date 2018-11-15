@@ -1,4 +1,5 @@
-#map_room_show_contents
+%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyCXvfSDCzjB2DgjPpEUQoAn0ZbzhQpdNog&callback=initMap"}
+#map_contents
 
 :javascript
   function sleep(waitMsec) {
@@ -8,7 +9,7 @@
   }
 
   function initMap() {
-    var target = document.getElementById('map_room_show_contents');
+    var target = document.getElementById('map_contents');
     var geocoder = new google.maps.Geocoder();
     var room = $('#roomAdress')[0]
 
@@ -29,7 +30,7 @@
 
           //情報ウィンドウの生成
             var infoWindow = new google.maps.InfoWindow({
-              content: 'Place!',
+              content: 'Space！',
               pixelOffset: new google.maps.Size(0, 5)
             });
 
