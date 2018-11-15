@@ -30,7 +30,7 @@ class HostProfile < ApplicationRecord
   validates :company_name,length: { maximum: 64 }
   validates :company_name_kata, length: { maximum: 64 },format: { with: VALID_KATAKANA_REGEX, message: 'はカタカナで入力して下さい。' }, allow_blank: true
   validates :company_name_en,length: { maximum: 64 },format: { with: VALID_ALFAVET_REGEX , message: 'はアルファベットで入力して下さい。' }, allow_blank: true
-  validates :company_number,numericality: { only_integer: true }, length: { maximum: 10 }, allow_nil: true
+  validates :company_number ,length: { maximum: 10 }, allow_nil: true
   validates :profile,length: { maximum: 800 }
 
 
