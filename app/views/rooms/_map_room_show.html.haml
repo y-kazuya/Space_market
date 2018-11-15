@@ -1,4 +1,5 @@
-%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyCXvfSDCzjB2DgjPpEUQoAn0ZbzhQpdNog&callback=initMap"}
+%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_API_KEY"]}&callback=initMap"}
+
 #map_contents
 
 :javascript
