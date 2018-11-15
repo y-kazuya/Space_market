@@ -102,7 +102,7 @@
         = link_to user_room_space_infos_path(current_user.id, @room.id) do
           %li.Space-Management-BottomBox-Left__space-left-nav
             %p.space-left-nav-item.link-black.hover-left-green
-              施設情報
+              施設情報aaa
 
         %li.Space-Management-BottomBox-Left__space-left-nav
           %p.weight700.space-left-nav-item.link-black.space-left-time-pre
@@ -113,8 +113,10 @@
             %span.space-left-pre-minitxt
               SPACEMARKETに掲載
             %span.onoffswitch
-              %input{type:"checkbox" ,name:"onoffswitch" ,class:"onoffswitch-checkbox" ,id:"myonoffswitch"}
-              %label{class:"onoffswitch-label" ,for:"myonoffswitch"}
+              - @room.public == true ? public = true : public = false
+              = link_to public_user_room(current_user.id, @room.id), method: :patch do
+                %input{type:"checkbox" ,name:"onoffswitch" ,class:"onoffswitch-checkbox" ,id:"myonoffswitch", checked: public}
+                %label{class:"onoffswitch-label" ,for:"myonoffswitch"}
             %span.onoffswitch-checkbox-offtext
               非公開
             %span.onoffswitch-checkbox-ontext

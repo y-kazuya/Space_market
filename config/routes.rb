@@ -35,7 +35,11 @@ Rails.application.routes.draw do
     end
 
     resources :rooms do
-      resource :reservations
+      resource :reservations do
+        member do
+          get :preview
+        end
+      end
       resources :favorites do
         collection do
           get :show
@@ -76,6 +80,7 @@ Rails.application.routes.draw do
     resources :rooms, only: [:index, :new, :create, :destroy] do
       member do
         get :stats
+        patch :public
       end
 
       collection do

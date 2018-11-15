@@ -1,0 +1,487 @@
+
+= form_for @reserve, url: space_room_reservations_path, method: :post do |f|
+  .reserve--wp
+    .pre-bo
+      = link_to  user_room_basic_infos_path(current_user.id, @room.id, @room.basic_info.id)do
+        %span.green-box.y-gbox.pre--ab
+          編集に戻る
+    .room_id
+      = @room.id
+    .reserve__left.sp
+      .reserve__left__head
+        .reserve_left__head__title
+          選択中のスペース
+      = link_to space_room_path(@room.space.id, @room.id) do
+        .reserve__left__space
+          .reserve__left__space__img
+            = image_tag(@room.pictures.first.content_url(),class: "space_img")
+          .reserve__left__space__text
+            %span
+              = @room.intro.title
+
+      .reserve__left__head
+        .reserve_left__head__title
+          現在入力中の情報
+
+      .reserve__left__bottom
+        .reserve__left__bottom__ar
+          .reserve__left__bottom__ar--top1.non-pad
+            利用期間
+          .reserve__left__bottom__ar--top2.reserve_dates.long_date
+            %span.okioki
+              利用期間を選択してください
+          .d-s
+            .reserve__left__bottom__ar--top1
+              維持管理費
+              %span
+                %i.fa.fa-question-circle
+            .reserve__left__bottom__ar--top2.bt.cost_pay
+
+          .d-s
+            .reserve__left__bottom__ar--top1
+              合計
+            .reserve__left__bottom__ar--top2.bt.total_date
+              ￥100000000
+              %br
+                税込価格 ￥388,735)
+
+        .reserve__left__bottom__ms.vm
+          %i.fa.fa-exclamation-circle
+          %span.valid-ms
+
+
+
+
+        %a.y-r-b.main_bot.modalOpen{:href => "#modal01"}
+          予約リクエストへ進む
+
+        .reserve__left__bottom__oi
+          ※まだ請求は発生しません。
+
+
+      -# .reserve_data_area
+      -#   .title
+      -#     ここに予約でーたが入っていきます
+
+      -#   .reserve_show
+      -#     .long.need_re
+      -#       .long__title
+      -#         利用期間
+      -#       .long_date
+      -#         利用期間を入力してください
+
+      -#     .cost_pay.need_re
+      -#       -# .cost_pay__title
+      -#       -#   管理維持ひ
+      -#       -# .cost_pay__date
+
+      -#     .total.need_re
+      -#       .total_title
+      -#         合計金額
+      -#       .total_date
+
+      -#   .reserve_dates
+    .reserve__right.clearfix
+      .reserve__right--title
+        空き状況の確認／予約リクエスト
+      .reserve__right__plan
+        .reserve__right__plan--title
+          プランを選択
+        .reserve__right__plan--contents
+          - @room.public_plans.each_with_index do |plan, i|
+            - i == 0 ? set = true : set = false
+            .reserve__right__plan--contents__con
+              .reserve__right__plan--contents__con--price{id: "plan#{plan.id}"}
+                - if plan.time_pay
+                  .reserve__right__plan--contents__con--price--1.pre-time
+                    = "￥#{plan.time_price}"
+                    %span
+                      ="/時間〜"
+                - if plan.day_pay
+                  .reserve__right__plan--contents__con--price--1.pre-day
+                    = "￥#{plan.day_price}"
+                    %span
+                      ="/日〜"
+                - if plan.cost
+                  .reserve__right__plan--contents__con--price--cost
+                    = "管理維持費＋￥#{plan.cost}円"
+
+              .reserve__right__plan--contents__con--name
+                = f.radio_button :plan_id, plan.id, checked: set
+                = f.label "plan_id_#{plan.id}" do
+                  %span
+                    =plan.name
+                    =plan.id
+
+              .reserve__right__plan--contents__con--fe
+                - if plan.about_reserve
+                  %ul.reserve__right__plan--contents__con--fe--now
+                    %li
+                      %i.fa.fa-flash.reserve-plan__features-reserve-direct-icon
+                      = "今すぐ予約OK"
+
+                - unless plan.discount == "設定しない"
+                  %ul.reserve__right__plan--contents__con--fe--dis
+                    %li
+                      %i.far.fa-flag
+                      %span
+                        直前割
+                      5日前までの予約で
+                      %span
+                        = "#{plan.discount}"
+                      割引
+                - if plan.min_time
+                  .reserve__right__plan--contents__con--fe--min
+                    %i.fa.fa-clock-o
+                    = "最低利用時間#{plan.min_time}時間〜"
+              .reserve__right__plan--contents__con--note
+                = plan.about if plan.about
+
+
+
+
+
+
+
+
+      %span
+        .reserve--next
+          .reserve__right__plan--title
+            利用タイプを選択
+          .reserve__next--type
+            .reserve__next--type__wp.pay_area
+              -if @room.public_plans.first.time_pay == true
+                .reserve__next--type__wp--botan.time_pay_area
+                  = f.radio_button :day, 0
+                  = f.label "day_0" do
+                    時間価格
+                    %span.time_price
+                      ="￥#{@room.public_plans.first.time_price} 時間"
+                  -# .time_pay_area
+                  -#   .pay_type_time
+                  -#     時間貸し
+                  -#     = f.radio_button :day, 0
+                  -#   .time_price
+                  -#     = set_price(@room.public_plans.first.time_price, "時間")
+              -if @room.public_plans.first.day_pay == true
+                .reserve__next--type__wp--botan.day_pay_area
+                  = f.radio_button :day, 1
+                  = f.label "day_1" do
+                    一日価格
+                    %span.day_price
+                      ="￥#{@room.public_plans.first.day_price} 時間"
+                  -# .day_pay_area
+                  -#   .pay_type_day
+                  -#     日がし
+                  -#     = f.radio_button :day, 1
+                  -#   .day_price
+                  -#     = set_price(@room.public_plans.first.day_price, "日")
+
+        .reserve--next.step1
+          .reserve__right__plan--title
+            利用期間
+          .reserve__next--type.c
+            .reserve__next--type__wp
+              .calender_area
+                %div#calendar
+
+
+        .reserve--next.step1
+          .reserve__right__plan--title
+            利用者区分を選択
+
+          .reserve__next--type
+            .reserve__next--type__wp.t-n
+              .reserve__com.reserve__right__plan--contents__con--name
+                = f.radio_button :company, 0
+                = f.label "company_0" do
+                  %span
+                    個人利用
+            .reserve__next--type__wp.t-n.b-t
+              .reserve__com.reserve__right__plan--contents__con--name
+                = f.radio_button :company, 1
+                = f.label "company_1" do
+                  %span
+                    法人利用
+
+        .reserve--next.step2
+          .reserve__right__plan--title
+            決算方法を選択
+
+          .reserve__next--type
+            .reserve__next--type__wp.t-n
+              .reserve__com.reserve__right__plan--contents__con--name
+                = f.radio_button :payment, 0
+                = f.label "payment_0" do
+                  %span
+                    クレジットカード
+            .reserve__next--type__wp.t-n.b-t.step2-1
+              .reserve__com.reserve__right__plan--contents__con--name
+                = f.radio_button :payment, 1
+                = f.label "payment_1" do
+                  %span
+                    後払い（Paid）
+                .reserve__right__plan--contents__con--note.b-n
+                  %ul
+                    %li
+                      ・請求書による後払いです。別途手数料がかかります。
+                    %li
+                      ・ご利用にはPaidへの登録および与信審査が必要です。審査方法は2種類ございます。
+                    %li
+                      ・通常審査：設定画面から申請後、3営業日以内に利用可能となります。与信枠は最大150万円です。
+                    %li
+                      ・即時審査：初回予約リクエストの際に即時で審査を行います。最大5万円まで利用可能です。初回の予約のみ利用できます。申請の際、同時に通常審査も行います。
+                    %li
+                      ・すでに他サービス等でPaidのご利用がある方は、与信枠の上限にご注意ください。
+                    %li
+                      ・審査のため、後日登録の番号へ確認のお電話をさせていただきます。ご了承ください。
+                    %li
+                      ・スペース利用後、請求書は翌月初旬にメールおよび登録の住所へ発送されます。請求書記載の口座へ期限内にお支払いください。
+                    %li
+                      ・支払い期限はスペース利用月の翌月末です。
+                    %Li
+                      ・Paid、後払いに関する詳細は法人後払い（Paid）をご利用の方でご確認ください。
+
+        .reserve--next.step1
+          .reserve__right__plan--title
+            追加料金・オプション
+          .reserve__next--type
+            .reserve__left__head.b-a
+              設備・サービス
+            = f.collection_check_boxes :option_ids, @room.options, :id, :name, include_hidden: false do |b|
+              .reserve__next--type__wp.t-n.b-t
+                .optin
+                  .option__head.opt(id="op-#{b.object.price}")
+                    = b.check_box
+                    = b.label do
+                      %span.opname
+                        =b.object.name
+                      %span.opprice
+                        =b.object.price
+                      %span.opkai
+                        = "/回"
+
+                  .option__about
+                    =b.object.about
+
+        .reserve--next
+          .reserve__next--type
+            .reserve_pay.reserve__next--type__wp.t-n
+              .reserve_pay__main
+                %dt
+                  利用期間
+                %dd.long_date_2
+                  %span.okioki
+                    利用期間を入力してください
+                .d-s
+                  %dt.reserve__left__bottom__ar--top1.reserve-cost_title
+                    維持管理費
+                    %span
+                      %i.fa.fa-question-circle
+                  %dd.reserve__left__bottom__ar--top2.bt.cost_pay
+
+                  %dt.p-t10
+                    合計
+
+                  %dd.re-to
+                    .re-to__price.total_date
+                      aaaa
+                .re_to__bot
+                  -# = link_to "予約リクエストへ進む", root_path, class: "y-r-b main_bot"
+                  %a.y-r-b.main_bot.modalOpen{:href => "#modal01"}
+                    予約リクエストへ進む
+                  %p.main_bot_ex
+                    ※まだ請求は発生しません。
+              .bwp
+                .reserve_pay__notes.vm
+                  %i.fa.fa-exclamation-circle
+                  %span.valid-ms
+                    ssssd
+                .reserve_pay__notes--text.bm
+                  『予約リクエスト』を送信し、ホストが内容を確認後「承認」すると予約成立となります
+                  %br
+                    予約完了までのご利用の流れはこちらから確認いただけます。
+                  %br
+                    見積書の発行はこちら。印刷、またはPDFに保存してお使いいただけます。
+
+  #modal01.modal
+    / モーダルウィンドウが開いている時のオーバーレイ
+    .overLay.modalClose
+
+    .inner
+      .modal-wp__top
+        .modal-wp__top__head
+          .modal-wp__top__head--title
+            予約リクエスト
+          .modal-wp__top__head--text
+            必要な情報を入力して、「予約リクエスト送信する」ボタンを押してください
+        .modal-wp__top__main
+          .modal-wp__top__main__content
+            .modal-wp__top__main__content__box
+              .modal-wp__top__main__content__box--title
+                %span.requ
+                  必須
+                %span.title-text
+                  利用目的
+              .modal-wp__top__main__content__box--area
+                = f.select :purpose, Reserve.purposes.keys
+            .modal-wp__top__main__content__box
+              .modal-wp__top__main__content__box--title
+                %span.requ
+                  必須
+                %span.title-text
+                  = "利用人数（〜#{@room.basic_info.capacity}人)"
+              .modal-wp__top__main__content__box--area
+                .people
+                  = f.number_field :people, max: @room.basic_info.capacity
+
+          .modal-wp__top__main__content
+            .modal-wp__top__main__content__lbox
+              .modal-wp__top__main__content__box--title
+                %span.norequ
+                  任意
+                %span.title-text
+                  利用用途の詳細
+              .moda-text
+                ホストにどのような用途で利用するのかを伝えましょう。できる限り詳細に伝えることで、予約リクエストの承認率がアップします。
+              =f.text_area :usage, placeholder: "高校の友人が久しぶりに集まるパーティーを開きたいと思っています。大人10人、子供3名の計13名です。キッチンを利用し簡単な料理をふるまったりと、アットホームな会にしたいと思っています。よろしくお願いします。"
+
+          .modal-wp__top__main__content
+            .modal-wp__top__main__content__lbox
+              .modal-wp__top__main__content__box--title
+                %span.title-text
+                  お支払い方法
+              .moda-text
+                ホストが予約リクエストを承認すると、指定されたお支払い方法で決済されます（お支払いはリクエストが承認されるまで行われません）。詳しくは 決済の流れ をご覧ください。
+
+              .card-area
+                .card-area__content
+                  .card-area__content--title
+                    %span.pay__type
+                      クレジットカード
+                  .card-area__content--box
+                    .card-area__content--box__new
+                      =link_to new_payments_path do
+                        %i.fa.fa-chevron-right
+                        新しいカードを追加
+
+                  = f.collection_radio_buttons :card_id, current_user.cards, :id, :name, include_hidden: false do |b|
+                    - b.object.use? ? set = true : set = false
+                    = b.label do
+                      .card-area__content--box
+                        = b.radio_button(checked: set)
+                        %span.credit-card-item-box
+                          %span.weight700.credit-card-item
+                            %i.fab.fa-cc-visa
+                          %span.weight700
+                            **** **** ****
+                            = b.object.num_last
+                          %span.credit-card-item
+                            名義人:
+                          %span.weight700
+                            = b.object.name
+                          %span.credit-card-item
+                            有効期限:
+                          %span.weight700
+                            = b.object.mm
+                            \/
+                            = b.object.yy
+
+
+          .modal-wp__top__main__content
+            .modal-wp__top__main__content__lbox
+              .modal-wp__top__main__content__box--title
+                %span.norequ
+                  任意
+                %span.title-text
+                  ポイント/クーポンの利用
+              .modal--radi.reserve__right__plan--contents__con--name
+                =f.radio_button :coupon, 0, checked: true
+                = f.label "coupon_0" do
+                  ポイント
+                =f.radio_button :coupon, 1, disabled: true
+                = f.label "coupon_１" do
+                  クーポン
+
+              .point
+                .moda-text
+                  ご利用するポイント数を入力してください。
+                .point_title
+                  ="保有ポイント：#{current_user.point}"
+
+                = number_field_tag :nebiki,{}, max: current_user.point.to_i
+
+                .point_bo
+                  .optin
+                    .option__head
+                      = check_box_tag :aa_a, :a
+                      = label :aa, :a,class:'all_nebiki' do
+                        利用可能ポイントをすべて反映
+
+
+
+      .modal-wp__bot
+        .modal-wp__top
+          .modal-wp__top__main
+            .modal__sum
+              .modal__sum--title
+                スペースご利用料金 内訳
+
+
+              %dl.modal__sum--kikan
+                %dt.modal__sum--kikan--title
+                  利用期間
+                %dd.modal__sum--kikan--days.long_date_2
+
+              %dl.modal__sum--show
+                %dt
+                  プラン料金
+                %dd.p--p
+                  = "基本プラン(¥100000)"
+                %dt
+                  管理維持費
+                  %span
+                    %i.fa.fa-question-circle
+                %dd.cost_pay
+
+                %dt.modal__sum--kikan--title
+                  合計
+                %dd.modal__sum--kikan--total.total_date
+
+              .modal__sum--point
+                このスペース利用で
+                %span.poipoi
+                  1111
+                ポイント獲得予定です。
+
+          .modal__last
+            .modal__last__note
+              %p
+                %i.fa.fa-flash.fa-lg.icon-direct
+                このプランは予約リクエスト送信後、即時に予約成立となり請求が発生します。
+              %ul.modal__last__note__lists
+                %li
+                  見積書の発行はこちら。印刷、またはPDFに保存してお使いいただけます。
+                %li
+                  ※キャンセルに関しましてはキャンセルポリシーをご確認ください。
+                %li
+                  ※予約リクエストを送信する前にゲスト規約をお読みください。
+                %li
+                  ※送信後に予約内容の確認など、ホストとのやりとりが開始されます
+            .modal__last__bot
+              = f.submit "プレビュー画面では押せません",class: "y-r-b main_bot", disabled: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

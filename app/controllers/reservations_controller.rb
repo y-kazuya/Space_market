@@ -70,6 +70,21 @@ class ReservationsController < ApplicationController
       redirect_to root_path
     end
 
+
+
+  end
+
+  def preview
+
+    @space = Space.find(params["space_id"].to_i)
+    unless @space.user.id == current_user.id
+      redirect_to root_path
+    end
+
+    @room = Room.find(params["room_id"].to_i)
+    @reserve = Reserve.new()
+    @reserve.reserve_options.build
+    @reserve.reserve_dates.build
   end
 
 
