@@ -1,6 +1,5 @@
 .plan-box
   .plan-box-left
-    - plan.public == true ? public = true : public = false
     %p.plan-box-left-title
       = plan.name
       =plan.id
@@ -20,13 +19,13 @@
     .plan-box-right-switch-button
       .switchArea
         = link_to public_user_room_plan_path(current_user.id, @room.id, plan.id), method: :patch do
-          = check_box 'plan', 'public', {:checked => public}, true, false
+          = check_box 'plan', 'public', {:checked => plan.public}, true, false
           %label{for:"switch#{plan.id}"}
             %span
           #swImg
     %br
       %p.switchArea_with_txt--gray
-        非公開
+        = plan.public == true ? "公開" :  "非公開"
     = link_to user_room_plan_path(current_user.id, @room.id, plan.id) do
       %span.green-box.y-gbox
         プランの編集
