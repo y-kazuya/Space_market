@@ -1,8 +1,10 @@
 class ReservationsController < ApplicationController
   layout "all"
   def show
-    return redirect_to new_payments_path if current_user.cards ==[]
+
     @room = Room.find(params[:room_id])
+    return redirect_to new_payments_path if current_user.cards ==[]
+    return redirect_to root_path if @room.public_plans == [] || @room.activated != 'certification'
     @reserve = Reserve.new()
     @reserve.reserve_options.build
     @reserve.reserve_dates.build

@@ -30,7 +30,7 @@
               .title_type 必須
               .title_name 最大収容人数
           .input_base
-            = f.text_field :capacity, in: 1...100000, placeholder: "10",class: "input_area", id: "capacity_unique"
+            = f.text_field :capacity, in: 1...100000, placeholder: "10",class: "input_area", id: "capacity_unique", value: 300
             人
             .explanation
               .attention_01.fa.fa-exclamation-circle#warning21 最大収容人数を入力してください。
@@ -41,7 +41,7 @@
               .title_type 必須
               .title_name 床面積
           .input_base
-            = f.text_field :floor_space, in: 1...100000, placeholder: "200",class: "input_area", id: "area_unique"
+            = f.text_field :floor_space, in: 1...100000, placeholder: "200",class: "input_area", id: "area_unique", value:  4000
             ㎡
 
             .explanation
@@ -55,7 +55,7 @@
           .detail 利用日当日の鍵の受け渡し方法を選択してください。
           .input_base.clearfix
             .wrap
-              %input{type: "radio", id: "radio1", name: "basic_info[key_type]", width: "200px", value: "対面"}
+              %input{type: "radio", id: "radio1", name: "basic_info[key_type]", width: "200px", value: "対面" ,checked: true}
               %lavel.radio_type{for: "radio1"} 対面
             .wrap
               %input{type: "radio", id: "radio2", name: "basic_info[key_type]", value: "キーボックス"}

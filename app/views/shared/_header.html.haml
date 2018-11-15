@@ -67,10 +67,26 @@
           = link_to "#" ,class: 'navs-right__link' do
             %p.navs-right__text.link-black.hover-white
               お気に入り
-        %li.navs-right
-          = link_to  host_entry_pages_path ,class: 'navs-right__link' do
-            %p.navs-right__text.link-black.hover-white
-              ホスト
+
+
+        - if current_user
+          -if current_user.spaces.empty?
+            %li.navs-right
+              = link_to host_entry_pages_path ,class: 'navs-right__link' do
+                %p.navs-right__text.link-black.hover-white
+                  空きスペースを掲載する
+          -elsif current_user.owner == true
+            %li.navs-right
+              = link_to user_dashboard_path(current_user.id) ,class: 'navs-right__link' do
+                %p.navs-right__text.link-black.hover-white
+                  ホスト
+
+          -else
+            %li.navs-right
+              = link_to space_dashboard_path(current_user.spaces.first.id) ,class: 'navs-right__link' do
+                %p.navs-right__text.link-black.hover-white
+                  ホスト
+
 
       -# %li.navs-right
       -#   - if !current_user
@@ -96,20 +112,20 @@
       -#   = link_to "#",class: 'navs-right__link'  do
       -#     %p.navs-right__text.link-black.hover-white
       -#       ヘルプ
-      -# - if current_user
-      -#   -if current_user.spaces.empty?
-      -#     %li.navs-right
-      -#       = link_to host_entry_pages_path ,class: 'navs-right__link' do
-      -#         %p.navs-right__text.link-black.hover-white
-      -#           空きスペースを掲載する
-      -#   -elsif current_user.owner == true
-      -#     %li.navs-right
-      -#       = link_to user_dashboard_path(current_user.id) ,class: 'navs-right__link' do
-      -#         %p.navs-right__text.link-black.hover-white
-      -#           ホスト
+      - if current_user
+        -if current_user.spaces.empty?
+          %li.navs-right
+            = link_to host_entry_pages_path ,class: 'navs-right__link' do
+              %p.navs-right__text.link-black.hover-white
+                空きスペースを掲載する
+        -elsif current_user.owner == true
+          %li.navs-right
+            = link_to user_dashboard_path(current_user.id) ,class: 'navs-right__link' do
+              %p.navs-right__text.link-black.hover-white
+                ホスト
 
-      -#   -else
-      -#     %li.navs-right
-      -#       = link_to space_dashboard_path(current_user.spaces.first.id) ,class: 'navs-right__link' do
-      -#         %p.navs-right__text.link-black.hover-white
-      -#           ホスト
+        -else
+          %li.navs-right
+            = link_to space_dashboard_path(current_user.spaces.first.id) ,class: 'navs-right__link' do
+              %p.navs-right__text.link-black.hover-white
+                ホスト

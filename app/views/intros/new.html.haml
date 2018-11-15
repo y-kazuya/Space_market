@@ -15,7 +15,7 @@
               .title_name スペースの見出し
           .detail キャッチコピーやスペースの特徴を記入してください。最大64文字。
           .input_base
-            = f.text_field :title, placeholder: "スペースの見出し", class: "input_area",id: "space_title_unique"
+            = f.text_field :title, placeholder: "スペースの見出し", class: "input_area",id: "space_title_unique", value: "高知城"
             .explanation 例）キッチン付きリノベスペース！女子会・誕生日会・ママ会・コスプレ撮影・会議利用などに！
             .attention_01.fa.fa-exclamation-circle#warning31 スペースの見出しを入力してください。
 
@@ -26,7 +26,7 @@
               .title_name スペースについて
           .detail スペースの情報、利用用途、周辺施設について説明してください。10文字以上800文字以内。
           .input_base
-            = f.text_field :content, placeholder: "スペースについて",class: "input_area", style: "height:150px;", id: "space_explanation_unique"
+            = f.text_area :content, placeholder: "スペースについて",class: "input_area", style: "height:150px; padding: 10px", id: "space_explanation_unique", value: " 高知市の中心にある典型的な平山城。初代土佐藩主山内一豊とその妻千代が礎を築いた土佐二十四万石の歴史ある城。関ヶ原戦の功績により徳川家康から土佐一国を拝領した山内一豊が，慶長６年（１６０１年）新城の築城工事を始め整備しました。三層六階の天守閣や追手門などの建物は国の重要文化財となっています。\n 日本国内に残る木造の１２古天守の一つであり，火災や震災，明治維新による全国的な廃城，太平洋戦争など幾度となく襲ってきた危機を乗り越え，現在でもその姿を残しています。公園内には，内助の功で有名な一豊の妻，千代の像や板垣退助像などもあります。また，天守閣と追手門が１枚の写真に無理なく収まる数少ないお城の一つでもあり，追手門前は絶好の撮影スポットです。"
             .explanation 例）女子会や誕生日会から会議まで様々な用途でご利用です。マンションの前にコンビニ、最寄り駅前にスーパーがあります。
             .attention_01.fa.fa-exclamation-circle#warning32 スペースについて入力してください。
 
@@ -37,7 +37,7 @@
               .title_name 設備・サービスについて
           .detail 設備やサービスについて説明を記述してください。10文字以上800文字以内。
           .input_base
-            = f.text_field :service ,placeholder: "設備・サービスについて", class: "input_area", style: "height:150px;", id: "facility_unique"
+            = f.text_area :service ,placeholder: "設備・サービスについて", class: "input_area",style: "height:150px; padding: 10px", id: "facility_unique", value: " Wi-Fi、ホワイトボード完備で会議からイベントまでご利用いただけます。その他必要な備品につきましては予約リクエスト時にお問い合わせください。"
             .explanation 例）Wi-Fi、ホワイトボード完備で会議からイベントまでご利用いただけます。その他必要な備品につきましては予約リクエスト時にお問い合わせください。
             .attention_01.fa.fa-exclamation-circle#warning33 設備・サービスについて入力してください。
   .bottom

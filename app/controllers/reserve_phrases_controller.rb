@@ -7,7 +7,7 @@ class ReservePhrasesController < RoomEditsController
   def create
     @res = ReservePhrase.new(res_params)
     unless @res.save
-      @room = ReservePhrase.find(params[:room_id])
+      @room = ReservePhrase.find_by(room_id: params[:room_id].to_i)
       render :show
     end
    redirect_to user_room_reserve_phrases_path(current_user.id, params[:room_id])

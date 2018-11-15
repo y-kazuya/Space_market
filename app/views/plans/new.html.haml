@@ -15,7 +15,7 @@
               .title_type 必須
               .title_name プランの名称
           .input_base
-            = f.text_field :name, placeholder: "プランの名称", class: "input_area", id: "plan_name_unique"
+            = f.text_field :name, placeholder: "プランの名称", class: "input_area", id: "plan_name_unique", value: "高知城丸一日貸切満喫プラン！！"
           .attention_01.fa.fa-exclamation-circle#warning51 プランの名称を入力してください。
 
         .plan_explanation
@@ -24,7 +24,7 @@
               .title_type_optional 任意
               .title_name プランの説明
           .input_base
-            = f.text_field :about, :placeholder => "プランの説明", :class => "input_area", style: "height: 150px;"
+            = f.text_area :about, :placeholder => "プランの説明", :class => "input_area", style: "height: 150px; padding: 10px", value: "土佐の偉人たちの息吹を感じる高知城を、１日貸し切りませんか？\n一人でも大切な人とも、お友達とも楽しめるプランになっています！ \n 詳しくは管理事務所にお問い合わせください！\n ※水・土・日不可"
             .explanation 例）Wi-Fi、ホワイトボード完備で会議からイベントまでご利用いただけます。その他必要な備品につきましては予約リクエスト時にお問い合わせください。
         .rent_price
           .title_base
@@ -39,7 +39,7 @@
                 .slide#slide_hour_price
                   .slide_wrap1
                     .slide_wrap2
-                      = f.range_field :time_pay, class: "slide_value", max: "1", min: "0", name: "plan[time_pay]", step: "1", type: "range"
+                      = f.range_field :time_pay, class: "slide_value", max: "1", min: "0", name: "plan[time_pay]", step: "1", type: "range", value: 0
                       .slide_name 設定中
                 .price_bottom
                   .yen ￥
@@ -53,12 +53,12 @@
                 .slide#slide_day_price
                   .slide_wrap1
                     .slide_wrap2
-                      = f.range_field :day_pay, class: "slide_value", max: "1", min: "0", name: "plan[day_pay]", step: "1", type: "range"
+                      = f.range_field :day_pay, class: "slide_value", max: "1", min: "0", name: "plan[day_pay]", step: "1", type: "range" ,value: 1
                       .slide_name 設定中
                 .price_bottom
                   .yen ￥
                   .price_wrap
-                    = f.text_field :day_price,placeholder: "8000", type: "text", id: "price_day_unique", class: "price_content"
+                    = f.text_field :day_price,placeholder: "8000", type: "text", id: "price_day_unique", class: "price_content", value: 15000
                   .per_hour /日
             .border
             .attention_01.fa.fa-exclamation-circle#warning52 入力必須項目です。
@@ -93,6 +93,7 @@
               - if @plan.name == nil
                 - @week.each do |day|
                   = f.fields_for :weeks do |w|
+                    - [1,2,4,5,7].include?(w.index) ? set = 1 : set = 0
                     %li.clearfix
                       .price_upper
                         .title
@@ -103,7 +104,7 @@
                           .slide#slide_date
                             .slide_wrap1
                               .slide_wrap2
-                                = w.range_field :can, max: "1", min: "0", step: "1", type: "range", class: "slide_value"
+                                = w.range_field :can, max: "1", min: "0", step: "1", type: "range", class: "slide_value", value: set
                                 .slide_name 貸し出す
                           .time_bottom
                             .time_wrap

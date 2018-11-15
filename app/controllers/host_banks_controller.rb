@@ -18,7 +18,7 @@ class HostBanksController < OwnerSettingController
       if @host_bank.update(host_bank_params)
         redirect_to space_dashboard_path(params[:space_id])
       else
-      render :new
+      render :index
       end
     else
       redirect_to root_path

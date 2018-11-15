@@ -56,7 +56,7 @@ $(document).on('turbolinks:load',function(){
 
 
         $(".photo_wrap1").append(`<div class="photo_memo">
-        <input class="input_area memo" placeholder="閑静なオフィス街にあるビル内の施設です。" type="text" name="picture[about]">
+        <input class="input_area memo" placeholder="閑静なオフィス街にあるビル内の施設です。" type="text" name="picture[about]" value=" 高知城の天守閣から高知の町並みを一望てきます">
         </div>`);
 
       };

@@ -45,10 +45,10 @@
 = form_for @picture ,url: user_room_pictures_path(current_user.id, @room.id) do |f|
   = f.hidden_field :cover, value: "true"
   .wrapper_1_1
-    .wrapper_1_2
+    .wrapper_1_2{style: "padding: 1px 0px 100px;"}
       .upper
         .title_base.clearfix
-          .title 4 写真・動画
+          .title 写真・動画
       .main
         .photos
           .title_base

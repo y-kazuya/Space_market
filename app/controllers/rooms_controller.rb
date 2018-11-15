@@ -58,7 +58,7 @@ class RoomsController < ApplicationController
     if current_user.complete_owner_infos? && room.complete_infos?
       room.update(activated: 2)
       current_user.update(owner: 1)
-      redirect_to user_dashboard_path(current_user.id)
+      redirect_to user_rooms_path(current_user.id)
     else
       redirect_to :back
     end

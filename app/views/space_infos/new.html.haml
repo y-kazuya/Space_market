@@ -22,7 +22,7 @@
               .title_name 郵便番号
             .detail ハイフンなしの半角数字。入力すると住所が自動補完されます。
           .input_base
-            = f.text_field :post_code, placeholder: "郵便番号",maxlength: "8",onkeyup: "AjaxZip3.zip2addr(this,'','space_info[state]','space_info[city]');", size: "10", id: "postal_cd_unique", class: "input_area"
+            = f.text_field :post_code, placeholder: "郵便番号",maxlength: "8",onkeyup: "AjaxZip3.zip2addr(this,'','space_info[state]','space_info[city]');", size: "10", id: "postal_cd_unique", class: "input_area",value: "7800850"
             .explanation 例）1600023
             .attention_01.fa.fa-exclamation-circle#warning11 郵便番号を入力してください。
             .attention_01.fa.fa-exclamation-circle#warning12 半角数字で入力してください。
@@ -33,8 +33,8 @@
               .title_type 必須
               .title_name 都道府県・市区町村
           .input_base.clearfix
-            = f.text_field :state, placeholder: "都道府県", size: "20", class: "select_area"
-            = f.text_field :city, placeholder: "市区町村" ,size: "60", type: "text", id: "ward_unique", class: "input_area"
+            = f.text_field :state, placeholder: "都道府県", size: "20", class: "select_area", value: "高知県"
+            = f.text_field :city, placeholder: "市区町村" ,size: "60", type: "text", id: "ward_unique", class: "input_area", value: "高知市丸ノ内"
           .explanation 例）新宿区
           .attention_01.fa.fa-exclamation-circle#warning13 都道府県・市区町村を入力してください。
 
@@ -44,7 +44,7 @@
               .title_type 必須
               .title_name 町名・番地
           .input_base
-            = f.text_field :address, placeholder: "町名・番地", class: "input_area", id: "street_unique"
+            = f.text_field :address, placeholder: "町名・番地", class: "input_area", id: "street_unique",value: "一丁目2番1号"
             .explanation
           .attention_01.fa.fa-exclamation-circle#warning14 町名・番地を入力してください。
 
@@ -54,7 +54,7 @@
               .title_type_optional 任意
               .title_name ビル名・部屋番号
           .input_base
-            = f.text_field :last_address, :placeholder => "ビル名・部屋番号", :class => "input_area"
+            = f.text_field :last_address, :placeholder => "ビル名・部屋番号", :class => "input_area", value: "高知公園"
             .explanation
         .map
           .title_base
@@ -73,7 +73,7 @@
           .detail 最寄駅からの歩き方や所要時間、高速道路の出口などを入力してください。
           .input_base
             -# %input{placeholder: "アクセス", type: "text", class: "input_area", id: "access_unique"}
-            = f.text_field :access, placeholder: "アクセス",class: "input_area", id: "access_unique"
+            = f.text_area :access, placeholder: "アクセス",class: "input_area", id: "access_unique", value: "電車をご利用の場合！！  路面電車（とさでん交通伊野線）高知城前停留場（最寄り駅）下車、徒歩約5分 \nお車をご利用の場合！！！ 高知自動車道を利用 高松～高知IC 約1時間40分 松山～高知IC 約1時間50分  徳島～高知IC 約2時間40分 岡山～高知IC 約2時間", style: "padding: 10px;"
             .explanation例）JR新宿駅西口より徒歩7分
             .attention_01.fa.fa-exclamation-circle#warning15 アクセスを入力してください。
 
@@ -85,7 +85,7 @@
           .detail この情報は予約が確定次第ゲストに送信される利用日程表で開示されます。
           .input_base
             -# %input{placeholder: "電話番号", type: "text", class: "input_area",id: "phone_no_unique"}
-            = f.number_field :phone_number, in: 1...10000000000000, placeholder: "電話番号", type: "text", class: "input_area",id: "phone_no_unique"
+            = f.number_field :phone_number, in: 1...10000000000000, placeholder: "電話番号", type: "text", class: "input_area",id: "phone_no_unique", value: "0888245701"
             .explanation 例）09012345678
             .attention_01.fa.fa-exclamation-circle#warning16 電話番号を入力してください。
 
@@ -96,11 +96,17 @@
               .title_name 施設の種類
           .input_base.clearfix
 
-            - SpaceInfo.event_types.keys.each do |key|
+            - SpaceInfo.event_types.keys.each_with_index do |key ,i|
+
               .wrap
-                = f.radio_button :event_type,key, width: "200px"
-                -# %lavel.radio_type{for: "space_info_event_type_#{key}"} a
-                = key
+                - if i == 0
+                  = f.radio_button :event_type,key, width: "200px", checked: true
+
+                  = key
+                -else
+                  = f.radio_button :event_type,key, width: "200px"
+
+                  = key
             .explanation
 
       .bottom
