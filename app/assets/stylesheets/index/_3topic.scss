@@ -25,9 +25,48 @@
     font-size: 14px;
     padding-left: 8px;
     padding-right: 6px;
+    padding-top: 100px;
     .mini_text{
       font-size: 10px;
       font-color:gray;
+    }
+  }
+  &__pick-img{
+    display:inline-block;
+    box-shadow: 0px 1px 1px gray;
+    height: 220px;
+    border-radius: 2px;
+    overflow: hidden;
+    vertical-align: bottom;
+    .pick-img-box-3x{
+      display: inline-block;
+      margin: 0% 0%;
+      text-align: center;
+    }
+    .unit-img{
+      height: 100%;
+      width: 100%;
+    }
+    .pick-img-txt1{
+      font-size: 14px;
+      color: white;
+      background-color:#E07040;
+      height: 100%;
+      line-height: 30px;
+    }
+    .pick-img-txt2{
+      font-size: 14px;
+      color: white;
+      background-color:#9C35DA;
+      height: 100%;
+      line-height: 30px;
+    }
+    .pick-img-txt3{
+      font-size: 14px;
+      color: white;
+      background-color:#DD4070;
+      height: 100%;
+      line-height: 30px;
     }
   }
 }

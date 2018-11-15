@@ -156,6 +156,10 @@ $(document).on('turbolinks:load',function(){
     });
   }
 
+  $('house').on('click',function(){
+    drawMap();
+  });
+
 
   ///////////////法人の入力出したり消したり///////////
   if (location.pathname.includes('settings/host_profiles')) { ///ページ遷移際の挙動
