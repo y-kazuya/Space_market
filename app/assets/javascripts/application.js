@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require xray
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap
