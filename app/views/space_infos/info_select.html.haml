@@ -1,27 +1,7 @@
-%h1
-  施設の選択
-
-= link_to "新規に施設情報を入力", new_space_room_space_info_path(@space.id, @room.id)
 
 
 = form_tag choise_info_space_room_space_infos_path(@space, @room), method: :patch do
-  - @space_infos.each do |space_info|
-    %h2
-      = space_info.title
-      = space_info.event_type
-      = space_info.post_code
-      = space_info.full_address
-      = space_info.access
-      = space_info.phone_number
-      = radio_button_tag :space_info_id, space_info.id
-
-  = submit_tag "保存して進む"
-
-
-
-
-= form_tag choise_info_space_room_space_infos_path(@space, @room), method: :patch do
-  .facility-information-box
+  .facility-information-box.modi-1
     .facility-information-box__title.weight700
       施設情報
     .facility-information-box__description-box
@@ -36,14 +16,11 @@
         +新規施設の作成
     %ul.facility-information-box__space-list-box
       /= form_for @something do |form|
-      - current_user.space_infos.each do |info|
-        - @room.space.space_info.id == info.id ? sele = true : sele = false
+      - @space_infos.each do |info|
+        - @room.space.space_info && @room.space.space_info.id == info.id ? sele = true : sele = false
         %li.FI-space-list-item
           %span
-            = link_to chose_user_room_space_info_path(current_user.id, @room.id, info.id), method: :patch do
-              = radio_button 'page', 'category', 'rails_base', {:checked => sele}
-            -# %input{type:'radio',class:'Fi-space-list-radio-button'}
-              /= f.radio_button
+            = radio_button_tag :space_info_id, info.id, {:checked => sele}
           %span.FI-space-list-item-txt
             %span.FI-space-list-item-txt__1
               = info.event_type
@@ -57,13 +34,7 @@
               = info.access
             %p.FI-space-list-item-txt__6
               = info.phone_number
-          .FI-space-list-item-buttons
-            = link_to user_room_space_info_path(current_user.id, @room.id, info.id) do
-              .FI-space-list-item-edit-button.weight700
-                編集
-            = link_to user_room_space_info_path(current_user.id, @room.id, info.id), method: :delete,data: { confirm: "よろしいですか？   ※施設に施設情報として登録されている場合削除されません" } do
-              .FI-space-list-item-delete-button.weight700
-                削除
+
     .space-edit-preserve-box.y-ri-b
       .space-edit-preserve-box__button.y-ri-b-b
-        保存
+        = submit_tag "保存して進む"
