@@ -1,21 +1,168 @@
-%h1
-  一つ目のroomの作成状況
+-# %h1
+-#   一つ目のroomの作成状況
 
-= @space
-= @room
+-# = @space
+-# = @room
+
+-# = render "tmp/host_registration_header"
+-# = render "tmp/host_registration1"こっちは別の、間違えた
+-# = render "tmp/host_registration_footer"
+= render "tmp/registration_menu_header"
+-# = render "tmp/registration_menu"
+
+.wrapper_0_1
+  .wrapper_0_2
+    .top
+      .registration_title.s26 スペース掲載までの流れ
+      .registration_description
+        .sub_title.s12.cgray スペースの作成とホスト情報を登録して、掲載審査に通過するとスペースを掲載することができます。
+        .sub_title.s12.cgray 掲載審査申請後でもスペースの編集はいつでも可能です。また、さらに詳しい情報も申請後から設定できるようになります。
+    .space
+      .header.clearfix
+        .left.clearfix
+          .house
+
+            =image_tag "house.jpeg", size: "40x40"
+        .middle
+          -# - unless @space.space_info
+          -#   = link_to new_space_room_space_info_path(@space.id, @room.id) do
+          -#     .s22 スペースの作成
+          -# - else
+          .s22 スペースの作成
+          .s12.cgray 貸し出すスペースの紹介や注意事項、価格、写真などを登録してスペースを作成しましょう。
+        .right
+          .hourly.s12.cblue.lcblue.bcwhite 時間貸し
+          .daily.s12.cred.lcred.bcwhite 一日貸し
+          .type_change.s12.cgreen
+            =link_to "貸出方法の変更", new_space_room_path(@space),class: 'hover-green-underline green-color'
+      .main
+        .facility
+          .step
+            .step_name_base.clearfix
+              -if @space.space_info
+                .finished.s12.bcwhite.cgreen.lcgreen 完了
+                = link_to "編集", info_select_space_room_space_infos_path(@space, @room),class: 'edit_button s14 cgreen'
+                .step_name.s16 1.施設情報
+              -else
+                .notfinished.step_status.s12.bcwhite.cgray.lcgray 未完了
+                .step_name.s16 1.施設情報
+        .basic
+          .step
+            .step_name_base.clearfix
+              -if @room.basic_info
+                .finished.s12.bcwhite.cgreen.lcgreen 完了
+              -else
+                .notfinished.step_status.s12.bcwhite.cgray.lcgray 未完了
+              - if @room.basic_info || @space.space_info
+                = link_to "編集", new_space_room_basic_info_path(@space, @room),class: 'edit_button s14 cgreen'
+              .step_name.s16 2.基本情報
+        .description
+          .step
+            .step_name_base.clearfix
+              -if @room.intro
+                .finished.s12.bcwhite.cgreen.lcgreen 完了
+              -else
+                .notfinished.step_status.s12.bcwhite.cgray.lcgray 未完了
+              - if @room.intro || @room.basic_info
+                = link_to "編集", new_space_room_intro_path(@space, @room),class: 'edit_button s14 cgreen'
+              .step_name.s16 3.説明文
+        .image
+          .step
+            .step_name_base.clearfix
+              -if @room.pictures.first
+                .finished.s12.bcwhite.cgreen.lcgreen 完了
+              -else
+                .notfinished.step_status.s12.bcwhite.cgray.lcgray 未完了
+              - if @room.pictures.first || @room.intro
+                = link_to "編集", new_space_room_picture_path(@space, @room),class: 'edit_button s14 cgreen'
+              .step_name.s16 4.写真
+        .plan
+          .step
+            .step_name_base.clearfix
+              5.プラン
+              -if @room.plans.first
+                .finished.s12.bcwhite.cgreen.lcgreen 完了
+              -else
+                .notfinished.step_status.s12.bcwhite.cgray.lcgray 未完了
+              - if @room.plans.first || @room.pictures.first
+                = link_to "編集", new_space_room_plan_path(@space, @room),class: 'edit_button s14 cgreen'
+              .step_name.s16 ５．プラン
+      = link_to new_space_room_space_info_path(@space.id, @room.id) do
+        %button.space_button.s16.cwhite.bcgreen 続きから編集
+
+    %h2
+      1 アカウント
+      完了
+      = link_to "編集", space_settings_host_profiles_path(@space.id)
+
+    %h2
+      2 住所
+      -# - if current_user.host_profile.host_address
+      -#   完了
+      -# -else
+      -#   未完了
+      -# -if current_user.host_profile.host_address || current_user.host_profile
+      -#   = link_to "編集", space_settings_host_addresses_path(@space.id)
+
+    %h3
+      3 振込口座
+    -#   - if current_user.host_profile.host_bank
+    -#     完了
+    -#   - else
+    -#     未完了
+    -#   -if current_user.host_profile.host_bank || current_user.host_profile.host_address
+    -#     = link_to "編集", space_settings_host_banks_path(@space.id)
+    -# -unless current_user.host_profile
+      .host
+        .header.clearfix
+          .left.clearfix
+            .house
+              =image_tag "host.svg", size: "40x40"
+          .middle
+            .s22 ホスト情報の登録
+            .s12.cgray アカウント情報や本人確認書類、売上を振り込む口座などを設定しましょう。
+        .main
+          .account
+            .step
+              .step_name_base.clearfix
+              - if current_user.host_profile
+                1 アカウント
+                完了
+                = link_to "編集", space_settings_host_profiles_path(@space.id)
+
+                .finished.s12.bcwhite.cgreen.lcgreen 完了
+                .notfinished.step_status.s12.bcwhite.cgray.lcgray 未完了
+                .step_name.s16 １．アカウント
+                .edit_button.s14.cgreen 編集
+          .address
+            .step
+              .step_name_base.clearfix
+                .finished.s12.bcwhite.cgreen.lcgreen 完了
+                .notfinished.step_status.s12.bcwhite.cgray.lcgray 未完了
+                .step_name.s16 ２．アドレス
+                .edit_button.s14.cgreen 編集
+          .bank_account
+            .step
+              .step_name_base.clearfix
+                .finished.s12.bcwhite.cgreen.lcgreen 完了
+                .notfinished.step_status.s12.bcwhite.cgray.lcgray 未完了
+                .step_name.s16 ３．振込口座
+                .edit_button.s14.cgreen 編集
+        = link_to space_settings_host_profiles_path(@space.id) do
+          %button.host_button.s16.cwhite.bcgreen 続きから編集
+      .bottom_line
+    .bottom
+      .registration_title 必要な情報をすべて入力すると審査に申請することができます。
+      %button.application_button.s18.cgray.bclgray 掲載審査
+
 
 
 - if @space && @room
-  =link_to "貸出方法の変更", new_space_room_path(@space)
-
-  -unless @space.space_info
+  - unless @space.space_info
     = link_to new_space_room_space_info_path(@space.id, @room.id) do
-      %h1
-      スペースの作成
+      .s22 スペースの作成
   - else
-    %h1
-      スペースの作成
-
+    .s22 スペースの作成
     %h2
       1.施設情報
       -if @space.space_info
@@ -23,7 +170,6 @@
         = link_to "編集", info_select_space_room_space_infos_path(@space, @room)
       -else
         未完了
-
     %h2
       2.基本情報
       -if @room.basic_info
@@ -33,6 +179,7 @@
       - if @room.basic_info || @space.space_info
         = link_to "編集", new_space_room_basic_info_path(@space, @room)
     %h2
+    
       3.説明文
       -if @room.intro
         完了
@@ -40,6 +187,7 @@
         未完了
       - if @room.intro || @room.basic_info
         = link_to "編集", new_space_room_intro_path(@space, @room)
+        
     %h2
       4.写真
       -if @room.pictures.first
@@ -48,6 +196,7 @@
         未完了
       - if @room.pictures.first || @room.intro
         = link_to "編集", new_space_room_picture_path(@space, @room)
+       
     %h2
       5.プラン
       -if @room.plans.first
@@ -57,19 +206,20 @@
       - if @room.plans.first || @room.pictures.first
         = link_to "編集", new_space_room_plan_path(@space, @room)
 
-
   -unless current_user.host_profile
+    //---続きから
     = link_to space_settings_host_profiles_path(@space.id) do
       %h1
         ホスト情報の登録
   - else
     %h1
       ホスト情報の登録
-
+    /-------------------------------------------------------
     %h2
       1 アカウント
-      完了
-      = link_to "編集", space_settings_host_profiles_path(@space.id)
+      - if current_user.host_profile
+        完了
+        = link_to "編集", space_settings_host_profiles_path(@space.id)
 
     %h2
       2 住所

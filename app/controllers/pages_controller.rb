@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     # @spaces = Space.public_spaces
     @space_info = SpaceInfo.new
 
-    # render "tmp/registration_menu_main"
+    #render "tmp/registration_menu_main"
 
   end
 
@@ -13,7 +13,6 @@ class PagesController < ApplicationController
     space = Space.find_by(user_id: current_user.id)
     if space && Room.find_by(space_id: space.id)
       redirect_to  space_dashboard_path(current_user.spaces.first.id)
-
     elsif space
       redirect_to new_space_room_path(current_user.spaces.first.id)
     end
