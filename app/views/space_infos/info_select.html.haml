@@ -16,3 +16,54 @@
       = radio_button_tag :space_info_id, space_info.id
 
   = submit_tag "保存して進む"
+
+
+
+
+= form_tag choise_info_space_room_space_infos_path(@space, @room), method: :patch do
+  .facility-information-box
+    .facility-information-box__title.weight700
+      施設情報
+    .facility-information-box__description-box
+      %span.red-box.weight700
+        必須
+      %span.red-box-with-txt
+        施設の選択
+      %p.red-box-description
+        スペースの場所に関する情報です。同一の施設に複数のスペースを登録できます。スペースを登録する施設を選択してください。
+    = link_to new_space_room_space_info_path(@space.id, @room.id) do
+      .facility-information-box__create-facility.weight700
+        +新規施設の作成
+    %ul.facility-information-box__space-list-box
+      /= form_for @something do |form|
+      - current_user.space_infos.each do |info|
+        - @room.space.space_info.id == info.id ? sele = true : sele = false
+        %li.FI-space-list-item
+          %span
+            = link_to chose_user_room_space_info_path(current_user.id, @room.id, info.id), method: :patch do
+              = radio_button 'page', 'category', 'rails_base', {:checked => sele}
+            -# %input{type:'radio',class:'Fi-space-list-radio-button'}
+              /= f.radio_button
+          %span.FI-space-list-item-txt
+            %span.FI-space-list-item-txt__1
+              = info.event_type
+            %p.FI-space-list-item-txt__2.weight700
+              = info.title
+            %p.FI-space-list-item-txt__3
+              = info.post_code
+            %p.FI-space-list-item-txt__4
+              = info.full_address
+            %p.FI-space-list-item-txt__5
+              = info.access
+            %p.FI-space-list-item-txt__6
+              = info.phone_number
+          .FI-space-list-item-buttons
+            = link_to user_room_space_info_path(current_user.id, @room.id, info.id) do
+              .FI-space-list-item-edit-button.weight700
+                編集
+            = link_to user_room_space_info_path(current_user.id, @room.id, info.id), method: :delete,data: { confirm: "よろしいですか？   ※施設に施設情報として登録されている場合削除されません" } do
+              .FI-space-list-item-delete-button.weight700
+                削除
+    .space-edit-preserve-box.y-ri-b
+      .space-edit-preserve-box__button.y-ri-b-b
+        保存
