@@ -72,7 +72,15 @@ class EditPlansController < RoomEditsController
   def public
     plan = Plan.find(params[:id])
     if plan.room.space.user_id == current_user.id
-      plan.public == true ? plan.update(public: false) : plan.update(public: true)
+      room= plan.room
+      if plan.public == true
+
+        unless room.public_plans.length == 1
+          plan.update(public: false)
+        end
+      else
+        plan.update(public: true)
+      end
       redirect_to user_room_plans_path(current_user.id, params[:room_id])
     else
       redirect_to root_path
