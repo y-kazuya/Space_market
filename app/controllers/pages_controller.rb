@@ -6,13 +6,14 @@ class PagesController < ApplicationController
 
     @space_info = SpaceInfo.new
 
-    # render "tmp/registration_menu_main"
+    #render "tmp/registration_menu_main"
 
   end
 
   def host_entry
     space = Space.find_by(user_id: current_user.id)
     if space && Room.find_by(space_id: space.id)
+
       return redirect_to  space_dashboard_path(current_user.spaces.first.id)
 
     elsif space
