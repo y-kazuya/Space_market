@@ -1,23 +1,79 @@
 
 
-%h1
-  ルーム設定のページ
-%h1
-  = link_to "新規スペース作成", newww_user_rooms_path(current_user.id)
--@spaces.each do |space|
-  - space.rooms.each do |room|
-    %h1
-      = room.intro ? room.intro.title : "未入力"
-      - if room.activated == "waiting"
-        審査中！
-      - elsif room.activated == "making"
-        作成中
-      - if room.activated == "making"
-        = link_to stats_user_room_path(current_user.id, room.id) do
-          = image_tag(room.pictures.first.content_url(:preview)) if room.pictures.first
-        = link_to "編集", stats_user_room_path(current_user.id, room.id)
-      - else
-        = link_to user_room_basic_infos_path(current_user.id, room.id, room.basic_info.id) do
-          = image_tag(room.pictures.first.content_url(:preview)) if room.pictures.first
-        = link_to "編集", user_room_basic_infos_path(current_user.id, room.id, room.basic_info.id)
-      = link_to "削除", user_room_path(current_user.id, room.id), method: :delete
+.ri-wp
+  .ri-iwp
+    .ri-top
+      .ri-top--left
+        %h1
+          スペース管理
+
+      .ri-top--right
+        =link_to newww_user_rooms_path(current_user.id) do
+          %i.fa.fa-plus
+          新規スペースの作成
+    .ri-mid
+      .ri-mit__wp
+        .ri-mit__wp__iwp
+          .ri-mit__wp__iwp__sel
+            .ri-mit__wp__iwp__sel__1
+              .ri-mit__wp__iwp__sel__1__1
+                全ての施設
+
+
+
+
+    .ri-bot
+      %ul.ri-bot__lists
+        -@spaces.each do |space|
+          - space.rooms.each do |room|
+            %li.ri-bot__room
+              .ri-bot__room__in
+                .ri-bot__room__in__left
+                  - if room.activated == "making"
+                    = link_to stats_user_room_path(current_user.id, room.id) do
+                      .picture
+                        = image_tag(room.pictures.first.content_url(:preview)) if room.pictures.first
+                      .picture_wp
+                        %span
+                          作成中
+                  - else
+                    = link_to user_room_basic_infos_path(current_user.id, room.id, room.basic_info.id) do
+                      .picture
+                        = image_tag(room.pictures.first.content_url(:preview)) if room.pictures.first
+                      .picture_wp
+                        %span
+                          = room.activated == "waiting" ? "審査中" :  "公開中"
+
+                .ri-bot__room__in__right
+                  %h1.room_title
+                    = room.intro ? room.intro.title : "未入力"
+                  .room_bot
+                    .room_bot__left
+                      %p
+                        = room.activated == "waiting" ? "ただいま審査中です。審査終了後に公開されます。" :  "完成させてスペースを公開しましょう！"
+
+                    .room_bot__right
+
+                      - if room.activated == "making"
+                        = link_to stats_user_room_path(current_user.id, room.id),class: "editbo"  do
+                          %span
+                            編集
+                      -else
+                        = link_to user_room_basic_infos_path(current_user.id, room.id, room.basic_info.id),class: "editbo" do
+                          %span
+                            編集
+
+                      = link_to user_room_path(current_user.id, room.id), method: :delete,class: "deletebo", data: { confirm: "よろしいですか？"} do
+                        %span
+                          %i.fa.fa-trash-alt
+                      -# = room.intro ? room.intro.title : "未入力"
+                      -# - if room.activated == "waiting"
+                      -#   審査中！
+                      -# - elsif room.activated == "making"
+                      -#   作成中
+                      -# - if room.activated == "making"
+
+                      -#   = link_to "編集", stats_user_room_path(current_user.id, room.id)
+                      -# - else
+                      -#   = link_to "編集", user_room_basic_infos_path(current_user.id, room.id, room.basic_info.id)
+                      -# = link_to "削除", user_room_path(current_user.id, room.id), method: :delete

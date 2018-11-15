@@ -1,4 +1,32 @@
 
-%h1
-  時間かし？宿泊？（宿泊は外部ページへ)
-  = link_to "時間貸し", new_space_path
+.stay-or-space-container
+  %p.weight700.stay-or-space-container__txt
+    “時間貸し”と“宿泊”どちらで貸し出しますか？
+  .red-box-description
+    始めに設定をする貸し方を選択してください。
+    %br
+    後から貸し方の変更・追加もできます。
+  .stay-or-space-container__two-box
+    .space-stay-and-market-box
+      = image_tag 'space-market' ,class: 'space-stay-and-market-box__logo '
+      .space-stay-and-market-box__txts
+        %p
+          「SPACEMARKET」に掲載されます。
+        %p
+          スペースを1時間単位で貸し出すことができます。
+        %p
+          主にパーティー、会議、イベントなどに利用されます。
+      = link_to new_space_path ,class:'hover-none' do
+        .space-stay-and-market-box__button.back-color-light-blue
+          時間貸し
+    .space-stay-and-market-box
+      = image_tag 'space_stay' ,class: 'space-stay-and-market-box__logo '
+      .space-stay-and-market-box__txts
+        %p
+          「SPACEMARKET STAY」に掲載されます。
+        %p
+          スペースを1泊単位で貸し出すことができます。
+        %p
+          主に旅行や合宿などに利用されます。
+      .space-stay-and-market-box__button.back-color-red
+        宿泊

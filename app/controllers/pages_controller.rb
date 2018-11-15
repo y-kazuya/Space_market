@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
   before_action :login?, only: [:host_entry]
+  layout "all", only: :top
 
   def top
-    # @spaces = Space.public_spaces
+
     @space_info = SpaceInfo.new
 
     #render "tmp/registration_menu_main"

@@ -1,4 +1,26 @@
 .site-header
+  .site-header__sponser
+    .site-header__sponser-container
+      .site-header__sponser-catch
+        %span.site-header__sponser-catch-text
+          期間限定
+      .site-header__sponser-date
+        .site-header__sponser-datebox
+          .site-header__sponser-date1-inner
+            %p.site-header__sponser-date1_element
+              2018年10月15日
+          .site-header__sponser-date2-inner
+            %p.site-header__sponser-date2_element
+              まで
+      .site-header-description-box
+        .site-header__sponser-title-box
+          %h2.site-header__sponser-title
+            花火鑑賞スペースが0円で使えるチャンス!
+          .site-header__sponser-sentence
+            ふじさわ江の島花火を楽しめるスペース貸切権をプレゼント
+        .site-header__sponser-button-box
+          =link_to "#" ,class: "site-header__sponser-button-text link-white hover-white" do
+            詳細へ
   %p.float
     = link_to root_path do
       = image_tag 'https://beyond.spacemarket.com/wp-content/uploads/2017/08/25191709/spmkt_profile-300x300.png' ,class: 'site-header__logo'
@@ -10,7 +32,7 @@
             %input{id:"prof-tg",class:"top-nav-down-checkbox" ,type:"checkbox"}
             %label{for:"prof-tg"}
               %span.navs-right__text.link-black.hover-white
-                = image_tag(set_thubm(current_user), class: "user_icon")
+                =image_tag(set_thubm(current_user), class: "user_icon")
                 = fa_icon 'caret-down', class: 'top-nav-down hover-white link-black'
             %ul.top-nav-parent
               %li.child-user
@@ -60,7 +82,7 @@
             %p.navs-right__text.link-black.hover-white
               ヘルプ
         %li.navs-right
-          = link_to "/reservations/confirm_reservation" ,class: 'navs-right__link' do
+          = link_to "#" ,class: 'navs-right__link' do
             %p.navs-right__text.link-black.hover-white
               予約
         %li.navs-right
@@ -71,45 +93,3 @@
           = link_to  host_entry_pages_path ,class: 'navs-right__link' do
             %p.navs-right__text.link-black.hover-white
               ホスト
-
-      -# %li.navs-right
-      -#   - if !current_user
-      -#     = link_to new_user_registration_path ,class: 'navs-right__link' do
-      -#       %p.navs-right__text.link-black.hover-white
-      -#         新規登録
-      -#   -else
-      -#     = link_to account_path do
-      -#       %p.navs-right__text.link-black.hover-white
-      -#         =image_tag(set_thubm(current_user), class: "user_icon")
-
-      -# %li.navs-right
-      -#   -if !current_user
-      -#     = link_to new_user_session_path  ,class: 'navs-right__link'  do
-      -#       %p.navs-right__text.link-black.hover-white
-      -#         ログイン
-      -#   - else
-      -#     = link_to destroy_user_session_path, method: :delete  ,class: 'navs-right__link' do
-      -#       %p.navs-right__text.link-black.hover-white
-      -#         ログアウト
-
-      -# %li.navs-right
-      -#   = link_to "#",class: 'navs-right__link'  do
-      -#     %p.navs-right__text.link-black.hover-white
-      -#       ヘルプ
-      -# - if current_user
-      -#   -if current_user.spaces.empty?
-      -#     %li.navs-right
-      -#       = link_to host_entry_pages_path ,class: 'navs-right__link' do
-      -#         %p.navs-right__text.link-black.hover-white
-      -#           空きスペースを掲載する
-      -#   -elsif current_user.owner == true
-      -#     %li.navs-right
-      -#       = link_to user_dashboard_path(current_user.id) ,class: 'navs-right__link' do
-      -#         %p.navs-right__text.link-black.hover-white
-      -#           ホスト
-
-      -#   -else
-      -#     %li.navs-right
-      -#       = link_to space_dashboard_path(current_user.spaces.first.id) ,class: 'navs-right__link' do
-      -#         %p.navs-right__text.link-black.hover-white
-      -#           ホスト

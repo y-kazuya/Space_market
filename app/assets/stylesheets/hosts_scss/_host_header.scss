@@ -35,6 +35,7 @@
   height: 48px;
   background-color: #333333;
   position: fixed;
+  z-index: 10000;
   &__left{
     .host-left-logo{
       float: left;

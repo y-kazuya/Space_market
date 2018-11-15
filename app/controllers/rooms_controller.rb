@@ -1,6 +1,9 @@
 class RoomsController < ApplicationController
   before_action :owner?, only: [:index, :newww, :stats]
-  layout "room_new", only: [:index,:new, :newww, :stats]
+
+  layout "room_new", only: [:index,:new, :newww, :stats, :public]
+
+
   def index
     @spaces = Space.where(user_id: current_user.id).includes(:rooms)
   end
@@ -48,12 +51,12 @@ class RoomsController < ApplicationController
   def for_wating
     room =Room.find(params[:id])
     if current_user.owner == true
-      room.update(activated: 1)
+      room.update(activated: 2)
       return redirect_to user_rooms_path(current_user.id)
     end
 
     if current_user.complete_owner_infos? && room.complete_infos?
-      room.update(activated: 1)
+      room.update(activated: 2)
       current_user.update(owner: 1)
       redirect_to user_dashboard_path(current_user.id)
     else
@@ -69,6 +72,17 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
   end
 
+  def public
+
+    room = Room.find(params[:id])
+    if room.space.user_id == current_user.id
+      room.public == true ? room.update(public: false) : room.update(public: true)
+      redirect_to :back
+    else
+      redirect_to root_path
+    end
+
+  end
   private
     def owner?
       redirect_to root_path if current_user.owner == false || current_user.id != params[:user_id].to_i

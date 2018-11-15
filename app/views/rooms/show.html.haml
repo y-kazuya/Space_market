@@ -47,11 +47,11 @@
       .room_show__map-title
         アクセス
       .room_show__map-google
-        = @room.space.space_info.map_address
+        = render partial: 'map_room_show'
       .room_show__map-info
         .room_show__address-title
           住所
-        .room_show__address-item
+        .room_show__address-item#roomAdress{data: {address: @room.space.space_info.full_address }}
           = @room.space.space_info.full_address
         .room_show__access-title
           アクセス

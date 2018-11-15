@@ -125,16 +125,21 @@
             %li.Space-Management-BottomBox-Left__space-left-nav
               %p.weight700.space-left-nav-item.link-black.space-left-time-pre
                 時間貸し
-                %span.space-left-pre-preview
-                  プレビュー
+                = link_to preview_space_room_reservations_path(@room.space.id, @room.id) do
+                  %span.space-left-pre-preview
+                    プレビュー
                 %br
                 %span.space-left-pre-minitxt
                   SPACEMARKETに掲載
                 %span.onoffswitch
-                  %input{type:"checkbox" ,name:"onoffswitch" ,class:"onoffswitch-checkbox" ,id:"myonoffswitch"}
-                  %label{class:"onoffswitch-label" ,for:"myonoffswitch"}
+                  - @room.public == true ? public = true : public = false
+                  = link_to public_user_room_path(current_user.id, @room.id), method: :patch do
+                    %input{type:"checkbox" ,name:"onoffswitch" ,class:"onoffswitch-checkbox" ,id:"myonoffswitch", checked: @room.public}
+                    %label{class:"onoffswitch-label" ,for:"myonoffswitch"}
+                  -# %input{type:"checkbox" ,name:"onoffswitch" ,class:"onoffswitch-checkbox" ,id:"myonoffswitch"}
+                  -# %label{class:"onoffswitch-label" ,for:"myonoffswitch"}
                 %span.onoffswitch-checkbox-offtext
-                  非公開
+                  = @room.public == true ? "公開" : public = "非公開"
                 %span.onoffswitch-checkbox-ontext
                   公開中
             = link_to user_room_basic_infos_path(current_user.id, @room.id) do

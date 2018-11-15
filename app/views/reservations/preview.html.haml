@@ -1,7 +1,10 @@
 
-
 = form_for @reserve, url: space_room_reservations_path, method: :post do |f|
   .reserve--wp
+    .pre-bo
+      = link_to  user_room_basic_infos_path(current_user.id, @room.id, @room.basic_info.id)do
+        %span.green-box.y-gbox.pre--ab
+          編集に戻る
     .room_id
       = @room.id
     .reserve__left.sp
@@ -466,7 +469,7 @@
                 %li
                   ※送信後に予約内容の確認など、ホストとのやりとりが開始されます
             .modal__last__bot
-              = f.submit "予約リクエストを送信する",class: "y-r-b main_bot"
+              = f.submit "プレビュー画面では押せません",class: "y-r-b main_bot", disabled: true
 
 
 
