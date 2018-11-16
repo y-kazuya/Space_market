@@ -1,0 +1,62 @@
+.gmnoprint{
+    display:none;
+}
+.map_pininfo{
+    width: 100%;
+    height: 142px;
+    background-color: white;
+    position: absolute;
+    z-index: 2000;
+    display: none;
+    a{
+        color: #4abfe6;
+        text-decoration: none;
+        img{
+            width: 142px;
+             height: 100%;
+        }
+    }
+
+    &__right{
+        padding: 12px 0 8px 8px;
+        margin-left: 154px;
+        margin-right: 16px;
+        position: absolute;
+        top: 0;
+        min-width: 400px;
+        border: 1px solid gray;
+        h2{
+            font-size: 14px;
+            line-height: 1.5;
+            overflow: hidden;
+            height: 65px;
+            margin-bottom: 16px;
+            a{
+                color: black
+            }
+        }
+        p{
+            padding: 10px 5px;
+            margin-right: 50px;
+            text-align: center;
+            background-color: #000;
+            font-size: 14px;
+            color: #fff;
+            border-radius: 3px;
+            width: 100%;
+            span{
+                font-size: 16px;
+                font-weight: normal;
+
+            }
+           
+
+            }
+
+        }
+        i{
+            margin-left: 4px;
+            padding: 0 2px;
+            color: #f2d42b;
+        }
+    }
