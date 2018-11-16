@@ -6,6 +6,6 @@
   .reservation-list
     -if current_user.looks != nil?
       - current_user.looks.each do |look|
-        = render partial: "?????/look_space",locals: {look: look}
+        = render partial: "shared/look_space",locals: {look: look}
     -else
       予約はありません

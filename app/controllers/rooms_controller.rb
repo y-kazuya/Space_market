@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
         end
       end
     end
-    binding.pry
+
   end
 
   def stats

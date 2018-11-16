@@ -1,0 +1,11 @@
+.confirm-reservation-box
+  .confirm-reservation-box__title.weight700
+    最近見たroom
+  .confirm-reservation-box__description
+    最近みたroomの詳細です
+  .reservation-list
+    -if current_user.rooms != nil?
+      - current_user.rooms.each do |room|
+        = render partial: "shared/look_space",locals: {room: room}
+    -else
+      最近見たroomはありません
