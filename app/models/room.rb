@@ -5,14 +5,13 @@ class Room < ApplicationRecord
   has_one :intro, dependent: :destroy
   has_one :agreement, dependent: :destroy
   has_one :reserve_phrase, dependent: :destroy
-  has_one :movie, dependent: :destroy
 
   has_many :options, dependent: :destroy
   has_many :pictures, dependent: :destroy
   has_many :plans, dependent: :destroy
   has_many :room_amenities, dependent: :destroy
   has_many :amenities, through: :room_amenities
-  has_many :reserves, dependent: :destroy
+  has_many :reserves,class_name: "Reserve", dependent: :destroy
 
 
   validates :activated, presence: true

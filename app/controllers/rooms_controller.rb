@@ -32,7 +32,6 @@ class RoomsController < ApplicationController
       return redirect_to user_rooms_path(current_user.id)
     end
     redirect_to root_path
-
   end
 
   def new_first
