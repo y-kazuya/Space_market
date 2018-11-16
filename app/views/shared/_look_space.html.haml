@@ -1,0 +1,19 @@
+.reservation-item-box
+  .reservation-item-box__img
+    = image_tag("#{room.pictures.first.content}" ,class: 'reservation-img')
+  .reservation-item-box__txts
+    %span.reservation-space-name.weight700
+      = room.intro.title
+    %p
+      プラン一覧
+    .reservation-space-options
+      - room.plans do |plan|
+        .reservation-space-options__item
+          = room.name
+
+    .reservation-space-addres
+      = room.space.space_info.access
+    .detail-delete-button-box
+      = link_to space_room_path(room.space.id ,room.id) do
+        .detail-room-button
+          ルームの紹介ページ

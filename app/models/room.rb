@@ -13,6 +13,8 @@ class Room < ApplicationRecord
   has_many :amenities, through: :room_amenities
   has_many :reserves,class_name: "Reserve", dependent: :destroy
 
+  has_many :looks, dependent: :destroy
+
 
   validates :activated, presence: true
   validates :public, inclusion: { in: [true, false] }

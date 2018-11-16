@@ -18,6 +18,15 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @space = @room.space
+    if current_user
+      unless Look.find_by(user_id: current_user.id, room_id: @room.id)
+        Look.create(user_id: current_user.id, room_id: @room.id)
+        if current_user.looks.length > 5
+          current_user.looks.first.destroy
+        end
+      end
+    end
+
   end
 
   def stats

@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   end
 ###オーナーの全体的なルート##########################
   resources :users do
+    resources :looks, only: :index
     resources :rooms, only: [:index, :new, :create, :destroy] do
       member do
         get :stats

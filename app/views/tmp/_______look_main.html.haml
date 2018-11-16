@@ -1,0 +1,11 @@
+.confirm-reservation-box
+  .confirm-reservation-box__title.weight700
+    予約確認
+  .confirm-reservation-box__description
+    予約の確認と削除を行うことができます。
+  .reservation-list
+    -if current_user.looks != nil?
+      - current_user.looks.each do |look|
+        = render partial: "shared/look_space",locals: {look: look}
+    -else
+      予約はありません
