@@ -5,6 +5,7 @@
     予約の確認と削除を行うことができます。
   .reservation-list
     -if current_user.looks != nil?
-      = render partial: "?????/look_space",locals: {look: current_user.looks}
+      - current_user.looks.each do |look|
+        = render partial: "?????/look_space",locals: {look: look}
     -else
       予約はありません
