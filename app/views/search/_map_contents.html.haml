@@ -1,5 +1,19 @@
 %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_API_KEY"]}&callback=initMap"}
 #map_contents
+.map_pininfo
+  = link_to "#" do
+    = image_tag("funa.jpg", id: 'image')
+  .map_pininfo__right
+    %h2
+      = link_to "#" do
+        #roomTitle
+    %p
+      %span#roomPrice
+        ¥1000
+      %span
+        = "/時間"
+
+      %i.fa.fa-flash.icon-direct
 
 :javascript
   $(function(){
@@ -13,6 +27,7 @@
     while (new Date() - startMsec < waitMsec);
   }
 
+  let data
   function initMap() {
     var target = document.getElementById('map_contents');
     var geocoder = new google.maps.Geocoder();
@@ -29,11 +44,13 @@
       }
     });
 
-    for( var room of rooms ) {
+    for( let room of rooms ) {
  
-      var address = room.dataset.address
+      let address = room.dataset.address
       let link = room.dataset.link
       let title = room.dataset.title
+      let price = room.dataset.price
+      let image = room.dataset.image
 
       geocoder.geocode({ address: address}, function(results, status){
 
@@ -43,18 +60,21 @@
             var marker = new google.maps.Marker({
               position: results[0].geometry.location,
               map: map,
-              animation: google.maps.Animation.DROP
+              animation: google.maps.Animation.DROP,
             });
-
           //情報ウィンドウ
             var infoWindow = new google.maps.InfoWindow({
               content: `<a href="${link}" target="_blank">${title}</a>`,
               pixelOffset: new google.maps.Size(0, 5)
             });
-
           //マーカーにリスナーを設定
             marker.addListener('click', function(){
-              infoWindow.open(map, marker);
+              $('#roomTitle').text(title)
+              $('#roomPrice').text(price)
+              $('#image').attr("src", image)
+              $(".map_pininfo__right").find("a").attr("href", link)
+              $(".map_pininfo").find("a").attr("href", link)
+              $(".map_pininfo").css('display','block')
             });
         }else if(status == "OVER_QUERY_LIMIT"){
           sleep(1);

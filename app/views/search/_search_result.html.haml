@@ -1,4 +1,4 @@
-.summary_list{data: {id: result.id, address: result.space.space_info.full_address, link: space_room_path(result.space.id, result.id), title: result.intro.title }}
+.summary_list{data: {id: result.id, address: result.space.space_info.full_address, link: space_room_path(result.space.id, result.id), title: result.intro.title, price: day_low_high(result), image: result.pictures.first.content.url }}
   = link_to space_room_path(result.space.id, result.id) do
     .summary_room__photo
       - result.pictures.each do |picture|
