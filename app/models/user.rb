@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_one :contact, dependent: :destroy
   has_one :user_notification ,dependent: :destroy
 
+  has_many :looks, dependent: :destroy
+  has_many :rooms ,through: :looks
 
 
 
